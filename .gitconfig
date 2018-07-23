@@ -1,0 +1,16 @@
+[user]
+	name = Stone C. Lasley
+	email = stonelasley@gmail.com
+[alias]
+	ci = commit
+	co = checkout
+	br = branch
+	st = status
+	lg = log -p
+	df = diff
+	undo = reset --hard
+[core]
+	autocrlf = false
+	editor = vim
+[push]
+	default = simple

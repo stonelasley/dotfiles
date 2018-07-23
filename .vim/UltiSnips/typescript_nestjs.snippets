@@ -1,0 +1,100 @@
+snippet ctrl "Nestjs Controller Class" b
+import { Controller } from '@nestjs/common';
+
+@Controller('$1s')
+export class ${1/\w+\s*/\u$0/g}Controller {
+	constructor (private readonly ${1/\w+\s*/\l$0/g}Service: ${1/\w+\s*/\u$0/g}Service) {
+	}	
+
+	$0
+}
+endsnippet
+
+snippet findall "Nestjs Controller Get FindAll" b
+@Get()
+async findAll(): Promise<$1[]> {
+	return this._${1/\w+\s*/\l$0/g}Service.findAll();	
+}
+$0
+endsnippet
+
+snippet findby "Nestjs Controller Get FindByX Endpoint" b
+@Get(':${1:id}')
+async findBy${1/\w+\s*/\u$0/g}(@Param('${1/\w+\s*/\l$0/g}') ${1/\w+\s*/\l$0/g}): Promise<$2> {
+	return this.${2/\w+\s*/\l$0/g}Service.findBy${1/\w+\s*/\u$0/g}(${1/\w+\s*/\l$0/g});
+}
+$0
+endsnippet
+
+snippet create "Nestjs Controller Post Create" b
+@Post()
+async create(@Body() create${1}Dto: ${1/\w+\s*/\u$0/g}Dto): Promise<${1/\w+\s*/\u$0/g}> {
+	return this.${1/\w+\s*/\l$0/g}Service.create(${1/\w+\s*/\l$0/g});
+}
+$0
+endsnippet
+
+snippet update "Nestjs Controller Put Update Endpoint" b
+@Put(':${1:id}')
+async update(@Param('${1/\w+\s*/\l$0/g}') ${1/\w+\s*/\l$0/g}, @Body() update${2}Dto): Promise<void> {
+	return this.${2/\w+\s*/\l$0/g}Service.update(update${2/\w+\s*/\u$0/g}Dto);
+}
+$0
+endsnippet
+
+snippet remove "Nestjs Controller Delete Endpoint" b
+@Delete(':${1:id}')
+async remove(@Param('${1/\w+\s*/\l$0/g}') ${1/\w+\s*/\l$0/g}): Promise<void> {
+	return this.${2}Service.delete(${1/\w+\s*/\l$0/g});
+}
+$0
+endsnippet
+
+snippet decorator "Nestjs decorator"
+import { ReflectMetadata } from '@nestjs/common';
+
+export const $1 = (...${1/\w+\s*/\l$0/g}: $2) => ReflectMetadata('${1/\w+\s*/\l$0/g}', ${1/\w+\s*/\l$0/g});
+endsnippet
+
+snippet exceptionfilter "Nestjs filter"
+import { ExceptionFilter, Catch, ArgumentsHost } from '@nestjs/common';
+import { HttpException } from '@nestjs/common';
+
+@Catch($1Exception)
+export class $1ExceptionFilter implements ExceptionFilter {
+	catch(exception: $1Exception, host: ArgumentsHost) {
+		const ctx = host.switchToHttp();
+		const response = ctx.getResponse();
+		const request = ctx.getRequest();
+		const statusCode = exception.getStatus();
+		response.status(statusCode).json({
+			statusCode,
+			timestamp: new Date().toISOString(),
+			path: request.url,
+		});
+	}
+}
+endsnippet
+
+snippet guard "Nestjs guard"
+import { Injectable, CanActivate, ExecutionContext } from '@nestjs/common';
+import { Reflector } from '@nestjs/core';
+
+@Injectable()
+export class ${1:Roles}Guard implements CanActivate {
+	constructor(private readonly reflector: Reflector) {}
+
+	canActivate(context: ExecutionContext): boolean {
+		const ${1/\w+\s*/\l$0/g} = this.reflector.get<string[]>('${1/\w+\s*/\l$0/g}', context.getHandler());
+		if (!${1/\w+\s*/\l$0/g}) {
+			return true;
+		}
+
+	const request = context.switchToHttp().getRequest();
+	const user = request.user;
+	const hasRole = () => user.roles.some((role) => !!roles.find((item) => item === role));
+	return user && user.roles && hasRole();
+	}
+}
+endsnippet
+

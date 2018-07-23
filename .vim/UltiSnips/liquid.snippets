@@ -1,0 +1,89 @@
+snippet obj "{{ myVar }}"
+{{ $1 }}
+endsnippet
+
+snippet exp "{% myExpression %}"
+{% $1 %}
+endsnippet
+
+snippet inc "{{ include ... }}"
+{% include '$1' %}
+endsnippet
+
+snippet incw "{{ include ... with }}"
+{% include '${1}' with $0 %}
+endsnippet
+
+snippet section "{% section... %}"
+{% section '$1' %}
+endsnippet
+
+snippet increment "{% increment myVar %}"
+{% increment $1 %}
+endsnippet
+
+snippet decrement "{% decrement myVar %}"
+{% decrement $1 %}
+endsnippet
+
+snippet assign "{% assign x = 'foo' %}"
+{% assign ${1:myVar} = ${2:true} %}
+endsnippet
+
+snippet capture "{% capture myVar %} ... {% endcapture %}"
+{% capture ${1:myVar} %}
+	${VISUAL}$0
+{% endcapture %}
+endsnippet
+
+snippet if "{% if (condition) %}... {% else %}"
+{% if ${1:true} %}
+	${VISUAL}$0
+{% endif %}
+endsnippet
+
+snippet ife "{% if (condition) %}... {% else %} ... {% endif %}"
+{% if ${1:true} %}
+	${VISUAL}$0
+{% else %}
+	
+{% endif %}
+endsnippet
+
+snippet elseif "{% elseif (condition) %}"
+{% elseif ${1:true} %}
+	${VISUAL}$0
+{% else %}
+endsnippet
+
+snippet case "{% case myVar %} {% when ... %} {% endcase %}"
+{% case $1 %}
+	{% when $2 %}
+{% else %}
+	// Default 
+{% endcase %}
+endsnippet
+
+snippet for "{% for iterable %}... {% endfor %}"
+{% for $1 %}
+	${VISUAL}$0
+{% endfor %}
+endsnippet
+
+snippet fore "{% for iterable %}... {% else %} {% endfor %}"
+{% for $1 %}
+	${VISUAL}$0
+{% else %}
+	// Runs for empty collection
+{% endfor %}
+endsnippet
+
+snippet unless "{% unless (condition) %}... {% endunless %}"
+{% unless ${1:true} %}
+	${VISUAL}$0
+{% endunless %}
+endsnippet
+snippet form "{% form 'name' %}... {% endform %}"
+{% form '${1:constact}'$0 %}
+{% endform %}
+endsnippet

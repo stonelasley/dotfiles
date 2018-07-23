@@ -1,0 +1,39 @@
+snippet lintd "Disable tslint"
+/* tslint:disable */
+endsnippet
+
+snippet linte "Enable tslint"
+/* tslint:enable */
+endsnippet
+
+snippet lintde "Toggle tslint"
+/* tslint:disable */
+${1}
+/* tslint:enable */
+endsnippet
+
+snippet arw "Arrow Function"
+(${1}) => {
+	${2}
+}
+endsnippet
+
+snippet arws "Arrow Function Single Param"
+() => ${2}
+endsnippet
+
+snippet switch "Switch Statement"
+switch(${0}) {
+	case ${1}:
+		${2}
+		break;
+
+	default:
+		break;
+}
+endsnippet
+
+snippet case "Switch Case"
+case ${0}:
+	break;
+endsnippet
