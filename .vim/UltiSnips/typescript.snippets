@@ -12,9 +12,19 @@ ${1}
 /* tslint:enable */
 endsnippet
 
+snippet import "Import module"
+import { $1 } from '$2';
+endsnippet
+
 snippet arw "Arrow Function"
 (${1}) => {
 	${2}
+}
+endsnippet
+
+snippet asyncf "Async Function"
+async $1($2): Promise<$3> {
+	return await $0
 }
 endsnippet
 
