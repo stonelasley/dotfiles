@@ -6,6 +6,7 @@ set smartindent
 set ts=4 sw=2 et
 set t_Co=256
 filetype plugin indent on
+:map! <F3> <C-R>=strftime('%c')<CR>
 
 "/* ======================== Mappings ========================= */
 :imap jk <Esc>
@@ -31,6 +32,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'scrooloose/nerdtree'
     Plug 'SirVer/ultisnips'
     Plug 'honza/vim-snippets'
+    "Plug 'quramy/tsuquyomi'
 call plug#end()
 
 "/* ==================== Plugin Settings ====================== */
@@ -57,6 +59,19 @@ nmap <Leader>w <Plug>(easymotion-overwin-w)
 
 "/* -------------------- Indent Guides ----------------------- */
 let g:indentLine_color_term = 239
+
+"/* ---------------------- Syntastic ------------------------- */
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_typescript_checkers = ['tsc', 'tslint']
+"let g:syntastic_typescript_checkers = ['tsuquyomi']
+"let g:tsuquyomi_disable_quickfix = 1
 
 "/* ---------------------- Nerd Tree ------------------------- */
 map <C-n> :NERDTreeToggle<CR>
