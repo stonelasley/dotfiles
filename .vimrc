@@ -6,7 +6,7 @@ set smartindent
 set ts=4 sw=2 et
 set t_Co=256
 filetype plugin indent on
-:map! <F3> <C-R>=strftime('%c')<CR>
+set statusline+=%F
 
 "/* ======================== Mappings ========================= */
 :imap jk <Esc>
@@ -41,7 +41,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'quramy/tsuquyomi'
     Plug 'prettier/vim-prettier', {
         \ 'do': 'yarn install',
-        \ 'for': ['javascript', 'typescript', 'css', 'scss', 'less', 'json', 'graphql', 'markdown', 'vlue']}
+        \ 'for': ['javascript', 'typescript', 'css', 'scss', 'less', 'json', 'graphql', 'markdown', 'vue']}
 call plug#end()
 
 "/* ==================== Plugin Settings ====================== */
