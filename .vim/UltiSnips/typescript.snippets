@@ -8,34 +8,44 @@ endsnippet
 
 snippet lintde "Toggle tslint"
 /* tslint:disable */
-${1}
+$0
 /* tslint:enable */
 endsnippet
 
-snippet import "Import module"
+snippet import "Import module" b
 import { $1 } from '$2';
 endsnippet
 
-snippet arw "Arrow Function"
-(${1}) => {
-	${2}
+snippet meth "Class Method" b
+$1($2): ${3:void} {
+	$0 
 }
 endsnippet
 
-snippet asyncf "Async Function"
-async $1($2): Promise<$3> {
+snippet methp "Promise Class Method" b
+$1($2): Promise<${3:void}> {
+	$0 
+}
+endsnippet
+
+snippet func "Arrow Function"
+${1:()} => $0
+endsnippet
+
+snippet async "Async Function"
+async ${1:()}: Promise<${2:void}> {
 	return await $0
 }
 endsnippet
 
-snippet arws "Arrow Function Single Param"
-() => ${2}
+snippet subscribe "Observable subscribe"
+.subscribe(${1:()} => $2)$0
 endsnippet
 
 snippet switch "Switch Statement"
-switch(${0}) {
-	case ${1}:
-		${2}
+switch($1) {
+	case ${2}:
+		$0
 		break;
 
 	default:
@@ -44,6 +54,6 @@ switch(${0}) {
 endsnippet
 
 snippet case "Switch Case"
-case ${0}:
+case $0:
 	break;
 endsnippet
