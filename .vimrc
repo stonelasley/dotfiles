@@ -5,13 +5,18 @@ set number
 set smartindent
 set ts=4 sw=2 et
 set t_Co=256
+set statusline+=%F
 filetype plugin indent on
-:map! <F3> <C-R>=strftime('%c')<CR>
 
 "/* ======================== Mappings ========================= */
 :imap jk <Esc>
 let mapleader="\<Space>"
+
 nnoremap <Space> <Nop>
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 
 "/* ================= Vim Plug Auto Install =================== */
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -32,7 +37,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'scrooloose/nerdtree'
     Plug 'SirVer/ultisnips'
     Plug 'honza/vim-snippets'
-    "Plug 'quramy/tsuquyomi'
+    Plug 'quramy/tsuquyomi'
 call plug#end()
 
 "/* ==================== Plugin Settings ====================== */
@@ -69,9 +74,10 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-let g:syntastic_typescript_checkers = ['tsc', 'tslint']
-"let g:syntastic_typescript_checkers = ['tsuquyomi']
-"let g:tsuquyomi_disable_quickfix = 1
+let g:syntastic_typescript_checkers = ['tsuquyomi']
+
+"/* ---------------------- Tsuquyomi ------------------------- */
+let g:tsuquyomi_disable_quickfix = 1
 
 "/* ---------------------- Nerd Tree ------------------------- */
 map <C-n> :NERDTreeToggle<CR>
