@@ -13,6 +13,12 @@ filetype plugin indent on
 let mapleader="\<Space>"
 nnoremap <Space> <Nop>
 
+"/* ------------------Window Movement ------------------------ */
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
 "/* ================= Vim Plug Auto Install =================== */
 if empty(glob('~/.vim/autoload/plug.vim'))
     silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -32,7 +38,10 @@ call plug#begin('~/.vim/plugged')
     Plug 'scrooloose/nerdtree'
     Plug 'SirVer/ultisnips'
     Plug 'honza/vim-snippets'
-    "Plug 'quramy/tsuquyomi'
+    Plug 'quramy/tsuquyomi'
+    Plug 'prettier/vim-prettier', {
+        \ 'do': 'yarn install',
+        \ 'for': ['javascript', 'typescript', 'css', 'scss', 'less', 'json', 'graphql', 'markdown', 'vlue']}
 call plug#end()
 
 "/* ==================== Plugin Settings ====================== */
@@ -69,12 +78,14 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-let g:syntastic_typescript_checkers = ['tsc', 'tslint']
-"let g:syntastic_typescript_checkers = ['tsuquyomi']
-"let g:tsuquyomi_disable_quickfix = 1
+"let g:syntastic_typescript_checkers = ['tsc', 'tslint']
+let g:syntastic_typescript_checkers = ['tsuquyomi']
+let g:tsuquyomi_disable_quickfix = 1
 
 "/* ---------------------- Nerd Tree ------------------------- */
 map <C-n> :NERDTreeToggle<CR>
+let g:NERDTreeMapJumpPrevSibling='<Nop>'
+let g:NERDTreeMapJumpNextSibling='<Nop>'
 
 "/* ---------------------- UltiSnips -------------------------- */
 let g:UltiSnipsExpandTrigger="<tab>"
