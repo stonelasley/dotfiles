@@ -1,0 +1,1 @@
+/home/stone/.dotfiles/.zsh
