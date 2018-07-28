@@ -6,6 +6,7 @@ set smartindent
 set ts=4 sw=2 et
 set t_Co=256
 set statusline+=%F
+set termguicolors
 filetype plugin indent on
 
 "/* ======================== Mappings ========================= */
@@ -43,13 +44,11 @@ call plug#begin('~/.vim/plugged')
     Plug 'scrooloose/nerdtree'
     Plug 'SirVer/ultisnips'
     Plug 'honza/vim-snippets'
+    Plug 'chriskempson/base16-vim'
     Plug 'quramy/tsuquyomi'
-<<<<<<< HEAD
-=======
     Plug 'prettier/vim-prettier', {
         \ 'do': 'yarn install',
         \ 'for': ['javascript', 'typescript', 'css', 'scss', 'less', 'json', 'graphql', 'markdown', 'vue']}
->>>>>>> 88af0b679d9fec150bae078f5b6b5f09a12249ce
 call plug#end()
 
 "/* ==================== Plugin Settings ====================== */
@@ -86,14 +85,9 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-<<<<<<< HEAD
-let g:syntastic_typescript_checkers = ['tsuquyomi']
 
 "/* ---------------------- Tsuquyomi ------------------------- */
-=======
-"let g:syntastic_typescript_checkers = ['tsc', 'tslint']
 let g:syntastic_typescript_checkers = ['tsuquyomi']
->>>>>>> 88af0b679d9fec150bae078f5b6b5f09a12249ce
 let g:tsuquyomi_disable_quickfix = 1
 
 "/* ---------------------- Nerd Tree ------------------------- */
@@ -106,7 +100,5 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<C-j>"
 let g:UltiSnipsJumpBackwardTrigger="<C-k>"
 "/* -------------------- Color Scheme ------------------------ */
-set t_Co=256
-set background=dark
-colorscheme molokai 
+colorscheme base16-default-dark 
 
