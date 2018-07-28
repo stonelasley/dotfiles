@@ -1,6 +1,8 @@
 # Plugins
 plugged
 bundle
+.vim/.base16
+.vim/.base16.previous
 
 # Misc
 .netrwhist
