@@ -6,3 +6,6 @@ bundle
 
 # Misc
 .netrwhist
+
+# Vim
+*.swp
