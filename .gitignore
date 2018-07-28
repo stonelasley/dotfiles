@@ -6,6 +6,3 @@ bundle
 
 # Misc
 .netrwhist
-
-#Submodules
-.zsh/base16-shell
