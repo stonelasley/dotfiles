@@ -7,6 +7,8 @@ set ts=4 sw=2 et
 set t_Co=256
 set statusline+=%F
 set termguicolors
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 filetype plugin indent on
 
 "/* ======================== Mappings ========================= */
@@ -24,13 +26,6 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
-
-"/* ================= Vim Plug Auto Install =================== */
-if empty(glob('~/.vim/autoload/plug.vim'))
-    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
 
 "/* ======================== Plugins ========================== */
 call plug#begin('~/.vim/plugged')
@@ -56,6 +51,7 @@ call plug#end()
 "/* ------------------------- CtrlP --------------------------- */
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 
 "/* ---------------------- EasyMotion ------------------------- */
 " <Leader>f{char} to move to {char}
@@ -87,7 +83,7 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 "/* ---------------------- Tsuquyomi ------------------------- */
-let g:syntastic_typescript_checkers = ['tsuquyomi']
+let g:syntastic_typescript_checkers = ['tslint','tsuquyomi']
 let g:tsuquyomi_disable_quickfix = 1
 
 "/* ---------------------- Nerd Tree ------------------------- */
