@@ -44,6 +44,9 @@ call plug#begin('~/.vim/plugged')
     Plug 'prettier/vim-prettier', {
         \ 'do': 'yarn install',
         \ 'for': ['javascript', 'typescript', 'css', 'scss', 'less', 'json', 'graphql', 'markdown', 'vue']}
+    Plug 'valloric/youcompleteme'
+    Plug 'vim-airline/vim-airline'
+    Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 
 "/* ==================== Plugin Settings ====================== */
@@ -73,18 +76,26 @@ nmap <Leader>w <Plug>(easymotion-overwin-w)
 let g:indentLine_color_term = 239
 
 "/* ---------------------- Syntastic ------------------------- */
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+highlight SyntasticErrorSign guifg=#af00ff guibg=#ff0000
+highlight SyntasticErrorLine guibg=#0000af
 
 "/* ---------------------- Tsuquyomi ------------------------- */
 let g:syntastic_typescript_checkers = ['tslint','tsuquyomi']
 let g:tsuquyomi_disable_quickfix = 1
+let g:tsuquyomi_shortest_import_path = 1
+let g:tsuquyomi_single_quote_import = 1
+let g:tsuquyomi_completion_detail = 1
+nnoremap <Leader>i :TsuImport<CR>
+nnoremap <Leader>r :TsuRenameSymbol<CR>
+nnoremap <Leader>d :TsuDefinition<CR>
 
 "/* ---------------------- Nerd Tree ------------------------- */
 map <C-n> :NERDTreeToggle<CR>
@@ -92,9 +103,27 @@ let g:NERDTreeMapJumpPrevSibling='<Nop>'
 let g:NERDTreeMapJumpNextSibling='<Nop>'
 
 "/* ---------------------- UltiSnips -------------------------- */
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<C-j>"
-let g:UltiSnipsJumpBackwardTrigger="<C-k>"
-"/* -------------------- Color Scheme ------------------------ */
+let g:UltiSnipsExpandTrigger="<C-e>"
+let g:UltiSnipsJumpForwardTrigger="<Tab>"
+let g:UltiSnipsJumpBackwardTrigger="<S-Tab>"
+
+" Prevent UltiSnips from removing mappings
+let g:UltiSnipsMappingsToIgnore = ['autocomplete']
+
+"/* -------------------- YouCompleteMe ------------------------ */
+let g:ycm_key_list_select_completion = ['<C-j>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-k>', '<Up>']
+let g:ycm_key_list_accept_completion = ['<C-y>']
+"
+"/* ---------------------- Prettier --------------------------- */
+let g:prettier#config#print_width=80
+let g:prettier#config#single_quote ='true'
+let g:prettier#config#arrow_parens ='always'
+let g:prettier#config#trailing_comma ='always'
+
+"/* --------------------- Color Scheme ------------------------ */
 colorscheme base16-default-dark 
+
+"/* -------------------- AirLine Theme ------------------------ */
+let g:airline_theme='base16'
 
