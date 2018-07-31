@@ -10,3 +10,6 @@
 [submodule ".zsh/zsh-syntax-highlighting"]
 	path = .zsh/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
+[submodule "vendor/base16-iterm2"]
+	path = vendor/base16-iterm2
+	url = https://github.com/martinlindhe/base16-iterm2.git
