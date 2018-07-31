@@ -8,4 +8,8 @@ bundle
 .netrwhist
 
 # Vim
+.vim/swap/*
+!.vim/swap/.gitkeep
+.vim/backup/*
+!.vim/backup/.gitkeep
 *.swp
