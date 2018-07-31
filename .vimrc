@@ -5,11 +5,14 @@ set number
 set smartindent
 set ts=4 sw=2 et
 set t_Co=256
-set statusline+=%F
 set termguicolors
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 filetype plugin indent on
+
+"/* ---------------------- Directories ------------------------ */
+set backupdir=$HOME/.vim/backup//
+set directory=$HOME/.vim/swap//
 
 "/* ======================== Mappings ========================= */
 :imap jk <Esc>
