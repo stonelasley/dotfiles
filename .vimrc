@@ -126,6 +126,7 @@ let g:prettier#config#arrow_parens ='always'
 let g:prettier#config#trailing_comma ='always'
 
 "/* --------------------- Color Scheme ------------------------ */
+let base16colorspace=256
 colorscheme base16-default-dark 
 
 "/* -------------------- AirLine Theme ------------------------ */
