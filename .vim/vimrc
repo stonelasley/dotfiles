@@ -32,7 +32,8 @@ nnoremap <C-l> <C-w>l
 
 "/* ======================== Plugins ========================== */
 call plug#begin('~/.vim/plugged')
-    Plug 'ctrlpvim/ctrlp.vim'
+    Plug '/usr/local/opt/fzf'
+    Plug 'junegunn/fzf.vim'
     Plug 'flazz/vim-colorschemes'
     Plug 'easymotion/vim-easymotion'
     Plug 'yggdroot/indentline'
@@ -125,8 +126,11 @@ let g:prettier#config#arrow_parens ='always'
 let g:prettier#config#trailing_comma ='always'
 
 "/* --------------------- Color Scheme ------------------------ */
+let base16colorspace=256
 colorscheme base16-default-dark 
 
 "/* -------------------- AirLine Theme ------------------------ */
 let g:airline_theme='base16'
 
+"/* --------------------------- FzF ---------------------------- */
+map <C-p> :FZF<CR>
