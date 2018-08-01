@@ -1,0 +1,10 @@
+# Vim
+bundles
+plugged
+.netrwhist
+*.swp
+swap/*
+!swap/.gitkeep
+backup/*
+!backup/.gitkeep
+/vimrc.local
