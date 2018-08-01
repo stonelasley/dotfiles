@@ -1,0 +1,83 @@
+Delivered-To: sclarklasley@gmail.com
+Received: by 10.107.128.79 with SMTP id b76csp553791iod;
+        Thu, 26 Mar 2015 07:29:52 -0700 (PDT)
+X-Received: by 10.42.37.69 with SMTP id x5mr38674412icd.15.1427380191095;
+        Thu, 26 Mar 2015 07:29:51 -0700 (PDT)
+Return-Path: <www-data@store.localdomain>
+Received: from smtp137.ord.emailsrvr.com (smtp137.ord.emailsrvr.com. [173.203.6.137])
+        by mx.google.com with ESMTPS id b133si4661537ioe.59.2015.03.26.07.29.50
+        for <sclarklasley@gmail.com>
+        (version=TLSv1 cipher=RC4-SHA bits=128/128);
+        Thu, 26 Mar 2015 07:29:50 -0700 (PDT)
+Received-SPF: none (google.com: www-data@store.localdomain does not designate permitted sender hosts) client-ip=173.203.6.137;
+Authentication-Results: mx.google.com;
+       spf=none (google.com: www-data@store.localdomain does not designate permitted sender hosts) smtp.mail=www-data@store.localdomain
+Received: from smtp26.relay.ord1a.emailsrvr.com (localhost.localdomain [127.0.0.1])
+	by smtp26.relay.ord1a.emailsrvr.com (SMTP Server) with ESMTP id 98B1C180247
+	for <sclarklasley@gmail.com>; Thu, 26 Mar 2015 10:29:50 -0400 (EDT)
+Received: by smtp26.relay.ord1a.emailsrvr.com (Authenticated sender: system-administrator-AT-companionlink.com) with ESMTPSA id 24FCF180236
+	for <sclarklasley@gmail.com>; Thu, 26 Mar 2015 10:29:50 -0400 (EDT)
+X-Sender-Id: system-administrator@companionlink.com
+Received: from Store.localdomain ([UNAVAILABLE]. [198.101.250.212])
+	(using TLSv1.1 with cipher DHE-RSA-AES256-SHA)
+	by 0.0.0.0:587 (trex/5.4.2);
+	Thu, 26 Mar 2015 14:29:50 GMT
+Received: by Store.localdomain (Postfix, from userid 33)
+	id 9833D970F7; Thu, 26 Mar 2015 09:29:49 -0500 (CDT)
+To: sclarklasley@gmail.com
+Subject: Order Confirmation
+X-PHP-Originating-Script: 1001:clLibrary.php
+From: CompanionLink Sales <sales@companionlink.com>
+Message-Id: <20150326142949.9833D970F7@Store.localdomain>
+Date: Thu, 26 Mar 2015 09:29:49 -0500 (CDT)
+
+Thank you for purchasing a license of CompanionLink 6 for Outlook. 
+
+If you already have the software installed, skip to Step 2:
+1. Download and install CompanionLink 6 for Outlook <http://www.companionlink.com/downloads/files/clo60setup.exe> on your PC.
+2. Launch the "CompanionLink Setup" program from your desktop or Start menu. You should have an icon for it.
+3. Click "File" from the top menu. Then, click "Register".
+4. Enter your name and email address as you entered it on your order, Then click the "Verify" button.
+This will verify your license as a full version.
+
+For help configuring your software, please visit:
+http://www.companionlink.com/support/kb/Setup_Guides 
+
+
+SALES RECEIPT
+
+March 26, 2015
+
+Sold To:
+Blendtec
+Stone Lasley
+sclarklasley@gmail.com
+
+Seller:
+CompanionLink Software, Inc.
+811 SW Naito Pkwy, Suite 600
+Portland, OR 97204
+USA
+Phone: +1 503-243-3400
+Email: sales@companionlink.com
+
+Product: CompanionLink 6 for Outlook
+Quantity: 1
+Unit Price: $49.95
+-----------------------------------------
+TOTAL: $49.95
+
+Payment Information:
+Card Type: Visa
+Account #: ...-****-0630
+Exp Date: 05/2017
+
+Thank you for choosing CompanionLink! 
+
+CompanionLink Software, Inc. 
+811 SW Naito Pkwy, Suite 600 
+Portland, OR 97204 
+USA 
+Phone: +1 503-243-3400
+Email: sales@companionlink.com
+

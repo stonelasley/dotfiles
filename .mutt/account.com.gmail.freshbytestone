@@ -1,0 +1,15 @@
+set imap_user = "freshbytestone@gmail.com"
+#set imap_pass = "tngrqlizzfhmhhmw"
+set smtp_url = "smtps://freshbytestone@gmail.com@smtp.gmail.com:465/"
+set smtp_pass = "tngrqlizzfhmhhmw"
+set ssl_starttls=yes
+set ssl_force_tls=yes
+set from="freshbytestone@gmail.com"
+set realname="Stone C. Lasley"
+set folder = "imaps://imap.gmail.com:993"
+set spoolfile = "imaps://imap.gmail.com/INBOX"
+set postponed="imaps://imap.gmail.com/[Gmail]/Drafts"
+set header_cache =     "~/.mutt/com.gmail.freshbytestone/cache/headers"
+set message_cachedir = "~/.mutt/com.gmail.freshbytestone/cache/bodies"
+set certificate_file = "~/.mutt/com.gmail.freshbytestone/certificates"
+set imap_keepalive = 900

@@ -1,0 +1,18 @@
+# Global Setttings
+set sort_aux=last-date-received
+set sort=threads
+set sort_re
+
+# Folder hooks
+folder-hook 'account.com.gmail.sclarklasley' 'source ~/.mutt/account.com.gmail.sclarklasley'
+folder-hook 'account.com.gmail.stonelasley' 'source ~/.mutt/account.com.gmail.stonelasley'
+folder-hook 'account.com.gmail.lasleybills' 'source ~/.mutt/account.com.gmail.lasleybills'
+
+# Default Account
+source ~/.mutt/account.com.gmail.sclarklasley
+
+# Macros
+macro index <f2> '<sync-mailbox><center-command>source ~/.mutt/account.com.gmail.sclarklasley<enter><change-folder>!<enter>
+macro index <f3> '<sync-mailbox><center-command>source ~/.mutt/account.com.gmail.stonelasley<enter><change-folder>!<enter>
+macro index <f3> '<sync-mailbox><center-command>source ~/.mutt/account.com.gmail.lasleybills<enter><change-folder>!<enter>
+

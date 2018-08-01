@@ -1,0 +1,13 @@
+set imap_user = "sclarklasley@gmail.com"
+set from="sclarklasley@gmail.com"
+set realname="Stone C. Lasley"
+set smtp_url = "smtps://sclarklasley@gmail.com@smtp.gmail.com:465/"
+set ssl_starttls=yes
+set ssl_force_tls=yes
+set folder = "imaps://imap.gmail.com:993"
+set spoolfile = "imaps://imap.gmail.com/INBOX"
+set postponed="imaps://imap.gmail.com/[Gmail]/Drafts"
+set header_cache =     "~/.mutt/com.gmail.sclarklasley/cache/headers"
+set message_cachedir = "~/.mutt/com.gmail.sclarklasley/cache/bodies"
+set certificate_file = "~/.mutt/com.gmail.sclarklasley/certificates"
+set imap_keepalive = 900
