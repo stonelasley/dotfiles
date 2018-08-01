@@ -1,9 +1,11 @@
 #!/bin/sh
-ln -sf ~/.dotfiles/.vim ~/.vim
-ln -f ~/.dotfiles/.vimrc ~/.vimrc
-ln -f ~/.dotfiles/git/gitconfig ~/.gitconfig
-ln -f ~/.dotfiles/git/gitignore ~/.gitignore
-ln -f ~/.dotfiles/.tmux.conf ~/.tmux.conf
-ln -f ~/.dotfiles/.zshrc ~/.zshrc
-ln -sf ~/.dotfiles/.zsh ~/.zsh
+ln -sTf ~/.dotfiles/.vim ~/.vim
+ln -sTf ~/.dotfiles/.vim/vimrc ~/.vimrc
+ln -sTf ~/.dotfiles/git/gitconfig ~/.gitconfig
+ln -sTf ~/.dotfiles/git/gitignore ~/.gitignore
+ln -sTf ~/.dotfiles/git/czrc ~/.czrc
+ln -sTf ~/.dotfiles/.tmux.conf ~/.tmux.conf
+ln -sTf ~/.dotfiles/.mutt ~/.mutt
+ln -sTf ~/.dotfiles/.zsh ~/.zsh
+ln -sTf ~/.dotfiles/.zsh/zshrc ~/.zshrc
 
