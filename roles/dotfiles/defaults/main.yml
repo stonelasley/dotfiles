@@ -1,0 +1,11 @@
+---
+dotfile_files:
+  - .vimrc
+  - .zshrc
+  - .zsh
+  - .vim
+  - .tmux.conf
+  - .gitignore
+  - .gitconfig
+  - .czrc
+
