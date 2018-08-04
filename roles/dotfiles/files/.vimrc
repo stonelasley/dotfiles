@@ -34,12 +34,10 @@ nnoremap <C-l> <C-w>l
 call plug#begin('~/.vim/plugged')
     Plug '/usr/local/opt/fzf'
     Plug 'junegunn/fzf.vim'
-    Plug 'flazz/vim-colorschemes'
     Plug 'easymotion/vim-easymotion'
     Plug 'yggdroot/indentline'
     Plug 'vim-syntastic/syntastic'
     Plug 'leafgarland/typescript-vim'
-    Plug 'hzchirs/vim-material'
     Plug 'scrooloose/nerdtree'
     Plug 'SirVer/ultisnips'
     Plug 'honza/vim-snippets'
@@ -51,6 +49,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'valloric/youcompleteme'
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
+    Plug 'wincent/loupe'
 call plug#end()
 
 "/* ==================== Plugin Settings ====================== */

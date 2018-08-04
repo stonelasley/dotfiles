@@ -1,0 +1,15 @@
+---
+- name: zsh | install zsh
+  apt: name={{item}}
+  become: true 
+  with_items:
+    - zsh 
+    - curl
+
+- name: oh-my-zsh
+  shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+- name: set-shell
+  shell: | 
+    if ! grep -q "zsh" ~/.bashrc; then 
+        echo "if [ -t 1 ]; then\n exec zsh\n fi" >> ~/.bashrc 
+    fi
