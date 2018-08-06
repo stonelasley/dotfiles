@@ -16,6 +16,10 @@ snippet import "Import module" b
 import { $1 } from '$2';
 endsnippet
 
+snippet ctr "Class Method" b
+constructor() {}
+endsnippet
+
 snippet meth "Class Method" b
 $1($2): ${3:void} {
 	$0 
@@ -56,4 +60,36 @@ endsnippet
 snippet case "Switch Case"
 case $0:
 	break;
+endsnippet
+
+snippet des "Jasmine describe"
+describe('$1', () => {
+    $0
+});
+endsnippet
+
+snippet beforeEach "Jasmine beforeEach"
+beforeEach(() => {
+    $0
+});
+endsnippet
+
+snippet it "Jasmine it"
+it('$1', () => {
+    $0
+});
+endsnippet
+
+snippet isolated "Jasmine isolated test"
+describe('$1', () => {
+	let classUnderTest: $1;
+
+	beforeEach(() => {
+    	classUnderTest = new $1($0);
+	});
+
+	it('should initialize', () => {
+    	expect(classUnderTest).toBeDefined();	
+	});
+});
 endsnippet
