@@ -129,7 +129,7 @@ let base16colorspace=256
 colorscheme base16-default-dark 
 
 "/* -------------------- AirLine Theme ------------------------ */
-let g:airline_theme='base16'
+let g:airline_theme='tomorrow'
 
 "hi SpellBad ctermfg=082 ctermbg=019 guifg=#585858 guibg=#F7CA88
 hi SpellCap ctermfg=082 ctermbg=019 guifg=#000000 guibg=#AB4642
