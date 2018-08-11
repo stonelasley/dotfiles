@@ -148,3 +148,11 @@ export const ${1:User} = createParamDecorator((data, req) => {
   return $0;
 }); 
 endsnippet
+
+snippet mongooseschema "Nestjs Mongoose Schema" b
+import * as mongoose from 'mongoose';
+
+export const ${$1:My}Schema = new mongoose.Schema({
+	$0
+});
+endsnippet
