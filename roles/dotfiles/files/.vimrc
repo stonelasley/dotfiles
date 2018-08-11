@@ -32,7 +32,7 @@ nnoremap <C-l> <C-w>l
 
 "/* ======================== Plugins ========================== */
 call plug#begin('~/.vim/plugged')
-    Plug '/usr/local/opt/fzf'
+    Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
     Plug 'junegunn/fzf.vim'
     Plug 'easymotion/vim-easymotion'
     Plug 'yggdroot/indentline'
@@ -50,6 +50,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
     Plug 'wincent/loupe'
+    Plug 'tpope/vim-eunuch'
 call plug#end()
 
 "/* ==================== Plugin Settings ====================== */
@@ -77,6 +78,7 @@ nmap <Leader>w <Plug>(easymotion-overwin-w)
 
 "/* -------------------- Indent Guides ----------------------- */
 let g:indentLine_color_term = 239
+let g:indentLine_bufNameExclude=['NERD_tree.*']
 
 "/* ---------------------- Syntastic ------------------------- */
 "set statusline+=%#warningmsg#
@@ -129,7 +131,7 @@ let base16colorspace=256
 colorscheme base16-default-dark 
 
 "/* -------------------- AirLine Theme ------------------------ */
-let g:airline_theme='base16'
+let g:airline_theme='tomorrow'
 
 "/* --------------------------- FzF ---------------------------- */
 map <C-p> :FZF<CR>

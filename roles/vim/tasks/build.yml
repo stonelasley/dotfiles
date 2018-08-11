@@ -3,6 +3,13 @@
   git:
     repo: https://github.com/junegunn/fzf.git
     dest: ~/.fzf
+  depth: 1
+
+- name: clone vim
+  git:
+    repo: https://github.com/vim/vim.git
+    dest: ~/.vimtemp
+  depth: 1
 
 - name: install fzf
   command: ./install
@@ -15,6 +22,7 @@
     state: present
   with_items:
     - python-dev
+    - python3-dev
     - ruby-dev
     - libperl-dev
     - libncurses5-dev
@@ -22,10 +30,12 @@
     - libx11-dev
     - libxpm-dev
     - libxt-dev
+    - cmake
+  become: yes
 
 - name: vim purge packages 
   apt: 
-    name:"{{ item }}"
+    name: "{{ item }}"
     state:absent 
     purge:true
   with_items:
@@ -34,22 +44,14 @@
     - vim-gnome
     - vim-tiny
     - vim-gui-common
+  become: yes
 
 - name: vim delete directories
   file: path=/usr/{{ item }} state=absent recurse=no
+  become: yes
   with_items:
     - "bin/vim"
     - "local/share/bin"
-
-- name: clone vim
-  git:
-    repo: https://github.com/vim/vim.git
-    dest: ~/.vimtemp
-
-- name: vim cleandist
-  command: make distclean
-  args: 
-    chdir: ~/.vimtemp/src
 
 - name: vim configure 
   command: ./configure --enable-multibyte --enable-perlinterp=dynamic --enable-rubyinterp=dynamic --with-ruby-command=/usr/bin/ruby --enable-pythoninterp=dynamic --with-python-config-dir=/usr/lib/python2.7/config-x86_64-linux-gnu --enable-python3interp --with-python3-config-dir=/usr/lib/python3.6/config-3.6m-x86_64-linux-gnu --enable-cscope --enable-gui=auto --with-features=huge --with-x --enable-fontset --enable-largefile --disable-netbeans --with-compiledby="st1" --enable-fail-if-missing
