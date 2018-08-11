@@ -83,6 +83,7 @@ source $ZSH/oh-my-zsh.sh
 source $HOME/.zsh/aliases
 source $HOME/.zsh/colors
 source $HOME/.zsh/theme
+source $HOME/.zsh/functions
 
 #
 # Third-party

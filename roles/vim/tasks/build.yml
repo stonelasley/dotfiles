@@ -53,6 +53,11 @@
     - "bin/vim"
     - "local/share/bin"
 
+- name: clone vim
+  git:
+    repo: https://github.com/vim/vim.git
+    dest: ~/.vimtemp
+
 - name: vim configure 
   command: ./configure --enable-multibyte --enable-perlinterp=dynamic --enable-rubyinterp=dynamic --with-ruby-command=/usr/bin/ruby --enable-pythoninterp=dynamic --with-python-config-dir=/usr/lib/python2.7/config-x86_64-linux-gnu --enable-python3interp --with-python3-config-dir=/usr/lib/python3.6/config-3.6m-x86_64-linux-gnu --enable-cscope --enable-gui=auto --with-features=huge --with-x --enable-fontset --enable-largefile --disable-netbeans --with-compiledby="st1" --enable-fail-if-missing
   args: 
@@ -83,13 +88,7 @@
 - name: vim update alternatives
   command: update-alternatives --set vi /usr/local/bin/vim
 
-- name: install youcompleteme
-  command: ./install.py
-  args: 
-    chdir: ~/.vim/plugged/youcompleteme
-
 - name: vim cleanup 
   file: path=~/{{ item }} state=absent 
   with_items:
     - ".vimtemp"
-    - ".fzf"

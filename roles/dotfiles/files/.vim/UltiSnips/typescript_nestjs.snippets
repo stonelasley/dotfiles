@@ -1,4 +1,4 @@
-snippet ctrl "Nestjs Controller Class" b
+snippet controller "Nestjs Controller Class" b
 import { Controller } from '@nestjs/common';
 
 @Controller('$1s')
@@ -105,4 +105,46 @@ import { Injectable } from '@nestjs/common';
 export class $1Service {
 	constructor($0) { }
 }
+endsnippet
+
+snippet pipe "Nestjs Pipe" b
+
+import { PipeTransform, Injectable, ArgumentMetadata } from '@nestjs/common';
+
+@Injectable()
+export class ${1}Pipe implements PipeTransform {
+  transform(value: any, metadata: ArgumentMetadata) {
+    return $0;
+  }
+}
+endsnippet
+
+snippet interceptor "Nestjs Pipe" b
+import { Injectable, NestInterceptor, ExecutionContext } from '@nestjs/common';
+import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
+
+@Injectable()
+export class ${1:My}Interceptor implements NestInterceptor {
+  intercept(
+    context: ExecutionContext,
+    call$: Observable<any>,
+  ): Observable<any> {
+    console.log('Before...');
+
+    const now = Date.now();
+	$0
+    return call$.pipe(
+      tap(() => console.log(`After... ${Date.now() - now}ms`)),
+    );
+  }
+}
+endsnippet
+
+snippet interceptor "Nestjs Pipe" b
+import { createParamDecorator } from '@nestjs/common';
+
+export const ${1:User} = createParamDecorator((data, req) => {
+  return $0;
+}); 
 endsnippet

@@ -2,5 +2,6 @@
 - hosts: localhost
   roles:
     - { role: dotfiles, tags: dotfiles }
-    - { role: zsh }
-    - { role: vim }
+    - { role: zsh, tags: zsh }
+    - { role: node, tags: node }
+    - { role: vim, tags: vim }
