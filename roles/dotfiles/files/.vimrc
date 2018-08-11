@@ -129,12 +129,11 @@ let g:prettier#config#trailing_comma ='always'
 "/* --------------------- Color Scheme ------------------------ */
 let base16colorspace=256
 colorscheme base16-default-dark 
+hi SpellCap ctermfg=082 ctermbg=019 guifg=#000000 guibg=#AB4642
+hi SpellBad ctermfg=082 ctermbg=019 guifg=#000000 guibg=#AB4642
 
 "/* -------------------- AirLine Theme ------------------------ */
 let g:airline_theme='tomorrow'
-
-hi SpellCap ctermfg=082 ctermbg=019 guifg=#000000 guibg=#AB4642
-hi SpellBad ctermfg=082 ctermbg=019 guifg=#000000 guibg=#AB4642
 
 "/* --------------------------- FzF ---------------------------- */
 map <C-p> :FZF<CR>
