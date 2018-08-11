@@ -89,8 +89,8 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-highlight SyntasticErrorSign guifg=#af00ff guibg=#ff0000
-highlight SyntasticErrorLine guibg=#0000af
+let g:syntastic_enable_highlighting=1
+let g:syntastic_enable_signs=1
 
 "/* ---------------------- Tsuquyomi ------------------------- */
 let g:syntastic_typescript_checkers = ['tslint','tsuquyomi']
@@ -132,6 +132,13 @@ colorscheme base16-default-dark
 
 "/* -------------------- AirLine Theme ------------------------ */
 let g:airline_theme='tomorrow'
+<<<<<<< HEAD
+=======
+
+"hi SpellBad ctermfg=082 ctermbg=019 guifg=#585858 guibg=#F7CA88
+hi SpellCap ctermfg=082 ctermbg=019 guifg=#000000 guibg=#AB4642
+hi SpellBad ctermfg=082 ctermbg=019 guifg=#000000 guibg=#AB4642
+>>>>>>> d0c590be0e23d69d87b44a48156c639cd218c24b
 
 "/* --------------------------- FzF ---------------------------- */
 map <C-p> :FZF<CR>
