@@ -8,4 +8,5 @@ dotfile_files:
   - .gitignore
   - .gitconfig
   - .czrc
+  - .mutt
 
