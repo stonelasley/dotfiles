@@ -55,3 +55,9 @@
 [submodule "roles/dotfiles/files/.vim/bundle/typescript-vim"]
 	path = roles/dotfiles/files/.vim/bundle/typescript-vim
 	url = https://github.com/leafgarland/typescript-vim.git
+[submodule "roles/dotfiles/files/.vim/bundle/fzf.vim"]
+	path = roles/dotfiles/files/.vim/bundle/fzf.vim
+	url = https://github.com/junegunn/fzf.vim
+[submodule "roles/dotfiles/files/.vim/bundle/prettier.vim"]
+	path = roles/dotfiles/files/.vim/bundle/prettier.vim
+	url = https://github.com/prettier/vim-prettier.git

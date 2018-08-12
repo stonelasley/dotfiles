@@ -203,7 +203,7 @@ source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=59'
 
 # Uncomment this to get syntax highlighting:
- source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+ source ~/.zsh/zsh-syntax-hightlighting/zsh-syntax-highlighting.zsh
 
 #
 # /etc/motd
@@ -219,3 +219,4 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+bindkey '^P' fzf-file-widget

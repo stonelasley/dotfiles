@@ -12,7 +12,7 @@
   depth: 1
 
 - name: install fzf
-  command: ./install
+  command: ./install --all
   args: 
     chdir: ~/.fzf
 
