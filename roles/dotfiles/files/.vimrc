@@ -1,3 +1,4 @@
+execute pathogen#infect()
 "/* ======================== Settings ========================= */
 set nocompatible
 set relativenumber
@@ -8,6 +9,7 @@ set t_Co=256
 set termguicolors
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+syntax on
 filetype plugin indent on
 
 "/* ---------------------- Directories ------------------------ */
@@ -34,23 +36,8 @@ nnoremap <C-l> <C-w>l
 call plug#begin('~/.vim/plugged')
     Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
     Plug 'junegunn/fzf.vim'
-    Plug 'easymotion/vim-easymotion'
-    Plug 'yggdroot/indentline'
-    Plug 'vim-syntastic/syntastic'
-    Plug 'leafgarland/typescript-vim'
-    Plug 'scrooloose/nerdtree'
-    Plug 'SirVer/ultisnips'
-    Plug 'honza/vim-snippets'
-    Plug 'chriskempson/base16-vim'
-    Plug 'quramy/tsuquyomi'
     Plug 'prettier/vim-prettier', {
-        \ 'do': 'yarn install',
         \ 'for': ['javascript', 'typescript', 'css', 'scss', 'less', 'json', 'graphql', 'markdown', 'vue']}
-    Plug 'valloric/youcompleteme'
-    Plug 'vim-airline/vim-airline'
-    Plug 'vim-airline/vim-airline-themes'
-    Plug 'wincent/loupe'
-    Plug 'tpope/vim-eunuch'
 call plug#end()
 
 "/* ==================== Plugin Settings ====================== */

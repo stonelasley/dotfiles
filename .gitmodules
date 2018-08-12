@@ -13,3 +13,45 @@
 [submodule "roles/dotfiles/files/.zsh/zsh-syntax-hightlighting"]
 	path = roles/dotfiles/files/.zsh/zsh-syntax-hightlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
+[submodule "roles/dotfiles/files/.vim/bundle/vim-eunuch"]
+	path = roles/dotfiles/files/.vim/bundle/vim-eunuch
+	url = https://github.com/tpope/vim-eunuch.git
+[submodule "roles/dotfiles/files/.vim/bundle/loupe"]
+	path = roles/dotfiles/files/.vim/bundle/loupe
+	url = https://github.com/wincent/loupe.git
+[submodule "roles/dotfiles/files/.vim/bundle/youcompleteme"]
+	path = roles/dotfiles/files/.vim/bundle/youcompleteme
+	url = https://github.com/valloric/youcompleteme.git
+[submodule "roles/dotfiles/files/.vim/bundle/indentline"]
+	path = roles/dotfiles/files/.vim/bundle/indentline
+	url = https://github.com/yggdroot/indentline.git
+[submodule "roles/dotfiles/files/.vim/bundle/nerdtree"]
+	path = roles/dotfiles/files/.vim/bundle/nerdtree
+	url = https://github.com/scrooloose/nerdtree.git
+[submodule "roles/dotfiles/files/.vim/bundle/easymotion"]
+	path = roles/dotfiles/files/.vim/bundle/easymotion
+	url = https://github.com/easymotion/vim-easymotion.git
+[submodule "roles/dotfiles/files/.vim/bundle/tsuquyomi"]
+	path = roles/dotfiles/files/.vim/bundle/tsuquyomi
+	url = https://github.com/quramy/tsuquyomi.git
+[submodule "roles/dotfiles/files/.vim/bundle/syntastic"]
+	path = roles/dotfiles/files/.vim/bundle/syntastic
+	url = https://github.com/vim-syntastic/syntastic.git
+[submodule "roles/dotfiles/files/.vim/bundle/ultisnips"]
+	path = roles/dotfiles/files/.vim/bundle/ultisnips
+	url = https://github.com/SirVer/ultisnips.git
+[submodule "roles/dotfiles/files/.vim/bundle/vim-snippets"]
+	path = roles/dotfiles/files/.vim/bundle/vim-snippets
+	url = https://github.com/honza/vim-snippets.git
+[submodule "roles/dotfiles/files/.vim/bundle/base16-vim"]
+	path = roles/dotfiles/files/.vim/bundle/base16-vim
+	url = https://github.com/chriskempson/base16-vim.git
+[submodule "roles/dotfiles/files/.vim/bundle/vim-airline"]
+	path = roles/dotfiles/files/.vim/bundle/vim-airline
+	url = https://github.com/vim-airline/vim-airline.git
+[submodule "roles/dotfiles/files/.vim/bundle/vim-airline-themes"]
+	path = roles/dotfiles/files/.vim/bundle/vim-airline-themes
+	url = https://github.com/vim-airline/vim-airline-themes.git
+[submodule "roles/dotfiles/files/.vim/bundle/typescript-vim"]
+	path = roles/dotfiles/files/.vim/bundle/typescript-vim
+	url = https://github.com/leafgarland/typescript-vim.git
