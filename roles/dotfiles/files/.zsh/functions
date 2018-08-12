@@ -1,5 +1,4 @@
 function tmux() {
-  echo "TMUX()"
   emulate -L zsh
 
   # Make sure even pre-existing tmux sessions use the latest SSH_AUTH_SOCK.
