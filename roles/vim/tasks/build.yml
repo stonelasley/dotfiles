@@ -3,6 +3,13 @@
   git:
     repo: https://github.com/junegunn/fzf.git
     dest: ~/.fzf
+  depth: 1
+
+- name: clone vim
+  git:
+    repo: https://github.com/vim/vim.git
+    dest: ~/.vimtemp
+  depth: 1
 
 - name: install fzf
   command: ./install
@@ -15,6 +22,7 @@
     state: present
   with_items:
     - python-dev
+    - python3-dev
     - ruby-dev
     - libperl-dev
     - libncurses5-dev
@@ -22,10 +30,12 @@
     - libx11-dev
     - libxpm-dev
     - libxt-dev
+    - cmake
+  become: yes
 
 - name: vim purge packages 
   apt: 
-    name:"{{ item }}"
+    name: "{{ item }}"
     state:absent 
     purge:true
   with_items:
@@ -34,9 +44,11 @@
     - vim-gnome
     - vim-tiny
     - vim-gui-common
+  become: yes
 
 - name: vim delete directories
   file: path=/usr/{{ item }} state=absent recurse=no
+  become: yes
   with_items:
     - "bin/vim"
     - "local/share/bin"
@@ -75,11 +87,6 @@
 
 - name: vim update alternatives
   command: update-alternatives --set vi /usr/local/bin/vim
-
-- name: install youcompleteme
-  command: ./install.py
-  args: 
-    chdir: ~/.vim/plugged/youcompleteme
 
 - name: vim cleanup 
   file: path=~/{{ item }} state=absent 
