@@ -36,8 +36,8 @@
 - name: vim purge packages 
   apt: 
     name: "{{ item }}"
-    state:absent 
-    purge:true
+    state: absent 
+    purge: true
   with_items:
     - vim
     - vim-runtime
@@ -87,6 +87,11 @@
 
 - name: vim update alternatives
   command: update-alternatives --set vi /usr/local/bin/vim
+
+- name: build youcompleteme
+  command: ./install.py
+  args: 
+    chdir: ~/.vim/bundle/youcompleteme
 
 - name: vim cleanup 
   file: path=~/{{ item }} state=absent 
