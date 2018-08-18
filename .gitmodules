@@ -64,3 +64,6 @@
 [submodule "roles/dotfiles/files/.vim/bundle/ferret"]
 	path = roles/dotfiles/files/.vim/bundle/ferret
 	url = https://github.com/wincent/ferret.git
+[submodule "/home/st1/.st1/roles/dotfiles/files/.vim/bundle/projectionist"]
+	path = /home/st1/.st1/roles/dotfiles/files/.vim/bundle/projectionist
+	url = https://github.com/tpope/vim-projectionist.git
