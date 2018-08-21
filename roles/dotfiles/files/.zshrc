@@ -84,6 +84,9 @@ source $HOME/.zsh/aliases
 source $HOME/.zsh/colors
 source $HOME/.zsh/theme
 source $HOME/.zsh/functions
+source $HOME/.st1/vendor/docker-cli/contrib/completion/zsh/_docker
+
+
 
 #
 # Third-party
