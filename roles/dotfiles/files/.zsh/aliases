@@ -4,7 +4,7 @@
 alias ....='cd ../..'
 alias cd..='cd ..'
 alias :e=vim
-alias :qa=exit
+alias :q=exit
 alias :sp='test -n $TMUX && tmux split-window'
 alias :vs='test -n $TMUX && tmux split-window -h'
 alias t="tmux"
@@ -12,6 +12,8 @@ alias v=vim
 alias vrc="vim $HOME/.vimrc"
 alias zrc="vim $HOME/.zshrc"
 alias trc="vim $HOME/.tmux.conf"
+alias st1="cd ~/.st1"
+
 
 #
 # Random Projects
