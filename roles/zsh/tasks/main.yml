@@ -8,8 +8,7 @@
 
 - name: oh-my-zsh
   shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-- name: set-shell
-  shell: | 
-    if ! grep -q "zsh" ~/.bashrc; then 
-        echo "if [ -t 1 ]; then\n exec zsh\n fi" >> ~/.bashrc 
-    fi
+
+- lineinfile: 
+    path: ~/.bashrc
+    line:  "if [ -t 1 ]; then\n exec zsh\nfi"

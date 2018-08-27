@@ -2,19 +2,19 @@
 - name: clone fzf
   git:
     repo: https://github.com/junegunn/fzf.git
-    dest: ~/.fzf
-  depth: 1
-
-- name: clone vim
-  git:
-    repo: https://github.com/vim/vim.git
-    dest: ~/.vimtemp
+    dest: /home/{{ ansible_user_id }}/.fzf
   depth: 1
 
 - name: install fzf
   command: ./install --all
   args: 
-    chdir: ~/.fzf
+    chdir: /home/{{ ansible_user_id }}/.fzf
+
+- name: clone vim
+  git:
+    repo: https://github.com/vim/vim.git
+    dest: /home/{{ ansible_user_id }}/.vimtemp
+  depth: 1
 
 - name: vim prerequisites  
   apt: 
@@ -32,6 +32,7 @@
     - libxt-dev
     - cmake
   become: yes
+  tags: ['never', 'build']
 
 - name: vim purge packages 
   apt: 
@@ -45,55 +46,76 @@
     - vim-tiny
     - vim-gui-common
   become: yes
-
+  tags: ['never', 'build']
+    
 - name: vim delete directories
   file: path=/usr/{{ item }} state=absent recurse=no
   become: yes
   with_items:
     - "bin/vim"
     - "local/share/bin"
+  tags: ['never', 'build']
 
 - name: clone vim
   git:
     repo: https://github.com/vim/vim.git
-    dest: ~/.vimtemp
+    dest: /home/{{ ansible_user_id }}/.vimtemp
+  tags: ['never', 'build']
 
 - name: vim configure 
   command: ./configure --enable-multibyte --enable-perlinterp=dynamic --enable-rubyinterp=dynamic --with-ruby-command=/usr/bin/ruby --enable-pythoninterp=dynamic --with-python-config-dir=/usr/lib/python2.7/config-x86_64-linux-gnu --enable-python3interp --with-python3-config-dir=/usr/lib/python3.6/config-3.6m-x86_64-linux-gnu --enable-cscope --enable-gui=auto --with-features=huge --with-x --enable-fontset --enable-largefile --disable-netbeans --with-compiledby="st1" --enable-fail-if-missing
   args: 
-    chdir: ~/.vimtemp
+    chdir: /home/{{ ansible_user_id }}/.vimtemp
+  tags: ['never', 'build']
 
 - name: vim make runtimedir
   command: make VIMRUNTIMEDIR=/usr/local/share/vim/vim81
   args: 
-    chdir: ~/.vimtemp
+    chdir: /home/{{ ansible_user_id }}/.vimtemp
+  tags: ['never', 'build']
 
 - name: vim make 
   command: make
   args: 
-    chdir: ~/.vimtemp
+    chdir: /home/{{ ansible_user_id }}/.vimtemp
+  tags: ['never', 'build']
+
 - name: vim make install
   command: make install
+  become: yes
   args: 
-    chdir: ~/.vimtemp
+    chdir: /home/{{ ansible_user_id }}/.vimtemp
+  tags: ['never', 'build']
 
 - name: vim update alternatives editor
   command: update-alternatives --install /usr/bin/editor editor /usr/local/bin/vim 1
+  become: yes
+  tags: ['never', 'build']
+
 - name: vim update alternatives set editor
   command: update-alternatives --set editor /usr/local/bin/vim
+  become: yes
+  tags: ['never', 'build']
 
 - name: vim update alternatives install vi
   command: update-alternatives --install /usr/bin/vi vi /usr/local/bin/vim 1
+  become: yes
+  tags: ['never', 'build']
 
 - name: vim update alternatives
   command: update-alternatives --set vi /usr/local/bin/vim
+  become: yes
+  tags: ['never', 'build']
 
 - name: build youcompleteme
   command: ./install.py
+  tags: ['never', 'build']
   args: 
-    chdir: ~/.vim/bundle/youcompleteme
+    chdir: /home/{{ ansible_user_id }}/.vim/bundle/youcompleteme
+  tags: ['never', 'build']
 
 - name: vim cleanup 
-  file: path=~/{{ item }} state=absent 
+  file: path=/home/{{ ansible_user_id }}/{{ item }} state=absent 
   with_items:
     - ".vimtemp"
+  tags: ['never', 'build']
