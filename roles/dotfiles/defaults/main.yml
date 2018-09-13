@@ -9,4 +9,5 @@ dotfile_files:
   - .gitconfig
   - .czrc
   - .mutt
+  - .Xdefaults
 
