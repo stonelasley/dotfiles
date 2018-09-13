@@ -16,9 +16,6 @@
 [submodule "roles/dotfiles/files/.vim/bundle/youcompleteme"]
 	path = roles/dotfiles/files/.vim/bundle/youcompleteme
 	url = https://github.com/valloric/youcompleteme.git
-[submodule "roles/dotfiles/files/.vim/bundle/indentline"]
-	path = roles/dotfiles/files/.vim/bundle/indentline
-	url = https://github.com/yggdroot/indentline.git
 [submodule "roles/dotfiles/files/.vim/bundle/prettier.vim"]
 	path = roles/dotfiles/files/.vim/bundle/prettier.vim
 	url = https://github.com/prettier/vim-prettier.git
