@@ -25,9 +25,6 @@
 [submodule "roles/dotfiles/files/.vim/bundle/prettier.vim"]
 	path = roles/dotfiles/files/.vim/bundle/prettier.vim
 	url = https://github.com/prettier/vim-prettier.git
-[submodule "roles/dotfiles/files/.vim/bundle/ferret"]
-	path = roles/dotfiles/files/.vim/bundle/ferret
-	url = https://github.com/wincent/ferret.git
 [submodule "vendor/docker-cli"]
 	path = vendor/docker-cli
 	url = https://github.com/docker/cli.git
