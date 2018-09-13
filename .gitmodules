@@ -34,9 +34,6 @@
 [submodule "roles/dotfiles/files/.vim/bundle/vim-git"]
 	path = roles/dotfiles/files/.vim/bundle/vim-git
 	url = https://github.com/tpope/vim-git.git
-[submodule "roles/dotfiles/files/.vim/bundle/projectionist"]
-	path = roles/dotfiles/files/.vim/bundle/projectionist
-	url = https://github.com/tpope/vim-projectionist.git
 [submodule "vendor/docker-cli"]
 	path = vendor/docker-cli
 	url = https://github.com/docker/cli.git
