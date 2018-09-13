@@ -13,9 +13,6 @@
 [submodule "roles/dotfiles/files/.zsh/zsh-syntax-hightlighting"]
 	path = roles/dotfiles/files/.zsh/zsh-syntax-hightlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
-[submodule "roles/dotfiles/files/.vim/bundle/vim-eunuch"]
-	path = roles/dotfiles/files/.vim/bundle/vim-eunuch
-	url = https://github.com/tpope/vim-eunuch.git
 [submodule "roles/dotfiles/files/.vim/bundle/loupe"]
 	path = roles/dotfiles/files/.vim/bundle/loupe
 	url = https://github.com/wincent/loupe.git
