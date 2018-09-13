@@ -40,6 +40,3 @@
 [submodule "vendor/docker-cli"]
 	path = vendor/docker-cli
 	url = https://github.com/docker/cli.git
-[submodule "roles/dotfiles/files/.vim/bundle/vim-ionic-snippets"]
-	path = roles/dotfiles/files/.vim/bundle/vim-ionic-snippets
-	url = https://github.com/stonelasley/vim-ionic-snippets.git
