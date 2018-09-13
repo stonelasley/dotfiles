@@ -19,9 +19,6 @@
 [submodule "roles/dotfiles/files/.vim/bundle/indentline"]
 	path = roles/dotfiles/files/.vim/bundle/indentline
 	url = https://github.com/yggdroot/indentline.git
-[submodule "roles/dotfiles/files/.vim/bundle/typescript-vim"]
-	path = roles/dotfiles/files/.vim/bundle/typescript-vim
-	url = https://github.com/leafgarland/typescript-vim.git
 [submodule "roles/dotfiles/files/.vim/bundle/prettier.vim"]
 	path = roles/dotfiles/files/.vim/bundle/prettier.vim
 	url = https://github.com/prettier/vim-prettier.git
