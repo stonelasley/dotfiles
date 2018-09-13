@@ -22,9 +22,6 @@
 [submodule "roles/dotfiles/files/.vim/bundle/nerdtree"]
 	path = roles/dotfiles/files/.vim/bundle/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
-[submodule "roles/dotfiles/files/.vim/bundle/easymotion"]
-	path = roles/dotfiles/files/.vim/bundle/easymotion
-	url = https://github.com/easymotion/vim-easymotion.git
 [submodule "roles/dotfiles/files/.vim/bundle/tsuquyomi"]
 	path = roles/dotfiles/files/.vim/bundle/tsuquyomi
 	url = https://github.com/quramy/tsuquyomi.git
