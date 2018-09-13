@@ -34,9 +34,6 @@
 [submodule "roles/dotfiles/files/.vim/bundle/ultisnips"]
 	path = roles/dotfiles/files/.vim/bundle/ultisnips
 	url = https://github.com/SirVer/ultisnips.git
-[submodule "roles/dotfiles/files/.vim/bundle/vim-snippets"]
-	path = roles/dotfiles/files/.vim/bundle/vim-snippets
-	url = https://github.com/honza/vim-snippets.git
 [submodule "roles/dotfiles/files/.vim/bundle/base16-vim"]
 	path = roles/dotfiles/files/.vim/bundle/base16-vim
 	url = https://github.com/chriskempson/base16-vim.git
