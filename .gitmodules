@@ -28,9 +28,6 @@
 [submodule "roles/dotfiles/files/.vim/bundle/ferret"]
 	path = roles/dotfiles/files/.vim/bundle/ferret
 	url = https://github.com/wincent/ferret.git
-[submodule "roles/dotfiles/files/.vim/bundle/vim-fugitive"]
-	path = roles/dotfiles/files/.vim/bundle/vim-fugitive
-	url = https://github.com/tpope/vim-fugitive.git
 [submodule "vendor/docker-cli"]
 	path = vendor/docker-cli
 	url = https://github.com/docker/cli.git
