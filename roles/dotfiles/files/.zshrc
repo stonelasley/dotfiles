@@ -185,6 +185,12 @@ zstyle ':completion:*:*:cdr:*:*' menu selection
 # fall through to cd if cdr is passed a non-recent dir as an argument
 zstyle ':chpwd:*' recent-dirs-default true
 
+#
+# Corrections
+#
+
+alias yarn='nocorrect yarn'
+
 # Local and host-specific overrides.
 
 #LOCAL_RC=$HOME/.zshrc.local
