@@ -1,5 +1,5 @@
 "/* ---------------------- Tsuquyomi ------------------------- */
-let g:syntastic_typescript_checkers = ['tslint','tsuquyomi']
+let g:syntastic_typescript_checkers = ['tsuquyomi']
 let g:tsuquyomi_disable_quickfix = 1
 let g:tsuquyomi_shortest_import_path = 1
 let g:tsuquyomi_single_quote_import = 1
