@@ -1,0 +1,5 @@
+#
+# Corrections
+#
+
+alias yarn='nocorrect yarn'
