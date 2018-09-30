@@ -2,10 +2,6 @@ autoload -U colors
 
 export ZSH="$HOME/.oh-my-zsh"
 export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
-export PATH="$PATH:/mnt/c/Program\ Files/Docker/Docker/resources/bin"
-alias docker=docker.exe
-alias docker-compose=docker-compose.exe
-
 
 
 plugins=(
@@ -198,8 +194,8 @@ alias yarn='nocorrect yarn'
 
 # Local and host-specific overrides.
 
-#LOCAL_RC=$HOME/.zshrc.local
-#test -f $LOCAL_RC && source $LOCAL_RC
+LOCAL_RC=$HOME/.zshrc.local
+test -f $LOCAL_RC && source $LOCAL_RC
 #
 #DEV_RC=$HOME/.zsh/host/dev-star
 #if [ $(hostname -s) =~ '^dev(vm)?[[:digit:]]+' ]; then

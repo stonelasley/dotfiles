@@ -13,7 +13,8 @@ alias vrc="vim $HOME/.vimrc"
 alias zrc="vim $HOME/.zshrc"
 alias trc="vim $HOME/.tmux.conf"
 alias st1="cd ~/.st1"
-
+alias docker=docker.exe
+alias docker-compose=docker-compose.exe
 
 #
 # Random Projects
