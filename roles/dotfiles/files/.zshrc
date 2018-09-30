@@ -109,7 +109,7 @@ function update-window-title-precmd() {
   emulate -L zsh
   set-tab-and-window-title `history | tail -1 | cut -b8-`
 }
-#add-zsh-hook precmd update-window-title-precmd
+add-zsh-hook precmd update-window-title-precmd
 
 function update-window-title-preexec() {
   emulate -L zsh
@@ -120,7 +120,7 @@ function update-window-title-preexec() {
   #   https://github.com/robbyrussell/oh-my-zsh/blob/master/lib/termsupport.zsh
   set-tab-and-window-title ${2[(wr)^(*=*|mosh|ssh|sudo)]}
 }
-#add-zsh-hook preexec update-window-title-preexec
+add-zsh-hook preexec update-window-title-preexec
 
 typeset -F SECONDS
 function record-start-time() {
@@ -128,7 +128,7 @@ function record-start-time() {
   ZSH_START_TIME=${ZSH_START_TIME:-$SECONDS}
 }
 
-#add-zsh-hook preexec record-start-time
+add-zsh-hook preexec record-start-time
 
 function report-start-time() {
   emulate -L zsh
@@ -159,9 +159,7 @@ function report-start-time() {
   fi
 }
 
-#add-zsh-hook precmd report-start-time
-
-#add-zsh-hook precmd bounce
+add-zsh-hook precmd report-start-time
 
 function auto-ls-after-cd() {
   emulate -L zsh
@@ -171,14 +169,14 @@ function auto-ls-after-cd() {
     ls -a
   fi
 }
-#add-zsh-hook chpwd auto-ls-after-cd
+add-zsh-hook chpwd auto-ls-after-cd
 
 # for prompt
 #add-zsh-hook precmd vcs_info
 
 # adds `cdr` command for navigating to recent directories
-#autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
-#add-zsh-hook chpwd chpwd_recent_dirs
+autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
+add-zsh-hook chpwd chpwd_recent_dirs
 
 # enable menu-style completion for cdr
 zstyle ':completion:*:*:cdr:*:*' menu selection
