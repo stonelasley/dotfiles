@@ -39,5 +39,6 @@ call plug#begin('~/.vim/plugged')
     Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-projectionist'
     Plug 'tpope/vim-surround'
+    Plug 'airblade/vim-gitgutter'
 call plug#end()
 

@@ -2,6 +2,7 @@ autoload -U colors
 
 export ZSH="$HOME/.oh-my-zsh"
 export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
+ZSH_THEME=agnoster
 
 
 plugins=(
@@ -46,7 +47,7 @@ source $ZSH/oh-my-zsh.sh
 source $HOME/.zsh/aliases
 source $HOME/.zsh/bindings
 source $HOME/.zsh/colors
-source $HOME/.zsh/theme
+#source $HOME/.zsh/theme
 source $HOME/.zsh/functions
 source $HOME/.zsh/corrections
 source $HOME/.zsh/hooks

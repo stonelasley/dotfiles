@@ -130,6 +130,6 @@ function () {
     color "$SCHEME"
   else
     # Default.
-    color tomorrow-night
+    color material-palenight
   fi
 }
