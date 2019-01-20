@@ -12,17 +12,19 @@ alias v=vim
 alias vrc="vim $HOME/.vimrc"
 alias zrc="vim $HOME/.zshrc"
 alias trc="vim $HOME/.tmux.conf"
+alias szrc="source ~/.zshrc"
 alias st1="cd ~/.st1"
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
 
 
 #
 # Random Projects
 #
-PROJECTHOME="/mnt/p/Projects" 
 alias projects="cd $PROJECTHOME"
 alias blendtec="cd $PROJECTHOME/Blendtec"
 alias freshbyte="cd $PROJECTHOME/Freshbyte"
 alias personal="cd $PROJECTHOME/Personal"
 alias uinta="cd $PROJECTHOME/Uinta"
 alias scratch="cd $PROJECTHOME/Scratch"
-alias edible="cd $PROJECTHOME/Edible"
