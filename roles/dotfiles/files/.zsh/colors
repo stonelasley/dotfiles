@@ -133,3 +133,5 @@ function () {
     color tomorrow-night
   fi
 }
+
+LS_COLORS=$LS_COLORS:'ow=30;42:'
