@@ -133,3 +133,5 @@ function () {
     color material-palenight
   fi
 }
+
+LS_COLORS=$LS_COLORS:'ow=30;42:'
