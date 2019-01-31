@@ -8,6 +8,7 @@
   with_items:
     - zsh 
     - curl
+    - ack
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 
 - name: zsh | install zsh
