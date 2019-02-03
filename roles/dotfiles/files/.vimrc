@@ -6,10 +6,12 @@ set number
 set smartindent
 set expandtab
 set autoindent
+set foldlevel=1
 
 syntax on
 
 filetype plugin on
+
 
 "/* ---------------------- Directories ------------------------ */
 set backupdir=$HOME/.vim/backup//
