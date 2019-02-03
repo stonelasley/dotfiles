@@ -19,28 +19,28 @@ set directory=$HOME/.vim/swap//
 
 "/* ----------------------- Plugins --------------------------- */
 call plug#begin('~/.vim/plugged')
+        Plug 'airblade/vim-gitgutter'
+        Plug 'chriskempson/base16-vim'
+        Plug 'easymotion/vim-easymotion'
         Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': '.install --all' }
         Plug 'junegunn/fzf.vim'
-        Plug 'yggdroot/indentline'
-        Plug 'scrooloose/nerdtree'
-        Plug 'easymotion/vim-easymotion'
-        Plug 'quramy/tsuquyomi'
-        Plug 'vim-syntastic/syntastic'
-        Plug 'SirVer/ultisnips'
         Plug 'honza/vim-snippets'
-        Plug 'chriskempson/base16-vim'
-        Plug 'vim-airline/vim-airline'
-        Plug 'vim-airline/vim-airline-themes'
-        Plug 'leafgarland/typescript-vim'
+        Plug 'leafgarland/typescript-vim',{ 'for', 'typescript' }
         Plug 'prettier/vim-prettier', {
             \ 'do': 'yarn install',
             \ 'for': ['typescript', 'javascript', 'css', 'scss', 'json'] }
-        Plug 'wincent/ferret'
-        Plug 'wincent/loupe'
+        Plug 'quramy/tsuquyomi', { 'for', 'typescript' }
+        Plug 'scrooloose/nerdtree', { 'on' : 'NERDTreeToggle'}
+        Plug 'SirVer/ultisnips'
         Plug 'tpope/vim-eunuch'
         Plug 'tpope/vim-fugitive'
-"        Plug 'tpope/vim-projectionist'
+        Plug 'tpope/vim-projectionist'
         Plug 'tpope/vim-surround'
-        Plug 'airblade/vim-gitgutter'
+        Plug 'vim-airline/vim-airline'
+        Plug 'vim-airline/vim-airline-themes'
+        Plug 'vim-syntastic/syntastic'
+        Plug 'wincent/ferret'
+        Plug 'wincent/loupe'
+        Plug 'yggdroot/indentline'
 call plug#end()
 
