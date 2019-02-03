@@ -4,8 +4,6 @@ set nocompatible
 set relativenumber
 set number
 set smartindent
-"set tabstop=8
-"set shiftwidth=4
 set expandtab
 set autoindent
 
@@ -25,11 +23,11 @@ call plug#begin('~/.vim/plugged')
         Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': '.install --all' }
         Plug 'junegunn/fzf.vim'
         Plug 'honza/vim-snippets'
-        Plug 'leafgarland/typescript-vim',{ 'for', 'typescript' }
+        Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
         Plug 'prettier/vim-prettier', {
             \ 'do': 'yarn install',
             \ 'for': ['typescript', 'javascript', 'css', 'scss', 'json'] }
-        Plug 'quramy/tsuquyomi', { 'for', 'typescript' }
+        Plug 'quramy/tsuquyomi', { 'for': 'typescript' }
         Plug 'scrooloose/nerdtree', { 'on' : 'NERDTreeToggle'}
         Plug 'SirVer/ultisnips'
         Plug 'tpope/vim-eunuch'
