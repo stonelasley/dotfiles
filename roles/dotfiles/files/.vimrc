@@ -24,7 +24,9 @@ call plug#begin('~/.vim/plugged')
         Plug 'easymotion/vim-easymotion'
         Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': '.install --all' }
         Plug 'junegunn/fzf.vim'
+        Plug 'junegunn/rainbow_parentheses.vim', {'for': ['typescript', 'javascript']}
         Plug 'honza/vim-snippets'
+        Plug 'mattn/emmet-vim', { 'for': 'html' }
         Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
         Plug 'prettier/vim-prettier', {
             \ 'do': 'yarn install',
@@ -43,4 +45,3 @@ call plug#begin('~/.vim/plugged')
         Plug 'wincent/loupe'
         Plug 'yggdroot/indentline'
 call plug#end()
-
