@@ -3,9 +3,7 @@ execute pathogen#infect()
 set nocompatible
 set relativenumber
 set number
-set smartindent
 set expandtab
-set autoindent
 set foldlevel=1
 
 syntax on
@@ -21,7 +19,9 @@ set directory=$HOME/.vim/swap//
 call plug#begin('~/.vim/plugged')
         Plug 'airblade/vim-gitgutter'
         Plug 'chriskempson/base16-vim'
+        Plug 'christoomey/vim-tmux-navigator'
         Plug 'easymotion/vim-easymotion'
+        Plug 'jiangmiao/auto-pairs'
         Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': '.install --all' }
         Plug 'junegunn/fzf.vim'
         Plug 'junegunn/rainbow_parentheses.vim', {'for': ['typescript', 'javascript']}
@@ -34,6 +34,7 @@ call plug#begin('~/.vim/plugged')
         Plug 'quramy/tsuquyomi', { 'for': 'typescript' }
         Plug 'scrooloose/nerdtree', { 'on' : 'NERDTreeToggle'}
         Plug 'SirVer/ultisnips'
+        Plug 'tpope/vim-sensible'
         Plug 'tpope/vim-eunuch'
         Plug 'tpope/vim-fugitive'
         Plug 'tpope/vim-projectionist'
