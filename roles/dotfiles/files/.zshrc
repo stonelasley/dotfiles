@@ -2,11 +2,12 @@ autoload -U colors
 
 export ZSH="$HOME/.oh-my-zsh"
 export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
-ZSH_THEME=agnoster
+#ZSH_THEME=agnoster
 
 
 plugins=(
-    git
+    git,
+    vi-mode
 )
 
 
@@ -39,7 +40,6 @@ setopt printexitvalue       # for non-zero exit status
 setopt pushdignoredups      # don't push multiple copies of same dir onto stack
 setopt pushdsilent          # don't print dir stack after pushing/popping
 setopt sharehistory         # share history across shells
-
 #
 # Other
 #
@@ -47,7 +47,7 @@ source $ZSH/oh-my-zsh.sh
 source $HOME/.zsh/aliases
 source $HOME/.zsh/bindings
 source $HOME/.zsh/colors
-#source $HOME/.zsh/theme
+source $HOME/.zsh/theme
 source $HOME/.zsh/functions
 source $HOME/.zsh/corrections
 source $HOME/.zsh/hooks
