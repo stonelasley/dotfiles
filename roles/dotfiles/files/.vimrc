@@ -17,6 +17,7 @@ set directory=$HOME/.vim/swap//
 
 "/* ----------------------- Plugins --------------------------- */
 call plug#begin('~/.vim/plugged')
+        Plug 'ap/vim-css-color', {'for': ['css', 'scss']}
         Plug 'airblade/vim-gitgutter'
         Plug 'chriskempson/base16-vim'
         Plug 'christoomey/vim-tmux-navigator'
