@@ -17,7 +17,7 @@ set directory=$HOME/.vim/swap//
 
 "/* ----------------------- Plugins --------------------------- */
 call plug#begin('~/.vim/plugged')
-        Plug 'ap/vim-css-color', {'for': ['css', 'scss']}
+        Plug 'ap/vim-css-color', {'for': ['css', 'scss', 'vue']}
         Plug 'airblade/vim-gitgutter'
         Plug 'chriskempson/base16-vim'
         Plug 'christoomey/vim-tmux-navigator'
@@ -25,14 +25,13 @@ call plug#begin('~/.vim/plugged')
         Plug 'jiangmiao/auto-pairs'
         Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': '.install --all' }
         Plug 'junegunn/fzf.vim'
-        Plug 'junegunn/rainbow_parentheses.vim', {'for': ['typescript', 'javascript']}
+        Plug 'junegunn/rainbow_parentheses.vim', {'for': ['typescript', 'javascript', 'vue']}
         Plug 'honza/vim-snippets'
-        Plug 'mattn/emmet-vim', { 'for': 'html' }
-        Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
-        Plug 'prettier/vim-prettier', {
-            \ 'do': 'yarn install',
-            \ 'for': ['typescript', 'javascript', 'css', 'scss', 'json'] }
-        Plug 'quramy/tsuquyomi', { 'for': 'typescript' }
+        Plug 'mattn/emmet-vim', { 'for': ['html', 'vue'] }
+        Plug 'leafgarland/typescript-vim', { 'for': [ 'typescript', 'vue' ] }
+        Plug 'posva/vim-vue', { 'for': 'vue' }
+        Plug 'prettier/vim-prettier', { 'for': ['typescript', 'javascript', 'css', 'scss', 'json', 'vue'] }
+        Plug 'quramy/tsuquyomi', { 'for': ['typescript', 'vue'] }
         Plug 'scrooloose/nerdtree', { 'on' : 'NERDTreeToggle'}
         Plug 'SirVer/ultisnips'
         Plug 'tpope/vim-sensible'
