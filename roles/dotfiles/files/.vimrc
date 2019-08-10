@@ -28,10 +28,12 @@ call plug#begin('~/.vim/plugged')
         Plug 'junegunn/rainbow_parentheses.vim', {'for': ['typescript', 'javascript', 'vue']}
         Plug 'honza/vim-snippets'
         Plug 'mattn/emmet-vim', { 'for': ['html', 'vue'] }
+        Plug 'mxw/vim-jsx', { 'for': ['jsx'] }
         Plug 'leafgarland/typescript-vim', { 'for': [ 'typescript', 'vue' ] }
+        Plug 'pangloss/vim-javascript', {'for': ['javascript', 'vue']}
         Plug 'posva/vim-vue', { 'for': 'vue' }
         Plug 'prettier/vim-prettier', { 'for': ['typescript', 'javascript', 'css', 'scss', 'json', 'vue'] }
-        Plug 'quramy/tsuquyomi', { 'for': ['typescript', 'vue'] }
+        Plug 'quramy/tsuquyomi', { 'for': ['typescript', 'vue', 'tsx'] }
         Plug 'scrooloose/nerdtree', { 'on' : 'NERDTreeToggle'}
         Plug 'SirVer/ultisnips'
         Plug 'tpope/vim-sensible'
