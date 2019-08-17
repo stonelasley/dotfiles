@@ -4,7 +4,6 @@ set nocompatible
 set relativenumber
 set number
 set expandtab
-set foldlevel=1
 
 syntax on
 
