@@ -4,12 +4,7 @@ export ZSH="$HOME/.oh-my-zsh"
 export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 #ZSH_THEME=agnoster
 
-
-plugins=(
-    git,
-    vi-mode
-)
-
+plugins=(git vi-mode)
 
 #
 # History
