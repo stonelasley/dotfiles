@@ -1,14 +1,16 @@
 execute pathogen#infect()
+
 "/* ======================== Settings ========================= */
 set nocompatible
 set relativenumber
 set number
 set expandtab
+set splitbelow
+set splitright
 
 syntax on
 
 filetype plugin on
-
 
 "/* ---------------------- Directories ------------------------ */
 set backupdir=$HOME/.vim/backup//
@@ -20,6 +22,7 @@ call plug#begin('~/.vim/plugged')
         Plug 'airblade/vim-gitgutter'
         Plug 'chriskempson/base16-vim'
         Plug 'christoomey/vim-tmux-navigator'
+        Plug 'dhruvasagar/vim-zoom'
         Plug 'easymotion/vim-easymotion'
         Plug 'jiangmiao/auto-pairs'
         Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': '.install --all' }
@@ -32,7 +35,6 @@ call plug#begin('~/.vim/plugged')
         Plug 'pangloss/vim-javascript', {'for': ['javascript', 'vue']}
         Plug 'posva/vim-vue', { 'for': 'vue' }
         Plug 'prettier/vim-prettier', { 'for': ['typescript', 'javascript', 'css', 'scss', 'json', 'vue'] }
-        Plug 'quramy/tsuquyomi', { 'for': ['typescript', 'vue', 'tsx'] }
         Plug 'scrooloose/nerdtree', { 'on' : 'NERDTreeToggle'}
         Plug 'SirVer/ultisnips'
         Plug 'tpope/vim-sensible'
