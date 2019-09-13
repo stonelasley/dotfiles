@@ -39,3 +39,7 @@ function tmux() {
 
   env SSH_AUTH_SOCK=$SOCK_SYMLINK tmux attach -t "$SESSION_NAME" || tmux new -s "$SESSION_NAME" vim \; split-window -v  -p 25\; split-window -h \;
 }
+
+function lscolors() {
+  print -rl -- $(ls ~/.zsh/base16-shell/scripts(:r))
+} 
