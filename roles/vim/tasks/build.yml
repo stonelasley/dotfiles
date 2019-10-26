@@ -1,15 +1,4 @@
 ---
-- name: clone fzf
-  git:
-    repo: https://github.com/junegunn/fzf.git
-    dest: /home/{{ ansible_user_id }}/.fzf
-  depth: 1
-
-- name: install fzf
-  command: ./install --all
-  args: 
-    chdir: /home/{{ ansible_user_id }}/.fzf
-
 - name: clone vim
   git:
     repo: https://github.com/vim/vim.git
