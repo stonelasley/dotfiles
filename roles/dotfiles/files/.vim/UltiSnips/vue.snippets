@@ -1,0 +1,202 @@
+extends typescript, html
+
+snippet vstyle "Vue Style Element" b
+<style scoped lang="${1:scss}">
+  $0
+</style>
+endsnippet
+
+snippet vcomponent "Vue Component Class " b
+import { Vue } from 'vue'
+import { Component } from 'vue-property-decorator'
+@Component({
+  components: {}
+})
+export default class ${1:MyComponent} extends Vue {
+  created() {
+    $0
+  }
+  mounted() {}
+}
+endsnippet
+
+snippet vfor "Vue loop Directive" "re.match('<\s*[a-z,A-Z,-][^>]*>', snip.buffer[snip.line])" ie
+v-for="${1:item} in $1s" :key="$1.${2:id}"
+endsnippet
+
+snippet vkey "Vue key Directive" "re.match('<\s*[a-z,A-Z,-][^>]*>', snip.buffer[snip.line])" ie
+:key="${1:item}.${2:key}"
+endsnippet
+
+snippet vif "Vue if Directive" "re.match('<\s*[a-z,A-Z,-][^>]*>', snip.buffer[snip.line])" ie
+v-if="$0"
+endsnippet
+
+snippet vel "Vue else Directive" "re.match('<\s*[a-z,A-Z,-][^>]*>', snip.buffer[snip.line])" ie
+v-else
+endsnippet
+
+snippet velif "Vue else-if Directive" "re.match('<\s*[a-z,A-Z,-][^>]*>', snip.buffer[snip.line])" ie
+v-else-if="$0"
+endsnippet
+
+snippet vmod "Vue v-model Directive" "re.match('<\s*[a-z,A-Z,-][^>]*>', snip.buffer[snip.line])" ie
+v-model="$0"
+endsnippet
+
+snippet vmode "Vue v-model expanded Directive" "re.match('<\s*[a-z,A-Z,-][^>]*>', snip.buffer[snip.line])" ie
+:value="$1" @input="${2:onInput}"$0
+endsnippet
+
+snippet vshow "Vue show" "re.match('<\s*[a-z,A-Z,-][^>]*>', snip.buffer[snip.line])" ie
+v-show="$0"
+endsnippet
+
+snippet von  "Vue on Directive" "re.match('<\s*[a-z,A-Z,-][^>]*>', snip.buffer[snip.line])" ie
+v-on:${1:click}$2="$0"
+endsnippet
+
+snippet vclick "Vue click" "re.match('<\s*[a-z,A-Z,-][^>]*>', snip.buffer[snip.line])" ie
+@click$1="$0"
+endsnippet
+
+# Nuxt
+snippet nxcomponent "Nuxt Component Class" b
+import { Component, Vue } from 'nuxt-property-decorator'
+@Component({
+  components: {}
+})
+export default class ${1:MyComponent} extends Vue {
+  asyncData() {}
+  fetch(ctx: Context) {}
+  created() {
+	$0 
+  }
+  mounted() {}
+}
+endsnippet
+# End Nuxt
+# Vuex
+snippet vx@Prop "Vuex @Prop" b
+@Prop($1) $2: $3
+$0
+endsnippet
+
+snippet vx@State "Vuex decorated @State" b
+@State('$1')
+$1!: $0
+endsnippet
+
+snippet vx@Getter "Vuex decorated @Getter" b
+@Getter('$1')
+$1!: $0
+endsnippet
+
+snippet vx@Action "Vuex @Action" b
+@ACTION($1_ACTIONS.$2)
+$3!: $0
+endsnippet
+
+snippet vx@Mutation "Vuex @Mutation" b
+@MUTATION($1_MUTATIONS.$2)
+$3!: $0
+endsnippet
+
+snippet vxnamespace "Vuex namespace helper" b
+const { $2 } = namespace('$1')
+$0
+endsnippet
+
+snippet vxcomponent "Vuex namespace helper" b
+<template>
+<template>
+
+<script lang="ts">
+import { Component, Vue } from 'nuxt-property-decorator'
+
+const { $2 } = namespace('$1')
+
+@Component
+export default class $3Component extends Vue {
+  $0
+}
+</script>
+<style scoped lang="scss"></style>
+endsnippet
+# End Vuex 
+# Vueitfy
+
+snippet vfalert "Vuetify v-list" b
+<v-alert type="${1:success}" value="${2:showAlert}">
+$0
+</v-alert>
+endsnippet
+
+snippet vfapp "Vuetify v-app" b
+<v-app id="${1:app}">
+$0
+</v-app>
+endsnippet
+
+snippet vfavatar "Vuetify v-avatar" b
+<v-avatar color="${1:primary}">
+$0
+</v-avatar>
+endsnippet
+
+snippet vfbtn "Vuetify v-btn" b
+<v-btn @click="${1:onClick}" color="${2:primary}" />
+endsnippet
+
+snippet vfbtn:text "Vuetify v-btn text" b
+<v-btn @click="${1:onClick}" color="${2:primary}" text />
+endsnippet
+
+snippet vfbtn:icon "Vuetify v-btn icon" b
+<v-btn @click="${1:onClick}" color="${2:primary}" icon>
+  <v-icon>mdi-${3:vuetify}</v-icon>
+</v-btn>
+endsnippet
+
+snippet vfdatatable "Vuetify v-data-table" b
+<v-data-table
+  :items="${1:items}"
+  :headers="${2:headers}"
+>
+  $0
+</v-data-table>
+endsnippet
+
+snippet vficon "Vuetify v-icon" b
+<v-icon>mdi-${1:vuetify}</v-icon>
+$0
+endsnippet
+
+snippet vflist "Vuetify v-list" b
+<v-list>
+  <v-list-item-group>
+    <v-list-item $0>
+      <v-list-item-icon>
+      </v-list-item-icon>
+      <v-list-item-content>
+      	<v-list-item-title></v-list-item-title>
+      </v-list-item-content>
+    </v-list-item>
+  </v-list-item-group>
+<v-list>
+endsnippet
+
+snippet vfspacer "Vuetify v-spacer" b
+<v-spacer />
+$0
+endsnippet
+# End Vueitfy 
+# Personal
+
+snippet loading "Loaded Mount" b
+$0import { ActionInProgress } from '~/utils/decorators'
+loading = false
+@ActionInProgress()
+async mounted() { }
+endsnippet
+# End Personal

@@ -1,23 +1,26 @@
 snippet lintd "Disable tslint"
-/* tslint:disable */
+/* eslint-disable */
 endsnippet
 
 snippet linte "Enable tslint"
-/* tslint:enable */
+/* eslint-enable */
 endsnippet
 
 snippet lintde "Toggle tslint"
-/* tslint:disable */
+/* eslint-disable */
 $0
-/* tslint:enable */
+/* eslint-enable */
 endsnippet
 
 snippet import "Import module" b
 import { $1 } from '$2';
+$0
 endsnippet
 
-snippet ctr "Class Method" b
-constructor() {}
+snippet ctr "Constructor" b
+constructor() {
+  $0
+}
 endsnippet
 
 snippet meth "Class Method" b
@@ -26,13 +29,7 @@ $1($2): ${3:void} {
 }
 endsnippet
 
-snippet methp "Promise Class Method" b
-$1($2): Promise<${3:void}> {
-	$0 
-}
-endsnippet
-
-snippet func "Arrow Function"
+snippet arrow "Arrow Function"
 ${1:()} => $0
 endsnippet
 
@@ -42,7 +39,7 @@ async ${1:()}: Promise<${2:void}> {
 }
 endsnippet
 
-snippet subscribe "Observable subscribe"
+snippet rx-subscribe "Observable subscribe"
 .subscribe(${1:()} => $2)$0
 endsnippet
 
@@ -62,34 +59,40 @@ case $0:
 	break;
 endsnippet
 
-snippet des "Jasmine describe"
+snippet describe "Jasmine describe"
 describe('$1', () => {
-    $0
+  $0
 });
 endsnippet
 
 snippet beforeEach "Jasmine beforeEach"
 beforeEach(() => {
-    $0
+  $0
 });
 endsnippet
 
-snippet it "Jasmine it"
+snippet jas-it "Jasmine it"
 it('$1', () => {
-    $0
+  $0
 });
 endsnippet
 
-snippet isolated "Jasmine isolated test"
+snippet jas-itasync "Jasmine it async"
+it('$1', async () => {
+    await $0
+});
+endsnippet
+
+snippet jas-suite "Jasmine isolated test"
 describe('$1', () => {
-	let classUnderTest: $1;
+  let classUnderTest: $1;
 
-	beforeEach(() => {
-    	classUnderTest = new $1($0);
-	});
+  beforeEach(() => {
+    classUnderTest = new $1($0);
+  });
 
-	it('should initialize', () => {
-    	expect(classUnderTest).toBeDefined();	
-	});
+  it('should initialize', () => {
+    expect(classUnderTest).toBeDefined();	
+  });
 });
 endsnippet

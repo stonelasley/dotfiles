@@ -32,7 +32,7 @@ call plug#begin('~/.vim/plugged')
         Plug 'pangloss/vim-javascript', {'for': ['javascript', 'vue']}
         Plug 'posva/vim-vue', { 'for': 'vue' }
         Plug 'prettier/vim-prettier', { 'for': ['typescript', 'javascript', 'css', 'scss', 'json', 'vue'] }
-        Plug 'quramy/tsuquyomi', { 'for': ['typescript', 'vue', 'tsx'] }
+        "Plug 'quramy/tsuquyomi', { 'for': ['typescript', 'vue', 'tsx'] }
         Plug 'scrooloose/nerdtree', { 'on' : 'NERDTreeToggle'}
         Plug 'SirVer/ultisnips'
         Plug 'tpope/vim-sensible'
