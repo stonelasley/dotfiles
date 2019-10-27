@@ -20,6 +20,7 @@ export default class ${1:MyComponent} extends Vue {
 }
 endsnippet
 
+
 snippet vfor "Vue loop Directive" "re.match('<\s*[a-z,A-Z,-][^>]*>', snip.buffer[snip.line])" ie
 v-for="${1:item} in $1s" :key="$1.${2:id}"
 endsnippet
@@ -60,6 +61,13 @@ snippet vclick "Vue click" "re.match('<\s*[a-z,A-Z,-][^>]*>', snip.buffer[snip.l
 @click$1="$0"
 endsnippet
 
+snippet vform "Vue Form" b
+<VForm id="$1" @submit.prevent="validate().then(submit)">
+  $0
+</VForm>
+endsnippet
+
+
 # Nuxt
 snippet nxcomponent "Nuxt Component Class" b
 import { Component, Vue } from 'nuxt-property-decorator'
@@ -93,7 +101,7 @@ $1!: $0
 endsnippet
 
 snippet vx@Action "Vuex @Action" b
-@ACTION($1_ACTIONS.$2)
+@Action($1_ACTIONS.$2)
 $3!: $0
 endsnippet
 
@@ -109,10 +117,10 @@ endsnippet
 
 snippet vxcomponent "Vuex namespace helper" b
 <template>
-<template>
+</template>
 
 <script lang="ts">
-import { Component, Vue } from 'nuxt-property-decorator'
+import { Component, Vue, namespace } from 'nuxt-property-decorator'
 
 const { $2 } = namespace('$1')
 
@@ -126,77 +134,189 @@ endsnippet
 # End Vuex 
 # Vueitfy
 
-snippet vfalert "Vuetify v-list" b
-<v-alert type="${1:success}" value="${2:showAlert}">
+snippet vfalert "Vuetify v-alert" b
+<VAlert type="${1:success}" value="${2:showAlert}">
 $0
-</v-alert>
+</VAlert>
 endsnippet
 
+endsnippet
 snippet vfapp "Vuetify v-app" b
-<v-app id="${1:app}">
+<VApp id="${1:app}">
 $0
-</v-app>
+</VApp>
 endsnippet
 
 snippet vfavatar "Vuetify v-avatar" b
-<v-avatar color="${1:primary}">
+<VAvatar color="${1:primary}">
 $0
-</v-avatar>
+</VAvatar>
+endsnippet
+
+snippet vfbadge "Vuetify v-badge" b
+<VBadge color="${1:primary}" ${2:right}>
+  <template v-slot:badge>${3:badge-val}</template>
+  $0
+</VBadge>
+endsnippet
+
+snippet vftoolbar "Vue Style Element" b
+<VToolbar>
+  <VToolbarTitle>$1</VToolbarTitle>
+   <VSpacer></VSpacer>
+   <VToolbarItems>
+     <VBtn text>Link 1</VBtn>
+     <VBtn text>Link 2</VBtn>
+     <VBtn text>Link 3</VBtn>
+   </VToolbarItems>
+   $0
+</VToolbar>
+endsnippet
+
+snippet vfcard "Vuetify v-card" b
+<VCard>
+  <VCardTitle>$1</VCardTitle>
+  <VCardText>$2</VCardText>
+  <VCardActions>
+    $0
+  </VCardActions>
+</VCard>
+endsnippet
+
+snippet vfavatar "Vuetify v-avatar" b
+<VAvatar color="${1:primary}">
+$0
+</VAvatar>
+endsnippet
+
+snippet vfbreadcrumbs "Vuetify v-vfbreadcrumbs" b
+<VBreadcrumbs :items="${1:items}" divider="${2:/}" />$0
 endsnippet
 
 snippet vfbtn "Vuetify v-btn" b
-<v-btn @click="${1:onClick}" color="${2:primary}" />
+<VBtn @click="${1:onClick}" color="${2:primary}" />
 endsnippet
 
 snippet vfbtn:text "Vuetify v-btn text" b
-<v-btn @click="${1:onClick}" color="${2:primary}" text />
+<VBtn @click="${1:onClick}" color="${2:primary}" text />
 endsnippet
 
 snippet vfbtn:icon "Vuetify v-btn icon" b
-<v-btn @click="${1:onClick}" color="${2:primary}" icon>
-  <v-icon>mdi-${3:vuetify}</v-icon>
-</v-btn>
+<VBtn @click="${1:onClick}" color="${2:primary}" icon>
+  <VIcon>mdi-${3:vuetify}</VIcon>
+</VBtn>
+endsnippet
+
+snippet vfcol "Vuetify v-column" b
+<VCol $1>
+$0
+</VCol>
 endsnippet
 
 snippet vfdatatable "Vuetify v-data-table" b
-<v-data-table
+<VDataTable
   :items="${1:items}"
   :headers="${2:headers}"
 >
   $0
-</v-data-table>
+</VDataTable>
+endsnippet
+
+snippet vfdialog "Vuetify v-dialog" b
+<VDialog v-model="dialog" max-width="500px">
+  <template v-slot:activator="{ on }">
+    <VBtn v-on="on">
+      <VIcon>mdi-plus</VIcon>
+    </VBtn>
+  </template>
+  $0
+</VDialog>
+endsnippet
+
+snippet vfdivider "Vuetify v-divider" b
+<VDivider />
 endsnippet
 
 snippet vficon "Vuetify v-icon" b
-<v-icon>mdi-${1:vuetify}</v-icon>
+<VIcon>mdi-${1:vuetify}</VIcon>
 $0
+endsnippet
+
+snippet vfcontainer "Vuetify v-container" b
+<VContainer $1>
+$0
+</VContainer>
+endsnippet
+
+snippet vfrow "Vuetify v-row " b
+<VRow>
+  $0
+</VRow>
+endsnippet
+
+snippet vfgrid "Vuetify v-grid" b
+<VContainer $3>
+  <VRow v-align="${1:start}" v-justify="${2:center}" >
+    <VCol cols="${4:12}">
+      $0
+    </VCol>
+  </VRow>
+</VContainer>
 endsnippet
 
 snippet vflist "Vuetify v-list" b
-<v-list>
-  <v-list-item-group>
-    <v-list-item $0>
-      <v-list-item-icon>
-      </v-list-item-icon>
-      <v-list-item-content>
-      	<v-list-item-title></v-list-item-title>
-      </v-list-item-content>
-    </v-list-item>
-  </v-list-item-group>
-<v-list>
+<VList>
+  <VListItemGroup>
+    <VListItem $0>
+      <VListItemIcon>
+      </VListItemIcon>
+      <VListItemContent>
+      	<VListItemTitle></VListItemTitle>
+      </VListItemContent>
+    </VListItem>
+  </VListItemGroup>
+</VList>
 endsnippet
 
 snippet vfspacer "Vuetify v-spacer" b
-<v-spacer />
+<VSpacer />
 $0
 endsnippet
+
+snippet vfswitch "Vuetify v-switch" b
+<VSwitch 
+  v-model="formData.$1"
+  :label="$t('label.$1')"
+/>
+$0
+endsnippet
+
 # End Vueitfy 
+
+# VeeValidate 
+
+snippet veevalidobserver "VeeValidate ValidationObserver" b
+<ValidationObserver v-slot="{ validate, invalid }" slim>
+  $0
+</ValidationObserver>
+endsnippet
+# End VeeValidate 
+
 # Personal
 
-snippet loading "Loaded Mount" b
+snippet actioninprogress "ActionInProgress Decorator" b
 $0import { ActionInProgress } from '~/utils/decorators'
 loading = false
 @ActionInProgress()
-async mounted() { }
 endsnippet
+
+snippet textfieldwithvalidation "VeeValidate TextField" b
+<TextFieldWithValidation
+  name="$1"
+  :label="$t('label.$1')"
+  v-model="formData.$1"
+  rules="required"
+/>
+endsnippet
+
 # End Personal
