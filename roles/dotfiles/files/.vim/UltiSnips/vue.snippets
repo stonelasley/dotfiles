@@ -21,43 +21,43 @@ export default class ${1:MyComponent} extends Vue {
 endsnippet
 
 
-snippet vfor "Vue loop Directive" "re.match('<\s*[a-z,A-Z,-][^>]*>', snip.buffer[snip.line])" ie
+snippet vfor "Vue loop Directive" 
 v-for="${1:item} in $1s" :key="$1.${2:id}"
 endsnippet
 
-snippet vkey "Vue key Directive" "re.match('<\s*[a-z,A-Z,-][^>]*>', snip.buffer[snip.line])" ie
+snippet vkey "Vue key Directive" 
 :key="${1:item}.${2:key}"
 endsnippet
 
-snippet vif "Vue if Directive" "re.match('<\s*[a-z,A-Z,-][^>]*>', snip.buffer[snip.line])" ie
+snippet vif "Vue if Directive" 
 v-if="$0"
 endsnippet
 
-snippet vel "Vue else Directive" "re.match('<\s*[a-z,A-Z,-][^>]*>', snip.buffer[snip.line])" ie
+snippet vel "Vue else Directive" 
 v-else
 endsnippet
 
-snippet velif "Vue else-if Directive" "re.match('<\s*[a-z,A-Z,-][^>]*>', snip.buffer[snip.line])" ie
+snippet velif "Vue else-if Directive" 
 v-else-if="$0"
 endsnippet
 
-snippet vmod "Vue v-model Directive" "re.match('<\s*[a-z,A-Z,-][^>]*>', snip.buffer[snip.line])" ie
+snippet vmodel "Vue v-model Directive"
 v-model="$0"
 endsnippet
 
-snippet vmode "Vue v-model expanded Directive" "re.match('<\s*[a-z,A-Z,-][^>]*>', snip.buffer[snip.line])" ie
+snippet vmodel:expanded "Vue v-model expanded Directive" 
 :value="$1" @input="${2:onInput}"$0
 endsnippet
 
-snippet vshow "Vue show" "re.match('<\s*[a-z,A-Z,-][^>]*>', snip.buffer[snip.line])" ie
+snippet vshow "Vue show" 
 v-show="$0"
 endsnippet
 
-snippet von  "Vue on Directive" "re.match('<\s*[a-z,A-Z,-][^>]*>', snip.buffer[snip.line])" ie
+snippet von  "Vue on Directive" 
 v-on:${1:click}$2="$0"
 endsnippet
 
-snippet vclick "Vue click" "re.match('<\s*[a-z,A-Z,-][^>]*>', snip.buffer[snip.line])" ie
+snippet vclick "Vue click" 
 @click$1="$0"
 endsnippet
 
@@ -134,33 +134,49 @@ endsnippet
 # End Vuex 
 # Vueitfy
 
-snippet vfalert "Vuetify v-alert" b
+########## Alerts ########## 
+
+snippet vyalert "Vuetify v-alert" b
 <VAlert type="${1:success}" value="${2:showAlert}">
 $0
 </VAlert>
 endsnippet
 
-endsnippet
-snippet vfapp "Vuetify v-app" b
+########## App ########## 
+
+snippet vyapp "Vuetify v-app" b
 <VApp id="${1:app}">
 $0
 </VApp>
 endsnippet
 
-snippet vfavatar "Vuetify v-avatar" b
+########## Avatar ########## 
+
+snippet vyavatar "Vuetify v-avatar" b
 <VAvatar color="${1:primary}">
-$0
+  $0
 </VAvatar>
 endsnippet
 
-snippet vfbadge "Vuetify v-badge" b
+snippet vyavatar:icon "Vuetify v-avatar" b
+<VAvatar color="${1:primary}">
+  <VIcon>mdi-${2:vuetify}</VIcon>
+  $0
+</VAvatar>
+endsnippet
+
+########## Badges ########## 
+
+snippet vybadge "Vuetify v-badge" b
 <VBadge color="${1:primary}" ${2:right}>
   <template v-slot:badge>${3:badge-val}</template>
   $0
 </VBadge>
 endsnippet
 
-snippet vftoolbar "Vue Style Element" b
+########## Toolbars ########## 
+
+snippet vytoolbar "Vue Style Element" b
 <VToolbar>
   <VToolbarTitle>$1</VToolbarTitle>
    <VSpacer></VSpacer>
@@ -173,7 +189,9 @@ snippet vftoolbar "Vue Style Element" b
 </VToolbar>
 endsnippet
 
-snippet vfcard "Vuetify v-card" b
+########## Cards ########## 
+
+snippet vycard "Vuetify v-card" b
 <VCard>
   <VCardTitle>$1</VCardTitle>
   <VCardText>$2</VCardText>
@@ -183,37 +201,61 @@ snippet vfcard "Vuetify v-card" b
 </VCard>
 endsnippet
 
-snippet vfavatar "Vuetify v-avatar" b
-<VAvatar color="${1:primary}">
-$0
-</VAvatar>
+########## Banner  ########## 
+
+snippet vybanner "Vuetify v-banner" b
+<VBanner
+  v-model="${1:showBanner}"
+>
+  <template v-slot:actions="{ dismiss }">
+    <VBtn color="primary" @click="dismiss">Dismiss</VBtn>
+  </template>
+  $0
+</VBanner>
 endsnippet
 
-snippet vfbreadcrumbs "Vuetify v-vfbreadcrumbs" b
+########## Bars ########## 
+
+snippet vyappbar "Vuetify v-app-bar " b
+<VAppBar color="${1:primary}"
+>
+  <VAppBarNavIcon></VAppBarNavIcon>
+  <VToolbarTitle>${2:Page Title}</VToolbarTitle>
+  <v-spacer></v-spacer>
+  $0
+</VAppBar>
+endsnippet
+
+########## Breadcrumbs ########## 
+
+snippet vybreadcrumbs "Vuetify v-breadcrumbs" b
 <VBreadcrumbs :items="${1:items}" divider="${2:/}" />$0
 endsnippet
 
-snippet vfbtn "Vuetify v-btn" b
+########## Buttons ########## 
+
+snippet vybtn "Vuetify v-btn" b
 <VBtn @click="${1:onClick}" color="${2:primary}" />
 endsnippet
 
-snippet vfbtn:text "Vuetify v-btn text" b
+snippet vybtn:text "Vuetify v-btn text" b
 <VBtn @click="${1:onClick}" color="${2:primary}" text />
 endsnippet
 
-snippet vfbtn:icon "Vuetify v-btn icon" b
+snippet vybtn:icon "Vuetify v-btn icon" b
 <VBtn @click="${1:onClick}" color="${2:primary}" icon>
   <VIcon>mdi-${3:vuetify}</VIcon>
 </VBtn>
 endsnippet
 
-snippet vfcol "Vuetify v-column" b
-<VCol $1>
-$0
-</VCol>
+snippet vybtn:submit "Vuetify v-btn submit" b
+<VBtn type="submit" color="${2:primary}" icon>
+  <VIcon>mdi-${3:vuetify}</VIcon>
+</VBtn>
 endsnippet
 
-snippet vfdatatable "Vuetify v-data-table" b
+
+snippet vydatatable "Vuetify v-data-table" b
 <VDataTable
   :items="${1:items}"
   :headers="${2:headers}"
@@ -222,7 +264,7 @@ snippet vfdatatable "Vuetify v-data-table" b
 </VDataTable>
 endsnippet
 
-snippet vfdialog "Vuetify v-dialog" b
+snippet vydialog "Vuetify v-dialog" b
 <VDialog v-model="dialog" max-width="500px">
   <template v-slot:activator="{ on }">
     <VBtn v-on="on">
@@ -233,30 +275,20 @@ snippet vfdialog "Vuetify v-dialog" b
 </VDialog>
 endsnippet
 
-snippet vfdivider "Vuetify v-divider" b
+snippet vydivider "Vuetify v-divider" b
 <VDivider />
 endsnippet
 
-snippet vficon "Vuetify v-icon" b
+snippet vyicon "Vuetify v-icon" b
 <VIcon>mdi-${1:vuetify}</VIcon>
 $0
 endsnippet
 
-snippet vfcontainer "Vuetify v-container" b
+########## Grids ########## 
+
+snippet vygrid "Vuetify v-grid" b
 <VContainer $1>
-$0
-</VContainer>
-endsnippet
-
-snippet vfrow "Vuetify v-row " b
-<VRow>
-  $0
-</VRow>
-endsnippet
-
-snippet vfgrid "Vuetify v-grid" b
-<VContainer $3>
-  <VRow v-align="${1:start}" v-justify="${2:center}" >
+  <VRow v-align="${2:start}" v-justify="${3:center}" >
     <VCol cols="${4:12}">
       $0
     </VCol>
@@ -264,7 +296,26 @@ snippet vfgrid "Vuetify v-grid" b
 </VContainer>
 endsnippet
 
-snippet vflist "Vuetify v-list" b
+snippet vycontainer "Vuetify v-container" b
+<VContainer $1>
+$0
+</VContainer>
+endsnippet
+
+snippet vyrow "Vuetify v-row " b
+<VRow>
+  $0
+</VRow>
+endsnippet
+
+snippet vycol "Vuetify v-column" b
+<VCol cols="${1:12}">
+  $0
+</VCol>
+endsnippet
+########## Lists ########## 
+
+snippet vylist "Vuetify v-list" b
 <VList>
   <VListItemGroup>
     <VListItem $0>
@@ -278,39 +329,77 @@ snippet vflist "Vuetify v-list" b
 </VList>
 endsnippet
 
-snippet vfspacer "Vuetify v-spacer" b
+########## Spacers ########## 
+
+snippet vyspacer "Vuetify v-spacer" b
 <VSpacer />
 $0
 endsnippet
 
-snippet vfswitch "Vuetify v-switch" b
+########## Form Inputs & Controls ########## 
+
+snippet vyautocomplete "Vuetify v-autocomplete" b
+<VAutoComplete
+  :items="${1:items}"
+  item-text="${2:text}"
+  item-value="${3:value}"
+  label="${4:label}"
+>
+$0
+</VAutoComplete>
+endsnippet
+
+snippet vycombobox "Vuetify v-combobox" b
+<VCombobox
+  :items="${1:items}"
+  item-text="${2:text}"
+  item-value="${3:value}"
+  label="${4:label}"
+>
+$0
+</VCombobox>
+endsnippet
+
+snippet vyselect  "Vuetify v-select" b
+<VSelect
+  :items="${1:items}"
+  item-text="${2:text}"
+  item-value="${3:value}"
+  label="${4:label}"
+>
+$0
+</VSelect>
+endsnippet
+snippet vyswitch "Vuetify v-switch" b
 <VSwitch 
   v-model="formData.$1"
   :label="$t('label.$1')"
-/>
+>
 $0
+</VSwitch>
 endsnippet
 
-# End Vueitfy 
+########## Vee-Validate ##########
 
-# VeeValidate 
+snippet veeform "Vee-Validate Observed Form" b
+<ValidationObserver v-slot="{ validate, invalid }" slim>
+  <VForm id="${1:my-form}" @submit.prevent="validate().then(submit)">
+    $0
+  </VForm>
+</ValidationObserver>
+endsnippet
 
-snippet veevalidobserver "VeeValidate ValidationObserver" b
+snippet veevalidobserver:import "Vee-Validate import ValidationObserver" b
+import { ValidationObserver } from 'vee-validate'
+endsnippet
+
+snippet veevalidobserver "Vee-Validate ValidationObserver" b
 <ValidationObserver v-slot="{ validate, invalid }" slim>
   $0
 </ValidationObserver>
 endsnippet
-# End VeeValidate 
 
-# Personal
-
-snippet actioninprogress "ActionInProgress Decorator" b
-$0import { ActionInProgress } from '~/utils/decorators'
-loading = false
-@ActionInProgress()
-endsnippet
-
-snippet textfieldwithvalidation "VeeValidate TextField" b
+snippet veetextfieldwithvalidation "Vee-Validate TextField" b
 <TextFieldWithValidation
   name="$1"
   :label="$t('label.$1')"
@@ -318,5 +407,33 @@ snippet textfieldwithvalidation "VeeValidate TextField" b
   rules="required"
 />
 endsnippet
+
+########## Personal ##########
+snippet import:util "import utility" b
+import { $1 } from '~/utils/$2'
+endsnippet
+
+snippet import:type "import type" b
+import { $1 } from '~/types/$2'
+endsnippet
+
+snippet import:component "component import" b
+import $1 from '~/components/$2/$1.vue'
+endsnippet
+
+snippet import:store "store import" b
+import { ${1:MyStore } } from '~/store /$2'
+endsnippet
+
+snippet veetextfieldwithvalidation:import "Vee-Validate import TextFieldWithValidation" b
+import TextFieldWithValidation  from '~/components/base/fields/TextFieldWithValidation.vue'
+endsnippet
+
+snippet actioninprogress "ActionInProgress Decorator" b
+$0import { ActionInProgress } from '~/utils/decorators'
+loading = false
+@ActionInProgress()
+endsnippet
+
 
 # End Personal
