@@ -1,4 +1,4 @@
-extends typescript, html
+extends typescript, html, css
 
 snippet vstyle "Vue Style Element" b
 <style scoped lang="${1:scss}">
@@ -19,7 +19,6 @@ export default class ${1:MyComponent} extends Vue {
   mounted() {}
 }
 endsnippet
-
 
 snippet vfor "Vue loop Directive" 
 v-for="${1:item} in $1s" :key="$1.${2:id}"
@@ -379,6 +378,20 @@ $0
 </VSwitch>
 endsnippet
 
+########## NavDrawer ##########
+
+snippet vynavdrawer "Vuetify v-navigation-drawer" b
+<VNavigationDrawer
+  v-model="${1:drawer}"
+  color="${2:primary}"
+  absolute
+  bottom
+  temporary
+>
+$0
+</VNavigationDrawer>
+endsnippet
+
 ########## Vee-Validate ##########
 
 snippet veeform "Vee-Validate Observed Form" b
@@ -408,32 +421,34 @@ snippet veetextfieldwithvalidation "Vee-Validate TextField" b
 />
 endsnippet
 
-########## Personal ##########
-snippet import:util "import utility" b
-import { $1 } from '~/utils/$2'
-endsnippet
-
-snippet import:type "import type" b
-import { $1 } from '~/types/$2'
-endsnippet
-
-snippet import:component "component import" b
-import $1 from '~/components/$2/$1.vue'
-endsnippet
-
-snippet import:store "store import" b
-import { ${1:MyStore } } from '~/store /$2'
-endsnippet
-
 snippet veetextfieldwithvalidation:import "Vee-Validate import TextFieldWithValidation" b
 import TextFieldWithValidation  from '~/components/base/fields/TextFieldWithValidation.vue'
 endsnippet
 
-snippet actioninprogress "ActionInProgress Decorator" b
-$0import { ActionInProgress } from '~/utils/decorators'
-loading = false
-@ActionInProgress()
+########## Personal ##########
+snippet nximport:util "import utility" b
+import { $1 } from '~/utils/$2'
 endsnippet
 
+snippet nximport:type "import type" b
+import { $1 } from '~/types/$2'
+endsnippet
+
+snippet nximport:component "component import" b
+import $1 from '~/components/$2/$1.vue'
+endsnippet
+
+snippet nximport:store "store import" b
+import { ${1:MyStore } } from '~/store /$2'
+endsnippet
+
+snippet actioninprogress "ActionInProgress Decorator" b
+loading = false
+@ActionInProgress()$0
+endsnippet
+
+snippet actioninprogress:import  "ActionInProgress Decorator import" b
+import { ActionInProgress } from '~/utils/decorators'
+endsnippet
 
 # End Personal

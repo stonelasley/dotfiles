@@ -35,22 +35,23 @@ endsnippet
 
 snippet async "Async Function"
 async ${1:()}: Promise<${2:void}> {
-	return await $0
+  return await $0
 }
 endsnippet
 
+########## RXJS ##########
 snippet rx-subscribe "Observable subscribe"
 .subscribe(${1:()} => $2)$0
 endsnippet
 
 snippet switch "Switch Statement"
 switch($1) {
-	case ${2}:
-		$0
-		break;
-
-	default:
-		break;
+  case ${2}:
+    $3
+    break;
+  $0
+  default:
+    break;
 }
 endsnippet
 
@@ -59,31 +60,31 @@ case $0:
 	break;
 endsnippet
 
-snippet describe "Jasmine describe"
+snippet jasdesc "Jasmine describe"
 describe('$1', () => {
   $0
 });
 endsnippet
 
-snippet beforeEach "Jasmine beforeEach"
+snippet jasbe "Jasmine beforeEach"
 beforeEach(() => {
   $0
 });
 endsnippet
 
-snippet jas-it "Jasmine it"
+snippet jasit "Jasmine it"
 it('$1', () => {
   $0
 });
 endsnippet
 
-snippet jas-itasync "Jasmine it async"
+snippet jasita "Jasmine it async"
 it('$1', async () => {
-    await $0
+  await $0
 });
 endsnippet
 
-snippet jas-suite "Jasmine isolated test"
+snippet jassuite "Jasmine isolated test"
 describe('$1', () => {
   let classUnderTest: $1;
 
@@ -96,3 +97,12 @@ describe('$1', () => {
   });
 });
 endsnippet
+
+snippet dbg "Debugger" b
+Debugger
+endsnippet
+
+snippet clog "Console.log" b
+console.log('$1', $2)$0
+endsnippet
+
