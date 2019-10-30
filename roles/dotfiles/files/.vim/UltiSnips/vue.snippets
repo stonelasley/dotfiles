@@ -69,18 +69,9 @@ endsnippet
 
 
 # Nuxt
-snippet nxcomponent "Nuxt Component Class" b
-import { Component, Vue } from 'nuxt-property-decorator'
-@Component({
-  components: {}
-})
-export default class ${1:MyComponent} extends Vue {
-  asyncData() {}
-  fetch(ctx: Context) {}
-  created() {
-	$0 
-  }
-  mounted() {}
+snippet fetch "Nuxt Component Class" b
+fetch(ctx: Context) {
+  $0
 }
 endsnippet
 # End Nuxt
@@ -434,6 +425,24 @@ $0import { ActionInProgress } from '~/utils/decorators'
 loading = false
 @ActionInProgress()
 endsnippet
+
+snippet scaffold:page "Vue Page Component" b
+<template>
+</template>
+
+<script lang="ts">
+import { Component, Vue } from 'nuxt-property-decorator'
+@Component({
+  middleware: 'auth',
+  components: {},
+})
+export default class $1Page extends Vue {}
+</script>
+
+<style scoped lang="${2:scss}"></style>
+endsnippet
+
+
 
 
 # End Personal
