@@ -28,15 +28,16 @@ call plug#begin('~/.vim/plugged')
         Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': '.install --all' }
         Plug 'junegunn/fzf.vim'
         Plug 'junegunn/rainbow_parentheses.vim', {'for': ['typescript', 'javascript', 'vue']}
-        Plug 'honza/vim-snippets'
+        "Plug 'honza/vim-snippets'
+        Plug 'leafgarland/typescript-vim', { 'for': [ 'typescript', 'vue' ] }
         Plug 'mattn/emmet-vim', { 'for': ['html', 'vue'] }
         Plug 'mxw/vim-jsx', { 'for': ['jsx'] }
-        Plug 'leafgarland/typescript-vim', { 'for': [ 'typescript', 'vue' ] }
+        Plug 'neoclide/coc.nvim', {'branch': 'release'}
         Plug 'pangloss/vim-javascript', {'for': ['javascript', 'vue']}
         Plug 'posva/vim-vue', { 'for': 'vue' }
         Plug 'prettier/vim-prettier', { 'for': ['typescript', 'javascript', 'css', 'scss', 'json', 'vue'] }
         Plug 'scrooloose/nerdtree', { 'on' : 'NERDTreeToggle'}
-        Plug 'SirVer/ultisnips'
+        "Plug 'SirVer/ultisnips'
         Plug 'tpope/vim-sensible'
         Plug 'tpope/vim-eunuch'
         Plug 'tpope/vim-fugitive'
