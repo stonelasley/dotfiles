@@ -1,0 +1,4 @@
+{
+        "suggest.noselect": false,
+        "coc.preference.formatOnSaveFileTypes": ["css", "vue", "ts", "js"] 
+}

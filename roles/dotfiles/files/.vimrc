@@ -33,9 +33,15 @@ call plug#begin('~/.vim/plugged')
         Plug 'mattn/emmet-vim', { 'for': ['html', 'vue'] }
         Plug 'mxw/vim-jsx', { 'for': ['jsx'] }
         Plug 'neoclide/coc.nvim', {'branch': 'release'}
+        Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
+        Plug 'neoclide/coc-eslint', {'do': 'yarn install --frozen-lockfile'}
+        Plug 'neoclide/coc-prettier', {'do': 'yarn install --frozen-lockfile'}
+        Plug 'neoclide/coc-vetur', {'do': 'yarn install --frozen-lockfile'}
+        Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
+        Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}
         Plug 'pangloss/vim-javascript', {'for': ['javascript', 'vue']}
         Plug 'posva/vim-vue', { 'for': 'vue' }
-        Plug 'prettier/vim-prettier', { 'for': ['typescript', 'javascript', 'css', 'scss', 'json', 'vue'] }
+"        Plug 'prettier/vim-prettier', { 'for': ['typescript', 'javascript', 'css', 'scss', 'json', 'vue'] }
         Plug 'scrooloose/nerdtree', { 'on' : 'NERDTreeToggle'}
         "Plug 'SirVer/ultisnips'
         Plug 'tpope/vim-sensible'
