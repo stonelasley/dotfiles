@@ -58,7 +58,7 @@
   tags: ['never', 'build']
 
 - name: vim make runtimedir
-  command: make VIMRUNTIMEDIR=/usr/local/share/vim/vim81
+  command: make VIMRUNTIMEDIR=/usr/local/share/vim/vim82
   args: 
     chdir: /home/{{ ansible_user_id }}/.vimtemp
   tags: ['never', 'build']
