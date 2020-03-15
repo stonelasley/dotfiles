@@ -1,7 +1,7 @@
 ---
 - name: Install nvm
   shell: >
-    curl https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | sh
+    curl https://raw.githubusercontent.com/creationix/nvm/v0.35.3/install.sh | sh
     creates=/home/{{ ansible_user_id }}/.nvm/nvm.sh
   tags: node  
 
