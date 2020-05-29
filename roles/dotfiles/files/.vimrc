@@ -4,9 +4,11 @@ execute pathogen#infect()
 set nocompatible
 set relativenumber
 set number
-set expandtab
 set splitbelow
 set splitright
+set expandtab
+"set smartindent
+set autoindent
 
 syntax on
 
