@@ -33,12 +33,13 @@ call plug#begin('~/.vim/plugged')
         Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
         Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
         Plug 'neoclide/coc-html', {'do': 'yarn install --frozen-lockfile'}
+        Plug 'neoclide/coc-prettier', {'do': 'yarn install --frozen-lockfile'}
         Plug 'neoclide/coc-vetur', {'do': 'yarn install --frozen-lockfile'}
         Plug 'neoclide/coc-eslint', {'do': 'yarn install --frozen-lockfile'}
         Plug 'neoclide/coc-omnisharp', {'do': 'yarn install --frozen-lockfile'}
         "Plug 'pangloss/vim-javascript', {'for': ['javascript', 'vue']}
         Plug 'posva/vim-vue', { 'for': 'vue' }
-        Plug 'prettier/vim-prettier', { 'for': ['typescript', 'javascript', 'css', 'scss', 'json', 'vue'] }
+"        Plug 'prettier/vim-prettier', { 'for': ['typescript', 'javascript', 'css', 'scss', 'json', 'vue'] }
         Plug 'scrooloose/nerdtree', { 'on' : 'NERDTreeToggle'}
         "Plug 'SirVer/ultisnips'
         Plug 'tpope/vim-sensible'
@@ -47,7 +48,6 @@ call plug#begin('~/.vim/plugged')
         Plug 'tpope/vim-projectionist'
         Plug 'tpope/vim-surround'
         Plug 'vim-airline/vim-airline'
-        "Plug 'vim-airline/vim-airline-themes'
         "Plug 'vim-syntastic/syntastic'
         Plug 'wincent/ferret'
         Plug 'wincent/loupe'
