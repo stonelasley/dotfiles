@@ -18,9 +18,8 @@ set directory=$HOME/.vim/swap//
 
 "/* ----------------------- Plugins --------------------------- */
 call plug#begin('~/.vim/plugged')
+        Plug 'arcticicestudio/nord-vim'
         Plug 'ap/vim-css-color', {'for': ['css', 'scss', 'vue']}
-        Plug 'airblade/vim-gitgutter'
-        Plug 'chriskempson/base16-vim'
         Plug 'christoomey/vim-tmux-navigator'
         Plug 'dhruvasagar/vim-zoom'
         Plug 'easymotion/vim-easymotion'
@@ -30,16 +29,15 @@ call plug#begin('~/.vim/plugged')
         Plug 'junegunn/rainbow_parentheses.vim', {'for': ['typescript', 'javascript', 'vue']}
         "Plug 'honza/vim-snippets'
         Plug 'leafgarland/typescript-vim', { 'for': [ 'typescript', 'vue' ] }
-        Plug 'mattn/emmet-vim', { 'for': ['html', 'vue'] }
-        Plug 'mxw/vim-jsx', { 'for': ['jsx'] }
         Plug 'neoclide/coc.nvim', {'branch': 'release'}
         Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
-        Plug 'neoclide/coc-eslint', {'do': 'yarn install --frozen-lockfile'}
+        Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
+        Plug 'neoclide/coc-html', {'do': 'yarn install --frozen-lockfile'}
         Plug 'neoclide/coc-prettier', {'do': 'yarn install --frozen-lockfile'}
         Plug 'neoclide/coc-vetur', {'do': 'yarn install --frozen-lockfile'}
-        Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
-        Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}
-        Plug 'pangloss/vim-javascript', {'for': ['javascript', 'vue']}
+        Plug 'neoclide/coc-eslint', {'do': 'yarn install --frozen-lockfile'}
+        Plug 'neoclide/coc-omnisharp', {'do': 'yarn install --frozen-lockfile'}
+        "Plug 'pangloss/vim-javascript', {'for': ['javascript', 'vue']}
         Plug 'posva/vim-vue', { 'for': 'vue' }
 "        Plug 'prettier/vim-prettier', { 'for': ['typescript', 'javascript', 'css', 'scss', 'json', 'vue'] }
         Plug 'scrooloose/nerdtree', { 'on' : 'NERDTreeToggle'}
@@ -50,8 +48,7 @@ call plug#begin('~/.vim/plugged')
         Plug 'tpope/vim-projectionist'
         Plug 'tpope/vim-surround'
         Plug 'vim-airline/vim-airline'
-        Plug 'vim-airline/vim-airline-themes'
-        Plug 'vim-syntastic/syntastic'
+        "Plug 'vim-syntastic/syntastic'
         Plug 'wincent/ferret'
         Plug 'wincent/loupe'
         Plug 'yggdroot/indentline'
