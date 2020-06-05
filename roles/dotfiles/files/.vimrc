@@ -5,9 +5,15 @@ set encoding=utf-8
 set nocompatible
 set relativenumber
 set number
+set smarttab
 set expandtab
 set splitbelow
 set splitright
+set autoindent
+set smartindent
+set nowrap
+set iskeyword+=-
+set formatoptions-=cro
 
 syntax on
 
@@ -29,6 +35,7 @@ call plug#begin('~/.vim/plugged')
         Plug 'leafgarland/typescript-vim', { 'for': [ 'typescript', 'vue' ] }
         Plug 'machakann/vim-highlightedyank'
         Plug 'neoclide/coc.nvim', {'branch': 'release'}
+        Plug 'iamcco/coc-vimlsp'
         Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
         Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile', 'for': ['json']}
         Plug 'neoclide/coc-html', {'do': 'yarn install --frozen-lockfile', 'for': ['html', 'vue']}
@@ -46,3 +53,8 @@ call plug#begin('~/.vim/plugged')
         Plug 'wincent/loupe'
         Plug 'yggdroot/indentline'
 call plug#end()
+
+"/* ---------------------- QOL ------------------------ */
+au! BufWritePost $MYVIMRC source %
+
+
