@@ -44,6 +44,7 @@ call plug#begin('~/.vim/plugged')
         Plug 'neoclide/coc-eslint', {'do': 'yarn install --frozen-lockfile', 'for': ['typescript', 'javascript', 'vue']}
         Plug 'posva/vim-vue', { 'for': 'vue' }
         Plug 'scrooloose/nerdtree', { 'on' : 'NERDTreeToggle'}
+        Plug 'tpope/vim-commentary'
         Plug 'tpope/vim-eunuch'
         Plug 'tpope/vim-fugitive'
         Plug 'tpope/vim-projectionist'
