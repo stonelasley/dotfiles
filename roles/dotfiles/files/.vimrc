@@ -8,8 +8,6 @@ set number
 set splitbelow
 set splitright
 set expandtab
-set smarttab
-set autoindent
 set smartindent
 set nowrap
 set iskeyword+=-
@@ -49,6 +47,8 @@ call plug#begin('~/.vim/plugged')
         Plug 'tpope/vim-fugitive'
         Plug 'tpope/vim-projectionist'
         Plug 'tpope/vim-surround'
+        Plug 'tpope/vim-sensible'
+        Plug 'tpope/vim-sleuth'
         Plug 'vim-airline/vim-airline'
         Plug 'wincent/ferret'
         Plug 'wincent/loupe'
