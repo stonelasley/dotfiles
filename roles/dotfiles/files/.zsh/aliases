@@ -3,12 +3,13 @@
 #
 alias ....='cd ../..'
 alias cd..='cd ..'
-alias :e=vim
+alias :e=nvim
 alias :q=exit
 alias :sp='test -n $TMUX && tmux split-window'
 alias :vs='test -n $TMUX && tmux split-window -h'
 alias t="tmux"
-alias v=vim
+alias v=nvim
+alias vim=nvim
 alias vrc="vim $HOME/.vimrc"
 alias zrc="vim $HOME/.zshrc"
 alias trc="vim $HOME/.tmux.conf"

@@ -7,13 +7,10 @@ set relativenumber
 set number
 set splitbelow
 set splitright
-set expandtab
-set smarttab
-set autoindent
-set smartindent
 set nowrap
 set iskeyword+=-
 set formatoptions-=cro
+"set autoindent
 
 syntax on
 
@@ -25,7 +22,6 @@ set directory=$HOME/.vim/swap//
 
 "/* ----------------------- Plugins --------------------------- */
 call plug#begin('~/.vim/plugged')
-        Plug 'arcticicestudio/nord-vim'
         Plug 'christoomey/vim-tmux-navigator'
         Plug 'dhruvasagar/vim-zoom'
         Plug 'easymotion/vim-easymotion'
@@ -44,11 +40,14 @@ call plug#begin('~/.vim/plugged')
         Plug 'neoclide/coc-eslint', {'do': 'yarn install --frozen-lockfile', 'for': ['typescript', 'javascript', 'vue']}
         Plug 'posva/vim-vue', { 'for': 'vue' }
         Plug 'scrooloose/nerdtree', { 'on' : 'NERDTreeToggle'}
+        Plug 'skielbasa/vim-material-monokai'
         Plug 'tpope/vim-commentary'
         Plug 'tpope/vim-eunuch'
         Plug 'tpope/vim-fugitive'
         Plug 'tpope/vim-projectionist'
         Plug 'tpope/vim-surround'
+        Plug 'tpope/vim-sensible'
+        Plug 'tpope/vim-sleuth'
         Plug 'vim-airline/vim-airline'
         Plug 'wincent/ferret'
         Plug 'wincent/loupe'
