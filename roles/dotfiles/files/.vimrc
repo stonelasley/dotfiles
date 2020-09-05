@@ -10,7 +10,6 @@ set splitright
 set nowrap
 set iskeyword+=-
 set formatoptions-=cro
-"set autoindent
 
 syntax on
 

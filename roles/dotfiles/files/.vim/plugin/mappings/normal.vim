@@ -19,6 +19,8 @@ nnoremap <M-k> :resize+2
 nnoremap <M-h> :vertical resize-2
 nnoremap <M-l> :vertical resize+2
 
+nnoremap <leader>ls :ls<CR>:b<space>
+
 " Turn off highlighting until next search
 nnoremap <CR> :noh<CR><CR>
 
