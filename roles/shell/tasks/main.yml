@@ -1,25 +1,47 @@
 ---
-- name: shell packages  
+- name: shell | install packages  
   apt: 
-    name: "{{ item }}" 
+    pkg:
+      - zsh 
+      - curl
+      - ack
+      - silversearcher-ag
     state: present
-  with_items:
-    - silversearcher-ag
   become: yes
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 
-- name: clone fzf
+- name: shell | clone fzf
   git:
     repo: https://github.com/junegunn/fzf.git
     dest: /home/{{ ansible_user_id }}/.fzf
-  depth: 1
+    depth: 1
 
-- name: install fzf
+- name: shell | install fzf
   command: ./install --all
   args: 
     chdir: /home/{{ ansible_user_id }}/.fzf
 
-- name: clone tpm
+- name: shell | clone Tmux Package Manager
   git:
     repo: https://github.com/tmux-plugins/tpm.git
     dest: /home/{{ ansible_user_id }}/.tmux/plugins/tpm
-  depth: 1
+    depth: 1
+
+- name: shell | test oh-my-zsh installed
+  stat:
+    path: /home/{{ ansible_user_id }}/.oh-my-zsh
+  register: oh_my_zsh
+
+- name: shell | install oh-my-zsh
+  shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+  when: not oh_my_zsh.stat.exists
+
+- name: zsh | test added to bashrc
+  shell: grep -c "exec zsh" /home/{{ ansible_user_id }}/.bashrc || true 
+  register: exec_in_bash
+
+- lineinfile: 
+    path: ~/.bashrc
+    line:  "if [ -t 1 ]; then\n exec zsh\nfi"
+  when: not exec_in_bash.stdout == "1"
+

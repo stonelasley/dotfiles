@@ -10,4 +10,5 @@ dotfile_files:
   - .czrc
   - .mutt
   - .Xdefaults
+  - .config/nvim/init.vim
 
