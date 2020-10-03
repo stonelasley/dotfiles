@@ -1,7 +1,13 @@
 ---
+- name: create directory
+  file:
+    path: /home/{{ ansible_user_id }}/.config/nvim
+    state: directory
+
 - name: link files
   file: src={{ ansible_env.PWD }}/roles/dotfiles/files/{{ item }}
         path=~/{{ item }}
         state=link
         force=yes
   with_items: '{{dotfile_files}}'
+
