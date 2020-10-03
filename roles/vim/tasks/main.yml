@@ -1,5 +1,5 @@
 ---
-- name: Create /opt/neovim
+- name: create directory
   file:
     path: /opt/neovim
     state: directory
@@ -7,27 +7,27 @@
     recurse: yes
   become: yes
 
-- name: download neovim
+- name: download
   get_url:
     url: https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage
     dest: /opt/neovim/
     mode: u+x
 
-- name: extract app image
+- name: extract appimage
   shell: 
   args:
     cmd: ./nvim.appimage --appimage-extract
     chdir: /opt/neovim
   become: yes
 
-- name: neovim | create symlink
+- name: create symlink
   file: src=/opt/neovim/squashfs-root/usr/bin/nvim
         path=/usr/bin/nvim
         state=link
         force=yes
   become: yes
 
-- name: nvim | cleanup 
+- name: cleanup 
   file:
     path: /opt/neovom/nvim.appimage
     state: absent

@@ -1,5 +1,5 @@
 ---
-- name: dotfiles | create symlinks
+- name: link files
   file: src={{ ansible_env.PWD }}/roles/dotfiles/files/{{ item }}
         path=~/{{ item }}
         state=link
