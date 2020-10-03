@@ -2,7 +2,7 @@
 set -e
 
 if ! [ -x "$(command -v ansible)" ]; then
-  sudo apt install ansible
+  sudo apt update  && sudo apt install ansible
 fi
 
 git submodule update --init --recursive
