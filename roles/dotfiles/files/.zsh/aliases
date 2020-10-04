@@ -28,8 +28,3 @@ alias gcz='git cz'
 # Random Projects
 #
 alias projects="cd $PROJECTHOME"
-alias blendtec="cd $PROJECTHOME/Blendtec"
-alias freshbyte="cd $PROJECTHOME/Freshbyte"
-alias personal="cd $PROJECTHOME/Personal"
-alias uinta="cd $PROJECTHOME/Uinta"
-alias scratch="cd $PROJECTHOME/Scratch"
