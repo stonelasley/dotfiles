@@ -1,7 +1,5 @@
 set imap_user = "freshbytestone@gmail.com"
-#set imap_pass = "tngrqlizzfhmhhmw"
 set smtp_url = "smtps://freshbytestone@gmail.com@smtp.gmail.com:465/"
-set smtp_pass = "tngrqlizzfhmhhmw"
 set ssl_starttls=yes
 set ssl_force_tls=yes
 set from="freshbytestone@gmail.com"

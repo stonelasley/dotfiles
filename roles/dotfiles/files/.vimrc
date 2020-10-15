@@ -1,7 +1,6 @@
 execute pathogen#infect()
 
 "/* ======================== Settings ========================= */
-set encoding=utf-8
 set nocompatible
 set relativenumber
 set number
@@ -28,7 +27,6 @@ call plug#begin('~/.vim/plugged')
         Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': '.install --all' }
         Plug 'junegunn/fzf.vim'
         Plug 'leafgarland/typescript-vim', { 'for': [ 'typescript', 'vue' ] }
-        Plug 'machakann/vim-highlightedyank'
         Plug 'neoclide/coc.nvim', {'branch': 'release'}
         Plug 'iamcco/coc-vimlsp'
         Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
@@ -39,7 +37,7 @@ call plug#begin('~/.vim/plugged')
         Plug 'neoclide/coc-eslint', {'do': 'yarn install --frozen-lockfile', 'for': ['typescript', 'javascript', 'vue']}
         Plug 'posva/vim-vue', { 'for': 'vue' }
         Plug 'scrooloose/nerdtree', { 'on' : 'NERDTreeToggle'}
-        Plug 'skielbasa/vim-material-monokai'
+        Plug 'mhartington/oceanic-next'
         Plug 'tpope/vim-commentary'
         Plug 'tpope/vim-eunuch'
         Plug 'tpope/vim-fugitive'

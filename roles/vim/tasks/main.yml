@@ -1,5 +1,33 @@
 ---
-- hosts: "localhost"
-  include_tasks: build.yml 
-  tags: ['never', 'build']
-  
+- name: create directory
+  file:
+    path: /opt/neovim
+    state: directory
+    mode: '777'
+    recurse: yes
+  become: yes
+
+- name: download
+  get_url:
+    url: https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage
+    dest: /opt/neovim/
+    mode: u+x
+
+- name: extract appimage
+  shell: 
+  args:
+    cmd: ./nvim.appimage --appimage-extract
+    chdir: /opt/neovim
+  become: yes
+
+- name: create symlink
+  file: src=/opt/neovim/squashfs-root/usr/bin/nvim
+        path=/usr/bin/nvim
+        state=link
+        force=yes
+  become: yes
+
+- name: cleanup 
+  file:
+    path: /opt/neovom/nvim.appimage
+    state: absent

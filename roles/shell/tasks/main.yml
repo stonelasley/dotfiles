@@ -1,25 +1,72 @@
 ---
-- name: shell packages  
+- name: install packages  
   apt: 
-    name: "{{ item }}" 
+    pkg:
+      - zsh 
+      - curl
+      - ack
+      - silversearcher-ag
     state: present
-  with_items:
-    - silversearcher-ag
   become: yes
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 
 - name: clone fzf
   git:
     repo: https://github.com/junegunn/fzf.git
-    dest: /home/{{ ansible_user_id }}/.fzf
-  depth: 1
+    dest: /opt/fzf
+    depth: 1
+    force: yes
+  become: yes
+
+- name: set fzf directory permissions
+  file:
+    path: /opt/fzf
+    state: directory
+    mode: '777'
+    recurse: yes
+  become: yes
 
 - name: install fzf
   command: ./install --all
   args: 
-    chdir: /home/{{ ansible_user_id }}/.fzf
+    chdir: /opt/fzf
 
-- name: clone tpm
+- name: clone Tmux Package Manager
   git:
     repo: https://github.com/tmux-plugins/tpm.git
     dest: /home/{{ ansible_user_id }}/.tmux/plugins/tpm
-  depth: 1
+    depth: 1
+
+- name: test oh-my-zsh installed
+  stat:
+    path: /home/{{ ansible_user_id }}/.oh-my-zsh
+  register: oh_my_zsh
+
+- name: download oh-my-zsh
+  get_url:
+    url: https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh
+    dest: /tmp/oh-my-zsh.sh
+    mode: u+x
+  when: not oh_my_zsh.stat.exists
+
+- name: install oh-my-zsh
+  shell: 
+  args:
+    cmd: ./oh-my-zsh.sh
+    chdir: /tmp
+  when: not oh_my_zsh.stat.exists
+
+- name: cleanup 
+  file:
+    path: /tmp/oh-my-zsh.sh
+    state: absent
+
+- name: test added to bashrc
+  shell: grep -c "exec zsh" /home/{{ ansible_user_id }}/.bashrc || true 
+  register: exec_in_bash
+
+- lineinfile: 
+    path: ~/.bashrc
+    line:  "if [ -t 1 ]; then\n exec zsh\nfi"
+  when: not exec_in_bash.stdout == "1"
+
