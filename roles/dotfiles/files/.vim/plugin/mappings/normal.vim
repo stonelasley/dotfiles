@@ -4,8 +4,8 @@ nnoremap <Space> <Nop>
 
 " Toggle fold under cursor
 "nnoremap <Tab> za
-nnoremap <C-=> za
-nnoremap <C--> za
+nnoremap <C-=> zm
+nnoremap <C--> zr
 
 "/* ------------------Window Movement ------------------------ */
 nnoremap <C-h> <C-w>h
