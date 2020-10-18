@@ -1,7 +1,7 @@
 #! /bin/bash
 set -e
 
-if ! [ -x "$(command -v Nnsible)" ]; then
+if ! [ -x "$(command -v ansible)" ]; then
   if [ "$(uname -s)" = "Darwin" ]
   then 
     echo "Updating Brew..."
