@@ -26,16 +26,16 @@ call plug#begin('~/.vim/plugged')
         Plug 'jiangmiao/auto-pairs'
         Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': '.install --all' }
         Plug 'junegunn/fzf.vim'
-        Plug 'leafgarland/typescript-vim', { 'for': [ 'typescript', 'vue' ] }
+        Plug 'leafgarland/typescript-vim'
         Plug 'neoclide/coc.nvim', {'branch': 'release'}
         Plug 'iamcco/coc-vimlsp'
         Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
-        Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile', 'for': ['json']}
-        Plug 'neoclide/coc-html', {'do': 'yarn install --frozen-lockfile', 'for': ['html', 'vue']}
-        Plug 'neoclide/coc-prettier', {'do': 'yarn install --frozen-lockfile', 'for': ['typescript', 'javascript', 'vue']}
-        Plug 'neoclide/coc-vetur', {'do': 'yarn install --frozen-lockfile', 'for': ['vue']}
-        Plug 'neoclide/coc-eslint', {'do': 'yarn install --frozen-lockfile', 'for': ['typescript', 'javascript', 'vue']}
-        Plug 'posva/vim-vue', { 'for': 'vue' }
+        Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile' }
+        Plug 'neoclide/coc-html', {'do': 'yarn install --frozen-lockfile' }
+        Plug 'neoclide/coc-prettier', {'do': 'yarn install --frozen-lockfile' }
+        Plug 'neoclide/coc-vetur', {'do': 'yarn install --frozen-lockfile' }
+        Plug 'neoclide/coc-eslint', {'do': 'yarn install --frozen-lockfile' }
+        Plug 'posva/vim-vue'
         Plug 'scrooloose/nerdtree', { 'on' : 'NERDTreeToggle'}
         Plug 'mhartington/oceanic-next'
         Plug 'tpope/vim-commentary'
