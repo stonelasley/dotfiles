@@ -12,6 +12,14 @@
     url: https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage
     dest: /opt/neovim/
     mode: u+x
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+
+- name: download
+  get_url:
+    url: https://github.com/neovim/neovim/releases/download/nightly/nvim-macos.tar.gz
+    dest: /opt/neovim/
+    mode: u+x
+  when: ansible_distribution == 'MacOSX'
 
 - name: extract appimage
   shell: 
@@ -19,6 +27,14 @@
     cmd: ./nvim.appimage --appimage-extract
     chdir: /opt/neovim
   become: yes
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+
+- name: unpack archive 
+  shell: 
+  args:
+    cmd: tar xzf nvim-macos.tar.gz
+    chdir: /opt/neovim
+  when: ansible_distribution == 'MacOSX'
 
 - name: create symlink
   file: src=/opt/neovim/squashfs-root/usr/bin/nvim
@@ -26,8 +42,24 @@
         state=link
         force=yes
   become: yes
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+
+- name: create symlink
+  file: src=/opt/neovim/nvim-osx64/bin/nvim
+        path=/usr/local/bin/nvim
+        state=link
+        force=yes
+  become: yes
+  when: ansible_distribution == 'MacOSX'
 
 - name: cleanup 
   file:
     path: /opt/neovom/nvim.appimage
     state: absent
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+
+- name: cleanup 
+  file:
+    path: /opt/neovim/nvim-macos.tar.gz
+    state: absent
+  when: ansible_distribution == 'MacOSX'

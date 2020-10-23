@@ -34,12 +34,12 @@
 - name: clone Tmux Package Manager
   git:
     repo: https://github.com/tmux-plugins/tpm.git
-    dest: /home/{{ ansible_user_id }}/.tmux/plugins/tpm
+    dest: ~/.tmux/plugins/tpm
     depth: 1
 
 - name: test oh-my-zsh installed
   stat:
-    path: /home/{{ ansible_user_id }}/.oh-my-zsh
+    path: ~/.oh-my-zsh
   register: oh_my_zsh
 
 - name: download oh-my-zsh
@@ -62,7 +62,7 @@
     state: absent
 
 - name: test added to bashrc
-  shell: grep -c "exec zsh" /home/{{ ansible_user_id }}/.bashrc || true 
+  shell: grep -c "exec zsh" ~/.bashrc || true 
   register: exec_in_bash
 
 - lineinfile: 
