@@ -1,4 +1,7 @@
 set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath = &runtimepath
-source ~/.vimrc
-au TextYankPost * silent! lua require'vim.highlight'.on_yank()
+
+" TODO pull appropriate settings out of this check as tested
+if !exists('g:vscode')
+        source ~/.vimrc
+endif
