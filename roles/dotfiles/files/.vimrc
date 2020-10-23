@@ -9,6 +9,7 @@ set splitright
 set nowrap
 set iskeyword+=-
 set formatoptions-=cro
+set clipboard+=unnamedplus
 
 syntax on
 
@@ -17,6 +18,10 @@ filetype plugin on
 "/* ---------------------- Directories ------------------------ */
 set backupdir=$HOME/.vim/backup//
 set directory=$HOME/.vim/swap//
+
+"/* ---------------------- AutoCommands ------------------------ */
+au! BufWritePost $MYVIMRC source %
+au TextYankPost * silent! lua require'vim.highlight'.on_yank()
 
 "/* ----------------------- Plugins --------------------------- */
 call plug#begin('~/.vim/plugged')
@@ -53,5 +58,3 @@ call plug#end()
 
 "/* ---------------------- QOL ------------------------ */
 au! BufWritePost $MYVIMRC source %
-
-
