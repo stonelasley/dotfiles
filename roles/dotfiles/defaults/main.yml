@@ -11,4 +11,5 @@ dotfile_files:
   - .mutt
   - .Xdefaults
   - .config/nvim/init.vim
+  - .config/nvim/vsinit.vim
 

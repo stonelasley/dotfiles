@@ -19,10 +19,6 @@ filetype plugin on
 set backupdir=$HOME/.vim/backup//
 set directory=$HOME/.vim/swap//
 
-"/* ---------------------- AutoCommands ------------------------ */
-au! BufWritePost $MYVIMRC source %
-au TextYankPost * silent! lua require'vim.highlight'.on_yank()
-
 "/* ----------------------- Plugins --------------------------- */
 call plug#begin('~/.vim/plugged')
         Plug 'christoomey/vim-tmux-navigator'
@@ -55,6 +51,3 @@ call plug#begin('~/.vim/plugged')
         Plug 'wincent/loupe'
         Plug 'yggdroot/indentline'
 call plug#end()
-
-"/* ---------------------- QOL ------------------------ */
-au! BufWritePost $MYVIMRC source %
