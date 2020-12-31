@@ -27,4 +27,4 @@ nnoremap <CR> :noh<CR><CR>
 cmap w!! w !sudo tee %
 
 " Replace current word
-:nnoremap <Leader>rr :%s/\<<C-r><C-w>\>/
+:nnoremap <Leader>rr :%s/\<C-r><C-w>/

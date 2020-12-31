@@ -12,4 +12,5 @@ dotfile_files:
   - .Xdefaults
   - .config/nvim/init.vim
   - .config/nvim/vsinit.vim
+  - .config/nvim/.vsvim
 
