@@ -73,39 +73,60 @@ fetch(ctx: Context) {
   $0
 }
 endsnippet
+
+snippet importtype "Nuxt import type " b
+import { $1 } from '~/types/$2'$0
+endsnippet
+
+snippet importcomponent "Nuxt import component" b
+import $1 from '~/components/$2.vue'$0
+endsnippet
+
+snippet types "types" i
+~/types/$0
+endsnippet
+
 # End Nuxt
-# Vuex
-snippet vx@Prop "Vuex @Prop" b
+
+# vue-property-decorator 
+snippet Prop "Component @Prop Decorator" b
 @Prop($1) $2: $3
 $0
 endsnippet
 
-snippet vx@State "Vuex decorated @State" b
+snippet Prop{} "Component @Prop Decorator with Options" b
+@Prop({ type: $1, default: $2, required: false }) $3: $4
+$0
+endsnippet
+
+snippet State "Vuex decorated @State" b
 @State('$1')
 $1!: $0
 endsnippet
 
-snippet vx@Getter "Vuex decorated @Getter" b
+snippet Getter "Vuex decorated @Getter" b
 @Getter('$1')
 $1!: $0
 endsnippet
 
-snippet vx@Action "Vuex @Action" b
+snippet Action "Vuex @Action" b
 @Action($1_ACTIONS.$2)
 $3!: $0
 endsnippet
 
-snippet vx@Mutation "Vuex @Mutation" b
-@MUTATION($1_MUTATIONS.$2)
-$3!: $0
+snippet Mutation "Vuex @Mutation" b
+@MUTATION($1_MUTATIONS.$2) $3!: $0
 endsnippet
 
-snippet vxnamespace "Vuex namespace helper" b
-const { $2 } = namespace('$1')
-$0
+snippet Module "Vuex module using namespace helper" b
+const $2Module = namespace('$1')$0
 endsnippet
 
-snippet vxcomponent "Vuex namespace helper" b
+snippet Module{} "Vuex destructured module" b
+const { $2 } = namespace('$1')$0
+endsnippet
+
+snippet componentvx "Vuex namespace helper" b
 <template>
 </template>
 
@@ -438,7 +459,6 @@ loading = false
 @ActionInProgress()$0
 endsnippet
 
-<<<<<<< HEAD
 snippet scaffold:page "Vue Page Component" b
 <template>
 </template>
@@ -455,12 +475,8 @@ export default class $1Page extends Vue {}
 <style scoped lang="${2:scss}"></style>
 endsnippet
 
-
-
-=======
 snippet actioninprogress:import  "ActionInProgress Decorator import" b
 import { ActionInProgress } from '~/utils/decorators'
 endsnippet
->>>>>>> ba0013ca6235183ff8ad2462f661acdcc09e892d
 
 # End Personal

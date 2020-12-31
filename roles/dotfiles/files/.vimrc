@@ -24,11 +24,12 @@ call plug#begin('~/.vim/plugged')
         Plug 'christoomey/vim-tmux-navigator'
         Plug 'dhruvasagar/vim-zoom'
         Plug 'easymotion/vim-easymotion'
-        Plug 'jiangmiao/auto-pairs'
+        "Plug 'jiangmiao/auto-pairs'
         Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': '.install --all' }
         Plug 'junegunn/fzf.vim'
         Plug 'leafgarland/typescript-vim'
         Plug 'neoclide/coc.nvim', {'branch': 'release'}
+        Plug 'honza/vim-snippets'
         Plug 'iamcco/coc-vimlsp'
         Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
         Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile' }
@@ -36,6 +37,7 @@ call plug#begin('~/.vim/plugged')
         Plug 'neoclide/coc-prettier', {'do': 'yarn install --frozen-lockfile' }
         Plug 'neoclide/coc-vetur', {'do': 'yarn install --frozen-lockfile' }
         Plug 'neoclide/coc-eslint', {'do': 'yarn install --frozen-lockfile' }
+        Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile' }
         Plug 'posva/vim-vue'
         Plug 'scrooloose/nerdtree', { 'on' : 'NERDTreeToggle'}
         Plug 'mhartington/oceanic-next'
@@ -50,4 +52,14 @@ call plug#begin('~/.vim/plugged')
         Plug 'wincent/ferret'
         Plug 'wincent/loupe'
         Plug 'yggdroot/indentline'
+        Plug 'stonelasley/taskr'
+        Plug 'rafcamlet/nvim-luapad'
 call plug#end()
+
+if has ('autocmd')
+  echom "has autocmd"
+  augroup vimrc     " Source vim configuration upon save
+    autocmd! BufWritePost $MYVIMRC source % | echom "Reloaded " . $MYVIMRC | redraw
+    autocmd! BufWritePost $MYGVIMRC if has('gui_running') | so % | echom "Reloaded " . $MYGVIMRC | endif | redraw
+  augroup END
+endif
