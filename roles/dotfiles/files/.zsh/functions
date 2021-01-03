@@ -14,22 +14,22 @@ function tmux() {
     return
   fi
 
-  # Check for .tmux file (poor man's Tmuxinator).
-  if [ -x .tmux ]; then
-    # Prompt the first time we see a given .tmux file before running it.
-    local DIGEST="$(openssl sha1 -sha512 .tmux)"
-    if ! grep -q "$DIGEST" ~/..tmux.digests 2> /dev/null; then
-      cat .tmux
+  # Check for .tmux.conf file (poor man's Tmuxinator).
+  if [ -x .tmux.conf ]; then
+    # Prompt the first time we see a given .tmux.conf file before running it.
+    local DIGEST="$(openssl sha1 -sha512 .tmux.conf)"
+    if ! grep -q "$DIGEST" ~/..tmux.conf.digests 2> /dev/null; then
+      cat .tmux.conf
       read -k 1 -r \
-        'REPLY?Trust (and run) this .tmux file? (t = trust, otherwise = skip) '
+        'REPLY?Trust (and run) this .tmux.conf file? (t = trust, otherwise = skip) '
       echo
       if [[ $REPLY =~ ^[Tt]$ ]]; then
-        echo "$DIGEST" >> ~/..tmux.digests
-        ./.tmux
+        echo "$DIGEST" >> ~/..tmux.conf.digests
+        ./.tmux.conf
         return
       fi
     else
-      ./.tmux
+      ./.tmux.conf
       return
     fi
   fi
