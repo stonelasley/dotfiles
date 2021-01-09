@@ -55,11 +55,3 @@ call plug#begin('~/.vim/plugged')
         Plug 'git@github.com:stonelasley/taskr.git'
         Plug 'rafcamlet/nvim-luapad'
 call plug#end()
-
-if has ('autocmd')
-  echom "has autocmd"
-  augroup vimrc     " Source vim configuration upon save
-    autocmd! BufWritePost $MYVIMRC source % | echom "Reloaded " . $MYVIMRC | redraw
-    autocmd! BufWritePost $MYGVIMRC if has('gui_running') | so % | echom "Reloaded " . $MYGVIMRC | endif | redraw
-  augroup END
-endif
