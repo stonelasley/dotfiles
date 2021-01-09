@@ -24,7 +24,7 @@ call plug#begin('~/.vim/plugged')
         Plug 'christoomey/vim-tmux-navigator'
         Plug 'dhruvasagar/vim-zoom'
         Plug 'easymotion/vim-easymotion'
-        "Plug 'jiangmiao/auto-pairs'
+        Plug 'jiangmiao/auto-pairs'
         Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': '.install --all' }
         Plug 'junegunn/fzf.vim'
         Plug 'leafgarland/typescript-vim'
@@ -52,7 +52,7 @@ call plug#begin('~/.vim/plugged')
         Plug 'wincent/ferret'
         Plug 'wincent/loupe'
         Plug 'yggdroot/indentline'
-        Plug 'stonelasley/taskr'
+        Plug 'git@github.com:stonelasley/taskr.git'
         Plug 'rafcamlet/nvim-luapad'
 call plug#end()
 
