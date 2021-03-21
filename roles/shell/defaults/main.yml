@@ -1,0 +1,6 @@
+---
+packages:
+  - curl
+  - zsh
+  - ack
+  - silversearcher-ag
