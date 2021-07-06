@@ -9,14 +9,14 @@
 
 - name: download
   get_url:
-    url: https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage
+    url: https://github.com/neovim/neovim/releases/download/v0.5.0/nvim.appimage
     dest: /opt/neovim/
     mode: u+x
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 
 - name: download
   get_url:
-    url: https://github.com/neovim/neovim/releases/download/nightly/nvim-macos.tar.gz
+    url: https://github.com/neovim/neovim/releases/download/v0.5.0/nvim-macos.tar.gz
     dest: /opt/neovim/
     mode: u+x
   when: ansible_distribution == 'MacOSX'
@@ -39,6 +39,14 @@
 - name: create symlink
   file: src=/opt/neovim/squashfs-root/usr/bin/nvim
         path=/usr/bin/nvim
+        state=link
+        force=yes
+  become: yes
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+
+- name: create local symlink
+  file: src=/opt/neovim/squashfs-root/usr/bin/nvim
+        path=/usr/local/bin/nvim
         state=link
         force=yes
   become: yes
