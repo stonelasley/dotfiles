@@ -1,16 +1,12 @@
 ---
 dotfile_files:
-  - .vimrc
   - .zshrc
   - .zsh
-  - .vim
   - .tmux.conf
   - .gitignore
   - .gitconfig
   - .czrc
   - .mutt
   - .Xdefaults
-  - .config/nvim/init.vim
-  - .config/nvim/vsinit.vim
-  - .config/nvim/.vsvim
+  - .config/nvim
 

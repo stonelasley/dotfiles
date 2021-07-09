@@ -39,6 +39,7 @@ call plug#begin('~/.vim/plugged')
         Plug 'neoclide/coc-eslint', {'do': 'yarn install --frozen-lockfile' }
         Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile' }
         Plug 'posva/vim-vue'
+        Plug 'sirver/ultisnips'
         Plug 'scrooloose/nerdtree', { 'on' : 'NERDTreeToggle'}
         Plug 'mhartington/oceanic-next'
         Plug 'tpope/vim-commentary'
