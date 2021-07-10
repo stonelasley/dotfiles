@@ -1,5 +1,7 @@
-:lua require('settings')
 let &packpath = &runtimepath
+:lua require('mappings')
+:lua require('mappings.normal')
+:lua require('settings')
 
 call plug#begin('~/.config/nvim/plugged')
         Plug 'christoomey/vim-tmux-navigator'
