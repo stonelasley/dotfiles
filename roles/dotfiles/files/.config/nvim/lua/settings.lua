@@ -1,14 +1,19 @@
-vim.opt.relativenumber = true
-vim.opt.number = true
-vim.opt.splitbelow = true
-vim.opt.splitright = true
-vim.wo.wrap = false
-vim.opt.formatoptions = "cro"
+local utils = require('utils')
+
+local backupdir = vim.fn.expand('~/.config/nvim/backup//')
+local swapdir = vim.fn.expand('~/.config/nvim/swap//')
+
+utils.opt('o', 'relativenumber', true)
+utils.opt('o', 'number', true)
+utils.opt('o', 'splitbelow', true)
+utils.opt('o', 'splitright', true)
+utils.opt('w', 'wrap', false)
+utils.opt('o', 'formatoptions', 'cro')
+utils.opt('o', 'backupdir', backupdir) -- keep backup files out of the way (ie. if 'backup' is ever set)
+--utils.opt('o', 'backupdir', vim.opt.backupdir + '.')
+utils.opt('o', 'directory', swapdir)   -- keep swap files out of the way
+-- utils.opt('o', 'directory', vim.opt.directory + '.')
 vim.opt.clipboard:append("unnamedplus")
-vim.opt.backupdir      = vim.fn.expand('~/.config/nvim/backup//') -- keep backup files out of the way (ie. if 'backup' is ever set)
-vim.opt.backupdir      = vim.opt.backupdir + '.'
-vim.opt.directory      = vim.fn.expand('~/.config/nvim/swap//')   -- keep swap files out of the way
-vim.opt.directory      = vim.opt.directory + '.'
 
 
 
