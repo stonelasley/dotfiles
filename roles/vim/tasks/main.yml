@@ -60,6 +60,12 @@
   become: yes
   when: ansible_distribution == 'MacOSX'
 
+- name: clone packer
+  git:
+    repo: https://github.com/wbthomason/packer.nvim
+    dest: ~/.config/nvim/pack/packer/start/packer.nvim
+    depth: 1
+
 - name: cleanup 
   file:
     path: /opt/neovom/nvim.appimage
