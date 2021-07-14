@@ -5,7 +5,7 @@
 "let g:UltiSnipsJumpBackwardTrigger="<S-Tab>"
 "let g:UltiSnipsMappingsToIgnore=['autocomplete']
 "let g:UltiSnipsEditSplit = 'vertical'
-"let g:UltiSnipsSnippetDirectories = ["~/.vim/UltiSnips"]
+"let g:UltiSnipsSnippetDirectories = ["~/.config/nvim/UltiSnips"]
 "function ExpandSnipOrCarriageReturn()
 "  let snippet = UltiSnips#ExpandSnippetOrJump()
 "  echo g:ulti_expand_or_jump_res
