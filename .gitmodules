@@ -5,13 +5,13 @@
 	path = vendor/base16-iterm2
 	url = https://github.com/martinlindhe/base16-iterm2.git
 [submodule "roles/dotfiles/files/.zsh/base16-shell"]
-	path = roles/dotfiles/files/.zsh/base16-shell
+	path = vendor/base16-shell
 	url = https://github.com/chriskempson/base16-shell.git
 [submodule "roles/dotfiles/files/.zsh/zsh-autosuggestions"]
-	path = roles/dotfiles/files/.zsh/zsh-autosuggestions
+	path = vendor/zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions.git
 [submodule "roles/dotfiles/files/.zsh/zsh-syntax-hightlighting"]
-	path = roles/dotfiles/files/.zsh/zsh-syntax-hightlighting
+	path = vendor/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
 [submodule "roles/dotfiles/files/.vim/bundle/youcompleteme"]
 	path = roles/dotfiles/files/.vim/bundle/youcompleteme
