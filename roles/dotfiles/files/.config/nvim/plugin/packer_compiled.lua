@@ -113,6 +113,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/scl/.local/share/nvim/site/pack/packer/start/ferret"
   },
+  hop = {
+    config = { "\27LJ\2\n\v\0\0\1\0\0\0\1K\0\1\0\0" },
+    loaded = true,
+    path = "/Users/scl/.local/share/nvim/site/pack/packer/start/hop"
+  },
   indentline = {
     loaded = true,
     path = "/Users/scl/.local/share/nvim/site/pack/packer/start/indentline"
@@ -183,10 +188,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/scl/.local/share/nvim/site/pack/packer/start/vim-sleuth"
   },
-  ["vim-sneak"] = {
-    loaded = true,
-    path = "/Users/scl/.local/share/nvim/site/pack/packer/start/vim-sneak"
-  },
   ["vim-snippets"] = {
     loaded = true,
     path = "/Users/scl/.local/share/nvim/site/pack/packer/start/vim-snippets"
@@ -203,10 +204,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/scl/.local/share/nvim/site/pack/packer/start/vim-vue"
   },
-  ["vim-wordmotion"] = {
-    loaded = true,
-    path = "/Users/scl/.local/share/nvim/site/pack/packer/start/vim-wordmotion"
-  },
   ["vim-zoom"] = {
     loaded = true,
     path = "/Users/scl/.local/share/nvim/site/pack/packer/start/vim-zoom"
@@ -214,6 +211,10 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
+-- Config for: hop
+time([[Config for hop]], true)
+try_loadstring("\27LJ\2\n\v\0\0\1\0\0\0\1K\0\1\0\0", "config", "hop")
+time([[Config for hop]], false)
 
 -- Command lazy-loads
 time([[Defining lazy-load commands]], true)

@@ -1,11 +1,19 @@
 require('config.coc')
 require('config.telescope')
 require('config.nvim-tree')
+require('config.hop')
 
 return require('packer').startup(function()
   use 'christoomey/vim-tmux-navigator'
   use 'dhruvasagar/vim-zoom'
-  use { 'chaoren/vim-wordmotion', 'justinmk/vim-sneak' }
+  use {
+    'phaazon/hop.nvim',
+    as = 'hop',
+    config = function()
+      -- you can configure Hop the way you like here; see :h hop-config
+      -- require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
+    end
+  }
   use 'jiangmiao/auto-pairs'
   use {
     'nvim-telescope/telescope.nvim',
