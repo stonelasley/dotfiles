@@ -73,9 +73,41 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/scl/.local/share/nvim/site/pack/packer/start/auto-pairs"
   },
+  ["coc-eslint"] = {
+    loaded = true,
+    path = "/Users/scl/.local/share/nvim/site/pack/packer/start/coc-eslint"
+  },
+  ["coc-html"] = {
+    loaded = true,
+    path = "/Users/scl/.local/share/nvim/site/pack/packer/start/coc-html"
+  },
+  ["coc-json"] = {
+    loaded = true,
+    path = "/Users/scl/.local/share/nvim/site/pack/packer/start/coc-json"
+  },
+  ["coc-prettier"] = {
+    loaded = true,
+    path = "/Users/scl/.local/share/nvim/site/pack/packer/start/coc-prettier"
+  },
+  ["coc-snippets"] = {
+    loaded = true,
+    path = "/Users/scl/.local/share/nvim/site/pack/packer/start/coc-snippets"
+  },
+  ["coc-tsserver"] = {
+    loaded = true,
+    path = "/Users/scl/.local/share/nvim/site/pack/packer/start/coc-tsserver"
+  },
+  ["coc-vetur"] = {
+    loaded = true,
+    path = "/Users/scl/.local/share/nvim/site/pack/packer/start/coc-vetur"
+  },
   ["coc-vimlsp"] = {
     loaded = true,
     path = "/Users/scl/.local/share/nvim/site/pack/packer/start/coc-vimlsp"
+  },
+  ["coc.nvim"] = {
+    loaded = true,
+    path = "/Users/scl/.local/share/nvim/site/pack/packer/start/coc.nvim"
   },
   ferret = {
     loaded = true,
@@ -93,9 +125,31 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/scl/.local/share/nvim/site/pack/packer/start/nvim-luapad"
   },
+  ["nvim-tree.lua"] = {
+    loaded = true,
+    path = "/Users/scl/.local/share/nvim/site/pack/packer/start/nvim-tree.lua"
+  },
+  ["nvim-web-devicons"] = {
+    loaded = true,
+    path = "/Users/scl/.local/share/nvim/site/pack/packer/start/nvim-web-devicons"
+  },
   ["oceanic-next"] = {
     loaded = true,
     path = "/Users/scl/.local/share/nvim/site/pack/packer/start/oceanic-next"
+  },
+  ["plenary.nvim"] = {
+    loaded = true,
+    path = "/Users/scl/.local/share/nvim/site/pack/packer/start/plenary.nvim"
+  },
+  ["popup.nvim"] = {
+    loaded = true,
+    path = "/Users/scl/.local/share/nvim/site/pack/packer/start/popup.nvim"
+  },
+  ["telescope.nvim"] = {
+    commands = { "Telescope" },
+    loaded = false,
+    needs_bufread = false,
+    path = "/Users/scl/.local/share/nvim/site/pack/packer/opt/telescope.nvim"
   },
   ["typescript-vim"] = {
     loaded = true,
@@ -108,10 +162,6 @@ _G.packer_plugins = {
   ["vim-commentary"] = {
     loaded = true,
     path = "/Users/scl/.local/share/nvim/site/pack/packer/start/vim-commentary"
-  },
-  ["vim-easymotion"] = {
-    loaded = true,
-    path = "/Users/scl/.local/share/nvim/site/pack/packer/start/vim-easymotion"
   },
   ["vim-eunuch"] = {
     loaded = true,
@@ -133,6 +183,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/scl/.local/share/nvim/site/pack/packer/start/vim-sleuth"
   },
+  ["vim-sneak"] = {
+    loaded = true,
+    path = "/Users/scl/.local/share/nvim/site/pack/packer/start/vim-sneak"
+  },
   ["vim-snippets"] = {
     loaded = true,
     path = "/Users/scl/.local/share/nvim/site/pack/packer/start/vim-snippets"
@@ -149,6 +203,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/scl/.local/share/nvim/site/pack/packer/start/vim-vue"
   },
+  ["vim-wordmotion"] = {
+    loaded = true,
+    path = "/Users/scl/.local/share/nvim/site/pack/packer/start/vim-wordmotion"
+  },
   ["vim-zoom"] = {
     loaded = true,
     path = "/Users/scl/.local/share/nvim/site/pack/packer/start/vim-zoom"
@@ -156,6 +214,12 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
+
+-- Command lazy-loads
+time([[Defining lazy-load commands]], true)
+vim.cmd [[command! -nargs=* -range -bang -complete=file Telescope lua require("packer.load")({'telescope.nvim'}, { cmd = "Telescope", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
+time([[Defining lazy-load commands]], false)
+
 if should_profile then save_profiles() end
 
 end)

@@ -1,35 +1,47 @@
-return require('packer').startup(function(use)
-	use 'christoomey/vim-tmux-navigator'
-	use 'dhruvasagar/vim-zoom'
-	use 'easymotion/vim-easymotion'
-	use 'jiangmiao/auto-pairs'
-	-- --use 'junegunn/fzf', { 'dir': '~/.fzf', 'do': '.install --all' }
-	-- use 'junegunn/fzf.vim'
-	use 'leafgarland/typescript-vim'
-	-- --use 'neoclide/coc.nvim', {'branch': 'release'}
-	use 'honza/vim-snippets'
-	use 'iamcco/coc-vimlsp'
-	-- --use 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
-	-- --use 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile' }
-	-- --use 'neoclide/coc-html', {'do': 'yarn install --frozen-lockfile' }
-	-- --use 'neoclide/coc-prettier', {'do': 'yarn install --frozen-lockfile' }
-	-- --use 'neoclide/coc-vetur', {'do': 'yarn install --frozen-lockfile' }
-	-- --use 'neoclide/coc-eslint', {'do': 'yarn install --frozen-lockfile' }
-	-- --use 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile' }
-	use 'posva/vim-vue'
-	-- use 'scrooloose/nerdtree', { 'on' : 'NERDTreeToggle'}
-	use 'mhartington/oceanic-next'
-	use 'tpope/vim-commentary'
-	use 'tpope/vim-eunuch'
-	use 'tpope/vim-fugitive'
-	use 'tpope/vim-projectionist'
-	use 'tpope/vim-surround'
-	use 'tpope/vim-sensible'
-	use 'tpope/vim-sleuth'
-	use 'vim-airline/vim-airline'
-	use 'wincent/ferret'
-	use 'wincent/loupe'
-	use 'yggdroot/indentline'
-	-- --use 'git@github.com:stonelasley/taskr.git'
-	use 'rafcamlet/nvim-luapad'
+require('config.coc')
+require('config.telescope')
+require('config.nvim-tree')
+
+return require('packer').startup(function()
+  use 'christoomey/vim-tmux-navigator'
+  use 'dhruvasagar/vim-zoom'
+  use { 'chaoren/vim-wordmotion', 'justinmk/vim-sneak' }
+  use 'jiangmiao/auto-pairs'
+  use {
+    'nvim-telescope/telescope.nvim',
+    requires = { { 'nvim-lua/popup.nvim' }, { 'nvim-lua/plenary.nvim' } },
+    --setup = [[require('config.telescope_setup')]],
+    --config = [[require('config.telescope')]],
+    cmd = 'Telescope',
+  }
+
+  use {
+    'kyazdani42/nvim-tree.lua',
+    requires = { { 'kyazdani42/nvim-web-devicons' } },
+  }
+  use 'leafgarland/typescript-vim'
+  use 'honza/vim-snippets'
+  use 'iamcco/coc-vimlsp'
+  use { 'neoclide/coc.nvim', branch = 'release' }
+  use { 'neoclide/coc-tsserver', run = 'yarn install --frozen-lockfile'}
+  use { 'neoclide/coc-json', run = 'yarn install --frozen-lockfile' }
+  use { 'neoclide/coc-html', run = 'yarn install --frozen-lockfile' }
+  use { 'neoclide/coc-prettier', run = 'yarn install --frozen-lockfile' }
+  use { 'neoclide/coc-vetur', run = 'yarn install --frozen-lockfile' }
+  use { 'neoclide/coc-eslint', run = 'yarn install --frozen-lockfile' }
+  use { 'neoclide/coc-snippets', run = 'yarn install --frozen-lockfile' }
+  use 'posva/vim-vue'
+  use 'mhartington/oceanic-next'
+  use 'tpope/vim-commentary'
+  use 'tpope/vim-eunuch'
+  use 'tpope/vim-fugitive'
+  use 'tpope/vim-projectionist'
+  use 'tpope/vim-surround'
+  use 'tpope/vim-sensible'
+  use 'tpope/vim-sleuth'
+  use 'vim-airline/vim-airline'
+  use 'wincent/ferret'
+  use 'wincent/loupe'
+  use 'yggdroot/indentline'
+  use 'rafcamlet/nvim-luapad'
 end)

@@ -1,4 +1,5 @@
 local utils = require('utils')
+require('mappings.normal')
 
 utils.map('i', 'jk', '<Esc>')
 utils.map('n', '<Space>', '<Nop>')

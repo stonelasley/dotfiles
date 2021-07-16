@@ -1,6 +1,7 @@
 # Vim
 bundles
 plugged
+pack
 .netrwhist
 *.swp
 swap/*
