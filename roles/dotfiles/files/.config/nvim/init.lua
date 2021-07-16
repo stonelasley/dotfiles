@@ -3,6 +3,10 @@ require('mappings')
 require('mappings.normal')
 require('settings')
 require('plugins')
+require('config.coc')
+require('config.telescope')
+require('config.nvim-tree')
+require('config.hop')
 
 -- AutoCommands
 -- au! BufWritePost $MYVIMRC source %

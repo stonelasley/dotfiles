@@ -1,8 +1,3 @@
-require('config.coc')
-require('config.telescope')
-require('config.nvim-tree')
-require('config.hop')
-
 return require('packer').startup(function()
   use 'christoomey/vim-tmux-navigator'
   use 'dhruvasagar/vim-zoom'
