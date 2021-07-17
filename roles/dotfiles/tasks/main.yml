@@ -6,7 +6,7 @@
 
 - name: link files
   file: src={{ ansible_env.PWD }}/roles/dotfiles/files/{{ item }}
-        path=~/{{ item }}
+        path=~/.{{ item }}
         state=link
         force=yes
   with_items: '{{dotfile_files}}'

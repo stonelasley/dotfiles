@@ -63,7 +63,7 @@
 - name: clone packer
   git:
     repo: https://github.com/wbthomason/packer.nvim
-    dest: ~/.config/nvim/pack/packer/start/packer.nvim
+    dest: ~/.local/share/nvim/pack/packer/start/packer.nvim
     depth: 1
 
 - name: cleanup 
