@@ -64,18 +64,18 @@ test -f $LOCAL_RC && source $LOCAL_RC
 #
 # Third-party
 #
-#source $HOME/.st1/vendor/docker-cli/contrib/completion/zsh/_docker
+# source $HOME/.st1/vendor/docker-cli/contrib/completion/zsh/_docker
 
 
 #
 # Plug-ins
 #
 
-#source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-#ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=59'
+source "$HOME/.st1/.vendor/zsh-autosuggestions/zsh-autosuggestions.zsh"
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=59'
 
 # syntax highlighting:
-# source ~/.zsh/zsh-syntax-hightlighting/zsh-syntax-highlighting.zsh
+source "$HOME/.st1/.vendor/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
