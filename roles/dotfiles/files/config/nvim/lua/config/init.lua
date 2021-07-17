@@ -6,7 +6,6 @@ require('config.coc')
 require('config.hop')
 require('config.indentguides')
 require('config.typescript')
-require('config.projectionist')
 
 utils.opt('o', 'relativenumber', true)
 utils.opt('o', 'number', true)
