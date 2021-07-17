@@ -11,10 +11,22 @@ return require('packer').startup(function()
     end
   }
   use 'jiangmiao/auto-pairs'
+  use 'nvim-telescope/telescope-fzy-native.nvim'
   use {
     'nvim-telescope/telescope.nvim',
     requires = { { 'nvim-lua/popup.nvim' }, { 'nvim-lua/plenary.nvim' } },
-    --setup = [[require('config.telescope_setup')]],
+    -- setup = function()
+    --   require('telescope').setup {
+    --     extensions = {
+    --       fzy_native = {
+    --         override_generic_sorter = false,
+    --         override_file_sorter = true
+    --       }
+    --     }
+    --   }
+    --   require('telescope').load_extension('fzy_native')
+
+    -- end,
     --config = [[require('config.telescope')]],
     cmd = 'Telescope',
   }
