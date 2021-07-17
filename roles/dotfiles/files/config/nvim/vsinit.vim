@@ -1,4 +1,4 @@
-set runtimepath^=~/.config/nvim/.vsvim runtimepath+=~/.vim/after
+set runtimepath^=~/.config/nvim/.vsvim
 let &packpath = &runtimepath
 
 if exists('g:vscode')
