@@ -1,2 +1,7 @@
+require('mappings.coc')
+require('mappings.coc-prettier')
+require('mappings.hop')
 require('mappings.normal')
-vim.g.mapleader = " "
+require('mappings.global')
+require('mappings.nvim-tree')
+require('mappings.telescope')

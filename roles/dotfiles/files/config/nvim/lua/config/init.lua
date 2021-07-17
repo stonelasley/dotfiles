@@ -1,7 +1,12 @@
 local utils = require('utils')
-
 local backupdir = vim.fn.expand('~/.config/nvim/backup//')
 local swapdir = vim.fn.expand('~/.config/nvim/swap//')
+
+require('config.coc')
+require('config.hop')
+require('config.indentguides')
+require('config.typescript')
+require('config.projectionist')
 
 utils.opt('o', 'relativenumber', true)
 utils.opt('o', 'number', true)
@@ -14,6 +19,4 @@ utils.opt('o', 'backupdir', backupdir) -- keep backup files out of the way (ie. 
 utils.opt('o', 'directory', swapdir)   -- keep swap files out of the way
 -- utils.opt('o', 'directory', vim.opt.directory + '.')
 vim.opt.clipboard:append("unnamedplus")
-
-
 

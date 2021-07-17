@@ -1,11 +1,7 @@
 vim.api.nvim_command('let &packpath = &runtimepath')
-require('mappings')
-require('settings')
 require('plugins')
-require('config.coc')
-require('config.telescope')
-require('config.nvim-tree')
-require('config.hop')
+require('mappings')
+require('config')
 
 -- AutoCommands
 -- au! BufWritePost $MYVIMRC source %

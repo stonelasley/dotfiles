@@ -1,4 +1,5 @@
 return require('packer').startup(function()
+  use 'wbthomason/packer.nvim'
   use 'christoomey/vim-tmux-navigator'
   use 'dhruvasagar/vim-zoom'
   use {
