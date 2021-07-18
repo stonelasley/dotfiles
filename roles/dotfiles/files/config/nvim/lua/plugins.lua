@@ -15,28 +15,15 @@ local function init()
   use {
     'phaazon/hop.nvim',
     as = 'hop',
-    config = function()
-      -- you can configure Hop the way you like here; see :h hop-config
-      -- require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
-    end
+    config = [[require('config.hop')]]
   }
   use 'jiangmiao/auto-pairs'
   use 'nvim-telescope/telescope-fzy-native.nvim'
   use {
     'nvim-telescope/telescope.nvim',
     requires = { { 'nvim-lua/popup.nvim' }, { 'nvim-lua/plenary.nvim' } },
-    setup = function() 
-      require('telescope').setup {
-        extensions = {
-          fzy_native = {
-            override_generic_sorter = false,
-            override_file_sorter = true
-          }
-        }
-      }
-      require('telescope').load_extension('fzy_native')
-    end
-    --config = [[require('config.telescope')]],
+    setup = [[require('mappings.telescope')]],
+    config = [[require('config.telescope')]]
     --cmd = 'Telescope'
   }
 

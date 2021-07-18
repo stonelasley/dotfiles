@@ -5,7 +5,6 @@ require('mappings.hop')
 require('mappings.normal')
 require('mappings.global')
 require('mappings.nvim-tree')
-require('mappings.telescope')
 
 -- Commands
 cmd [[command! PackerInstall packadd packer.nvim | lua require('plugins').install()]]
