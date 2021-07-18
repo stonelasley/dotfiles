@@ -42,7 +42,7 @@ local function init()
   use { 'neoclide/coc-vetur', run = 'yarn install --frozen-lockfile' }
   use { 'neoclide/coc-eslint', run = 'yarn install --frozen-lockfile' }
   use { 'neoclide/coc-snippets', run = 'yarn install --frozen-lockfile' }
-  use 'posva/vim-vue'
+  use { 'posva/vim-vue', ft = { 'ts', 'vue' } }
   use 'mhartington/oceanic-next'
   use 'tpope/vim-commentary'
   use 'tpope/vim-eunuch'
