@@ -10,14 +10,24 @@ local function init()
   local use = packer.use
 
   use 'wbthomason/packer.nvim'
-  use 'christoomey/vim-tmux-navigator'
-  use 'dhruvasagar/vim-zoom'
-  use {
-    'phaazon/hop.nvim',
-    as = 'hop',
-    config = [[require('config.hop')]]
-  }
+
+  -- Convenience Utilities
+  use 'tpope/vim-sensible'
+  use 'tpope/vim-sleuth'
+  use 'tpope/vim-surround'
+  use 'tpope/vim-commentary'
+  use 'tpope/vim-eunuch'
+  use 'tpope/vim-projectionist'
   use 'jiangmiao/auto-pairs'
+  use 'yggdroot/indentline'
+
+  -- Searching & Finding
+  use 'wincent/ferret'
+  use 'wincent/loupe'
+  use {
+    'kyazdani42/nvim-tree.lua',
+    requires = { { 'kyazdani42/nvim-web-devicons' } },
+  }
   use 'nvim-telescope/telescope-fzy-native.nvim'
   use {
     'nvim-telescope/telescope.nvim',
@@ -27,36 +37,51 @@ local function init()
     --cmd = 'Telescope'
   }
 
+  -- Movement
   use {
-    'kyazdani42/nvim-tree.lua',
-    requires = { { 'kyazdani42/nvim-web-devicons' } },
+    'phaazon/hop.nvim',
+    as = 'hop',
+    config = [[require('config.hop')]]
   }
-  use 'leafgarland/typescript-vim'
+  use 'christoomey/vim-tmux-navigator'
+  use 'dhruvasagar/vim-zoom'
+
+  -- Git
+  use 'tpope/vim-fugitive'
+
+  -- Linting
+  use { 'neoclide/coc-prettier', run = 'yarn install --frozen-lockfile' }
+  use { 'neoclide/coc-eslint', run = 'yarn install --frozen-lockfile' }
+
+  -- Snippets
   use 'honza/vim-snippets'
-  use { 'iamcco/coc-vimlsp', ft = { 'vim' } }
+  use { 'neoclide/coc-snippets', run = 'yarn install --frozen-lockfile' }
+
+  -- Languages
   use { 'neoclide/coc.nvim', branch = 'release' }
-  use { 'neoclide/coc-tsserver', run = 'yarn install --frozen-lockfile'}
+
+  -- html & json
   use { 'neoclide/coc-json', run = 'yarn install --frozen-lockfile' }
   use { 'neoclide/coc-html', run = 'yarn install --frozen-lockfile' }
-  use { 'neoclide/coc-prettier', run = 'yarn install --frozen-lockfile' }
-  use { 'neoclide/coc-vetur', run = 'yarn install --frozen-lockfile' }
-  use { 'neoclide/coc-eslint', run = 'yarn install --frozen-lockfile' }
-  use { 'neoclide/coc-snippets', run = 'yarn install --frozen-lockfile' }
-  use { 'posva/vim-vue', ft = { 'ts', 'vue' } }
-  use 'mhartington/oceanic-next'
-  use 'tpope/vim-commentary'
-  use 'tpope/vim-eunuch'
-  use 'tpope/vim-fugitive'
-  use 'tpope/vim-projectionist'
-  use 'tpope/vim-surround'
-  use 'tpope/vim-sensible'
-  use 'tpope/vim-sleuth'
-  use 'vim-airline/vim-airline'
-  use 'wincent/ferret'
-  use 'wincent/loupe'
-  use 'yggdroot/indentline'
-  use 'rafcamlet/nvim-luapad'
+
+  -- lua
   use { 'euclidianace/betterlua.vim', ft = { 'lua' } }
+  use 'rafcamlet/nvim-luapad'
+
+  -- vue
+  use { 'posva/vim-vue', ft = { 'ts', 'vue' } }
+  use { 'neoclide/coc-vetur', run = 'yarn install --frozen-lockfile' }
+
+  -- typescript
+  use 'leafgarland/typescript-vim'
+  use { 'neoclide/coc-tsserver', run = 'yarn install --frozen-lockfile'}
+
+  -- vimscript
+  use { 'iamcco/coc-vimlsp', ft = { 'vim' } }
+
+  -- Themes
+  use 'vim-airline/vim-airline'
+  use 'mhartington/oceanic-next'
 end
 
 
