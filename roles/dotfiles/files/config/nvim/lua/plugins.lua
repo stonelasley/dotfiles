@@ -56,6 +56,7 @@ local function init()
   use 'wincent/loupe'
   use 'yggdroot/indentline'
   use 'rafcamlet/nvim-luapad'
+  use { 'euclidianace/betterlua.vim', ft = { 'lua' } }
 end
 
 
