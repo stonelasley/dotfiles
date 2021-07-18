@@ -33,7 +33,7 @@ local function init()
   }
   use 'leafgarland/typescript-vim'
   use 'honza/vim-snippets'
-  use 'iamcco/coc-vimlsp'
+  use { 'iamcco/coc-vimlsp', ft = { 'vim' } }
   use { 'neoclide/coc.nvim', branch = 'release' }
   use { 'neoclide/coc-tsserver', run = 'yarn install --frozen-lockfile'}
   use { 'neoclide/coc-json', run = 'yarn install --frozen-lockfile' }
