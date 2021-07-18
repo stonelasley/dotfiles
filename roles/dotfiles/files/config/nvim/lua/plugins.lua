@@ -1,4 +1,14 @@
-return require('packer').startup(function()
+local packer = nil
+
+local function init() 
+  if packer == nil then
+    packer = require'packer'
+    packer.init { disable_commands = true }
+
+  end
+
+  local use = packer.use
+
   use 'wbthomason/packer.nvim'
   use 'christoomey/vim-tmux-navigator'
   use 'dhruvasagar/vim-zoom'
@@ -15,20 +25,19 @@ return require('packer').startup(function()
   use {
     'nvim-telescope/telescope.nvim',
     requires = { { 'nvim-lua/popup.nvim' }, { 'nvim-lua/plenary.nvim' } },
-    -- setup = function()
-    --   require('telescope').setup {
-    --     extensions = {
-    --       fzy_native = {
-    --         override_generic_sorter = false,
-    --         override_file_sorter = true
-    --       }
-    --     }
-    --   }
-    --   require('telescope').load_extension('fzy_native')
-
-    -- end,
+    setup = function() 
+      require('telescope').setup {
+        extensions = {
+          fzy_native = {
+            override_generic_sorter = false,
+            override_file_sorter = true
+          }
+        }
+      }
+      require('telescope').load_extension('fzy_native')
+    end
     --config = [[require('config.telescope')]],
-    cmd = 'Telescope',
+    --cmd = 'Telescope'
   }
 
   use {
@@ -60,4 +69,14 @@ return require('packer').startup(function()
   use 'wincent/loupe'
   use 'yggdroot/indentline'
   use 'rafcamlet/nvim-luapad'
-end)
+end
+
+
+local plugins = setmetatable({}, {
+  __index = function(_, key)
+    init()
+    return packer[key]
+  end,
+})
+
+return plugins
