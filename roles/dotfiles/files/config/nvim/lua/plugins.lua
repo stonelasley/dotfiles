@@ -83,6 +83,7 @@ local function init()
   -- lua
   use { 'euclidianace/betterlua.vim', ft = { 'lua' } }
   use 'rafcamlet/nvim-luapad'
+  use { 'wsdjeg/luarefvim', ft = 'lua'}
 
   -- vue
   use { 'posva/vim-vue', ft = { 'ts', 'vue' } }
