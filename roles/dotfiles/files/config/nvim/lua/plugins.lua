@@ -50,8 +50,23 @@ local function init()
   use 'tpope/vim-fugitive'
 
   -- Linting
-  use { 'neoclide/coc-prettier', run = 'yarn install --frozen-lockfile' }
-  use { 'neoclide/coc-eslint', run = 'yarn install --frozen-lockfile' }
+  use { 
+    'neoclide/coc-prettier',
+    run = 'yarn install --frozen-lockfile',
+    ft = { 
+      'javascript',
+      'ts',
+      'css',
+      'less',
+      'scss',
+      'json',
+      'html',
+      'md',
+      'vue',
+      'yaml'
+    } 
+  }
+  use { 'neoclide/coc-eslint', run = 'yarn install --frozen-lockfile', ft = { 'javascript', 'ts' } }
 
   -- Snippets
   use 'honza/vim-snippets'
@@ -62,8 +77,8 @@ local function init()
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 
   -- html & json
-  use { 'neoclide/coc-json', run = 'yarn install --frozen-lockfile' }
-  use { 'neoclide/coc-html', run = 'yarn install --frozen-lockfile' }
+  use { 'neoclide/coc-json', run = 'yarn install --frozen-lockfile', ft = { 'json' } }
+  use { 'neoclide/coc-html', run = 'yarn install --frozen-lockfile', ft = { 'html' } }
 
   -- lua
   use { 'euclidianace/betterlua.vim', ft = { 'lua' } }
