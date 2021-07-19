@@ -50,20 +50,20 @@ local function init()
   use 'tpope/vim-fugitive'
 
   -- Linting
-  -- use { 'neoclide/coc-prettier', run = 'yarn install --frozen-lockfile' }
-  -- use { 'neoclide/coc-eslint', run = 'yarn install --frozen-lockfile' }
+  use { 'neoclide/coc-prettier', run = 'yarn install --frozen-lockfile' }
+  use { 'neoclide/coc-eslint', run = 'yarn install --frozen-lockfile' }
 
   -- Snippets
   use 'honza/vim-snippets'
-  -- use { 'neoclide/coc-snippets', run = 'yarn install --frozen-lockfile' }
+  use { 'neoclide/coc-snippets', run = 'yarn install --frozen-lockfile' }
 
   -- Languages
-  -- use { 'neoclide/coc.nvim', branch = 'release' }
+  use { 'neoclide/coc.nvim', branch = 'release' }
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 
   -- html & json
-  -- use { 'neoclide/coc-json', run = 'yarn install --frozen-lockfile' }
-  -- use { 'neoclide/coc-html', run = 'yarn install --frozen-lockfile' }
+  use { 'neoclide/coc-json', run = 'yarn install --frozen-lockfile' }
+  use { 'neoclide/coc-html', run = 'yarn install --frozen-lockfile' }
 
   -- lua
   use { 'euclidianace/betterlua.vim', ft = { 'lua' } }
@@ -71,14 +71,14 @@ local function init()
 
   -- vue
   use { 'posva/vim-vue', ft = { 'ts', 'vue' } }
-  -- use { 'neoclide/coc-vetur', run = 'yarn install --frozen-lockfile' }
+  use { 'neoclide/coc-vetur', run = 'yarn install --frozen-lockfile' }
 
   -- typescript
   use 'leafgarland/typescript-vim'
-  -- use { 'neoclide/coc-tsserver', run = 'yarn install --frozen-lockfile'}
+  use { 'neoclide/coc-tsserver', run = 'yarn install --frozen-lockfile'}
 
   -- vimscript
-  -- use { 'iamcco/coc-vimlsp', ft = { 'vim' } }
+  use { 'iamcco/coc-vimlsp', ft = { 'vim' } }
 
   -- Themes
   use 'vim-airline/vim-airline'
