@@ -19,7 +19,10 @@ local function init()
   use 'tpope/vim-eunuch'
   use 'tpope/vim-projectionist'
   use 'jiangmiao/auto-pairs'
-  use 'yggdroot/indentline'
+  use  {
+    'yggdroot/indentline',
+    config = [[require('config.indentguides')]]
+  }
 
   -- Searching & Finding
   use 'wincent/ferret'
@@ -27,26 +30,22 @@ local function init()
   use {
     'kyazdani42/nvim-tree.lua',
     requires = { { 'kyazdani42/nvim-web-devicons' } },
-    config = [[require('mappings.nvim-tree')]]
+    setup = [[require('mappings.nvim-tree')]]
   }
   use 'nvim-telescope/telescope-fzy-native.nvim'
   use {
     'nvim-telescope/telescope.nvim',
     requires = { { 'nvim-lua/popup.nvim' }, { 'nvim-lua/plenary.nvim' } },
-    config = function()
-      require('mappings.telescope')
-      require('config.telescope')
-    end
+    setup = [[require('mappings.telescope')]],
+    config = [[require('config.telescope')]]
   }
 
   -- Movement
   use {
     'phaazon/hop.nvim',
     as = 'hop',
-    config = function() 
-      require('config.hop')
-      require('mappings.hop')
-    end
+    setup = [[require('mappings.hop')]],
+    config = [[require('config.hop')]]
   }
   use 'christoomey/vim-tmux-navigator'
   use 'dhruvasagar/vim-zoom'
@@ -71,7 +70,7 @@ local function init()
       'yaml'
     },
     requires = { { 'neoclide/coc.nvim' } },
-    config = [[require('mappings.coc-prettier')]]
+    setup = [[require('mappings.coc-prettier')]]
   }
   use { 
     'neoclide/coc-eslint', 
@@ -92,10 +91,8 @@ local function init()
   use { 
     'neoclide/coc.nvim',
     branch = 'release' ,
-    config = function ()
-      require('config.coc')
-      require('mappings.coc')
-    end
+    setup = [[require('mappings.coc')]],
+    config = [[require('config.coc')]]
   }
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 
@@ -116,7 +113,6 @@ local function init()
   -- lua
   use { 'euclidianace/betterlua.vim', ft = { 'lua' } }
   use 'rafcamlet/nvim-luapad'
-  use { 'wsdjeg/luarefvim', ft = 'lua'}
 
   -- vue
   use { 'posva/vim-vue', ft = { 'ts', 'vue' } }
@@ -127,11 +123,17 @@ local function init()
   }
 
   -- typescript
-  use 'leafgarland/typescript-vim'
+  use {
+    'leafgarland/typescript-vim',
+    config = [[require('config.typescript')]]
+  }
   use { 'neoclide/coc-tsserver', run = 'yarn install --frozen-lockfile'}
 
   -- vimscript
-  use { 'iamcco/coc-vimlsp', ft = { 'vim' } }
+  use { 
+    'iamcco/coc-vimlsp',
+    requires = { { 'neoclide/coc.nvim' } },
+    ft = { 'vim' } }
 
   -- Themes
   use 'vim-airline/vim-airline'
