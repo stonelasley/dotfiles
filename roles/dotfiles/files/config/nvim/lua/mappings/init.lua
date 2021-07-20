@@ -1,10 +1,10 @@
 local cmd = vim.cmd
-require('mappings.coc')
-require('mappings.coc-prettier')
-require('mappings.hop')
+--require('mappings.coc')
+--require('mappings.coc-prettier')
+--require('mappings.hop')
 require('mappings.normal')
 require('mappings.global')
-require('mappings.nvim-tree')
+--require('mappings.nvim-tree')
 
 -- Commands
 cmd [[command! PackerInstall packadd packer.nvim | lua require('plugins').install()]]

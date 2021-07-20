@@ -27,21 +27,26 @@ local function init()
   use {
     'kyazdani42/nvim-tree.lua',
     requires = { { 'kyazdani42/nvim-web-devicons' } },
+    config = [[require('mappings.nvim-tree')]]
   }
   use 'nvim-telescope/telescope-fzy-native.nvim'
   use {
     'nvim-telescope/telescope.nvim',
     requires = { { 'nvim-lua/popup.nvim' }, { 'nvim-lua/plenary.nvim' } },
-    setup = [[require('mappings.telescope')]],
-    config = [[require('config.telescope')]]
-    --cmd = 'Telescope'
+    config = function()
+      require('mappings.telescope')
+      require('config.telescope')
+    end
   }
 
   -- Movement
   use {
     'phaazon/hop.nvim',
     as = 'hop',
-    config = [[require('config.hop')]]
+    config = function() 
+      require('config.hop')
+      require('mappings.hop')
+    end
   }
   use 'christoomey/vim-tmux-navigator'
   use 'dhruvasagar/vim-zoom'
@@ -64,21 +69,49 @@ local function init()
       'md',
       'vue',
       'yaml'
-    } 
+    },
+    requires = { { 'neoclide/coc.nvim' } },
+    config = [[require('mappings.coc-prettier')]]
   }
-  use { 'neoclide/coc-eslint', run = 'yarn install --frozen-lockfile', ft = { 'javascript', 'ts' } }
+  use { 
+    'neoclide/coc-eslint', 
+    run = 'yarn install --frozen-lockfile', 
+    ft = { 'javascript', 'ts' },
+    requires = { { 'neoclide/coc.nvim' } },
+}
 
   -- Snippets
   use 'honza/vim-snippets'
-  use { 'neoclide/coc-snippets', run = 'yarn install --frozen-lockfile' }
+  use { 
+    'neoclide/coc-snippets', 
+    run = 'yarn install --frozen-lockfile' ,
+    requires = { { 'neoclide/coc.nvim' } },
+  }
 
   -- Languages
-  use { 'neoclide/coc.nvim', branch = 'release' }
+  use { 
+    'neoclide/coc.nvim',
+    branch = 'release' ,
+    config = function ()
+      require('config.coc')
+      require('mappings.coc')
+    end
+  }
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 
   -- html & json
-  use { 'neoclide/coc-json', run = 'yarn install --frozen-lockfile', ft = { 'json' } }
-  use { 'neoclide/coc-html', run = 'yarn install --frozen-lockfile', ft = { 'html' } }
+  use { 
+    'neoclide/coc-json',
+    run = 'yarn install --frozen-lockfile',
+    ft = { 'json' },
+    requires = { { 'neoclide/coc.nvim' } },
+  }
+  use { 
+    'neoclide/coc-html',
+    run = 'yarn install --frozen-lockfile',
+    ft = { 'html' },
+    requires = { { 'neoclide/coc.nvim' } },
+  }
 
   -- lua
   use { 'euclidianace/betterlua.vim', ft = { 'lua' } }
@@ -87,7 +120,11 @@ local function init()
 
   -- vue
   use { 'posva/vim-vue', ft = { 'ts', 'vue' } }
-  use { 'neoclide/coc-vetur', run = 'yarn install --frozen-lockfile' }
+  use { 
+    'neoclide/coc-vetur',
+    run = 'yarn install --frozen-lockfile',
+    requires = { { 'neoclide/coc.nvim' } },
+  }
 
   -- typescript
   use 'leafgarland/typescript-vim'
