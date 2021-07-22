@@ -1,31 +1,31 @@
-local utils = require('utils')
+local map = require('utils').map
 
-utils.map('i', 'jk', '<Esc>')
-utils.map('n', '<Space>', '<Nop>')
+map('i', 'jk', '<Esc>')
+map('n', '<Space>', '<Nop>')
 
 -- Toggle fold under cursor
-utils.map('n', '<C-=>', 'zm')
-utils.map('n', '<C-->', 'zr')
+map('n', '<C-=>', 'zm')
+map('n', '<C-->', 'zr')
 
 -- Window Movement --
-utils.map('n', '<C-h>', '<C-w>h')
-utils.map('n', '<C-j>', '<C-w>j')
-utils.map('n', '<C-k>', '<C-w>k')
-utils.map('n', '<C-l>', '<C-w>l')
+map('n', '<C-h>', '<C-w>h')
+map('n', '<C-j>', '<C-w>j')
+map('n', '<C-k>', '<C-w>k')
+map('n', '<C-l>', '<C-w>l')
 
-utils.map('n', '<leader>ls', ':ls<CR>:b<space>')
+map('n', '<leader>ls', ':ls<CR>:b<space>')
 
 -- Window Size --
-utils.map('n', '<M-j>', ':resize-2')
-utils.map('n', '<M-k>', ':resize+2')
-utils.map('n', '<M-h>', ':vertical resize-2')
-utils.map('n', '<M-l>', ':vertical resize+2')
+map('n', '<M-j>', ':resize-2')
+map('n', '<M-k>', ':resize+2')
+map('n', '<M-h>', ':vertical resize-2')
+map('n', '<M-l>', ':vertical resize+2')
 
-utils.map('n', '<CR>', ':noh<CR><CR>')
+map('n', '<CR>', ':noh<CR><CR>')
 
-utils.map('c', 'w!!', 'w !sudo tee %')
+map('c', 'w!!', 'w !sudo tee %')
 
-utils.map('n', '<leader>ls', ':ls<CR>:b<space>')
-utils.map('n', '<CR>', ':noh<CR><CR>')
+map('n', '<leader>ls', ':ls<CR>:b<space>')
+map('n', '<CR>', ':noh<CR><CR>')
 -- Replace current word
---utils.map('n', '<Leader>rr', ":%s/\\<C-r><C-w>/")
+--map('n', '<Leader>rr', ":%s/\\<C-r><C-w>/")
