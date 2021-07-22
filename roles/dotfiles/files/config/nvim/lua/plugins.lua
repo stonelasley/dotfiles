@@ -59,7 +59,7 @@ local function init()
     run = 'yarn install --frozen-lockfile',
     ft = { 
       'javascript',
-      'ts',
+      'typesscript',
       'css',
       'less',
       'scss',
@@ -75,7 +75,7 @@ local function init()
   use { 
     'neoclide/coc-eslint', 
     run = 'yarn install --frozen-lockfile', 
-    ft = { 'javascript', 'ts' },
+    ft = { 'javascript', 'typescript' },
     requires = { { 'neoclide/coc.nvim' } },
 }
 
@@ -115,7 +115,7 @@ local function init()
   use 'rafcamlet/nvim-luapad'
 
   -- vue
-  use { 'posva/vim-vue', ft = { 'ts', 'vue' } }
+  use { 'posva/vim-vue', ft = { 'typescript', 'vue' } }
   use { 
     'neoclide/coc-vetur',
     run = 'yarn install --frozen-lockfile',
@@ -125,7 +125,8 @@ local function init()
   -- typescript
   use {
     'leafgarland/typescript-vim',
-    config = [[require('config.typescript')]]
+    config = [[require('config.typescript')]],
+    ft = { 'typescript' }
   }
   use { 'neoclide/coc-tsserver', run = 'yarn install --frozen-lockfile'}
 
