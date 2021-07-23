@@ -34,6 +34,10 @@ local function init()
   }
   use 'nvim-telescope/telescope-fzy-native.nvim'
   use {
+    'nvim-telescope/telescope-frecency.nvim',
+    requires = { { 'tami5/sql.nvim' } },
+  }
+  use {
     'nvim-telescope/telescope.nvim',
     requires = { { 'nvim-lua/popup.nvim' }, { 'nvim-lua/plenary.nvim' } },
     setup = [[require('mappings.telescope')]],
