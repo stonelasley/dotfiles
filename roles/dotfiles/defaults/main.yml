@@ -8,5 +8,4 @@ dotfile_files:
   - czrc
   - mutt
   - Xdefaults
-  - config/nvim
 

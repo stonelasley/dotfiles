@@ -1,11 +1,17 @@
 ---
-- name: create directory
+- name: create neovim binary directory
   file:
     path: /opt/neovim
     state: directory
     mode: '777'
     recurse: yes
   become: yes
+
+- name: link neovim config
+  file: src={{ ansible_env.PWD }}/nvim/
+        path=~/.config/nvim
+        state=link
+        force=yes
 
 - name: download
   get_url:
