@@ -1,13 +1,21 @@
 require('telescope').setup {
+  defaults = {
+    file_ignore_patterns = {"swap", "node_modules"},
+  },
   extensions = {
     fzy_native = {
-      override_generic_sorter = false,
+      override_generic_sorter = true,
       override_file_sorter = true
     },
    frecency = {
       show_scores = true,
       show_unindexed = true,
-      ignore_patterns = {"*.git/*", "*/tmp/*"},
+      ignore_patterns = {
+        "*.git/*",
+        "*/tmp/*",
+        "*/swap/*",
+        "*/node_modules/*"
+      },
       workspaces = {
         ["conf"]    = "/home/st1/.st1",
         ["project"] = "/home/st1/projects",

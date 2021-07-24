@@ -67,3 +67,14 @@
     line:  "if [ -t 1 ]; then\n exec zsh\nfi"
   when: not exec_in_bash.stdout == "1"
 
+- name: brew upgrade
+  shell: 
+  args:
+    cmd: brew upgrade 
+  when: ansible_distribution == 'MacOSX'
+
+- name: install sqlite3
+  shell: 
+  args:
+    cmd: brew install sqlite3
+  when: ansible_distribution == 'MacOSX'

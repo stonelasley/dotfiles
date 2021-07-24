@@ -4,3 +4,5 @@ packages:
   - zsh
   - ack
   - silversearcher-ag
+  - sqlite3 
+  - libsqlite3-dev
