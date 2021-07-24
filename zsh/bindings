@@ -24,6 +24,12 @@
 #bindkey "^r" history-incremental-pattern-search-backward
 #bindkey "^s" history-incremental-pattern-search-forward
 
+#Autocomplete accept
+bindkey '^e' autosuggest-accept  # ctrl + e  | autosuggest "expand"
+ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(buffer-empty bracketed-paste accept-line push-line-or-edit)
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+ZSH_AUTOSUGGEST_USE_ASYNC=true
+
 # Make CTRL-Z background things and unbackground them.
 function fg-bg() {
   if [[ $#BUFFER -eq 0 ]]; then
