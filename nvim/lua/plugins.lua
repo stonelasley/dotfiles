@@ -63,7 +63,7 @@ local function init()
     run = 'yarn install --frozen-lockfile',
     ft = { 
       'javascript',
-      'typesscript',
+      'typescript',
       'css',
       'less',
       'scss',
