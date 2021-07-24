@@ -1,4 +1,10 @@
 ---
+- name: github sources
+  command: curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo gpg --dearmor -o /usr/share/keyrings/githubcli-archive-keyring.gpg && echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
+  become: yes
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+    
+  #TODO sudo apt update and gh install not tested on Ubuntu
 - name: install packages  
   apt: 
     name: '{{packages}}'
@@ -6,6 +12,14 @@
     state: present
   become: yes
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+
+- name: install casks
+  shell: 
+  args:
+    cmd: "brew install {{ item }}"
+  when: ansible_distribution == 'MacOSX'
+  with_items: 
+    - "{{ casks }}"
 
 - name: clone fzf
   git:
@@ -71,10 +85,4 @@
   shell: 
   args:
     cmd: brew upgrade 
-  when: ansible_distribution == 'MacOSX'
-
-- name: install sqlite3
-  shell: 
-  args:
-    cmd: brew install sqlite3
   when: ansible_distribution == 'MacOSX'

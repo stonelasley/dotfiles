@@ -6,3 +6,7 @@ packages:
   - silversearcher-ag
   - sqlite3 
   - libsqlite3-dev
+  - gh
+casks:
+  - sqlite3 
+  - gh
