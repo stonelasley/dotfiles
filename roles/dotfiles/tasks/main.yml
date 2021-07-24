@@ -7,3 +7,9 @@
         force=yes
   with_items: '{{dotfile_files}}'
 
+- name: link zsh dir 
+  file: src={{ ansible_env.PWD }}/zsh/
+        path=~/.zsh
+        state=link
+        force=yes
+
