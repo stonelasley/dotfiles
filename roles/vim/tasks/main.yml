@@ -50,7 +50,7 @@
   become: yes
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 
-- name: create local symlink
+- name: create local nvim symlink
   file: src=/opt/neovim/squashfs-root/usr/bin/nvim
         path=/usr/local/bin/nvim
         state=link
@@ -58,7 +58,7 @@
   become: yes
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 
-- name: create symlink
+- name: create nvim symlink
   file: src=/opt/neovim/nvim-osx64/bin/nvim
         path=/usr/local/bin/nvim
         state=link
