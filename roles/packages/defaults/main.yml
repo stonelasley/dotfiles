@@ -10,3 +10,4 @@ packages:
 casks:
   - sqlite3 
   - gh
+  - tree-sitter
