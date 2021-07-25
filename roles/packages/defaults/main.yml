@@ -5,6 +5,8 @@ packages:
   - automake
   - cmake
   - curl
+  - dotnet-sdk-3.1
+  - dotnet-sdk-5.0
   - g++
   - gettext
   - libsqlite3-dev
@@ -27,3 +29,7 @@ casks:
   - pkg-config
   - sqlite3 
   - tree-sitter
+
+debs:
+  - https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb
+  - https://github.com/cli/cli/releases/download/v1.13.1/gh_1.13.1_linux_amd64.deb

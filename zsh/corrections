@@ -3,3 +3,4 @@
 #
 
 alias yarn='nocorrect yarn'
+alias dotnet='nocorrect dotnet'

@@ -13,11 +13,23 @@
         state=link
         force=yes
 
-- name: clone neovim latest
+- name: test neovim cloned
+  stat:
+    path: /tmp/neovim
+  register: neovim
+
+- name: clone neovim
   git:
     repo: https://github.com/neovim/neovim
     dest: /tmp/neovim/
     force: yes
+  when: not neovim.stat.exists
+
+- name: update neovim latest
+  shell: 
+  args:
+    cmd: git checkout . && git pull
+    chdir: /tmp/neovim
 
 - name: build neovim
   shell: 

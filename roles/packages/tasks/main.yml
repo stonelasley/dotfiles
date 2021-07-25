@@ -1,22 +1,25 @@
 ---
-- name: install packages  
-  apt: 
-    name: '{{packages}}'
-    update_cache: true
-    state: present
-  become: yes
-  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
-
 - name: install packages from file
   apt: 
-    deb: https://github.com/cli/cli/releases/download/v1.13.1/gh_1.13.1_linux_amd64.deb
+    deb: '{{ item }}'
+    update_cache: false
+  become: yes
+  with_items: 
+    - '{{ debs }}'
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+
+- name: install packages  
+  apt: 
+    name: '{{ packages }}'
+    update_cache: true
+    state: present
   become: yes
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 
 - name: install casks
   shell: 
   args:
-    cmd: "brew install {{ item }}"
+    cmd: 'brew install {{ item }}'
   with_items: 
-    - "{{ casks }}"
+    - '{{ casks }}'
   when: ansible_distribution == 'MacOSX'
