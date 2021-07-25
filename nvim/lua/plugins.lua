@@ -81,7 +81,11 @@ local function init()
     run = 'yarn install --frozen-lockfile', 
     ft = { 'javascript', 'typescript' },
     requires = { { 'neoclide/coc.nvim' } },
-}
+  }
+  use {
+    'fannheyward/coc-markdownlint',
+    ft = { 'md' }
+  }
 
   -- Snippets
   use 'honza/vim-snippets'
@@ -143,6 +147,12 @@ local function init()
   -- Themes
   use 'vim-airline/vim-airline'
   use 'mhartington/oceanic-next'
+  
+  -- Notes
+  use {
+    'vimwiki/vimwiki',
+    config = [[require('config.vimwiki')]]
+  }
 end
 
 
