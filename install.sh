@@ -8,9 +8,9 @@ then
   brew upgrade
 else
   echo "Updating apt..."
-  sudo apt update
+  sudo apt update -qq
   echo "Upgrading apt..."
-  sudo apt upgrade 
+  sudo apt upgrade -qq
 fi
 
 if ! [ -x "$(command -v ansible)" ]; then
