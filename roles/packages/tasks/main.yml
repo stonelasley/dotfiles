@@ -1,10 +1,4 @@
 ---
-- name: github sources
-  command: curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo gpg --dearmor -o /usr/share/keyrings/githubcli-archive-keyring.gpg && echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
-  become: yes
-  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
-
-  #TODO sudo apt update and gh install not tested on Ubuntu
 - name: install packages  
   apt: 
     name: '{{packages}}'
@@ -13,10 +7,16 @@
   become: yes
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 
+- name: install packages from file
+  apt: 
+    deb: https://github.com/cli/cli/releases/download/v1.13.1/gh_1.13.1_linux_amd64.deb
+  become: yes
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+
 - name: install casks
   shell: 
   args:
     cmd: "brew install {{ item }}"
-  when: ansible_distribution == 'MacOSX'
   with_items: 
     - "{{ casks }}"
+  when: ansible_distribution == 'MacOSX'

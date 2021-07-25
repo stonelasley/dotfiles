@@ -7,7 +7,6 @@ packages:
   - curl
   - g++
   - gettext
-  - gh
   - libsqlite3-dev
   - libtool
   - libtool-bin
