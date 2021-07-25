@@ -23,3 +23,8 @@
   with_items: 
     - '{{ casks }}'
   when: ansible_distribution == 'MacOSX'
+
+- name: Install PyPi packages
+  pip:
+    name: '{{ pips }}'
+    executable: pip3

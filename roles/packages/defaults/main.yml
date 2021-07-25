@@ -33,3 +33,7 @@ casks:
 debs:
   - https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb
   - https://github.com/cli/cli/releases/download/v1.13.1/gh_1.13.1_linux_amd64.deb
+
+pips: 
+  - neovim
+  - pynvim
