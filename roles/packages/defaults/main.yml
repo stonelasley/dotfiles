@@ -1,13 +1,30 @@
 ---
 packages:
-  - curl
-  - zsh
   - ack
+  - autoconf
+  - automake
+  - cmake
+  - curl
+  - g++
+  - gettext
+  - gh
+  - libsqlite3-dev
+  - libtool
+  - libtool-bin
+  - ninja-build
+  - pkg-config
   - silversearcher-ag
   - sqlite3 
-  - libsqlite3-dev
-  - gh
+  - unzip
+  - zsh
 casks:
-  - sqlite3 
+  - automake
+  - cmake
+  - curl
+  - gettext
   - gh
+  - libtool
+  - ninja
+  - pkg-config
+  - sqlite3 
   - tree-sitter

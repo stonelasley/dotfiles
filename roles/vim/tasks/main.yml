@@ -1,7 +1,7 @@
 ---
-- name: create neovim binary directory
+- name: create neovim source directory
   file:
-    path: /opt/neovim
+    path: /tmp/neovim
     state: directory
     mode: '777'
     recurse: yes
@@ -13,58 +13,24 @@
         state=link
         force=yes
 
-- name: download
-  get_url:
-    url: https://github.com/neovim/neovim/releases/download/v0.5.0/nvim.appimage
-    dest: /opt/neovim/
-    mode: u+x
-  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+- name: clone neovim latest
+  git:
+    repo: https://github.com/neovim/neovim
+    dest: /tmp/neovim/
+    force: yes
 
-- name: download
-  get_url:
-    url: https://github.com/neovim/neovim/releases/download/v0.5.0/nvim-macos.tar.gz
-    dest: /opt/neovim/
-    mode: u+x
-  when: ansible_distribution == 'MacOSX'
-
-- name: extract appimage
+- name: build neovim
   shell: 
   args:
-    cmd: ./nvim.appimage --appimage-extract
-    chdir: /opt/neovim
-  become: yes
-  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+    cmd: make CMAKE_BUILD_TYPE=Release --jobs=4 --silent
+    chdir: /tmp/neovim
 
-- name: unpack archive 
+- name: build neovim
   shell: 
   args:
-    cmd: tar xzf nvim-macos.tar.gz
-    chdir: /opt/neovim
-  when: ansible_distribution == 'MacOSX'
-
-- name: create symlink
-  file: src=/opt/neovim/squashfs-root/usr/bin/nvim
-        path=/usr/bin/nvim
-        state=link
-        force=yes
+    cmd: make install
+    chdir: /tmp/neovim
   become: yes
-  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
-
-- name: create local nvim symlink
-  file: src=/opt/neovim/squashfs-root/usr/bin/nvim
-        path=/usr/local/bin/nvim
-        state=link
-        force=yes
-  become: yes
-  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
-
-- name: create nvim symlink
-  file: src=/opt/neovim/nvim-osx64/bin/nvim
-        path=/usr/local/bin/nvim
-        state=link
-        force=yes
-  become: yes
-  when: ansible_distribution == 'MacOSX'
 
 - name: clone packer
   git:
@@ -72,15 +38,3 @@
     dest: ~/.local/share/nvim/site/pack/packer/start/packer.nvim
     depth: 1
     force: yes
-
-- name: cleanup 
-  file:
-    path: /opt/neovom/nvim.appimage
-    state: absent
-  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
-
-- name: cleanup 
-  file:
-    path: /opt/neovim/nvim-macos.tar.gz
-    state: absent
-  when: ansible_distribution == 'MacOSX'
