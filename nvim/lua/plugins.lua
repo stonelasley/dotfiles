@@ -102,7 +102,17 @@ local function init()
     setup = [[require('mappings.coc')]],
     config = [[require('config.coc')]]
   }
-  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+  use { 
+    'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate',
+    config = [[require('config.treesitter')]]
+  }
+  use { 
+    'nvim-treesitter/playground', 
+    requires = { { 'nvim-treesitter/nvim-treesitter' } },
+    config = [[require('config.treesitterplayground')]],
+    cmd = 'TSPlaygroundToggle'
+ }
 
   -- html & json
   use { 
