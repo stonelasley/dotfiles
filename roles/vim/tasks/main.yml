@@ -1,12 +1,4 @@
 ---
-- name: create neovim source directory
-  file:
-    path: /tmp/neovim
-    state: directory
-    mode: '777'
-    recurse: yes
-  become: yes
-
 - name: link neovim config
   file: src={{ ansible_env.PWD }}/nvim/
         path=~/.config/nvim
