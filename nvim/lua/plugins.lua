@@ -4,7 +4,6 @@ local function init()
   if packer == nil then
     packer = require'packer'
     packer.init { disable_commands = true }
-
   end
 
   local use = packer.use
@@ -138,15 +137,20 @@ local function init()
     'neoclide/coc-vetur',
     run = 'yarn install --frozen-lockfile',
     requires = { { 'neoclide/coc.nvim' } },
+    ft = { 'vue', 'typescript', 'html' }
   }
 
   -- typescript
-  use {
-    'leafgarland/typescript-vim',
-    config = [[require('config.typescript')]],
+  --use {
+  --  'leafgarland/typescript-vim',
+  --  config = [[require('config.typescript')]],
+  --  ft = { 'typescript' }
+  --}
+  use { 
+    'neoclide/coc-tsserver', 
+    run = 'yarn install --frozen-lockfile',
     ft = { 'typescript' }
   }
-  use { 'neoclide/coc-tsserver', run = 'yarn install --frozen-lockfile'}
 
   -- vimscript
   use { 
@@ -155,8 +159,17 @@ local function init()
     ft = { 'vim' } }
 
   -- Themes
-  use 'vim-airline/vim-airline'
-  use 'mhartington/oceanic-next'
+  use {
+    'hoob3rt/lualine.nvim', 
+    requires = { { 'kyazdani42/nvim-web-devicons' } },
+    config = [[require('config.lualine')]]
+  }
+  
+  -- 'rafamadriz/neon',
+  use { 
+    '~/Projects/st1/neon',
+    config = [[require('config.neon')]],
+  }
   
   -- Notes
   use {
@@ -164,7 +177,6 @@ local function init()
     config = [[require('config.vimwiki')]]
   }
 end
-
 
 local plugins = setmetatable({}, {
   __index = function(_, key)

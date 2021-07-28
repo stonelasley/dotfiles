@@ -1,4 +1,5 @@
 local utils = {}
+local reload = require('plenary').reload
 
 local scopes = {
   o = vim.o,
