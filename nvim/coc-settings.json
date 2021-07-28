@@ -2,5 +2,6 @@
         "eslint.autoFixOnSave": true,
         "vetur.completion.autoImport": true,
         "vetur.useWorkspaceDependencies": true,
-        "snippets.ultisnips.enable": true
+        "snippets.ultisnips.enable": true,
+        "tsserver.npm": "/home/st1/.nvm/versions/node/v14.17.3/bin/npm"
 }
