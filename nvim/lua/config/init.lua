@@ -16,3 +16,4 @@ utils.opt('o', 'directory', swapdir)   -- keep swap files out of the way
 -- utils.opt('o', 'directory', vim.opt.directory + '.')
 vim.opt.clipboard:append("unnamedplus")
 vim.g.indentLine_fileTypeExclude = {'json'}
+vim.cmd('set foldmethod=syntax')
