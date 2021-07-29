@@ -9,7 +9,6 @@ local function init()
   local use = packer.use
 
   use 'wbthomason/packer.nvim'
-
   -- Convenience Utilities
   use 'tpope/vim-sensible'
   use 'tpope/vim-sleuth'
@@ -17,7 +16,10 @@ local function init()
   use 'tpope/vim-commentary'
   use 'tpope/vim-eunuch'
   use 'tpope/vim-projectionist'
-  use 'windwp/nvim-autopairs'
+  use { 
+    'windwp/nvim-autopairs' ,
+    config = [[require('config.autopairs')]]
+  }
   use  {
     'yggdroot/indentline',
     config = [[require('config.indentguides')]]
