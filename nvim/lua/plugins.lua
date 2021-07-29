@@ -17,7 +17,7 @@ local function init()
   use 'tpope/vim-commentary'
   use 'tpope/vim-eunuch'
   use 'tpope/vim-projectionist'
-  use 'jiangmiao/auto-pairs'
+  use 'windwp/nvim-autopairs'
   use  {
     'yggdroot/indentline',
     config = [[require('config.indentguides')]]
@@ -60,38 +60,24 @@ local function init()
   use { 
     'neoclide/coc-prettier',
     run = 'yarn install --frozen-lockfile',
-    ft = { 
-      'javascript',
-      'typescript',
-      'css',
-      'less',
-      'scss',
-      'json',
-      'html',
-      'md',
-      'vue',
-      'yaml'
-    },
     requires = { { 'neoclide/coc.nvim' } },
     setup = [[require('mappings.coc-prettier')]]
   }
   use { 
     'neoclide/coc-eslint', 
     run = 'yarn install --frozen-lockfile', 
-    ft = { 'javascript', 'typescript' },
     requires = { { 'neoclide/coc.nvim' } },
   }
   use {
     'fannheyward/coc-markdownlint',
-    ft = { 'md' }
+    requires = { { 'neoclide/coc.nvim' } },
   }
 
   -- Snippets
-  use 'honza/vim-snippets'
   use { 
     'neoclide/coc-snippets', 
     run = 'yarn install --frozen-lockfile' ,
-    requires = { { 'neoclide/coc.nvim' } },
+    requires = { { 'neoclide/coc.nvim', 'honza/vim-snippets' } }
   }
 
   -- Languages
@@ -117,13 +103,11 @@ local function init()
   use { 
     'neoclide/coc-json',
     run = 'yarn install --frozen-lockfile',
-    ft = { 'json' },
     requires = { { 'neoclide/coc.nvim' } },
   }
   use { 
     'neoclide/coc-html',
     run = 'yarn install --frozen-lockfile',
-    ft = { 'html' },
     requires = { { 'neoclide/coc.nvim' } },
   }
 
@@ -136,20 +120,17 @@ local function init()
   use { 
     'neoclide/coc-vetur',
     run = 'yarn install --frozen-lockfile',
-    requires = { { 'neoclide/coc.nvim' } },
-    ft = { 'vue', 'typescript', 'html' }
+    requires = { { 'neoclide/coc.nvim' } }
   }
 
   -- typescript
-  --use {
-  --  'leafgarland/typescript-vim',
-  --  config = [[require('config.typescript')]],
-  --  ft = { 'typescript' }
-  --}
+  use {
+    'leafgarland/typescript-vim',
+    config = [[require('config.typescript')]]
+  }
   use { 
     'neoclide/coc-tsserver', 
-    run = 'yarn install --frozen-lockfile',
-    ft = { 'typescript' }
+    run = 'yarn install --frozen-lockfile'
   }
 
   -- vimscript
