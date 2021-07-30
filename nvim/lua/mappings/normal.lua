@@ -27,5 +27,6 @@ map('c', 'w!!', 'w !sudo tee %')
 
 map('n', '<leader>ls', ':ls<CR>:b<space>')
 map('n', '<CR>', ':noh<CR><CR>')
--- Replace current word
---map('n', '<Leader>rr', ":%s/\\<C-r><C-w>/")
+
+-- Line selection behavior, cheers Primeagen!
+map('n', 'Y', 'y$')
