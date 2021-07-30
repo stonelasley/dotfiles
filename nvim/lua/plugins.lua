@@ -150,7 +150,7 @@ local function init()
   
   -- 'rafamadriz/neon',
   use { 
-    '~/Projects/st1/neon',
+    'stonelasley/neon',
     config = [[require('config.neon')]],
   }
   
