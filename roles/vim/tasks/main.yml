@@ -15,6 +15,7 @@
     repo: https://github.com/neovim/neovim
     dest: /tmp/neovim/
     force: yes
+    version: release-0.5
   when: not neovim.stat.exists
 
 - name: update neovim latest
