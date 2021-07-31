@@ -30,3 +30,9 @@ map('n', '<CR>', ':noh<CR><CR>')
 
 -- Line selection behavior, cheers Primeagen!
 map('n', 'Y', 'y$')
+
+-- Break undo points
+map('i', ',', ',<c-g>u', { noremap = true })
+map('i', '.', '.<c-g>u', { noremap = true })
+map('i', ';', ';<c-g>u', { noremap = true })
+map('i', ')', ')<c-g>u', { noremap = true })
