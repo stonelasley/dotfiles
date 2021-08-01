@@ -69,6 +69,9 @@ local function init()
     -- Linting
 
   -- Snippets
+  use {
+    'l3mon4d3/luasnip'
+  }
 
   -- Languages
   --
