@@ -45,6 +45,14 @@ local function init()
     config = [[require('config.telescope')]]
   }
 
+  -- Completion
+  use {
+    'hrsh7th/nvim-compe',
+    setup = [[require('mappings.compe')]],
+    config = [[require('config.compe')]]
+  }
+
+
   -- Movement
   use {
     'phaazon/hop.nvim',
@@ -57,7 +65,7 @@ local function init()
 
   -- Git
   use 'tpope/vim-fugitive'
-
+  
     -- Linting
 
   -- Snippets
