@@ -58,37 +58,12 @@ local function init()
   -- Git
   use 'tpope/vim-fugitive'
 
-  -- Linting
-  use { 
-    'neoclide/coc-prettier',
-    run = 'yarn install --frozen-lockfile',
-    requires = { { 'neoclide/coc.nvim' } },
-    setup = [[require('mappings.coc-prettier')]]
-  }
-  use { 
-    'neoclide/coc-eslint', 
-    run = 'yarn install --frozen-lockfile', 
-    requires = { { 'neoclide/coc.nvim' } },
-  }
-  use {
-    'fannheyward/coc-markdownlint',
-    requires = { { 'neoclide/coc.nvim' } },
-  }
+    -- Linting
 
   -- Snippets
-  use { 
-    'neoclide/coc-snippets', 
-    run = 'yarn install --frozen-lockfile' ,
-    requires = { { 'neoclide/coc.nvim', 'honza/vim-snippets' } }
-  }
 
   -- Languages
-  use { 
-    'neoclide/coc.nvim',
-    branch = 'release' ,
-    setup = [[require('mappings.coc')]],
-    config = [[require('config.coc')]]
-  }
+  --
   use { 
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate',
@@ -102,16 +77,6 @@ local function init()
  }
 
   -- html & json
-  use { 
-    'neoclide/coc-json',
-    run = 'yarn install --frozen-lockfile',
-    requires = { { 'neoclide/coc.nvim' } },
-  }
-  use { 
-    'neoclide/coc-html',
-    run = 'yarn install --frozen-lockfile',
-    requires = { { 'neoclide/coc.nvim' } },
-  }
 
   -- lua
   use { 'euclidianace/betterlua.vim', ft = { 'lua' } }
@@ -119,27 +84,12 @@ local function init()
 
   -- vue
   use { 'posva/vim-vue', ft = { 'typescript', 'vue' } }
-  use { 
-    'neoclide/coc-vetur',
-    run = 'yarn install --frozen-lockfile',
-    requires = { { 'neoclide/coc.nvim' } }
-  }
 
   -- typescript
   use {
     'leafgarland/typescript-vim',
     config = [[require('config.typescript')]]
   }
-  use { 
-    'neoclide/coc-tsserver', 
-    run = 'yarn install --frozen-lockfile'
-  }
-
-  -- vimscript
-  use { 
-    'iamcco/coc-vimlsp',
-    requires = { { 'neoclide/coc.nvim' } },
-    ft = { 'vim' } }
 
   -- Themes
   use {
