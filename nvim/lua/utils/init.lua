@@ -1,5 +1,4 @@
 local utils = {}
-local reload = require('plenary').reload
 
 local scopes = {
   o = vim.o,
@@ -25,6 +24,10 @@ function utils.map(mode, lhs, rhs, opts)
   local options = {noremap = true}
   if opts then options = vim.tbl_extend('force', options, opts) end
   vim.api.nvim_set_keymap(mode, lhs, rhs, options)
+end
+
+function utils.t (str)
+  return vim.api.nvim_replace_termcodes(str, true, true, true)
 end
 
 return utils

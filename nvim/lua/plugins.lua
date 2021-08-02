@@ -16,6 +16,10 @@ local function init()
   use 'tpope/vim-commentary'
   use 'tpope/vim-eunuch'
   use 'tpope/vim-projectionist'
+  use {
+    'kosayoda/nvim-lightbulb',
+    config = [[require('config.lightbulb')]]
+  }
   use { 
     'windwp/nvim-autopairs' ,
     config = [[require('config.autopairs')]]
@@ -73,9 +77,13 @@ local function init()
   }
 
   -- Snippets
-  use {
-    'l3mon4d3/luasnip'
+  use { 
+    'sirver/ultisnips',
+    config = [[require('config.ultisnips')]]
   }
+  use { 'honza/vim-snippets' }
+  use { 'hrsh7th/vim-vsnip' }
+  use { 'softchris/ts-snippets' }
 
   -- Languages
   
@@ -113,6 +121,10 @@ local function init()
     'hoob3rt/lualine.nvim', 
     requires = { { 'kyazdani42/nvim-web-devicons' } },
     config = [[require('config.lualine')]]
+  }
+  use {
+    'onsails/lspkind-nvim',
+    config = [[require('config.lspkind')]]
   }
   
   -- 'rafamadriz/neon',

@@ -1,0 +1,2 @@
+vim.g.UltiSnipsSnippetDirectories = {'UltiSnips'}
+
