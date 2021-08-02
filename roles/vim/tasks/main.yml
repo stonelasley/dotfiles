@@ -43,3 +43,38 @@
     dest: ~/.local/share/nvim/site/pack/packer/start/packer.nvim
     depth: 1
     force: yes
+
+- name: test omnisharp installed
+  stat:
+    path: ~/opt/omnisharp
+  register: omnisharp
+
+- name: download and install omnisharp
+  ansible.builtin.unarchive:
+    src: https://github.com/OmniSharp/omnisharp-roslyn/releases/download/{{omnisharp_version}}/omnisharp-osx.zip
+    dest: /tmp/omnisharp
+    remote_src: yes
+    mode: u+x
+  when: not omnisharp.stat.exists and ansible_distribution == 'MacOSX'
+  become: yes
+
+- name: download and install omnisharp
+  ansible.builtin.unarchive:
+    src: https://github.com/OmniSharp/omnisharp-roslyn/releases/download/{{omnisharp_version}}/omnisharp-linux-x64.zip
+    dest: /tmp/omnisharp
+    remote_src: yes
+    mode: u+x
+  when: not omnisharp.stat.exists and (ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu')
+  become: yes
+
+- name: Fix Omnisharp permissions
+  file: 
+    path: /opt/omnisharp/run
+    mode: u+x
+  become: yes
+
+- name: install oh-my-zsh
+  shell: 
+  args:
+    cmd: find /opt/omnisharp | xargs xattr -r -d com.apple.quarantine
+  when: not omnisharp.stat.exists and ansible_distribution == 'MacOSX'

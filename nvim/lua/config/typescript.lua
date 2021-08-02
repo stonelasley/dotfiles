@@ -1,1 +1,1 @@
-vim.g.typescript_indent_disable = 1
+--vim.g.typescript_indent_disable = 1

@@ -1,6 +1,12 @@
 require('telescope').setup {
   defaults = {
-    file_ignore_patterns = {"swap", "node_modules"},
+    file_ignore_patterns = {
+      "swap", 
+      "node_modules",
+      ".vendor",
+      "yarn.lock",
+      ".nuxt"
+    },
   },
   extensions = {
     fzy_native = {

@@ -66,7 +66,11 @@ local function init()
   -- Git
   use 'tpope/vim-fugitive'
   
-    -- Linting
+  -- Linting
+  use {
+    'prettier/vim-prettier',
+    run = 'yarn install'
+  }
 
   -- Snippets
   use {
@@ -74,7 +78,11 @@ local function init()
   }
 
   -- Languages
-  --
+  
+  use {
+    'neovim/nvim-lspconfig',
+    config = [[require('config.lsp')]]
+  }
   use { 
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate',
@@ -86,8 +94,6 @@ local function init()
     config = [[require('config.treesitterplayground')]],
     cmd = 'TSPlaygroundToggle'
  }
-
-  -- html & json
 
   -- lua
   use { 'euclidianace/betterlua.vim', ft = { 'lua' } }
