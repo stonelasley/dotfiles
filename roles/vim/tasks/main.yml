@@ -46,13 +46,21 @@
 
 - name: test omnisharp installed
   stat:
-    path: ~/opt/omnisharp
+    path: /opt/omnisharp/run
   register: omnisharp
+
+- name: Create a directory if it does not exist
+  ansible.builtin.file:
+    path: /opt/omnisharp
+    state: directory
+    mode: '0755'
+  when: not omnisharp.stat.exists 
+  become: yes
 
 - name: download and install omnisharp
   ansible.builtin.unarchive:
     src: https://github.com/OmniSharp/omnisharp-roslyn/releases/download/{{omnisharp_version}}/omnisharp-osx.zip
-    dest: /tmp/omnisharp
+    dest: /opt/omnisharp
     remote_src: yes
     mode: u+x
   when: not omnisharp.stat.exists and ansible_distribution == 'MacOSX'
@@ -61,7 +69,7 @@
 - name: download and install omnisharp
   ansible.builtin.unarchive:
     src: https://github.com/OmniSharp/omnisharp-roslyn/releases/download/{{omnisharp_version}}/omnisharp-linux-x64.zip
-    dest: /tmp/omnisharp
+    dest: /opt/omnisharp
     remote_src: yes
     mode: u+x
   when: not omnisharp.stat.exists and (ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu')
