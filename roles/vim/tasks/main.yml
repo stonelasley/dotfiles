@@ -10,32 +10,32 @@
     path: /tmp/neovim
   register: neovim
 
-- name: clone neovim
-  git:
-    repo: https://github.com/neovim/neovim
-    dest: /tmp/neovim/
-    force: yes
-    version: release-0.5
-  when: not neovim.stat.exists
-
-- name: update neovim latest
-  shell: 
-  args:
-    cmd: git checkout . && git pull
-    chdir: /tmp/neovim
-
-- name: build neovim
-  shell: 
-  args:
-    cmd: make CMAKE_BUILD_TYPE=Release --jobs=4 --silent
-    chdir: /tmp/neovim
-
-- name: build neovim
-  shell: 
-  args:
-    cmd: make install
-    chdir: /tmp/neovim
-  become: yes
+    #- name: clone neovim
+    #  git:
+    #    repo: https://github.com/neovim/neovim
+    #    dest: /tmp/neovim/
+    #    force: yes
+    #    version: release-0.5
+    #  when: not neovim.stat.exists
+    #
+    #- name: update neovim latest
+    #  shell: 
+    #  args:
+    #    cmd: git checkout . && git pull
+    #    chdir: /tmp/neovim
+    #
+    #- name: build neovim
+    #  shell: 
+    #  args:
+    #    cmd: make CMAKE_BUILD_TYPE=Release --jobs=4 --silent
+    #    chdir: /tmp/neovim
+    #
+    #- name: build neovim
+    #  shell: 
+    #  args:
+    #    cmd: make install
+    #    chdir: /tmp/neovim
+    #  become: yes
 
 - name: clone packer
   git:
@@ -81,8 +81,32 @@
     mode: u+x
   become: yes
 
-- name: install oh-my-zsh
+- name: Dequarantine omnisharp
   shell: 
   args:
     cmd: find /opt/omnisharp | xargs xattr -r -d com.apple.quarantine
   when: not omnisharp.stat.exists and ansible_distribution == 'MacOSX'
+
+- name: clone Lua language Server
+  git:
+    repo: https://github.com/sumneko/lua-language-server
+    dest: /tmp/sumneko
+    depth: 1
+    recursive: yes
+    track_submodules: yes
+    force: yes
+
+- name: Fix Sumneko install permissions
+  file: 
+    path: /tmp/sumneko/3rd/luamake/compile/install.sh
+    mode: u+x
+
+- name: compile Lua Language Server
+  shell: ./install.sh
+  args:
+    chdir: /tmp/sumneko/3rd/luamake/compile/
+
+- name: build Lua Language Server
+  shell: ./luamake rebuild
+  args:
+    chdir: /tmp/sumneko/3rd/luamake

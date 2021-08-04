@@ -83,3 +83,5 @@ export NVM_DIR="$HOME/.nvm"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 bindkey '^P' fzf-file-widget
+
+alias luamake=/Users/scl/.st1/luamake
