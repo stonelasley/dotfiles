@@ -1,6 +1,6 @@
 local packer = nil
 
-local function init() 
+local function init()
   if packer == nil then
     packer = require'packer'
     packer.init { disable_commands = true }
@@ -16,11 +16,12 @@ local function init()
   use 'tpope/vim-commentary'
   use 'tpope/vim-eunuch'
   use 'tpope/vim-projectionist'
+  use 'andrewradev/splitjoin.vim'
   use {
     'kosayoda/nvim-lightbulb',
-    config = [[require('config.lightbulb')]]
+    config = [[require('config.lightbulb')]],
   }
-  use { 
+  use {
     'windwp/nvim-autopairs' ,
     config = [[require('config.autopairs')]]
   }
@@ -118,7 +119,7 @@ local function init()
 
   -- Themes
   use {
-    'hoob3rt/lualine.nvim', 
+    'hoob3rt/lualine.nvim',
     requires = { { 'kyazdani42/nvim-web-devicons' } },
     config = [[require('config.lualine')]]
   }
@@ -126,13 +127,13 @@ local function init()
     'onsails/lspkind-nvim',
     config = [[require('config.lspkind')]]
   }
-  
+
   -- 'rafamadriz/neon',
-  use { 
+  use {
     'stonelasley/neon',
     config = [[require('config.neon')]],
   }
-  
+
   -- Notes
   use {
     'vimwiki/vimwiki',
