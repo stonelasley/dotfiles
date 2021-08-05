@@ -1,7 +1,7 @@
 require('telescope').setup {
   defaults = {
     file_ignore_patterns = {
-      "swap", 
+      "swap",
       "node_modules",
       ".vendor",
       "yarn.lock",
@@ -27,7 +27,7 @@ require('telescope').setup {
         ["project"] = "/home/st1/projects",
         ["wiki"]    = "/home/st1/vimwiki"
       }
-    } 
+    }
   }
 }
 require('telescope').load_extension('fzy_native')

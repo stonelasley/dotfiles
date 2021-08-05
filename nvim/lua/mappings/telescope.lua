@@ -11,3 +11,8 @@ map('n', '<leader><leader>gc', '<cmd>Telescope git_bcommits<cr>', noremap)
 map('n', '<leader><leader>gb', '<cmd>Telescope git_branches<cr>', noremap)
 map('n', '<leader>fb', '<cmd>Telescope buffers<cr>', noremap)
 map('n', '<leader>fh', '<cmd>Telescope help_tags<cr>', noremap)
+
+
+vim.cmd([[nnoremap <leader>dot :lua require('st1.telescope').focus_find()<CR> ]])
+vim.cmd([[nnoremap <leader>vrc :lua require('st1.telescope').focus_find('/roles/dotfiles/files/config/nvim')<CR>]])
+vim.cmd([[nnoremap <leader>zrc :lua require('st1.telescope').focus_find('/roles/dotfiles/files/zsh')<CR>]])
