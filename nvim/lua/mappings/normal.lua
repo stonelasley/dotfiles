@@ -2,6 +2,7 @@ local map = require('utils').map
 
 map('i', 'jk', '<Esc>')
 map('n', '<Space>', '<Nop>')
+map('n' ,'<tab>', 'za')
 
 -- Toggle fold under cursor
 map('n', '<C-=>', 'zm')

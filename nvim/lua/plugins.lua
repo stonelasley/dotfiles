@@ -31,7 +31,6 @@ local function init()
   }
 
   -- Searching & Finding
-  use 'wincent/ferret'
   use 'wincent/loupe'
   use {
     'kyazdani42/nvim-tree.lua',
