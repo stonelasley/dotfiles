@@ -1,30 +1,28 @@
 local M = {}
-
-local system_name
-
-if vim.fn.has("mac") == 1 then
-  system_name = "macOS"
-elseif vim.fn.has("unix") == 1 then
-  system_name = "Linux"
-elseif vim.fn.has('win32') == 1 then
-  system_name = "Windows"
-else
-  print("Unsupported system for sumneko")
-end
-
 local sumneko_root_path = "/opt/sumneko"
-local sumneko_binary = sumneko_root_path.."/bin/"..system_name.."/lua-language-server"
+
+local function system_name()
+  local has = vim.fn.has
+  if has("mac") == 1 then
+    return "macOS"
+  elseif has("unix") == 1 then
+    return "Linux"
+  elseif has('win32') == 1 then
+    return "Windows"
+  else
+    print("Unsupported system for sumneko")
+    return ""
+  end
+end
+local sumneko_binary = sumneko_root_path.."/bin/"..system_name().."/lua-language-server"
 
 local runtime_path = vim.split(package.path, ';')
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
 
-print(sumneko_binary)
-print(sumneko_root_path)
-
 M.cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"};
 
-function M.on_attach (client) 
+function M.on_attach (client)
 end
 
 M.settings = {
