@@ -10,32 +10,32 @@
     path: /tmp/neovim
   register: neovim
 
-    #- name: clone neovim
-    #  git:
-    #    repo: https://github.com/neovim/neovim
-    #    dest: /tmp/neovim/
-    #    force: yes
-    #    version: release-0.5
-    #  when: not neovim.stat.exists
-    #
-    #- name: update neovim latest
-    #  shell: 
-    #  args:
-    #    cmd: git checkout . && git pull
-    #    chdir: /tmp/neovim
-    #
-    #- name: build neovim
-    #  shell: 
-    #  args:
-    #    cmd: make CMAKE_BUILD_TYPE=Release --jobs=4 --silent
-    #    chdir: /tmp/neovim
-    #
-    #- name: build neovim
-    #  shell: 
-    #  args:
-    #    cmd: make install
-    #    chdir: /tmp/neovim
-    #  become: yes
+- name: clone neovim
+  git:
+    repo: https://github.com/neovim/neovim
+    dest: /tmp/neovim/
+    force: yes
+    version: release-0.5
+  when: not neovim.stat.exists
+
+- name: update neovim latest
+  shell: 
+  args:
+    cmd: git checkout . && git pull
+    chdir: /tmp/neovim
+
+- name: build neovim
+  shell: 
+  args:
+    cmd: make CMAKE_BUILD_TYPE=Release --jobs=4 --silent
+    chdir: /tmp/neovim
+
+- name: build neovim
+  shell: 
+  args:
+    cmd: make install
+    chdir: /tmp/neovim
+  become: yes
 
 - name: clone packer
   git:
@@ -90,23 +90,33 @@
 - name: clone Lua language Server
   git:
     repo: https://github.com/sumneko/lua-language-server
-    dest: /tmp/sumneko
+    dest: /opt/sumneko
     depth: 1
     recursive: yes
     track_submodules: yes
     force: yes
+  become: yes
+
+- name: set Sumneko directory permissions
+  file:
+    path: /opt/sumneko
+    state: directory
+    mode: '777'
+    recurse: yes
+  become: yes
 
 - name: Fix Sumneko install permissions
   file: 
-    path: /tmp/sumneko/3rd/luamake/compile/install.sh
+    path: /opt/sumneko/3rd/luamake/compile/install.sh
     mode: u+x
+  become: yes
 
 - name: compile Lua Language Server
-  shell: ./install.sh
+  command: ./compile/install.sh
   args:
-    chdir: /tmp/sumneko/3rd/luamake/compile/
+    chdir: /opt/sumneko/3rd/luamake
 
 - name: build Lua Language Server
-  shell: ./luamake rebuild
+  command: ./3rd/luamake/luamake rebuild
   args:
-    chdir: /tmp/sumneko/3rd/luamake
+    chdir: /opt/sumneko
