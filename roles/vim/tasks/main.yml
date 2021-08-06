@@ -7,34 +7,45 @@
 
 - name: test neovim cloned
   stat:
-    path: /tmp/neovim
+    path: /opt/neovim
   register: neovim
 
 - name: clone neovim
   git:
     repo: https://github.com/neovim/neovim
-    dest: /tmp/neovim/
+    dest: /opt/neovim/
     force: yes
     version: release-0.5
   when: not neovim.stat.exists
+  become: yes
+
+- name: set neovim directory permissions
+  file:
+    path: /opt/neovim
+    state: directory
+    mode: '700'
+    recurse: yes
+  become: yes
 
 - name: update neovim latest
   shell: 
   args:
     cmd: git checkout . && git pull
-    chdir: /tmp/neovim
+    chdir: /opt/neovim
+  become: yes
 
 - name: build neovim
   shell: 
   args:
     cmd: make CMAKE_BUILD_TYPE=Release --jobs=4 --silent
-    chdir: /tmp/neovim
+    chdir: /opt/neovim
+  become: yes
 
 - name: build neovim
   shell: 
   args:
     cmd: make install
-    chdir: /tmp/neovim
+    chdir: /opt/neovim
   become: yes
 
 - name: clone packer
