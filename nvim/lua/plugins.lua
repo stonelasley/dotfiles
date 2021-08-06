@@ -101,7 +101,13 @@ local function init()
     requires = { { 'nvim-treesitter/nvim-treesitter' } },
     config = [[require('config.treesitterplayground')]],
     cmd = 'TSPlaygroundToggle'
- }
+  }
+  use {
+    "folke/trouble.nvim",
+    requires = "kyazdani42/nvim-web-devicons",
+    config = [[require('config.trouble')]],
+    setup = [[require('mappings.trouble')]],
+  }
 
   -- lua
   use { 'euclidianace/betterlua.vim', ft = { 'lua' } }
