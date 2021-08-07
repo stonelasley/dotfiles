@@ -41,4 +41,10 @@ function fg-bg() {
 zle -N fg-bg
 bindkey '^Z' fg-bg
 
+#FZF
+bindkey '^P' fzf-file-widget
+
+#Navigate with vim bindings
+bindkey -s '^I' 'pushd\n'
+bindkey -s '^O' 'cd -\n'
 

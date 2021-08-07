@@ -71,6 +71,9 @@ test -f $LOCAL_RC && source $LOCAL_RC
 # Plug-ins
 #
 
+#FZF
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
 source "$HOME/.st1/.vendor/zsh-autosuggestions/zsh-autosuggestions.zsh"
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=59'
 
@@ -80,8 +83,3 @@ source "$HOME/.st1/.vendor/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-bindkey '^P' fzf-file-widget
-
-alias luamake=/Users/scl/.st1/luamake
