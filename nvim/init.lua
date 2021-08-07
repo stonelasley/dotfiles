@@ -24,6 +24,7 @@ vim.cmd('set foldmethod=syntax')
 
 vim.opt.clipboard:append("unnamedplus")
 vim.g.indentLine_fileTypeExclude = {'json'}
+vim.g.wrap = false
 vim.o.termguicolors = true
 
 -- Highlight text on yank
@@ -43,4 +44,3 @@ cmd [[command! PackerUpdate packadd packer.nvim | lua require('plugins').update(
 cmd [[command! PackerSync packadd packer.nvim | lua require('plugins').sync()]]
 cmd [[command! PackerClean packadd packer.nvim | lua require('plugins').clean()]]
 cmd [[command! PackerCompile packadd packer.nvim | lua require('plugins').compile()]]
-
