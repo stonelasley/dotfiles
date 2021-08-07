@@ -50,6 +50,14 @@
     path: /tmp/oh-my-zsh.sh
     state: absent
 
+- name: correct fzf directory permissions
+  file:
+    path: /opt/fzf
+    state: directory
+    mode: '755'
+    recurse: yes
+  become: yes
+
 - name: test added to bashrc
   shell: grep -c "exec zsh" ~/.bashrc || true 
   register: exec_in_bash
