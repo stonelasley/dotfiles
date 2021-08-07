@@ -1,5 +1,4 @@
 local map = require('utils').map
-local cmd = vim.cmd
 
 local noremap = { noremap = true }
 map('n', '<C-p>', '<cmd>Telescope find_files<cr>', noremap)
