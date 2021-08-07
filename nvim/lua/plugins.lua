@@ -69,7 +69,7 @@ local function init()
 
   -- Git
   use 'tpope/vim-fugitive'
-  
+
   -- Linting
   use {
     'prettier/vim-prettier',
@@ -77,7 +77,7 @@ local function init()
   }
 
   -- Snippets
-  use { 
+  use {
     'sirver/ultisnips',
     config = [[require('config.ultisnips')]]
   }
@@ -86,18 +86,22 @@ local function init()
   use { 'softchris/ts-snippets' }
 
   -- Languages
-  
   use {
     'neovim/nvim-lspconfig',
     config = [[require('config.lsp')]]
   }
-  use { 
+  use {
+    'glepnir/lspsaga.nvim',
+    config = [[require('config.lspsaga')]],
+    setup = [[require('mappings.lspsaga')]]
+  }
+  use {
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate',
     config = [[require('config.treesitter')]]
   }
-  use { 
-    'nvim-treesitter/playground', 
+  use {
+    'nvim-treesitter/playground',
     requires = { { 'nvim-treesitter/nvim-treesitter' } },
     config = [[require('config.treesitterplayground')]],
     cmd = 'TSPlaygroundToggle'

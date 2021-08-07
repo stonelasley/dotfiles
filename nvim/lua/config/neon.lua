@@ -15,12 +15,12 @@ local groups = {
   IncSearch = search,
   Visual = search,
   CursorLineNr = { fg = c.orange, bg = c.none },
-  LineNr = { fg = c.gray, bg = none },
+  LineNr = { fg = c.gray, bg = c.none },
   NvimTreeRootFolder = { fg = c.gray_alt },
   NvimTreeGitDirty = { fg = c.red },
   CocHighlightText = { style = 'reverse' },
 -- Compe
-  CompeDocumentation = { fg = c.fg, bg = c.bg0 } 
+  CompeDocumentation = { fg = c.fg, bg = c.bg0 }
 }
 
 for group, parameters in pairs(groups) do

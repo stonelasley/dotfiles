@@ -9,6 +9,7 @@
   stat:
     path: /opt/neovim
   register: neovim
+  become: yes
 
 - name: clone neovim
   git:
@@ -23,7 +24,7 @@
   file:
     path: /opt/neovim
     state: directory
-    mode: '700'
+    mode: '777'
     recurse: yes
   become: yes
 
@@ -39,7 +40,6 @@
   args:
     cmd: make CMAKE_BUILD_TYPE=Release --jobs=4 --silent
     chdir: /opt/neovim
-  become: yes
 
 - name: build neovim
   shell: 
@@ -60,11 +60,11 @@
     path: /opt/omnisharp/run
   register: omnisharp
 
-- name: Create a directory if it does not exist
+- name: Create a Omnisharp directory
   ansible.builtin.file:
     path: /opt/omnisharp
     state: directory
-    mode: '0755'
+    mode: '0777'
   when: not omnisharp.stat.exists 
   become: yes
 
@@ -116,7 +116,7 @@
     recurse: yes
   become: yes
 
-- name: Fix Sumneko install permissions
+- name: six sumneko install executable
   file: 
     path: /opt/sumneko/3rd/luamake/compile/install.sh
     mode: u+x
@@ -131,3 +131,27 @@
   command: ./3rd/luamake/luamake rebuild
   args:
     chdir: /opt/sumneko
+
+- name: reset Neovim directory permissions
+  file:
+    path: /opt/neovim
+    state: directory
+    mode: '755'
+    recurse: yes
+  become: yes
+
+- name: reset Sumneko directory permissions
+  file:
+    path: /opt/sumneko
+    state: directory
+    mode: '755'
+    recurse: yes
+  become: yes
+
+- name: reset Omnisharp directory permissions 
+  ansible.builtin.file:
+    path: /opt/omnisharp
+    state: directory
+    mode: '0755'
+  when: not omnisharp.stat.exists 
+  become: yes

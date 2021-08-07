@@ -14,10 +14,18 @@ function utils.opt(scope, key, value)
   end
   if type(scope) == "string" then
     scopes[scope][key] = value
-    if scope ~= 'o' then 
-      scopes['o'][key] = value 
+    if scope ~= 'o' then
+      scopes['o'][key] = value
     end
   end
+end
+
+function utils.buf_map(bufnr, ...)
+  vim.api.nvim_buf_set_keymap(bufnr, ...)
+end
+
+function utils.buf_opt(bufnr, ...)
+  vim.api.nvim_buf_set_option(bufnr, ...)
 end
 
 function utils.map(mode, lhs, rhs, opts)
