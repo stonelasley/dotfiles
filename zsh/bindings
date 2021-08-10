@@ -45,6 +45,5 @@ bindkey '^Z' fg-bg
 bindkey '^P' fzf-file-widget
 
 #Navigate with vim bindings
-bindkey -s '^I' 'pushd\n'
 bindkey -s '^O' 'cd -\n'
 
