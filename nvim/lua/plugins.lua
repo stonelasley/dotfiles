@@ -55,6 +55,12 @@ local function init()
     setup = [[require('mappings.compe')]],
     config = [[require('config.compe')]]
   }
+  use {
+    'shougo/deoplete.nvim',
+    ft = { 'cs' },
+    config = [[require('config.deoplete')]]
+
+  }
 
 
   -- Movement
@@ -112,6 +118,9 @@ local function init()
     config = [[require('config.trouble')]],
     setup = [[require('mappings.trouble')]],
   }
+
+  -- C#
+  use { 'omnisharp/omnisharp-vim' }
 
   -- lua
   use { 'euclidianace/betterlua.vim', ft = { 'lua' } }
