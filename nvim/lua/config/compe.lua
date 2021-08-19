@@ -34,5 +34,6 @@ require'compe'.setup {
     ultisnips = true;
     luasnip = true;
     treesitter = true;
+    -- omnisharp = true;
   };
 }

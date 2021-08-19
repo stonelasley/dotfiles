@@ -25,16 +25,7 @@ function M.set_buf_keymaps(ls, bufnr)
   utils.buf_map(bufnr, 'n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
   utils.buf_map(bufnr, 'n', '<leader><leader>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
   utils.buf_map(bufnr, 'n', '<leader><leader>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-
-  -- TODO - prettier should be firing but I'm getting completely diffrent
-  -- formatting results
-  if ls == 'vuels' then
-    utils.buf_map(bufnr, "n", "<leader><leader>p", "<plug>(Prettier)<CR>", { silent = true })
-  elseif ls == 'tsserver' then
-    utils.buf_map(bufnr, "n", "<leader><leader>p", "<plug>(Prettier)<CR>", opts)
-  else
-    utils.buf_map(bufnr, "n", "<leader><leader>p", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-  end
+  --utils.buf_map(bufnr, "n", "<leader><leader>p", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 end
 
 return M

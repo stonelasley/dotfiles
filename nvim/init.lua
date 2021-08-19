@@ -4,7 +4,7 @@ local utils = require('utils')
 local backupdir = vim.fn.expand('~/.config/nvim/backup//')
 local swapdir = vim.fn.expand('~/.config/nvim/swap//')
 
-vim.api.nvim_command('let &packpath = &runtimepath')
+cmd [[let &packpath = &runtimepath]]
 
 require('plugins')
 require('mappings')
@@ -20,12 +20,12 @@ utils.opt('w', 'wrap', false)
 utils.opt('o', 'formatoptions', 'cro')
 utils.opt('o', 'backupdir', backupdir) -- keep backup files out of the way (ie. if 'backup' is ever set)
 utils.opt('o', 'directory', swapdir)   -- keep swap files out of the way
-vim.cmd('set foldmethod=syntax')
+cmd [[set foldmethod=syntax]]
+utils.opt('o', 'termguicolors', true)
 
 vim.opt.clipboard:append("unnamedplus")
 vim.g.indentLine_fileTypeExclude = {'json'}
 vim.g.wrap = false
-vim.o.termguicolors = true
 
 -- Highlight text on yank
 vim.api.nvim_exec(
@@ -44,3 +44,5 @@ cmd [[command! PackerUpdate packadd packer.nvim | lua require('plugins').update(
 cmd [[command! PackerSync packadd packer.nvim | lua require('plugins').sync()]]
 cmd [[command! PackerClean packadd packer.nvim | lua require('plugins').clean()]]
 cmd [[command! PackerCompile packadd packer.nvim | lua require('plugins').compile()]]
+
+
