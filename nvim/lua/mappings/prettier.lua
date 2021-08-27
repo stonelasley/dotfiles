@@ -1,2 +1,3 @@
-local utils = require('utils')
-utils.map('n', '<leader><leader>p', '<plug>(Prettier)<CR>', { silent = true })
+local map = require('utils').map
+
+map('n', '<F12>', '<plug>(Prettier)<CR>', { silent = true, noremap = false })
