@@ -6,6 +6,10 @@ local scopes = {
   w = vim.wo
 }
 
+function utils.dump(...)
+  print(vim.inspect(...))
+end
+
 function utils.opt(scope, key, value)
   if type(scope) == "table" then
     for _, scopeKey in ipairs(scope) do

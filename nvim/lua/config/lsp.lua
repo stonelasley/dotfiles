@@ -1,3 +1,4 @@
+local utils = require('utils')
 local nvim_lsp = require('lspconfig')
 local buf_maps = require('mappings.lsp').set_buf_keymaps
 
@@ -9,6 +10,8 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 for _, ls in ipairs(servers) do
   local mod_path = 'lsp.'..ls
   local config = require(mod_path)
+  print('ATTACH')
+  utils.dump(config)
 
   nvim_lsp[ls].setup {
     on_attach = function(client, bufnr)
