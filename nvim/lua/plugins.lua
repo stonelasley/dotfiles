@@ -56,7 +56,7 @@ local function init()
    'shougo/deoplete.nvim',
    ft = 'cs',
    config = [[require('config.deoplete')]],
-   run = 'UpdateRemotePlugins'
+   run = ':UpdateRemotePlugins'
  }
 
  -- Movement
