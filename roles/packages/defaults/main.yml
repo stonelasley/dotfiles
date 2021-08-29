@@ -31,6 +31,7 @@ casks:
   - ripgrep 
   - sqlite3 
   - tree-sitter
+  - qmk/qmk/qmk
 
 debs:
   - https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb
@@ -39,3 +40,4 @@ debs:
 pips: 
   - neovim
   - pynvim
+  - qmk
