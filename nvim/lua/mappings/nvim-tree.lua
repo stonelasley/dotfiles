@@ -1,5 +1,13 @@
-local map = require('utils').map
-
-map('n', '<C-n>', ':NvimTreeToggle<CR>', { noremap = true })
-map('n', '<leader>r>', ':NvimTreeRefresh<CR>', { noremap = true })
-map('n', '<leader>n>', ':NvimTreeFindFile<CR>', { noremap = true })
+require('kartograaf').map({
+  n = {
+    {
+      mod = 'C',
+      { 'n', ':NvimTreeToggle<CR>' },
+    },
+    {
+      prefix = 'leader',
+      { 'r', ':NvimTreeRefresh<CR>' },
+      { 'n', ':NvimTreeFindFile<CR>' },
+    }
+  }
+})
