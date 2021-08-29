@@ -1,4 +1,6 @@
-local utils = {}
+local reload = require('plenary.reload').reload_module
+
+local M = {}
 
 local scopes = {
   o = vim.o,
@@ -6,14 +8,18 @@ local scopes = {
   w = vim.wo
 }
 
-function utils.dump(...)
+local dump = function (...)
   print(vim.inspect(...))
 end
 
-function utils.opt(scope, key, value)
+function M.reload(...)
+  reload(...)
+end
+
+function M.opt(scope, key, value)
   if type(scope) == "table" then
     for _, scopeKey in ipairs(scope) do
-      utils.opt(scopeKey, key, value)
+      M.opt(scopeKey, key, value)
     end
   end
   if type(scope) == "string" then
@@ -24,23 +30,31 @@ function utils.opt(scope, key, value)
   end
 end
 
-function utils.buf_map(bufnr, ...)
+function M.buf_map(bufnr, ...)
   vim.api.nvim_buf_set_keymap(bufnr, ...)
 end
 
-function utils.buf_opt(bufnr, ...)
+function M.buf_opt(bufnr, ...)
   vim.api.nvim_buf_set_option(bufnr, ...)
 end
 
-function utils.map(mode, lhs, rhs, opts)
+function M.map(mode, lhs, rhs, opts)
   local options = {noremap = true}
   if opts then options = vim.tbl_extend('force', options, opts) end
   vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
-function utils.t (str)
+function M.t (str)
   return vim.api.nvim_replace_termcodes(str, true, true, true)
 end
 
-return utils
+function M.merge_table(target, source)
+  local result = target
+  if source ~= nil then
+      result = vim.tbl_extend('force', target, source)
+  end
+  return result
+end
+
+return M
 
