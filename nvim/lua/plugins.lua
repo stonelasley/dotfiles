@@ -10,6 +10,7 @@ local function init()
 
  use 'wbthomason/packer.nvim'
  -- Convenience Utilities
+ use 'lionc/nest.nvim'
  use 'tpope/vim-sensible'
  use 'tpope/vim-sleuth'
  use 'tpope/vim-surround'
@@ -133,7 +134,7 @@ local function init()
  use {
    'omnisharp/omnisharp-vim',
    config = [[require('config.omnisharp')]],
-   setup = [[require('mappings.omnisharp')]],
+   --setup = [[require('mappings.omnisharp')]],
    ft = { 'cs'}
  }
 
@@ -172,7 +173,14 @@ local function init()
    'vimwiki/vimwiki',
    config = [[require('config.vimwiki')]]
  }
+
+ use {
+   'stonelasley/kartograaf.nvim',
+   opt = false
+ }
 end
+
+
 
 local plugins = setmetatable({}, {
   __index = function(_, key)
