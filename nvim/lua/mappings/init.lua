@@ -19,6 +19,7 @@ require('kartograaf').map({
     {
       prefix = '<leader>',
       { 'ls', ':ls<CR>:b<space>' },
+      -- hop.nvim
       { 'w', [[<cmd>lua require'hop'.hint_words()<cr>]] },
       { 'l', [[<cmd>lua require'hop'.hint_lines()<cr>]] },
       { 'c', [[<cmd>lua require'hop'.hint_char1()<cr>]] },

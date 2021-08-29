@@ -64,7 +64,6 @@ local function init()
  use {
    'phaazon/hop.nvim',
    as = 'hop',
-   setup = [[require('mappings.hop')]],
    config = [[require('config.hop')]]
  }
  use 'christoomey/vim-tmux-navigator'
