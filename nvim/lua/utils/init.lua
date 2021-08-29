@@ -8,7 +8,7 @@ local scopes = {
   w = vim.wo
 }
 
-local dump = function (...)
+function M.dump (...)
   print(vim.inspect(...))
 end
 
@@ -16,8 +16,17 @@ function M.reload(...)
   reload(...)
 end
 
+function M.is_table(t)
+  return type(t) == "table"
+end
+
+function M.is_string(t)
+  return type(t) == "string"
+end
+
+
 function M.opt(scope, key, value)
-  if type(scope) == "table" then
+  if M.is_table(scope) then
     for _, scopeKey in ipairs(scope) do
       M.opt(scopeKey, key, value)
     end
@@ -28,10 +37,6 @@ function M.opt(scope, key, value)
       scopes['o'][key] = value
     end
   end
-end
-
-function M.buf_map(bufnr, ...)
-  vim.api.nvim_buf_set_keymap(bufnr, ...)
 end
 
 function M.buf_opt(bufnr, ...)
