@@ -132,8 +132,6 @@ local function init()
  -- C#
  use {
    'omnisharp/omnisharp-vim',
-   config = [[require('config.omnisharp')]],
-   --setup = [[require('mappings.omnisharp')]],
    ft = { 'cs'}
  }
 
