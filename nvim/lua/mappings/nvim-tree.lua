@@ -5,7 +5,7 @@ require('kartograaf').map({
       { 'n', ':NvimTreeToggle<CR>' },
     },
     {
-      prefix = 'leader',
+      prefix = '<leader>',
       { 'r', ':NvimTreeRefresh<CR>' },
       { 'n', ':NvimTreeFindFile<CR>' },
     }
