@@ -2,7 +2,7 @@ require('kartograaf').map({
   n = {
     options = { silent = true},
     {
-      leader = '<leader>',
+      prefix = '<leader>',
       { 't', '<cmd>Trouble<CR>'},
       { 'tw', '<cmd>Trouble lsp_workspace_diagnostics<CR>'},
       { 'td', '<cmd>Trouble lsp_document_diagnostics<CR>'},
