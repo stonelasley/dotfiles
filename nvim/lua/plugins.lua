@@ -173,7 +173,7 @@ local function init()
 
  use {
    'stonelasley/kartograaf.nvim',
-   config = [[require('config.kartograaf')]],
+   config = [[require('mappings.kartograaf')]],
    opt = false
  }
 end
