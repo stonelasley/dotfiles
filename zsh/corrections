@@ -4,3 +4,4 @@
 
 alias yarn='nocorrect yarn'
 alias dotnet='nocorrect dotnet'
+alias git='nocorrect git'
