@@ -9,6 +9,7 @@ local function init()
  local use = packer.use
 
  use 'wbthomason/packer.nvim'
+
  -- Convenience Utilities
  use 'lionc/nest.nvim'
  use 'tpope/vim-sensible'
@@ -32,24 +33,23 @@ local function init()
  use {
    'kyazdani42/nvim-tree.lua',
    requires = { { 'kyazdani42/nvim-web-devicons' } },
-   setup = [[require('mappings.nvim-tree')]]
+   cmd = 'NvimTreeToggle'
  }
  use 'nvim-telescope/telescope-fzy-native.nvim'
  use {
    'nvim-telescope/telescope-frecency.nvim',
-   requires = { { 'tami5/sql.nvim' } },
+   requires = { { 'tami5/sql.nvim' } }
  }
  use {
    'nvim-telescope/telescope.nvim',
    requires = { { 'nvim-lua/popup.nvim' }, { 'nvim-lua/plenary.nvim' } },
-   setup = [[require('mappings.telescope')]],
-   config = [[require('config.telescope')]]
+   config = [[require('config.telescope')]],
+   cmd = 'Telescope'
  }
 
  -- Completion
  use {
    'hrsh7th/nvim-compe',
-   setup = [[require('mappings.compe')]],
    config = [[require('config.compe')]]
  }
  -- TODO temporary until I decide how to address c# completion
@@ -75,7 +75,6 @@ local function init()
  -- Linting
  use {
    'prettier/vim-prettier',
-   setup = [[require('mappings.prettier')]],
    run = 'yarn install',
    ft = {
      'css',
@@ -108,8 +107,7 @@ local function init()
  }
  use {
    'glepnir/lspsaga.nvim',
-   config = [[require('config.lspsaga')]],
-   setup = [[require('mappings.lspsaga')]]
+   config = [[require('config.lspsaga')]]
  }
  use {
    'nvim-treesitter/nvim-treesitter',
@@ -125,8 +123,7 @@ local function init()
  use {
    "folke/trouble.nvim",
    requires = "kyazdani42/nvim-web-devicons",
-   config = [[require('config.trouble')]],
-   setup = [[require('mappings.trouble')]],
+   config = [[require('config.trouble')]]
  }
 
  -- C#
@@ -171,10 +168,16 @@ local function init()
    config = [[require('config.vimwiki')]]
  }
 
+ -- Bindings
  use {
    'stonelasley/kartograaf.nvim',
-   config = [[require('mappings.kartograaf')]],
+   config = [[require('mappings')]],
    opt = false
+ }
+
+ use {
+   'folke/which-key.nvim',
+   config = [[require('config.whichkey')]]
  }
 end
 

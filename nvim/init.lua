@@ -7,7 +7,6 @@ local swapdir = vim.fn.expand('~/.config/nvim/swap//')
 cmd [[let &packpath = &runtimepath]]
 
 require('plugins')
-require('mappings')
 
 utils.opt({'o', 'b'}, 'expandtab', true)
 utils.opt({'o', 'b'}, 'smartindent', true)
