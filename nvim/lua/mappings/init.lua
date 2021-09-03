@@ -23,8 +23,8 @@ require('kartograaf').map({
     { '<F12>', '<plug>(Prettier)<CR>', { silent = true, noremap = false} },
     {
       prefix = '<leader>',
-      -- nvim-tree
       { 'ls', ':ls<CR>:b<space>' },
+      -- nvim-tree
       { 'r', ':NvimTreeRefresh<CR>' },
       { 'n', ':NvimTreeFindFile<CR>' },
       -- hop.nvim
@@ -41,6 +41,7 @@ require('kartograaf').map({
       prefix = '<leader><leader>',
       { 'g', '<cmd>Telescope live_grep<CR>' },
       { 'w', '<cmd>Telescope grep_string<CR>' },
+      { 'ls', '<cmd>Telescope grep_string<CR>' },
       { 'fh', '<cmd>Telescope help_tags<CR>' },
       { 'fb', '<cmd>Telescope buffers<CR>' },
       { 'gc', '<cmd>Telescope git_bcommits<CR>' },
