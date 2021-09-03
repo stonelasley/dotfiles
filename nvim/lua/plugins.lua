@@ -23,8 +23,8 @@ local function init()
    'windwp/nvim-autopairs' ,
    config = [[require('config.autopairs')]]
  }
- use  {
-   'yggdroot/indentline',
+ use {
+   'lukas-reineke/indent-blankline.nvim',
    config = [[require('config.indentguides')]]
  }
 
