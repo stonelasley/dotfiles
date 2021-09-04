@@ -43,12 +43,6 @@ function M.buf_opt(bufnr, ...)
   vim.api.nvim_buf_set_option(bufnr, ...)
 end
 
-function M.map(mode, lhs, rhs, opts)
-  local options = {noremap = true}
-  if opts then options = vim.tbl_extend('force', options, opts) end
-  vim.api.nvim_set_keymap(mode, lhs, rhs, options)
-end
-
 function M.t (str)
   return vim.api.nvim_replace_termcodes(str, true, true, true)
 end
