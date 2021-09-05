@@ -16,7 +16,7 @@
     repo: https://github.com/neovim/neovim
     dest: /opt/neovim/
     force: yes
-    version: release-0.5
+      #version: release-0.5
   when: not neovim.stat.exists
   become: yes
 
