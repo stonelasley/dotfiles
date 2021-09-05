@@ -19,6 +19,7 @@ alias st1="cd ~/.st1"
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
+alias dnb='dotnet build'
 
 #
 # Git aliases
