@@ -10,13 +10,13 @@ require('kartograaf').map({
     {
       prefix = 'g',
       { 'd', '<Plug>(omnisharp_go_to_definition)'},
+      { 'D', '<Plug>(omnisharp_preview_definition)'},
       { 'i', '<Plug>(omnisharp_find_implementations)'},
+      { 'I', '<Plug>(omnisharp_preview_implementations)' },
+      { 'u', '<Plug>(omnisharp_find_usages)' },
     },
     {
       prefix = '<Leader>',
-      { 'osfu', '<Plug>(omnisharp_find_usages)' },
-      { 'ospd', '<Plug>(omnisharp_preview_definition)' },
-      { 'ospi', '<Plug>(omnisharp_preview_implementations)' },
       { 'ost',  '<Plug>(omnisharp_type_lookup)' },
       { 'osd',  '<Plug>(omnisharp_documentation)' },
       { 'osfs', '<Plug>(omnisharp_find_symbol)' },
