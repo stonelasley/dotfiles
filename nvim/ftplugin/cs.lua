@@ -1,2 +1,1 @@
--- TODO - must be a better way
-require'compe'.setup { enabled = false}
+require('compe').setup({ enabled = false}, 0)
