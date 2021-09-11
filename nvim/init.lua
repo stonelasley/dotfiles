@@ -35,3 +35,7 @@ vim.api.nvim_exec(
   ]],
   false
 )
+
+vim.api.nvim_exec([[
+  autocmd BufEnter *.cs call ncm2#enable_for_buffer()
+]], false)

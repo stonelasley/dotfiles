@@ -46,12 +46,13 @@ return require('packer').startup(function(use)
    config = [[require('config.compe')]]
  }
  -- TODO temporary until I decide how to address c# completion
- use {
-   'shougo/deoplete.nvim',
-   config = [[require('config.deoplete')]],
-   run = ':UpdateRemotePlugins',
-   ft = 'cs'
- }
+ use { 'ncm2/ncm2' }
+-- use {
+--   'shougo/deoplete.nvim',
+--   config = [[require('config.deoplete')]],
+--   run = ':UpdateRemotePlugins',
+--   ft = 'cs'
+-- }
  use {
    'junegunn/fzf.vim',
    ft = 'cs'

@@ -2,6 +2,7 @@
 -- the completion menu itself, for better readability with highlighted
 -- documentation.
 --vim.g.completeopt='longest,menuone,preview'
+print('OMNISHARP CONFIG')
 vim.g.omnicomplete_fetch_full_documentation = 1
 vim.g.OmniSharp_autoselect_existing_sln = 1
 vim.g.OmniSharp_popup_position = 'peek'
