@@ -20,32 +20,28 @@ require('kartograaf').map({
     -- Clear search highlight
     { '<CR>', ':noh<CR><CR>' },
     { 'Y', 'y$' },
+    { 'f', [[<cmd>lua require'hop'.hint_char1()<cr>]] },
     { '<F12>', '<plug>(Prettier)<CR>', { silent = true, noremap = false} },
     {
       prefix = '<leader>',
-      { 'ls', ':ls<CR>:b<space>' },
-      -- nvim-tree
-      { 'r', ':NvimTreeRefresh<CR>' },
-      { 'n', ':NvimTreeFindFile<CR>' },
-      -- hop.nvim
-      { 'w', [[<cmd>lua require'hop'.hint_words()<cr>]] },
-      { 'c', [[<cmd>lua require'hop'.hint_char1()<cr>]] },
+      { 'ls', '<cmd>Telescope buffers<CR>' },
       -- trouble
       { 't', '<cmd>Trouble<CR>', { silent = true } },
       { 'tw', '<cmd>Trouble lsp_workspace_diagnostics<CR>', { silent = true } },
       { 'td', '<cmd>Trouble lsp_document_diagnostics<CR>', { silent = true } },
       { 'tl', '<cmd>Trouble loclist<CR>', { silent = true } },
+      { 'gs', '<cmd>Telescope grep_string<CR>' },
       { 'tq', '<cmd>Trouble quickfix<CR>', { silent = true } }
     },
     {
       prefix = '<leader><leader>',
-      { 'g', '<cmd>Telescope live_grep<CR>' },
-      { 'w', '<cmd>Telescope grep_string<CR>' },
-      { 'ls', '<cmd>Telescope grep_string<CR>' },
       { 'fh', '<cmd>Telescope help_tags<CR>' },
-      { 'fb', '<cmd>Telescope buffers<CR>' },
+      { 'ch', '<cmd>Telescope command_history<CR>' },
+      { 'ft', '<cmd>Telescope tags<CR>' },
       { 'gc', '<cmd>Telescope git_bcommits<CR>' },
       { 'gb', '<cmd>Telescope git_branches<CR>' },
+      { 'tvo', '<cmd>Telescope vim_options<CR>' },
+      { 'trl', '<cmd>Telescope reloader<CR>' },
     },
     {
       mod = 'C',
@@ -54,17 +50,18 @@ require('kartograaf').map({
       { 'k', '<C-w>k' },
       { 'l', '<C-w>l' },
       { 'n', ':NvimTreeToggle<CR>' },
-      { 'p', ':Telescope find_files<CR>' },
+      { 'p', '<cmd>Telescope find_files<CR>' },
+      { 'f', '<cmd>Telescope live_grep<CR>' },
       { '=', 'zm' },
       { '-', 'zr' },
     },
     {
       mod = 'M',
       -- Window Size --
-      { 'h', ':vertical resize-2' },
-      { 'j', ':resize-2' },
-      { 'k', ':resize+2' },
-      { 'l', ':vertical resize+2' },
+      { 'h', '<cmd>:vertical resize-2<CR>' },
+      { 'j', '<cmd>:resize-2<CR>' },
+      { 'k', '<cmd>:resize+2<CR>' },
+      { 'l', '<cmd>:vertical resize+2<CR>' },
     }
   },
   c = {

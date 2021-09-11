@@ -1,5 +1,3 @@
-local reload = require('plenary.reload').reload_module
-
 local M = {}
 
 local scopes = {
@@ -10,10 +8,6 @@ local scopes = {
 
 function M.dump (...)
   print(vim.inspect(...))
-end
-
-function M.reload(...)
-  reload(...)
 end
 
 function M.is_table(t)

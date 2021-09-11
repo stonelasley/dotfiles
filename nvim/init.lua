@@ -19,7 +19,6 @@ utils.opt('w', 'wrap', false)
 utils.opt('o', 'formatoptions', 'cro')
 utils.opt('o', 'backupdir', backupdir) -- keep backup files out of the way (ie. if 'backup' is ever set)
 utils.opt('o', 'directory', swapdir)   -- keep swap files out of the way
-cmd [[set foldmethod=syntax]]
 utils.opt('o', 'termguicolors', true)
 
 vim.opt.clipboard:append("unnamedplus")
@@ -36,12 +35,3 @@ vim.api.nvim_exec(
   ]],
   false
 )
-
--- Packer
-cmd [[command! PackerInstall packadd packer.nvim | lua require('plugins').install()]]
-cmd [[command! PackerUpdate packadd packer.nvim | lua require('plugins').update()]]
-cmd [[command! PackerSync packadd packer.nvim | lua require('plugins').sync()]]
-cmd [[command! PackerClean packadd packer.nvim | lua require('plugins').clean()]]
-cmd [[command! PackerCompile packadd packer.nvim | lua require('plugins').compile()]]
-
-

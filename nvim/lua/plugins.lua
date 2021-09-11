@@ -1,13 +1,6 @@
-local packer = nil
+vim.cmd [[packadd packer.nvim]]
 
-local function init()
-  if packer == nil then
-    packer = require'packer'
-    packer.init { disable_commands = true }
-  end
-
- local use = packer.use
-
+return require('packer').startup(function(use)
  use 'wbthomason/packer.nvim'
 
  -- Convenience Utilities
@@ -55,9 +48,13 @@ local function init()
  -- TODO temporary until I decide how to address c# completion
  use {
    'shougo/deoplete.nvim',
-   ft = 'cs',
    config = [[require('config.deoplete')]],
-   run = ':UpdateRemotePlugins'
+   run = ':UpdateRemotePlugins',
+   ft = 'cs'
+ }
+ use {
+   'junegunn/fzf.vim',
+   ft = 'cs'
  }
 
  -- Movement
@@ -129,6 +126,7 @@ local function init()
  -- C#
  use {
    'omnisharp/omnisharp-vim',
+   config = [[require('config.omnisharp')]],
    ft = { 'cs'}
  }
 
@@ -179,15 +177,4 @@ local function init()
    'folke/which-key.nvim',
    config = [[require('config.whichkey')]]
  }
-end
-
-
-
-local plugins = setmetatable({}, {
-  __index = function(_, key)
-    init()
-    return packer[key]
-  end,
-})
-
-return plugins
+end)
