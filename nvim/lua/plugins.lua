@@ -46,7 +46,12 @@ return require('packer').startup(function(use)
    config = [[require('config.compe')]]
  }
  -- TODO temporary until I decide how to address c# completion
- use { 'ncm2/ncm2' }
+ use {
+   'ncm2/ncm2',
+   requires = { { 'roxma/nvim-yarp' }, { 'ncm2/ncm2-ultisnips'} },
+   config = [[require('config.ncm2')]],
+   ft = 'cs'
+ }
 -- use {
 --   'shougo/deoplete.nvim',
 --   config = [[require('config.deoplete')]],
