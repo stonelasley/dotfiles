@@ -4,7 +4,6 @@ return require('packer').startup(function(use)
  use 'wbthomason/packer.nvim'
 
  -- Convenience Utilities
- use 'lionc/nest.nvim'
  use 'tpope/vim-sensible'
  use 'tpope/vim-sleuth'
  use 'tpope/vim-surround'
