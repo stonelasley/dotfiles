@@ -1,3 +1,5 @@
+require('impatient').enable_profile()
+
 local cmd = vim.cmd
 local utils = require('utils')
 
