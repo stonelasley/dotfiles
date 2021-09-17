@@ -24,6 +24,9 @@ require('kartograaf').map({
     { '<F12>', '<plug>(Prettier)<CR>', { silent = true, noremap = false} },
     {
       prefix = '<leader>',
+      { 'y', '"+y' },
+      { 'd', '"_d' },
+      { 'Y', 'gg"+yG<C-o>'},
       { 'ls', '<cmd>Telescope buffers<CR>' },
       -- trouble
       { 't', '<cmd>Trouble<CR>', { silent = true } },
@@ -58,10 +61,24 @@ require('kartograaf').map({
     {
       mod = 'M',
       -- Window Size --
-      { 'h', '<cmd>:vertical resize-2<CR>' },
+      { 'h', '<cmd>:vertical resize+2<CR>' },
       { 'j', '<cmd>:resize-2<CR>' },
       { 'k', '<cmd>:resize+2<CR>' },
-      { 'l', '<cmd>:vertical resize+2<CR>' },
+      { 'l', '<cmd>:vertical resize-2<CR>' },
+    }
+  },
+  v = {
+    {
+      prefix = "<leader>",
+      { 'p', '"_dP'},
+      { 'y', '"+y' },
+    }
+  },
+  x = {
+    {
+      prefix = "<leader>",
+      { 'p', '"_dP'},
+      { 'y', '"+y' },
     }
   },
   c = {
@@ -73,5 +90,4 @@ require('kartograaf').map({
 vim.cmd([[inoremap <silent><expr> <CR>      compe#confirm(luaeval("require 'nvim-autopairs'.autopairs_cr()"))]])
 -- telescope
 vim.cmd([[nnoremap <leader>dot :lua require('st1.telescope').focus_find()<CR> ]])
-
 vim.g.mapleader = " "
