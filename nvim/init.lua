@@ -1,4 +1,4 @@
-require('impatient').enable_profile()
+require('impatient')
 
 local cmd = vim.cmd
 local utils = require('utils')
@@ -7,6 +7,8 @@ local backupdir = vim.fn.expand('~/.config/nvim/backup//')
 local swapdir = vim.fn.expand('~/.config/nvim/swap//')
 
 cmd [[let &packpath = &runtimepath]]
+cmd [[set rtp+=~/.fzf]]
+
 
 require('plugins')
 
