@@ -179,8 +179,8 @@ return require('packer').startup(function(use)
    opt = false
  }
 
- use {
-   'folke/which-key.nvim',
-   config = [[require('config.whichkey')]]
- }
+-- use {
+--   'folke/which-key.nvim',
+--   config = [[require('config.whichkey')]]
+-- }
 end)

@@ -18,6 +18,12 @@ function M.is_string(t)
   return type(t) == "string"
 end
 
+function M.clear_registers()
+  local registers = vim.split("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ01234567890/-\"*+", '')
+  for _, r in ipairs(registers) do
+    vim.fn.setreg(r, '')
+  end
+end
 
 function M.opt(scope, key, value)
   if M.is_table(scope) then

@@ -10,16 +10,17 @@ alias :vs='test -n $TMUX && tmux split-window -h'
 alias t="tmux"
 alias v=nvim
 alias vim=nvim
-alias vsvim="nvim -u ~/.config/nvim/vsinit.vim"
-alias vrc="vim $HOME/.vimrc"
-alias zrc="vim $HOME/.zshrc"
-alias trc="vim $HOME/.tmux.conf"
-alias szrc="source ~/.zshrc"
-alias st1="cd ~/.st1"
+alias vsvim="nvim -u $HOME/.config/nvim/vsinit.vim"
+alias vrc="nvim $HOME/.vimrc"
+alias zrc="nvim $HOME/.zshrc"
+alias trc="nvim $HOME/.tmux.conf"
+alias szrc="source $HOME/.zshrc"
+alias st1="cd $HOME/.st1"
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 alias dnb='dotnet build'
+alias dnt='dotnet test'
 
 #
 # Git aliases
