@@ -14,7 +14,7 @@ require('kartograaf').map({
     }
   },
   n = {
-    { '<Space>', '<Nop>' },
+    --{ '<Space>', '<Nop>' },
     -- Toggle fold under cursor
     { '<tab>', 'za' },
     -- Clear search highlight
@@ -87,7 +87,6 @@ require('kartograaf').map({
 })
 
 -- compe
-vim.cmd([[inoremap <silent><expr> <CR>      compe#confirm(luaeval("require 'nvim-autopairs'.autopairs_cr()"))]])
+vim.cmd([[inoremap <silent><expr> <CR> compe#confirm(luaeval("require 'nvim-autopairs'.autopairs_cr()"))]])
 -- telescope
 vim.cmd([[nnoremap <leader>dot :lua require('st1.telescope').focus_find()<CR> ]])
-vim.g.mapleader = " "

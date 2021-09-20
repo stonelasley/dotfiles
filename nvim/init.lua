@@ -9,9 +9,6 @@ local swapdir = vim.fn.expand('~/.config/nvim/swap//')
 cmd [[let &packpath = &runtimepath]]
 cmd [[set rtp+=~/.fzf]]
 
-
-require('plugins')
-
 utils.opt({'o', 'b'}, 'expandtab', true)
 utils.opt({'o', 'b'}, 'smartindent', true)
 utils.opt({'o', 'b'}, 'textwidth', 100)
@@ -40,6 +37,5 @@ vim.api.nvim_exec(
   false
 )
 
--- vim.api.nvim_exec([[
---   autocmd BufEnter *.cs call ncm2#enable_for_buffer()
--- ]], false)
+require('plugins')
+vim.g.mapleader = " "
