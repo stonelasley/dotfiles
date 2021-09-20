@@ -9,4 +9,3 @@ swap/*
 backup/*
 !backup/.gitkeep
 /vimrc.local
-packer_compiled.lua
