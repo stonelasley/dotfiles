@@ -15,8 +15,6 @@ require('kartograaf').map({
   },
   n = {
     --{ '<Space>', '<Nop>' },
-    -- Toggle fold under cursor
-    { '<tab>', 'za' },
     -- Clear search highlight
     { '<CR>', ':noh<CR><CR>' },
     { 'Y', 'y$' },
