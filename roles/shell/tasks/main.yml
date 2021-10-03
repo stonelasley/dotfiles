@@ -45,6 +45,12 @@
     chdir: /tmp
   when: not oh_my_zsh.stat.exists
 
+- name: install tmuxinator completion
+  shell: 
+  args:
+    cmd: wget https://raw.githubusercontent.com/tmuxinator/tmuxinator/master/completion/tmuxinator.zsh -O /usr/local/share/zsh/site-functions/_tmuxinator
+ 
+
 - name: cleanup 
   file:
     path: /tmp/oh-my-zsh.sh

@@ -19,6 +19,7 @@ packages:
   - sqlite3 
   - unzip
   - zsh
+
 casks:
   - automake
   - cmake
@@ -29,9 +30,10 @@ casks:
   - ninja
   - pkg-config
   - ripgrep 
+  - ruby 
   - sqlite3 
   - tree-sitter
-  - qmk/qmk/qmk
+  - tmuxinator
 
 debs:
   - https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb
