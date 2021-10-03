@@ -5,6 +5,7 @@ require('telescope').setup {
       "node_modules",
       ".vendor",
       "yarn.lock",
+      "packer_compiled.lua",
       ".nuxt"
     },
   },
