@@ -7,7 +7,7 @@ require('kartograaf').map({
     { ';', ';<c-g>u' },
     {
       mod = 'C',
-      { '<Space>', 'compe#complete()', { expr = true, silent = true} },
+      { 'e', 'compe#complete()', { expr = true, silent = true} },
       { '<e>', [[compe#close('<C-e>')]], { expr = true, silent = true} },
       { '<f>', [[compe#scroll({ 'delta': +4 })]], { expr = true, silent = true} },
       { '<d>', [[compe#scroll({ 'delta': -4 })]], { expr = true, silent = true} }
@@ -85,6 +85,6 @@ require('kartograaf').map({
 })
 
 -- compe
-vim.cmd([[inoremap <silent><expr> <CR> compe#confirm(luaeval("require 'nvim-autopairs'.autopairs_cr()"))]])
+--vim.cmd([[inoremap <silent><expr> <CR> compe#confirm(luaeval("require 'nvim-autopairs'.autopairs_cr()"))]])
 -- telescope
 vim.cmd([[nnoremap <leader>dot :lua require('st1.telescope').focus_find()<CR> ]])

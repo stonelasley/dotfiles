@@ -21,12 +21,12 @@ return require('packer').startup(function(use)
    config = [[require('config.indentguides')]]
  }
 
- --  -- Searching & Finding
- use 'wincent/loupe'
+-- Searching & Finding
+use 'wincent/loupe'
  use {
    'kyazdani42/nvim-tree.lua',
    requires = { { 'kyazdani42/nvim-web-devicons' } },
-   cmd = 'NvimTreeToggle'
+   config = [[require('config.nvim-tree')]]
  }
  use 'nvim-telescope/telescope-fzy-native.nvim'
  use {
@@ -50,7 +50,6 @@ return require('packer').startup(function(use)
    'ncm2/ncm2',
    requires = { { 'roxma/nvim-yarp' }, { 'ncm2/ncm2-ultisnips'} },
    config = [[require('config.ncm2')]],
-   ft = 'cs'
  }
 -- use {
 --   'shougo/deoplete.nvim',
