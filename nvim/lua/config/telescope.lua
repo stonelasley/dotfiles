@@ -1,3 +1,4 @@
+local actions = require('telescope.actions')
 require('telescope').setup {
   defaults = {
     file_ignore_patterns = {
@@ -8,6 +9,11 @@ require('telescope').setup {
       "packer_compiled.lua",
       ".nuxt"
     },
+    mappings = {
+      i = {
+        ["<esc>"] = actions.close,
+      }
+    }
   },
   extensions = {
     fzy_native = {
