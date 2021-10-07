@@ -1,3 +1,4 @@
+local actions = require('telescope.actions')
 require('telescope').setup {
   defaults = {
     file_ignore_patterns = {
@@ -7,6 +8,11 @@ require('telescope').setup {
       "yarn.lock",
       ".nuxt"
     },
+    mappings = {
+      i = {
+        ["<esc>"] = actions.close,
+      }
+    }
   },
   extensions = {
     fzy_native = {
