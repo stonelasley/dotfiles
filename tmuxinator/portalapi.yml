@@ -45,7 +45,7 @@ tmux_options: -f ~/.tmux.dev.conf
 # attach: false
 windows:
   - editor:
-      layout: main-horizontal
+      layout: 217c,238x58,0,0[238x44,0,0,9,238x13,0,45{118x13,0,45,10,119x13,119,45,11}]
       panes:
         - nvim
         -

@@ -46,7 +46,7 @@ root: ~/Projects/fb/FreshPortal.Client
 
 windows:
   - editor:
-      layout: main-horizontal
+      layout: 217c,238x58,0,0[238x44,0,0,9,238x13,0,45{118x13,0,45,10,119x13,119,45,11}]
       # Synchronize all panes of this window, can be enabled before or after the pane commands run.
       # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
       # synchronize: after
