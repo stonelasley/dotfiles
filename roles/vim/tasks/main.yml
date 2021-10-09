@@ -6,6 +6,13 @@
         force=yes
   tags: [ always ]
 
+- name: Create config bin directory
+  ansible.builtin.file:
+    path: ~/.local/bin
+    state: directory
+    mode: '0777'
+  tags: [ always ]
+
 - name: delete neovim directory
   file:
     path: /opt/neovim
@@ -18,7 +25,7 @@
     path: /opt/neovim
   register: neovim
   become: yes
-  tags: [ always ]
+  tags: [ neovim ]
 
 - name: clone neovim
   git:
@@ -28,7 +35,7 @@
       #version: release-0.5
   when: not neovim.stat.exists
   become: yes
-  tags: [ always ]
+  tags: [ neovim ]
 
 - name: set neovim directory permissions
   file:
@@ -38,7 +45,7 @@
     recurse: yes
   when: neovim.stat.exists
   become: yes
-  tags: [ always ]
+  tags: [ neovim ]
 
 - name: update neovim latest
   shell: 
@@ -47,7 +54,7 @@
     chdir: /opt/neovim
   when: neovim.stat.exists
   become: yes
-  tags: [ always ]
+  tags: [ neovim ]
 
 - name: build neovim
   shell: 
@@ -77,7 +84,7 @@
   stat:
     path: /opt/omnisharp/run
   register: omnisharp
-  tags: [ always ]
+  tags: [ omnisharp ]
 
 - name: Create a Omnisharp directory
   ansible.builtin.file:
@@ -86,7 +93,7 @@
     mode: '0777'
   when: not omnisharp.stat.exists 
   become: yes
-  tags: [ always ]
+  tags: [ omnisharp ]
 
 - name: download and install omnisharp
   ansible.builtin.unarchive:
@@ -96,7 +103,7 @@
     mode: u+x
   when: not omnisharp.stat.exists and ansible_distribution == 'MacOSX'
   become: yes
-  tags: [ always ]
+  tags: [ omnisharp ]
 
 - name: download and install omnisharp
   ansible.builtin.unarchive:
@@ -106,21 +113,21 @@
     mode: u+x
   when: not omnisharp.stat.exists and (ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu')
   become: yes
-  tags: [ always ]
+  tags: [ omnisharp ]
 
 - name: Fix Omnisharp permissions
   file: 
     path: /opt/omnisharp/run
     mode: u+x
   become: yes
-  tags: [ always ]
+  tags: [ omnisharp ]
 
 - name: Dequarantine omnisharp
   shell: 
   args:
     cmd: find /opt/omnisharp | xargs xattr -r -d com.apple.quarantine
   when: not omnisharp.stat.exists and ansible_distribution == 'MacOSX'
-  tags: [ always ]
+  tags: [ omnisharp ]
 
 - name: delete sumneko directory
   file:
@@ -138,7 +145,7 @@
     track_submodules: yes
     force: yes
   become: yes
-  tags: [ build ]
+  tags: [ never, build ]
 
 - name: set Sumneko directory permissions
   file:
@@ -147,14 +154,14 @@
     mode: '777'
     recurse: yes
   become: yes
-  tags: [ always ]
+  tags: [ never, build ]
 
 - name: fix sumneko install executable
   file: 
     path: /opt/sumneko/3rd/luamake/compile/install.sh
     mode: u+x
   become: yes
-  tags: [ always ]
+  tags: [ never, build ]
 
 - name: compile Lua Language Server
   command: ./compile/install.sh
@@ -175,7 +182,7 @@
     mode: '755'
     recurse: yes
   become: yes
-  tags: [ always ]
+  tags: [ never, build ]
 
 - name: reset Sumneko directory permissions
   file:
@@ -184,7 +191,7 @@
     mode: '755'
     recurse: yes
   become: yes
-  tags: [ always ]
+  tags: [ never, build ]
 
 - name: reset Omnisharp directory permissions 
   ansible.builtin.file:
@@ -193,4 +200,31 @@
     mode: '0755'
   when: not omnisharp.stat.exists 
   become: yes
-  tags: [ always ]
+  tags: [ omnisharp ]
+
+- name: download rust-analyzer
+  get_url:
+    url: https://github.com/rust-analyzer/rust-analyzer/releases/download/2021-10-04/rust-analyzer-x86_64-apple-darwin.gz
+    dest: /tmp/rust-analyzer.gz
+  when: ansible_distribution == 'MacOSX'
+  tags: [ rust-analyzer ]
+
+- name: download rust-analyzer
+  get_url:
+    url: https://github.com/rust-analyzer/rust-analyzer/releases/download/2021-10-04/rust-analyzer-x86_64-unknown-linux-gnu.gz/
+    dest: /tmp/rust-analyzer.gz
+  when: ansible_distribution == 'Debian'
+  tags: [ rust-analyzer ]
+
+- name: unzip rust-analyzer
+  command: gunzip -f rust-analyzer.gz
+  args: 
+    chdir: /tmp
+  tags: [ rust-analyzer ]
+
+- name: Copy rust-analyzer and set permissions
+  ansible.builtin.copy:
+    src: /tmp/rust-analyzer
+    dest: ~/.local/bin/rust-analyzer
+    mode: 'u+x'
+  tags: [ rust-analyzer ]
