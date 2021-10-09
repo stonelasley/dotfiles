@@ -4,12 +4,21 @@
         path=~/.config/nvim
         state=link
         force=yes
+  tags: [ always ]
+
+- name: delete neovim directory
+  file:
+    path: /opt/neovim
+    state: absent
+  become: yes
+  tags: [ never, build ]
 
 - name: test neovim cloned
   stat:
     path: /opt/neovim
   register: neovim
   become: yes
+  tags: [ always ]
 
 - name: clone neovim
   git:
@@ -19,6 +28,7 @@
       #version: release-0.5
   when: not neovim.stat.exists
   become: yes
+  tags: [ always ]
 
 - name: set neovim directory permissions
   file:
@@ -26,20 +36,26 @@
     state: directory
     mode: '777'
     recurse: yes
+  when: neovim.stat.exists
   become: yes
+  tags: [ always ]
 
 - name: update neovim latest
   shell: 
   args:
     cmd: git checkout . && git pull
     chdir: /opt/neovim
+  when: neovim.stat.exists
   become: yes
+  tags: [ always ]
 
 - name: build neovim
   shell: 
   args:
     cmd: make CMAKE_BUILD_TYPE=Release --jobs=4 --silent
     chdir: /opt/neovim
+  become: yes
+  tags: [ never, build ]
 
 - name: build neovim
   shell: 
@@ -47,6 +63,7 @@
     cmd: make install
     chdir: /opt/neovim
   become: yes
+  tags: [ never, build ]
 
 - name: clone packer
   git:
@@ -54,11 +71,13 @@
     dest: ~/.local/share/nvim/site/pack/packer/start/packer.nvim
     depth: 1
     force: yes
+  tags: [ always ]
 
 - name: test omnisharp installed
   stat:
     path: /opt/omnisharp/run
   register: omnisharp
+  tags: [ always ]
 
 - name: Create a Omnisharp directory
   ansible.builtin.file:
@@ -67,6 +86,7 @@
     mode: '0777'
   when: not omnisharp.stat.exists 
   become: yes
+  tags: [ always ]
 
 - name: download and install omnisharp
   ansible.builtin.unarchive:
@@ -76,6 +96,7 @@
     mode: u+x
   when: not omnisharp.stat.exists and ansible_distribution == 'MacOSX'
   become: yes
+  tags: [ always ]
 
 - name: download and install omnisharp
   ansible.builtin.unarchive:
@@ -85,18 +106,28 @@
     mode: u+x
   when: not omnisharp.stat.exists and (ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu')
   become: yes
+  tags: [ always ]
 
 - name: Fix Omnisharp permissions
   file: 
     path: /opt/omnisharp/run
     mode: u+x
   become: yes
+  tags: [ always ]
 
 - name: Dequarantine omnisharp
   shell: 
   args:
     cmd: find /opt/omnisharp | xargs xattr -r -d com.apple.quarantine
   when: not omnisharp.stat.exists and ansible_distribution == 'MacOSX'
+  tags: [ always ]
+
+- name: delete sumneko directory
+  file:
+    path: /opt/sumneko
+    state: absent
+  become: yes
+  tags: [ never, build ]
 
 - name: clone Lua language Server
   git:
@@ -107,6 +138,7 @@
     track_submodules: yes
     force: yes
   become: yes
+  tags: [ build ]
 
 - name: set Sumneko directory permissions
   file:
@@ -115,22 +147,26 @@
     mode: '777'
     recurse: yes
   become: yes
+  tags: [ always ]
 
-- name: six sumneko install executable
+- name: fix sumneko install executable
   file: 
     path: /opt/sumneko/3rd/luamake/compile/install.sh
     mode: u+x
   become: yes
+  tags: [ always ]
 
 - name: compile Lua Language Server
   command: ./compile/install.sh
   args:
     chdir: /opt/sumneko/3rd/luamake
+  tags: [ never, build ]
 
 - name: build Lua Language Server
   command: ./3rd/luamake/luamake rebuild
   args:
     chdir: /opt/sumneko
+  tags: [ never, build ]
 
 - name: reset Neovim directory permissions
   file:
@@ -139,6 +175,7 @@
     mode: '755'
     recurse: yes
   become: yes
+  tags: [ always ]
 
 - name: reset Sumneko directory permissions
   file:
@@ -147,6 +184,7 @@
     mode: '755'
     recurse: yes
   become: yes
+  tags: [ always ]
 
 - name: reset Omnisharp directory permissions 
   ansible.builtin.file:
@@ -155,3 +193,4 @@
     mode: '0755'
   when: not omnisharp.stat.exists 
   become: yes
+  tags: [ always ]

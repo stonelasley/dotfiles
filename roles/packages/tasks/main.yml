@@ -1,4 +1,7 @@
 ---
+- name: run ansible galaxy
+  local_action: command ansible-galaxy install -r {{ ansible_env.PWD }}/roles/requirements.yml
+
 - name: install packages from file
   apt: 
     deb: '{{ item }}'

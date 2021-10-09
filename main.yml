@@ -4,5 +4,5 @@
     - { role: packages , tags: packages }
     - { role: dotfiles , tags: dotfiles }
     - { role: shell, tags: shell}
-    - { role: node, tags: node }
     - { role: vim, tags: vim }
+    - { role: node, tags: node }
