@@ -4,6 +4,7 @@ require('telescope').setup {
     file_ignore_patterns = {
       "swap",
       "node_modules",
+      "target/debug",
       ".vendor",
       "yarn.lock",
       "packer_compiled.lua",
