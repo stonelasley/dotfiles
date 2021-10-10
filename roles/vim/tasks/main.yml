@@ -191,7 +191,6 @@
     path: /opt/omnisharp
     state: directory
     mode: '0755'
-  when: not omnisharp.stat.exists 
   become: yes
   tags: [ always ]
 
