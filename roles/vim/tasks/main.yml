@@ -202,6 +202,19 @@
   become: yes
   tags: [ omnisharp ]
 
+- name: download rustup
+  get_url:
+    url: https://sh.rustup.rs
+    dest: /tmp/rustup-init.sh
+    mode: 'u+x'
+  tags: [ rust ]
+
+- name: install rustup
+  command: ./rustup-init.sh -y -q
+  args: 
+    chdir: /tmp
+  tags: [ rust ]
+
 - name: download rust-analyzer
   get_url:
     url: https://github.com/rust-analyzer/rust-analyzer/releases/download/2021-10-04/rust-analyzer-x86_64-apple-darwin.gz
@@ -211,9 +224,9 @@
 
 - name: download rust-analyzer
   get_url:
-    url: https://github.com/rust-analyzer/rust-analyzer/releases/download/2021-10-04/rust-analyzer-x86_64-unknown-linux-gnu.gz/
+    url: https://github.com/rust-analyzer/rust-analyzer/releases/download/2021-10-04/rust-analyzer-x86_64-unknown-linux-gnu.gz
     dest: /tmp/rust-analyzer.gz
-  when: ansible_distribution == 'Debian'
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
   tags: [ rust-analyzer ]
 
 - name: unzip rust-analyzer
