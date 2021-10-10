@@ -66,3 +66,18 @@
     recurse: yes
   become: yes
   tags: [ fzf ]
+
+- name: download rustup
+  get_url:
+    url: https://sh.rustup.rs
+    dest: /tmp/rustup-init.sh
+    mode: 'u+x'
+  tags: [ rust ]
+
+- name: install rustup
+  command: ./rustup-init.sh -y -q
+  args: 
+    chdir: /tmp
+  tags: [ rust ]
+
+
