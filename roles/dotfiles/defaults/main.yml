@@ -1,5 +1,6 @@
 ---
 dotfile_files:
+  - bashrc
   - zshrc
   - zsh
   - tmux.conf

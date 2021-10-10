@@ -1,9 +1,5 @@
-# autoload -U colors
-
 export ZSH="$HOME/.oh-my-zsh"
 export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
-. "$HOME/.cargo/env"
-#ZSH_THEME=agnoster
 
 plugins=(git vi-mode)
 
@@ -36,6 +32,7 @@ setopt printexitvalue       # for non-zero exit status
 setopt pushdignoredups      # don't push multiple copies of same dir onto stack
 setopt pushdsilent          # don't print dir stack after pushing/popping
 setopt sharehistory         # share history across shells
+
 #
 # Other
 #
@@ -52,27 +49,21 @@ source $HOME/.zsh/hooks
 
 LOCAL_RC=$HOME/.zshrc.local
 test -f $LOCAL_RC && source $LOCAL_RC
-#
-#DEV_RC=$HOME/.zsh/host/dev-star
-#if [ $(hostname -s) =~ '^dev(vm)?[[:digit:]]+' ]; then
-#  test -f $DEV_RC && source $DEV_RC
-#fi
-#
-#HOST_RC=$HOME/.zsh/host/$(hostname -s)
-#test -f $HOST_RC && source $HOST_RC
-
 
 #
 # Third-party
 #
 # source $HOME/.st1/vendor/docker-cli/contrib/completion/zsh/_docker
 
+# Rustup
+. "$HOME/.cargo/env"
 
-#
-# Plug-ins
-#
+# Node Version Manager
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-#FZF
+# FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 source "$HOME/.st1/.vendor/zsh-autosuggestions/zsh-autosuggestions.zsh"
@@ -80,9 +71,3 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=59'
 
 # syntax highlighting:
 source "$HOME/.st1/.vendor/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-alias luamake=/opt/sumneko/3rd/luamake/luamake
