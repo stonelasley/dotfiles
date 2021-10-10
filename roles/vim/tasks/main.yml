@@ -13,19 +13,12 @@
     mode: '0777'
   tags: [ always ]
 
-- name: delete neovim directory
-  file:
-    path: /opt/neovim
-    state: absent
-  become: yes
-  tags: [ never, build ]
-
 - name: test neovim cloned
   stat:
     path: /opt/neovim
   register: neovim
   become: yes
-  tags: [ neovim ]
+  tags: [ always ]
 
 - name: clone neovim
   git:
@@ -35,7 +28,7 @@
       #version: release-0.5
   when: not neovim.stat.exists
   become: yes
-  tags: [ neovim ]
+  tags: [ neovim, build ]
 
 - name: set neovim directory permissions
   file:
@@ -45,12 +38,12 @@
     recurse: yes
   when: neovim.stat.exists
   become: yes
-  tags: [ neovim ]
+  tags: [ always ]
 
 - name: update neovim latest
   shell: 
   args:
-    cmd: git checkout . && git pull
+    cmd: git checkout . && git clean -fdq && git pull
     chdir: /opt/neovim
   when: neovim.stat.exists
   become: yes
@@ -84,7 +77,7 @@
   stat:
     path: /opt/omnisharp/run
   register: omnisharp
-  tags: [ omnisharp ]
+  tags: [ neovim, omnisharp ]
 
 - name: Create a Omnisharp directory
   ansible.builtin.file:
@@ -93,7 +86,7 @@
     mode: '0777'
   when: not omnisharp.stat.exists 
   become: yes
-  tags: [ omnisharp ]
+  tags: [ neovim, omnisharp ]
 
 - name: download and install omnisharp
   ansible.builtin.unarchive:
@@ -103,7 +96,7 @@
     mode: u+x
   when: not omnisharp.stat.exists and ansible_distribution == 'MacOSX'
   become: yes
-  tags: [ omnisharp ]
+  tags: [ neovim, omnisharp ]
 
 - name: download and install omnisharp
   ansible.builtin.unarchive:
@@ -113,21 +106,21 @@
     mode: u+x
   when: not omnisharp.stat.exists and (ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu')
   become: yes
-  tags: [ omnisharp ]
+  tags: [ neovim, omnisharp ]
 
 - name: Fix Omnisharp permissions
   file: 
     path: /opt/omnisharp/run
     mode: u+x
   become: yes
-  tags: [ omnisharp ]
+  tags: [ neovim, omnisharp ]
 
 - name: Dequarantine omnisharp
   shell: 
   args:
     cmd: find /opt/omnisharp | xargs xattr -r -d com.apple.quarantine
   when: not omnisharp.stat.exists and ansible_distribution == 'MacOSX'
-  tags: [ omnisharp ]
+  tags: [ neovim, omnisharp ]
 
 - name: delete sumneko directory
   file:
@@ -159,7 +152,7 @@
 - name: fix sumneko install executable
   file: 
     path: /opt/sumneko/3rd/luamake/compile/install.sh
-    mode: u+x
+    mode: 'u+x'
   become: yes
   tags: [ never, build ]
 
@@ -182,7 +175,7 @@
     mode: '755'
     recurse: yes
   become: yes
-  tags: [ never, build ]
+  tags: [ always ]
 
 - name: reset Sumneko directory permissions
   file:
@@ -191,7 +184,7 @@
     mode: '755'
     recurse: yes
   become: yes
-  tags: [ never, build ]
+  tags: [ always ]
 
 - name: reset Omnisharp directory permissions 
   ansible.builtin.file:
@@ -200,20 +193,7 @@
     mode: '0755'
   when: not omnisharp.stat.exists 
   become: yes
-  tags: [ omnisharp ]
-
-- name: download rustup
-  get_url:
-    url: https://sh.rustup.rs
-    dest: /tmp/rustup-init.sh
-    mode: 'u+x'
-  tags: [ rust ]
-
-- name: install rustup
-  command: ./rustup-init.sh -y -q
-  args: 
-    chdir: /tmp
-  tags: [ rust ]
+  tags: [ always ]
 
 - name: download rust-analyzer
   get_url:
@@ -227,17 +207,23 @@
     url: https://github.com/rust-analyzer/rust-analyzer/releases/download/2021-10-04/rust-analyzer-x86_64-unknown-linux-gnu.gz
     dest: /tmp/rust-analyzer.gz
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
-  tags: [ rust-analyzer ]
+  tags: [ neovim, rust-analyzer ]
 
 - name: unzip rust-analyzer
   command: gunzip -f rust-analyzer.gz
   args: 
     chdir: /tmp
-  tags: [ rust-analyzer ]
+  tags: [ neovim, rust-analyzer ]
 
-- name: Copy rust-analyzer and set permissions
+- name: copy rust-analyzer and set permissions
   ansible.builtin.copy:
     src: /tmp/rust-analyzer
     dest: ~/.local/bin/rust-analyzer
     mode: 'u+x'
-  tags: [ rust-analyzer ]
+  tags: [ neovim, rust-analyzer ]
+
+- name: cleanup rust-analyzer
+  file:
+    path: /tmp/rust-analyzer*
+    state: absent
+  tags: [ always ]
