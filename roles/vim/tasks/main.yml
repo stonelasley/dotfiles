@@ -200,7 +200,7 @@
     url: https://github.com/rust-analyzer/rust-analyzer/releases/download/2021-10-04/rust-analyzer-x86_64-apple-darwin.gz
     dest: /tmp/rust-analyzer.gz
   when: ansible_distribution == 'MacOSX'
-  tags: [ rust-analyzer ]
+  tags: [ neovim, rust-analyzer ]
 
 - name: download rust-analyzer
   get_url:
