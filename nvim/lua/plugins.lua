@@ -143,7 +143,11 @@ return require('packer').startup(function(use)
 
    -- lua
    use { 'euclidianace/betterlua.vim', ft = { 'lua' } }
-   use 'rafcamlet/nvim-luapad'
+   use {
+      'rafcamlet/nvim-luapad',
+      config = [[require('config.luapad')]],
+      ft = { 'lua'}
+   }
 
    -- vue
    use { 'posva/vim-vue', ft = { 'typescript', 'vue' } }
