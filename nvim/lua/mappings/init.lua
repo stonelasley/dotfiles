@@ -18,7 +18,7 @@ require('kartograaf').map({
     -- Clear search highlight
     { '<CR>', ':noh<CR><CR>' },
     { 'Y', 'y$' },
-    { 'f', [[<cmd>lua require'hop'.hint_char1()<cr>]] },
+    --{ 'f', [[<cmd>lua require'hop'.hint_char1()<cr>]] },
     { '<F12>', '<plug>(Prettier)<CR>', { silent = true, noremap = false} },
     {
       prefix = '<leader>',
