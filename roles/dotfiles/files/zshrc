@@ -71,3 +71,5 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=59'
 
 # syntax highlighting:
 source "$HOME/.st1/.vendor/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+
+alias luamake=/opt/sumneko/3rd/luamake/luamake

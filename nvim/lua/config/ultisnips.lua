@@ -6,4 +6,4 @@ vim.g.UltiSnipsJumpBackwardTrigger="<S-tab>"
 
 --If you want :UltiSnipsEdit to split your window.
 vim.g.UltiSnipsEditSplit="vertical"
-vim.cmd([[inoremap <expr> <CR> (pumvisible() && UltiSnips#CanExpandSnippet()) ? "<C-R>=UltiSnips#ExpandSnippetOrJump()" : "\<CR>"]])
+vim.cmd([[inoremap <expr> <CR> (pumvisible() && UltiSnips#CanExpandSnippet()) ? "<C-R>=UltiSnips#ExpandSnippetOrJump()<CR>" : "\<CR>"]])
