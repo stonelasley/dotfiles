@@ -105,7 +105,7 @@ return require('packer').startup(function(use)
    -- Debug
    use { 
       'mfussenegger/nvim-dap',
-      config = [[require('config.nvim-dap')]]
+      -- config = [[require('config.nvim-dap')]]
    } 
 
    -- Languages
@@ -113,10 +113,10 @@ return require('packer').startup(function(use)
       'neovim/nvim-lspconfig',
       config = [[require('config.lsp')]]
    }
-   use {
-      'glepnir/lspsaga.nvim',
-      config = [[require('config.lspsaga')]]
-   }
+   -- use {
+   --    'glepnir/lspsaga.nvim',
+   --    config = [[require('config.lspsaga')]]
+   -- }
    use {
       'nvim-treesitter/nvim-treesitter',
       run = ':TSUpdate',
@@ -128,11 +128,11 @@ return require('packer').startup(function(use)
       config = [[require('config.treesitterplayground')]],
       cmd = 'TSPlaygroundToggle'
    }
-   use {
-      "folke/trouble.nvim",
-      requires = "kyazdani42/nvim-web-devicons",
-      config = [[require('config.trouble')]]
-   }
+   -- use {
+   --    "folke/trouble.nvim",
+   --    requires = "kyazdani42/nvim-web-devicons",
+   --    config = [[require('config.trouble')]]
+   -- }
 
    -- C#
    use {
