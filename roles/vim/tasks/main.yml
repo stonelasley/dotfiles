@@ -127,7 +127,7 @@
     path: /opt/sumneko
     state: absent
   become: yes
-  tags: [ never, build ]
+  tags: [ never, lbuild ]
 
 - name: clone Lua language Server
   git:
@@ -138,7 +138,7 @@
     track_submodules: yes
     force: yes
   become: yes
-  tags: [ never, build ]
+  tags: [ never, lbuild ]
 
 - name: set Sumneko directory permissions
   file:
@@ -147,26 +147,19 @@
     mode: '777'
     recurse: yes
   become: yes
-  tags: [ never, build ]
-
-- name: fix sumneko install executable
-  file: 
-    path: /opt/sumneko/3rd/luamake/compile/install.sh
-    mode: 'u+x'
-  become: yes
-  tags: [ never, build ]
+  tags: [ never, lbuild ]
 
 - name: compile Lua Language Server
   command: ./compile/install.sh
   args:
     chdir: /opt/sumneko/3rd/luamake
-  tags: [ never, build ]
+  tags: [ never, lbuild ]
 
 - name: build Lua Language Server
   command: ./3rd/luamake/luamake rebuild
   args:
     chdir: /opt/sumneko
-  tags: [ never, build ]
+  tags: [ never, lbuild ]
 
 - name: reset Neovim directory permissions
   file:
