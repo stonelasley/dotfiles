@@ -9,6 +9,7 @@
 	lg = log -p
 	df = diff
 	undo = reset --hard
+	ac = !git add -A && git commit -m
 [core]
 	autocrlf = false
 	editor = vim
