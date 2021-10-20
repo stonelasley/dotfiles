@@ -1,4 +1,4 @@
-local rust_tools = require('reust-tools')
+local rust_tools = require('rust-tools')
 local extension_path = '/Users/scl/.vscode/extensions/vadimcn.vscode-lldb-1.6.8/'
 local codelldb_path = extension_path .. 'adapter/codelldb'
 local liblldb_path = extension_path .. 'lldb/lib/liblldb.dylib'
