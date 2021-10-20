@@ -41,8 +41,12 @@ return require('packer').startup(function(use)
    }
 
    -- Completion
+   use { 'hrsh7th/cmp-buffer' }
+   use { 'hrsh7th/cmp-nvim-lsp' }
+   use { 'hrsh7th/cmp-path' }
+   use { 'quangnguyen30192/cmp-nvim-ultisnips' }
    use {
-      'hrsh7th/nvim-compe',
+      'hrsh7th/nvim-cmp',
       config = [[require('config.compe')]]
    }
    -- TODO temporary until I decide how to address c# completion
@@ -89,8 +93,7 @@ return require('packer').startup(function(use)
    }
    use {
       'dense-analysis/ale',
-      config = [[require('config.ale')]],
-      ft = 'cs'
+      config = [[require('config.ale')]]
    }
 
    -- Snippets
@@ -150,8 +153,8 @@ return require('packer').startup(function(use)
    use { 'posva/vim-vue', ft = { 'typescript', 'vue' } }
 
    -- rust
-   use { 
-      'simrat39/rust-tools.nvim', 
+   use {
+      'simrat39/rust-tools.nvim',
       config = [[require('config.rust-tools')]]
    }
 
