@@ -103,10 +103,7 @@ return require('packer').startup(function(use)
    use { 'softchris/ts-snippets' }
 
    -- Debug
-   use { 
-      'mfussenegger/nvim-dap',
-      -- config = [[require('config.nvim-dap')]]
-   } 
+   use { 'mfussenegger/nvim-dap' }
 
    -- Languages
    use {
