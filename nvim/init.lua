@@ -16,10 +16,10 @@ utils.opt('o', 'splitright', true)
 utils.opt('w', 'wrap', false)
 utils.opt('o', 'formatoptions', 'cro')
 utils.opt('o', 'termguicolors', true)
-
 vim.opt.clipboard:append("unnamedplus")
 vim.g.indentLine_fileTypeExclude = {'json'}
 vim.g.wrap = false
+vim.g.ttimeoutlen=100
 vim.o.completeopt="menuone,preview,noinsert"
 
 -- Highlight text on yank

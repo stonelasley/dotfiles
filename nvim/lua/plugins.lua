@@ -5,7 +5,6 @@ return require('packer').startup(function(use)
    use 'lewis6991/impatient.nvim'
 
    -- Convenience Utilities
-   use 'tpope/vim-sensible'
    use 'tpope/vim-sleuth'
    use 'tpope/vim-surround'
    use 'tpope/vim-commentary'
