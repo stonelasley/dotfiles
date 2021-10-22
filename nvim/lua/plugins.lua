@@ -178,9 +178,8 @@ return require('packer').startup(function(use)
       config = [[require('config.lspkind')]]
    }
 
-   -- 'rafamadriz/neon',
    use {
-      'stonelasley/neon',
+      'shaunsingh/nord.nvim',
       config = [[require('config.neon')]],
    }
 
