@@ -20,6 +20,7 @@ vim.opt.clipboard:append("unnamedplus")
 vim.g.indentLine_fileTypeExclude = {'json'}
 vim.g.wrap = false
 vim.g.ttimeoutlen=100
+vim.g.guicursor='blinkon100'
 vim.o.completeopt="menuone,preview,noinsert"
 
 -- Highlight text on yank
