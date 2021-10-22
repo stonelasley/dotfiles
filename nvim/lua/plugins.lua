@@ -5,7 +5,6 @@ return require('packer').startup(function(use)
    use 'lewis6991/impatient.nvim'
 
    -- Convenience Utilities
-   use 'tpope/vim-sensible'
    use 'tpope/vim-sleuth'
    use 'tpope/vim-surround'
    use 'tpope/vim-commentary'
@@ -44,6 +43,10 @@ return require('packer').startup(function(use)
    use { 'hrsh7th/cmp-buffer' }
    use { 'hrsh7th/cmp-nvim-lsp' }
    use { 'hrsh7th/cmp-path' }
+   use { 'tzachar/cmp-tabnine',
+        run='./install.sh',
+        requires = 'hrsh7th/nvim-cmp',
+   }
    use { 'quangnguyen30192/cmp-nvim-ultisnips' }
    use {
       'hrsh7th/nvim-cmp',

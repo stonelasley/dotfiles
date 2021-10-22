@@ -1,8 +1,7 @@
---Setting breakpoints via :lua require'dap'.toggle_breakpoint().
---Launching debug sessions and resuming execution via :lua require'dap'.continue().
---Stepping through code via :lua require'dap'.step_over() and :lua require'dap'.step_into().
---Inspecting the state via the built-in REPL: :lua require'dap'.repl.open() 
--- or using the widget UI (:help dap-widgets)
+-- Launching debug sessions and resuming execution via :lua require'dap'.continue().
+-- Stepping through code via :lua require'dap'.step_over() and :lua require'dap'.step_into().
+-- Inspecting the state via the built-in REPL: :lua require'dap'.repl.open() 
+-- Or using the widget UI (:help dap-widgets)
 local dap = require('dap')
 
 local extension_path = '~/.vscode/extensions/vadimcn.vscode-lldb-1.6.8/'
