@@ -1,6 +1,8 @@
 local cmp = require('cmp')
+local tabnine = require('cmp_tabnine.config')
+
 cmp.setup {
-  snippet = {
+ snippet = {
     expand = function(args)
       vim.fn["UltiSnips#Anon"](args.body)
     end,
@@ -16,6 +18,14 @@ cmp.setup {
     { name = 'nvim_lsp' },
     { name = 'ultisnips' },
     { name = 'buffer' },
-    { name = 'path' }
+    { name = 'path' },
+    { name = 'cmp_tabnine' }
   }
 }
+tabnine:setup({
+        max_lines = 1000;
+        max_num_results = 20;
+        sort = true;
+	run_on_every_keystroke = true;
+	snippet_placeholder = '..';
+})
