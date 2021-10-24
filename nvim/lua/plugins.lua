@@ -11,6 +11,7 @@ return require('packer').startup(function(use)
    use 'tpope/vim-eunuch'
    use 'tpope/vim-projectionist'
    use 'andrewradev/splitjoin.vim'
+   use 'svermeulen/vimpeccable'
    use {
       'windwp/nvim-autopairs' ,
       config = [[require('config.autopairs')]]
