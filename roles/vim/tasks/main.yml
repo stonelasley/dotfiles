@@ -73,7 +73,7 @@
   stat:
     path: /opt/omnisharp/run
   register: omnisharp
-  tags: [ never, omnisharp, full]
+  tags: [ always ]
 
 - name: Create a Omnisharp directory
   ansible.builtin.file:
@@ -223,52 +223,3 @@
     path: /tmp/rust-analyzer*
     state: absent
   tags: [ always ]
-
-- name: test lldb cloned
-  stat:
-    path: /opt/lldb
-  register: lldb
-  become: yes
-  tags: [ always ]
-
-- name: clone lldb-vscode
-  git:
-    repo: https://github.com/vadimcn/vscode-lldb
-    dest: /opt/lldb/
-    force: yes
-  when: not lldb.stat.exists
-  become: yes
-  tags: [ lldb ]
-
-- name: Create config bin directory
-  ansible.builtin.file:
-    path: /opt/lldb/build
-    state: directory
-    mode: '0777'
-  become: yes
-  tags: [ lldb ]
-
-- name: set lldb directory permissions
-  file:
-    path: /opt/neovim
-    state: directory
-    mode: '777'
-    recurse: yes
-  when: lldb.stat.exists
-  become: yes
-  tags: [ lldb ]
-
-- name: zip lldb package
-  community.general.archive:
-    path:
-    - /opt/lldb/build/
-    - /path/wong/foo
-    dest: /path/file.tar.bz2
-    format: bz2
-
-- name: build lldb
-  command: cmake
-  args:
-    chdir: /opt/lldb/build
-  tags: [ lldb ]
-
