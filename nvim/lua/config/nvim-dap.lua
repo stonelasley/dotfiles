@@ -4,7 +4,8 @@
 -- Or using the widget UI (:help dap-widgets)
 local dap = require('dap')
 
-local extension_path = '~/.vscode/extensions/vadimcn.vscode-lldb-1.6.8/'
+local extension_path = '~/.st1/.endor/vscode-lldb/'
+-- local extension_path = '~/.vscode/extensions/vadimcn.vscode-lldb-1.6.8/'
 local codelldb_path = extension_path .. 'adapter/codelldb'
 local liblldb_path = extension_path .. 'lldb/lib/liblldb.dylib'
 
