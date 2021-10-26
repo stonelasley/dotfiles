@@ -28,5 +28,5 @@ if ! [ -x "$(command -v ansible)" ]; then
 fi
 
 git submodule update --init --recursive
-#ansible-galaxy install -r ./roles/requirements.yml
+ansible-galaxy collection install community.general
 ansible-playbook --ask-become-pass main.yml "$@" 
