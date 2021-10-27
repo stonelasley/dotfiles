@@ -92,7 +92,7 @@
     mode: u+x
   when: not omnisharp.stat.exists and ansible_distribution == 'MacOSX'
   become: yes
-  tags: [ neovimnever, omnisharp, full ]
+  tags: [ never, omnisharp, full]
 
 - name: download and install omnisharp
   ansible.builtin.unarchive:
@@ -102,7 +102,7 @@
     mode: u+x
   when: not omnisharp.stat.exists and (ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu')
   become: yes
-  tags: [ neovimnever, omnisharp, full ]
+  tags: [ never, omnisharp, full]
 
 - name: Fix Omnisharp permissions
   file: 
