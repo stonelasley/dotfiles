@@ -29,7 +29,7 @@ require('kartograaf').map({
     },
     { [[<C-\>]], [[<Plug>(omnisharp_signature_help)]] },
     { '<F12>', [[<Plug>(omnisharp_code_format)]] },
-    { '<C-r><C-r>', [[<Plug>(omnisharp_rename)]] }
+    { '<F2>', [[<Plug>(omnisharp_rename)]] }
   },
   i = {
     {

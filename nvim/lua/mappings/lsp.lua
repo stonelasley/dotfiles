@@ -12,6 +12,8 @@ function M.set_buf_keymaps(ls, bufnr)
       { '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>'},
       { ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>'},
       --{ '<F12>', '<cmd>lua vim.lsp.buf.formatting()<CR>' },
+      -- { '<F2>', [[<cmd>lua require('lspsaga.rename').rename()<CR>]]},
+      { '<F2>', '<cmd>lua vim.lsp.buf.rename()<CR>' },
       {
         prefix = '<leader><leader>',
         { 'wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>'},
@@ -36,8 +38,6 @@ function M.set_buf_keymaps(ls, bufnr)
       {
         mod = 'C',
         { ']', '<cmd>lua vim.lsp.buf.type_definition()<CR>'},
-        { 'r,r', '<cmd>lua vim.lsp.buf.rename()<CR>' },
-     -- { 'r,r', [[<cmd>lua require('lspsaga.rename').rename()<CR>]]},
       }
     },
   i = {
