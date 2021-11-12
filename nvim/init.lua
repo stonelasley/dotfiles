@@ -1,4 +1,4 @@
-require('impatient')
+pcall(require, 'impatient')
 
 local cmd = vim.cmd
 local utils = require('utils')
