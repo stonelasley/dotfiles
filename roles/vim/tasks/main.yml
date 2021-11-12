@@ -1,4 +1,10 @@
 ---
+- name: create config
+  ansible.builtin.file:
+    path: ~/.config
+    state: directory
+    mode: '0777'
+
 - name: link neovim config
   file: src={{ ansible_env.PWD }}/nvim/
         path=~/.config/nvim
