@@ -122,14 +122,14 @@
   args:
     cmd: find /opt/omnisharp | xargs xattr -r -d com.apple.quarantine
   when: not omnisharp.stat.exists and ansible_distribution == 'MacOSX'
-  tags: [ never, omnisharp, full ]
+  tags: [ never, omnisharp, build, full ]
 
 - name: delete sumneko directory
   file:
     path: /opt/sumneko
     state: absent
   become: yes
-  tags: [ never, sumneko, build ]
+  tags: [ never, sumneko, build, full ]
 
 - name: clone Lua language Server
   git:
@@ -140,7 +140,7 @@
     track_submodules: yes
     force: yes
   become: yes
-  tags: [ never, sumneko, build ]
+  tags: [ never, sumneko, build, full ]
 
 - name: manually clone submodules 
   shell: 
@@ -148,7 +148,7 @@
     cmd: git submodule update --init --recursive
     chdir: /opt/sumneko
   become: yes
-  tags: [ never, sumneko, build ]
+  tags: [ never, sumneko, build, full ]
 
 - name: set Sumneko directory permissions
   file:
@@ -157,19 +157,19 @@
     mode: '777'
     recurse: yes
   become: yes
-  tags: [ never, sumneko, build ]
+  tags: [ never, sumneko, build, full ]
 
 - name: compile Lua Language Server
   command: ./compile/install.sh
   args:
     chdir: /opt/sumneko/3rd/luamake
-  tags: [ never, sumneko, build ]
+  tags: [ never, sumneko, build, full ]
 
 - name: build Lua Language Server
   command: ./3rd/luamake/luamake rebuild
   args:
     chdir: /opt/sumneko
-  tags: [ never, sumneko, build ]
+  tags: [ never, sumneko, build, full ]
 
 - name: download rust-analyzer
   get_url:
