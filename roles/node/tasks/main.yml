@@ -1,17 +1,17 @@
 ---
 - name: download
-  get_url: 
+  get_url:
     url: https://raw.githubusercontent.com/nvm-sh/nvm/v{{nvm_version}}/install.sh
     dest: /tmp/nvm-install.sh
     mode: u+x
 
 - name: install
-  shell: 
+  shell:
   args:
     cmd: ./nvm-install.sh
     chdir: /tmp
 
-- name: cleanup 
+- name: cleanup
   file:
     path: /tmp/nvm-install.sh
     state: absent

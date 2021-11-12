@@ -6,7 +6,7 @@
     depth: 1
     force: yes
   become: yes
-  tags: [ fzf ]
+  tags: [fzf]
 
 - name: set fzf directory permissions
   file:
@@ -15,26 +15,26 @@
     mode: '777'
     recurse: yes
   become: yes
-  tags: [ fzf ]
+  tags: [fzf]
 
 - name: install fzf
   command: ./install --all
-  args: 
+  args:
     chdir: /opt/fzf
-  tags: [ fzf ]
+  tags: [fzf]
 
 - name: clone Tmux Package Manager
   git:
     repo: https://github.com/tmux-plugins/tpm.git
     dest: ~/.tmux/plugins/tpm
     depth: 1
-  tags: [ tmux ]
+  tags: [tmux]
 
 - name: test oh-my-zsh installed
   stat:
     path: ~/.oh-my-zsh
   register: oh_my_zsh
-  tags: [ zsh ]
+  tags: [zsh]
 
 - name: download oh-my-zsh
   get_url:
@@ -42,21 +42,21 @@
     dest: /tmp/oh-my-zsh.sh
     mode: u+x
   when: not oh_my_zsh.stat.exists
-  tags: [ zsh ]
+  tags: [zsh]
 
 - name: install oh-my-zsh
-  shell: 
+  shell:
   args:
     cmd: ./oh-my-zsh.sh
     chdir: /tmp
   when: not oh_my_zsh.stat.exists
-  tags: [ zsh ]
+  tags: [zsh]
 
-- name: cleanup 
+- name: cleanup
   file:
     path: /tmp/oh-my-zsh.sh
     state: absent
-  tags: [ always ]
+  tags: [always]
 
 - name: correct fzf directory permissions
   file:
@@ -65,19 +65,17 @@
     mode: '755'
     recurse: yes
   become: yes
-  tags: [ fzf ]
+  tags: [fzf]
 
 - name: download rustup
   get_url:
     url: https://sh.rustup.rs
     dest: /tmp/rustup-init.sh
     mode: 'u+x'
-  tags: [ rust ]
+  tags: [rust]
 
 - name: install rustup
   command: ./rustup-init.sh -y -q
-  args: 
+  args:
     chdir: /tmp
-  tags: [ rust ]
-
-
+  tags: [rust]
