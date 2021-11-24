@@ -33,6 +33,16 @@ vim.api.nvim_exec(
   ]],
   false
 )
+-- Temp Macros
+vim.api.nvim_exec(
+  [[
+
+      let @l = '0wi{{ $t(''A'') }}j'
+      let @b = '0f>a{{ $t(''f<i'') }}j'
+      let @i = 'F>a{{ $t(''f<i'') }}j'
+  ]],
+  false
+)
 
 require('plugins')
 vim.g.mapleader = " "
