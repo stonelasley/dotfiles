@@ -18,7 +18,8 @@ require('kartograaf').map({
     -- Clear search highlight
     { '<CR>', ':noh<CR><CR>' },
     { 'Y', 'y$' },
-    --{ 'f', [[<cmd>lua require'hop'.hint_char1()<cr>]] },
+    { 'f', [[<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = false})<cr>]] },
+    { 'F', [[<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = false})<cr>]] },
     { '<F12>', '<plug>(Prettier)<CR>', { silent = true, noremap = false} },
     {
       prefix = '<leader>',
@@ -26,7 +27,10 @@ require('kartograaf').map({
       { 'd', '"_d' },
       { 'Y', 'gg"+yG<C-o>'},
       { 'ls', '<cmd>Telescope buffers<CR>' },
-      -- trouble
+      -- hop.nvim
+      { 'f', [[<cmd>lua require'hop'.hint_words({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = false})<cr>]] },
+      { 'F', [[<cmd>lua require'hop'.hint_words({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = false})<cr>]] },
+      -- trouble.nvim 
       { 't', '<cmd>Trouble<CR>', { silent = true } },
       { 'tw', '<cmd>Trouble lsp_workspace_diagnostics<CR>', { silent = true } },
       { 'td', '<cmd>Trouble lsp_document_diagnostics<CR>', { silent = true } },
