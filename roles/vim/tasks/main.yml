@@ -4,34 +4,35 @@
     path: ~/.config
     state: directory
     mode: '0777'
+  tags: [neovim]
 
 - name: link neovim config
   file: src={{ ansible_env.PWD }}/nvim/
         path=~/.config/nvim
         state=link
         force=yes
-  tags: [always]
+  tags: [neovim]
 
 - name: Create config bin directory
   ansible.builtin.file:
     path: ~/.local/bin
     state: directory
     mode: '0777'
-  tags: [always]
+  tags: [neovim]
 
 - name: delete neovim directory
   file:
     path: /opt/neovim
     state: absent
   become: yes
-  tags: [never, neovim, build, full]
+  tags: [neovim]
 
 - name: test neovim cloned
   stat:
     path: /opt/neovim
   register: neovim
   become: yes
-  tags: [never, neovim, build, full]
+  tags: [neovim]
 
 - name: clone neovim
   git:
@@ -40,7 +41,7 @@
     force: yes
       #version: release-0.5
   become: yes
-  tags: [never, neovim, build, full]
+  tags: [neovim]
 
 - name: set neovim directory permissions
   file:
@@ -49,7 +50,7 @@
     mode: '777'
     recurse: yes
   become: yes
-  tags: [always]
+  tags: [neovim]
 
 - name: build neovim
   shell:
@@ -57,7 +58,7 @@
     cmd: make CMAKE_BUILD_TYPE=Release --jobs=4 --silent
     chdir: /opt/neovim
   become: yes
-  tags: [never, neovim, build, full]
+  tags: [neovim]
 
 - name: build neovim
   shell:
@@ -65,7 +66,7 @@
     cmd: make install
     chdir: /opt/neovim
   become: yes
-  tags: [never, neovim, build, full]
+  tags: [neovim]
 
 - name: clone packer
   git:
@@ -73,22 +74,21 @@
     dest: ~/.local/share/nvim/site/pack/packer/start/packer.nvim
     depth: 1
     force: yes
-  tags: [always]
-
-- name: test omnisharp installed
-  stat:
-    path: /opt/omnisharp/run
-  register: omnisharp
-  tags: [always]
+  tags: [neovim]
 
 - name: Create a Omnisharp directory
   ansible.builtin.file:
     path: /opt/omnisharp
     state: directory
     mode: '0777'
-  when: not omnisharp.stat.exists
   become: yes
-  tags: [never, omnisharp, full]
+  tags: [neovim, omnisharp]
+
+- name: test omnisharp installed
+  stat:
+    path: /opt/omnisharp/run
+  register: omnisharp
+  tags: [omnisharp]
 
 - name: download and install omnisharp
   ansible.builtin.unarchive:
@@ -98,7 +98,7 @@
     mode: u+x
   when: not omnisharp.stat.exists and ansible_distribution == 'MacOSX'
   become: yes
-  tags: [never, omnisharp, full]
+  tags: [omnisharp]
 
 - name: download and install omnisharp
   ansible.builtin.unarchive:
@@ -108,28 +108,28 @@
     mode: u+x
   when: not omnisharp.stat.exists and (ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu')
   become: yes
-  tags: [never, omnisharp, full]
+  tags: [omnisharp]
 
 - name: Fix Omnisharp permissions
   file: 
     path: /opt/omnisharp/run
     mode: u+x
   become: yes
-  tags: [always]
+  tags: [omnisharp]
 
 - name: Dequarantine omnisharp
   shell: 
   args:
     cmd: find /opt/omnisharp | xargs xattr -r -d com.apple.quarantine
   when: not omnisharp.stat.exists and ansible_distribution == 'MacOSX'
-  tags: [never, omnisharp, build, full]
+  tags: [vim, omnisharp]
 
 - name: delete sumneko directory
   file:
     path: /opt/sumneko
     state: absent
   become: yes
-  tags: [never, sumneko, build, full]
+  tags: [sumneko]
 
 - name: clone Lua language Server
   git:
@@ -140,7 +140,7 @@
     track_submodules: yes
     force: yes
   become: yes
-  tags: [never, sumneko, build, full]
+  tags: [sumneko]
 
 - name: manually clone submodules
   shell:
@@ -148,7 +148,7 @@
     cmd: git submodule update --init --recursive
     chdir: /opt/sumneko
   become: yes
-  tags: [never, sumneko, build, full]
+  tags: [sumneko]
 
 - name: set Sumneko directory permissions
   file:
@@ -157,46 +157,46 @@
     mode: '777'
     recurse: yes
   become: yes
-  tags: [never, sumneko, build, full]
+  tags: [sumneko]
 
 - name: compile Lua Language Server
   command: ./compile/install.sh
   args:
     chdir: /opt/sumneko/3rd/luamake
-  tags: [never, sumneko, build, full]
+  tags: [sumneko]
 
 - name: build Lua Language Server
   command: ./3rd/luamake/luamake rebuild
   args:
     chdir: /opt/sumneko
-  tags: [never, sumneko, build, full]
+  tags: [sumneko]
 
 - name: download rust-analyzer
   get_url:
     url: https://github.com/rust-analyzer/rust-analyzer/releases/download/2021-10-04/rust-analyzer-x86_64-apple-darwin.gz
     dest: /tmp/rust-analyzer.gz
   when: ansible_distribution == 'MacOSX'
-  tags: [never, rust-analyzer, full]
+  tags: [rust-analyzer]
 
 - name: download rust-analyzer
   get_url:
     url: https://github.com/rust-analyzer/rust-analyzer/releases/download/2021-10-04/rust-analyzer-x86_64-unknown-linux-gnu.gz
     dest: /tmp/rust-analyzer.gz
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
-  tags: [never, rust-analyzer, full]
+  tags: [rust-analyzer]
 
 - name: unzip rust-analyzer
   command: gunzip -f rust-analyzer.gz
   args:
     chdir: /tmp
-  tags: [never, rust-analyzer, full]
+  tags: [rust-analyzer]
 
 - name: copy rust-analyzer and set permissions
   ansible.builtin.copy:
     src: /tmp/rust-analyzer
     dest: ~/.local/bin/rust-analyzer
     mode: 'u+x'
-  tags: [never, rust-analyzer, full]
+  tags: [rust-analyzer]
 
 - name: reset Neovim directory permissions
   file:
@@ -205,7 +205,7 @@
     mode: '755'
     recurse: yes
   become: yes
-  tags: [always]
+  tags: [neovim]
 
 - name: reset Sumneko directory permissions
   file:
@@ -214,7 +214,7 @@
     mode: '755'
     recurse: yes
   become: yes
-  tags: [always]
+  tags: [sumneko]
 
 - name: reset Omnisharp directory permissions
   ansible.builtin.file:
@@ -222,10 +222,10 @@
     state: directory
     mode: '0755'
   become: yes
-  tags: [always]
+  tags: [omnisharp]
 
 - name: cleanup rust-analyzer
   file:
     path: /tmp/rust-analyzer*
     state: absent
-  tags: [always]
+  tags: [rust-analyzer]
