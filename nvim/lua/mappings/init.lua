@@ -17,7 +17,6 @@ require('kartograaf').map({
     --{ '<Space>', '<Nop>' },
     -- Clear search highlight
     { '<CR>', ':noh<CR><CR>' },
-    { 'Y', 'y$' },
     { 'f', [[<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = false})<cr>]] },
     { 'F', [[<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = false})<cr>]] },
     { '<F12>', '<plug>(Prettier)<CR>', { silent = true, noremap = false} },
