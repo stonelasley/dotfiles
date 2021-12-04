@@ -2,7 +2,7 @@ local nvim_lsp = require('lspconfig')
 local buf_maps = require('mappings.lsp').set_buf_keymaps
 local cmp = require('cmp_nvim_lsp')
 
-local servers = { 'vuels', 'tsserver', 'sumneko_lua' }
+local servers = { 'vuels', 'tsserver', 'sumneko_lua', 'yamlls' }
 -- 'rust_analyzer' is setup via rust-tools
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
