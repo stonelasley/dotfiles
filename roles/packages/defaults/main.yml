@@ -14,6 +14,7 @@ packages:
   - libtool
   - libtool-bin
   - ninja-build
+  - npm
   - python3-pip
   - pkg-config
   - ripgrep 
@@ -21,6 +22,7 @@ packages:
   - sqlite3 
   - unzip
   - zsh
+
 casks:
   - automake
   - cmake
@@ -33,6 +35,8 @@ casks:
   - ripgrep 
   - sqlite3 
   - tree-sitter
+  - node@16
+  - npm 
 
 debs:
   - https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb
@@ -43,3 +47,12 @@ pips:
   - pynvim
   - qmk
   - ansible-lint[yamllint]
+
+npm:
+  - neovim
+  - typescript
+  - typescript-language-server
+  - vls
+  - yarn
+  - yaml-language-server
+

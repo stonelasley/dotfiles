@@ -11,7 +11,7 @@
 	undo = reset --hard
 	ac = !git add -A && git commit -m
 [core]
-	autocrlf = true
+	autocrlf = false
 	editor = vim
 [push]
 	default = simple
