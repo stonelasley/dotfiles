@@ -17,7 +17,6 @@ require('kartograaf').map({
     --{ '<Space>', '<Nop>' },
     -- Clear search highlight
     { '<CR>', ':noh<CR><CR>' },
-    { 'Y', 'y$' },
     { 'f', [[<cmd>lua require('hop').hint_char1({ direction = require('hop.hint').HintDirection.AFTER_CURSOR, current_line_only = false })<cr>]] },
     { 'F', [[<cmd>lua require('hop').hint_char1({ direction = require('hop.hint').HintDirection.BEFORE_CURSOR, current_line_only = false })<cr>]] },
     { '<F12>', '<plug>(Prettier)<CR>', { silent = true, noremap = false} },
@@ -46,10 +45,10 @@ require('kartograaf').map({
     },
     {
       mod = 'C',
-      { 'h', '<C-w>h' },
-      { 'j', '<C-w>j' },
-      { 'k', '<C-w>k' },
-      { 'l', '<C-w>l' },
+      { 'h', '<cmd> :TmuxNavigateLeft<CR>' },
+      { 'j', '<cmd> :TmuxNavigateDown<CR>' },
+      { 'k', '<cmd> :TmuxNavigateUp<CR>' },
+      { 'l', '<cmd> :TmuxNavigateRight<CR>' },
       { 'n', ':NvimTreeToggle<CR>' },
       { 'p', '<cmd>Telescope find_files<CR>' },
       { 'f', '<cmd>Telescope live_grep<CR>' },

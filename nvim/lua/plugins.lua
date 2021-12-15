@@ -7,8 +7,11 @@ return require('packer').startup(function(use)
    -- Convenience Utilities
    use 'tpope/vim-sleuth'
    use 'tpope/vim-surround'
-   use 'tpope/vim-commentary'
    use 'tpope/vim-eunuch'
+   use {
+    'numToStr/Comment.nvim',
+    config = [[require('config.comment')]]
+   }  
    use 'tpope/vim-projectionist'
    use 'andrewradev/splitjoin.vim'
    use 'svermeulen/vimpeccable'
