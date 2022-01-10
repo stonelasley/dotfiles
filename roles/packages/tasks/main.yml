@@ -8,12 +8,12 @@
 - name: "Add nodejs 16.x ppa for apt repo"
   apt_repository:
     repo: deb https://deb.nodesource.com/node_16.x bionic main
-    update_cache: yes
+    update_cache: true
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 
 - name: "Install nodejs"
   apt:
-    update_cache: yes
+    update_cache: true
     name: nodejs
     state: present
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
@@ -22,7 +22,7 @@
   apt:
     deb: '{{ item }}'
     update_cache: false
-  become: yes
+  become: true
   with_items:
     - '{{ debs }}'
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
@@ -32,7 +32,7 @@
     name: '{{ packages }}'
     update_cache: true
     state: present
-  become: yes
+  become: true
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 
 - name: install casks
@@ -50,7 +50,7 @@
 
 - name: Install global packages.
   community.general.npm:
-    global: yes
+    global: true
   with_items: 
     - '{{ npm }}'
 

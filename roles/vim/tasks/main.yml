@@ -10,7 +10,7 @@
   file: src={{ ansible_env.PWD }}/nvim/
         path=~/.config/nvim
         state=link
-        force=yes
+        force=true
   tags: [neovim]
 
 - name: Create config bin directory
@@ -24,23 +24,23 @@
   file:
     path: /opt/neovim
     state: absent
-  become: yes
+  become: true
   tags: [neovim]
 
 - name: test neovim cloned
   stat:
     path: /opt/neovim
   register: neovim
-  become: yes
+  become: true
   tags: [neovim]
 
 - name: clone neovim
   git:
     repo: https://github.com/neovim/neovim
     dest: /opt/neovim/
-    force: yes
+    force: true
       #version: release-0.5
-  become: yes
+  become: true
   tags: [neovim]
 
 - name: set neovim directory permissions
@@ -48,8 +48,8 @@
     path: /opt/neovim
     state: directory
     mode: '777'
-    recurse: yes
-  become: yes
+    recurse: true
+  become: true
   tags: [neovim]
 
 - name: build neovim
@@ -57,7 +57,7 @@
   args:
     cmd: make CMAKE_BUILD_TYPE=Release --jobs=4 --silent
     chdir: /opt/neovim
-  become: yes
+  become: true
   tags: [neovim]
 
 - name: build neovim
@@ -65,7 +65,7 @@
   args:
     cmd: make install
     chdir: /opt/neovim
-  become: yes
+  become: true
   tags: [neovim]
 
 - name: clone packer
@@ -73,7 +73,7 @@
     repo: https://github.com/wbthomason/packer.nvim
     dest: ~/.local/share/nvim/site/pack/packer/start/packer.nvim
     depth: 1
-    force: yes
+    force: true
   tags: [neovim]
 
 - name: Create a Omnisharp directory
@@ -81,7 +81,7 @@
     path: /opt/omnisharp
     state: directory
     mode: '0777'
-  become: yes
+  become: true
   tags: [neovim, omnisharp]
 
 - name: test omnisharp installed
@@ -94,27 +94,27 @@
   ansible.builtin.unarchive:
     src: https://github.com/OmniSharp/omnisharp-roslyn/releases/download/{{omnisharp_version}}/omnisharp-osx.zip
     dest: /opt/omnisharp
-    remote_src: yes
+    remote_src: true
     mode: u+x
   when: not omnisharp.stat.exists and ansible_distribution == 'MacOSX'
-  become: yes
+  become: true
   tags: [omnisharp]
 
 - name: download and install omnisharp
   ansible.builtin.unarchive:
     src: https://github.com/OmniSharp/omnisharp-roslyn/releases/download/{{omnisharp_version}}/omnisharp-linux-x64.zip
     dest: /opt/omnisharp
-    remote_src: yes
+    remote_src: true
     mode: u+x
   when: not omnisharp.stat.exists and (ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu')
-  become: yes
+  become: true
   tags: [omnisharp]
 
 - name: Fix Omnisharp permissions
   file: 
     path: /opt/omnisharp/run
     mode: u+x
-  become: yes
+  become: true
   tags: [omnisharp]
 
 - name: Dequarantine omnisharp
@@ -128,7 +128,7 @@
   file:
     path: /opt/sumneko
     state: absent
-  become: yes
+  become: true
   tags: [sumneko]
 
 - name: clone Lua language Server
@@ -136,10 +136,10 @@
     repo: https://github.com/sumneko/lua-language-server
     dest: /opt/sumneko
     depth: 1
-    recursive: yes
-    track_submodules: yes
-    force: yes
-  become: yes
+    recursive: true
+    track_submodules: true
+    force: true
+  become: true
   tags: [sumneko]
 
 - name: manually clone submodules
@@ -147,7 +147,7 @@
   args:
     cmd: git submodule update --init --recursive
     chdir: /opt/sumneko
-  become: yes
+  become: true
   tags: [sumneko]
 
 - name: set Sumneko directory permissions
@@ -155,8 +155,8 @@
     path: /opt/sumneko
     state: directory
     mode: '777'
-    recurse: yes
-  become: yes
+    recurse: true
+  become: true
   tags: [sumneko]
 
 - name: compile Lua Language Server
@@ -203,8 +203,8 @@
     path: /opt/neovim
     state: directory
     mode: '755'
-    recurse: yes
-  become: yes
+    recurse: true
+  become: true
   tags: [neovim]
 
 - name: reset Sumneko directory permissions
@@ -212,8 +212,8 @@
     path: /opt/sumneko
     state: directory
     mode: '755'
-    recurse: yes
-  become: yes
+    recurse: true
+  become: true
   tags: [sumneko]
 
 - name: reset Omnisharp directory permissions
@@ -221,7 +221,7 @@
     path: /opt/omnisharp
     state: directory
     mode: '0755'
-  become: yes
+  become: true
   tags: [omnisharp]
 
 - name: cleanup rust-analyzer

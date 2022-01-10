@@ -4,8 +4,8 @@
     repo: https://github.com/junegunn/fzf.git
     dest: /opt/fzf
     depth: 1
-    force: yes
-  become: yes
+    force: true
+  become: true
   tags: [fzf]
 
 - name: set fzf directory permissions
@@ -13,8 +13,8 @@
     path: /opt/fzf
     state: directory
     mode: '777'
-    recurse: yes
-  become: yes
+    recurse: true
+  become: true
   tags: [fzf]
 
 - name: install fzf
@@ -63,8 +63,8 @@
     path: /opt/fzf
     state: directory
     mode: '755'
-    recurse: yes
-  become: yes
+    recurse: true
+  become: true
   tags: [fzf]
 
 - name: download rustup
