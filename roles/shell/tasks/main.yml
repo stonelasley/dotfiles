@@ -74,8 +74,8 @@
 - name: download rustup
   get_url:
     url: https://sh.rustup.rs
-  dest: /tmp/rustup-init.sh
-  mode: 'u+x'
+    dest: /tmp/rustup-init.sh
+    mode: 'u+x'
   tags: [never, rust]
 
 - name: install rustup
