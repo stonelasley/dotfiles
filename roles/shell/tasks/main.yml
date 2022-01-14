@@ -67,15 +67,19 @@
   become: true
   tags: [fzf]
 
+# setting as never for now, until a work around exists.
+# Rustup will install and be available after BSOD but I don't know if it will
+# actually works
+# https://github.com/microsoft/WSL/issues/7630
 - name: download rustup
   get_url:
     url: https://sh.rustup.rs
-    dest: /tmp/rustup-init.sh
-    mode: 'u+x'
-  tags: [rust]
+  dest: /tmp/rustup-init.sh
+  mode: 'u+x'
+  tags: [never, rust]
 
 - name: install rustup
   command: ./rustup-init.sh -y -q
   args:
     chdir: /tmp
-  tags: [rust]
+  tags: [never, rust]
