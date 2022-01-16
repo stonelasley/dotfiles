@@ -11,6 +11,8 @@ function M.set_buf_keymaps(ls, bufnr)
       { 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>'},
       { '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>'},
       { ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>'},
+      -- { '<F2>', '<cmd>lua vim.lsp.buf.rename()<CR>' },
+      { '<F2>', '<cmd>Lspsaga rename<CR>' },
       --{ '<F12>', '<cmd>lua vim.lsp.buf.formatting()<CR>' },
       {
         prefix = '<leader><leader>',
@@ -36,8 +38,6 @@ function M.set_buf_keymaps(ls, bufnr)
       {
         mod = 'C',
         { ']', '<cmd>lua vim.lsp.buf.type_definition()<CR>'},
-        { 'r,r', '<cmd>lua vim.lsp.buf.rename()<CR>' },
-     -- { 'r,r', [[<cmd>lua require('lspsaga.rename').rename()<CR>]]},
       }
     },
   i = {

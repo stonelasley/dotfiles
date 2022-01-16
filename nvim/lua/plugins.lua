@@ -125,10 +125,10 @@ return require('packer').startup(function(use)
       'neovim/nvim-lspconfig',
       config = [[require('config.lsp')]]
    }
-   -- use {
-   --    'glepnir/lspsaga.nvim',
-   --    config = [[require('config.lspsaga')]]
-   -- }
+   use {
+      'tami5/lspsaga.nvim',
+      config = [[require('config.lspsaga')]]
+   }
    use {
       'nvim-treesitter/nvim-treesitter',
       run = ':TSUpdate',
