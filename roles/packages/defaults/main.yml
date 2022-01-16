@@ -55,4 +55,4 @@ npm:
   - vls
   - yarn
   - yaml-language-server
-
+  - '@volar/server'

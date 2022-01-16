@@ -2,8 +2,14 @@ local nvim_lsp = require('lspconfig')
 local buf_maps = require('mappings.lsp').set_buf_keymaps
 local cmp = require('cmp_nvim_lsp')
 
-local servers = { 'vuels', 'tsserver', 'sumneko_lua', 'yamlls' }
--- 'rust_analyzer' is setup via rust-tools
+local servers = {
+  -- 'rust_analyzer' setup via rust-tools
+  'sumneko_lua',
+  'tsserver',
+  -- 'vuels',
+  'volar',
+  'yamlls'
+}
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
