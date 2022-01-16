@@ -11,17 +11,21 @@ return require('packer').startup(function(use)
    use {
     'numToStr/Comment.nvim',
     config = [[require('config.comment')]]
-   }  
+   }
    use 'tpope/vim-projectionist'
    use 'andrewradev/splitjoin.vim'
    use 'svermeulen/vimpeccable'
    use {
-      'windwp/nvim-autopairs' ,
+      'windwp/nvim-autopairs',
       config = [[require('config.autopairs')]]
    }
    use {
       'lukas-reineke/indent-blankline.nvim',
       config = [[require('config.indentguides')]]
+   }
+   use {
+      'DanilaMihailov/beacon.nvim',
+      config = [[require('config.beacon')]]
    }
 
    -- Searching & Finding
