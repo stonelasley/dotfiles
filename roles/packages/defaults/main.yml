@@ -36,6 +36,7 @@ casks:
   - sqlite3 
   - tree-sitter
   - node@16
+  - dotnet-sdk
   - npm 
 
 debs:
