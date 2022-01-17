@@ -28,8 +28,6 @@ local groups = {
   NvimTreeNormal = { bg = c.none },
   Normal = { bg = c.none },
   CursorLine = { bg = c.none }
-  -- -- Compe
-  --   CompeDocumentation = { fg = c.fg, bg = c.bg0 }
 }
 
 for group, parameters in pairs(groups) do

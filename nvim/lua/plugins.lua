@@ -59,7 +59,7 @@ return require('packer').startup(function(use)
    use { 'quangnguyen30192/cmp-nvim-ultisnips' }
    use {
       'hrsh7th/nvim-cmp',
-      config = [[require('config.compe')]]
+      config = [[require('config.cmp')]]
    }
    -- TODO temporary until I decide how to address c# completion
    use {
