@@ -4,7 +4,7 @@ local cmd = vim.cmd
 local utils = require('utils')
 
 cmd [[let &packpath = &runtimepath]]
-cmd [[set rtp+=~/.fzf]]
+cmd [[set rtp+=/opt/fzf]]
 
 utils.opt({'o', 'b'}, 'expandtab', true)
 utils.opt({'o', 'b'}, 'smartindent', true)
