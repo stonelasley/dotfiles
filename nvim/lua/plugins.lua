@@ -160,6 +160,7 @@ return require('packer').startup(function(use)
       config = [[require('config.luapad')]],
       ft = { 'lua'}
    }
+   -- use 'tjdevries/nlua.nvim'
 
    -- vue
    use { 'posva/vim-vue', ft = { 'typescript', 'vue' } }
