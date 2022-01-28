@@ -3,6 +3,7 @@ packages:
   - ack
   - autoconf
   - automake
+  - cargo
   - cmake
   - curl
   - dotnet-sdk-3.1
@@ -18,6 +19,7 @@ packages:
   - python3-pip
   - pkg-config
   - ripgrep 
+  - rustc 
   - silversearcher-ag
   - sqlite3 
   - unzip
@@ -27,17 +29,19 @@ casks:
   - automake
   - cmake
   - curl
+  - dotnet-sdk
   - gettext
   - gh
   - libtool
   - ninja
   - pkg-config
+  - node@16
+  - npm 
   - ripgrep 
+  - rustup
+  - stylua
   - sqlite3 
   - tree-sitter
-  - node@16
-  - dotnet-sdk
-  - npm 
 
 debs:
   - https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb
