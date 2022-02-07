@@ -1,10 +1,10 @@
 local M = {}
 
-function M.on_attach (client)
-  client.resolved_capabilities.document_formatting = true
+function M.on_attach(client)
+    client.resolved_capabilities.document_formatting = false
 end
 
 M.cmd = { "typescript-language-server", "--stdio" }
-M.settings = { }
+M.settings = {}
 
 return M

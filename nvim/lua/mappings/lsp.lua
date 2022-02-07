@@ -13,7 +13,7 @@ function M.set_buf_keymaps(ls, bufnr)
       { ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>'},
       -- { '<F2>', '<cmd>lua vim.lsp.buf.rename()<CR>' },
       { '<F2>', '<cmd>Lspsaga rename<CR>' },
-      --{ '<F12>', '<cmd>lua vim.lsp.buf.formatting()<CR>' },
+      { '<F12>', '<cmd>lua vim.lsp.buf.formatting()<CR>' },
       {
         prefix = '<leader><leader>',
         { 'wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>'},
