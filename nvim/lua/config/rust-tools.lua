@@ -22,14 +22,3 @@ rust_tools.setup({
         capabilities = cmp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
    }
 })
-
--- autocmd BufEnter,BufWinEnter,TabEnter *.rs :lua require('rust-tools.inlay_hints').set_inlay_hints() 
-vim.api.nvim_exec(
-[[
-  augroup RustTools
-    autocmd!
-    autocmd BufWritePre *.rs :lua vim.lsp.buf.formatting() 
-  augroup end
-]],
-false
-)

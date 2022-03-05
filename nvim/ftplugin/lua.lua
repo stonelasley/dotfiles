@@ -11,13 +11,3 @@ require('kartograaf').map({
 
   }
 })
-
-vim.api.nvim_exec(
-  [[
-  augroup Lua
-    autocmd!
-    autocmd BufWritePre *.lua :lua vim.lsp.buf.formatting() 
-  augroup end
-  ]],
-  false
-)
