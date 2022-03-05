@@ -3,7 +3,10 @@ vim.cmd([[packadd packer.nvim]])
 return require("packer").startup(function(use)
     use("wbthomason/packer.nvim")
     use("lewis6991/impatient.nvim")
-    use("max397574/better-escape.nvim")
+    use({
+        "max397574/better-escape.nvim",
+        config = [[require('config.better-escape')]],
+    })
 
     -- Convenience Utilities
     use("tpope/vim-sleuth")
@@ -52,13 +55,12 @@ return require("packer").startup(function(use)
     use({ "hrsh7th/cmp-buffer" })
     use({ "hrsh7th/cmp-nvim-lsp" })
     use({ "hrsh7th/cmp-path" })
-    use({ "github/copilot.vim" })
-    use({ "tzachar/cmp-tabnine", run = "./install.sh", requires = "hrsh7th/nvim-cmp" })
     use({ "quangnguyen30192/cmp-nvim-ultisnips" })
     use({
         "hrsh7th/nvim-cmp",
         config = [[require('config.cmp')]],
     })
+    use({ "github/copilot.vim" })
     -- TODO temporary until I decide how to address c# completion
     use({
         "ncm2/ncm2",

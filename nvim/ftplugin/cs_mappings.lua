@@ -1,26 +1,21 @@
--- Omnisharp
--- TODO
--- cmd "autocmd FileType cs nmap <silent> <buffer> [[ <Plug>(omnisharp_navigate_up)"
--- cmd "autocmd FileType cs nmap <silent> <buffer> ]] <Plug>(omnisharp_navigate_down)"
---
 require('kartograaf').map({
   buffer = 0,
   options = { silent = true, noremap = false },
   n = {
     {
       prefix = 'g',
-      { 'd', '<Plug>(omnisharp_go_to_definition)'},
-      { 'D', '<Plug>(omnisharp_preview_definition)'},
-      { 'i', '<Plug>(omnisharp_find_implementations)'},
+      { 'd', '<Plug>(omnisharp_go_to_definition)' },
+      { 'D', '<Plug>(omnisharp_preview_definition)' },
+      { 'i', '<Plug>(omnisharp_find_implementations)' },
       { 'I', '<Plug>(omnisharp_preview_implementations)' },
       { 'u', '<Plug>(omnisharp_find_usages)' },
     },
     {
       prefix = '<Leader>',
-      { 'ost',  '<Plug>(omnisharp_type_lookup)' },
-      { 'osd',  '<Plug>(omnisharp_documentation)' },
+      { 'ost', '<Plug>(omnisharp_type_lookup)' },
+      { 'osd', '<Plug>(omnisharp_documentation)' },
       { 'osfs', '<Plug>(omnisharp_find_symbol)' },
-      { 'os.',  '<Plug>(omnisharp_code_actions_repeat)' },
+      { 'os.', '<Plug>(omnisharp_code_actions_repeat)' },
       { 'osre', '<Plug>(omnisharp_restart_server)' },
       { 'osst', '<Plug>(omnisharp_start_server)' },
       { 'ossp', '<Plug>(omnisharp_stop_server)' },
@@ -33,15 +28,16 @@ require('kartograaf').map({
   },
   i = {
     {
-      prefix = '<Leader>', { 'osgcc' , [[<Plug>(omnisharp_global_code_check)]] }
+      prefix = '<Leader>',
+      { 'osgcc', [[<Plug>(omnisharp_global_code_check)]] },
     },
     { [[<C-\>]], [[<Plug>(omnisharp_signature_help)]] },
-    { '<F12>', [[<Plug>(omnisharp_code_format)]] }
+    { '<F12>', [[<Plug>(omnisharp_code_format)]] },
   },
   x = {
     prefix = '<Leader>',
-    { 'osgcc' , [[<Plug>(omnisharp_global_code_check)]] },
+    { 'osgcc', [[<Plug>(omnisharp_global_code_check)]] },
     { 'os.', '<Plug>(omnisharp_code_actions_repeat)' },
-    { '<F12>', [[<Plug>(omnisharp_code_format)]] }
-  }
+    { '<F12>', [[<Plug>(omnisharp_code_format)]] },
+  },
 })

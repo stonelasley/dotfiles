@@ -11,25 +11,25 @@ function M.dump(...)
 end
 
 function M.is_table(t)
-    return type(t) == "table"
+    return type(t) == 'table'
 end
 
 function M.is_string(t)
-    return type(t) == "string"
+    return type(t) == 'string'
 end
 
 function M.highlight(group, color)
-    local style = color.style and "gui=" .. color.style or "gui=NONE"
-    local fg = color.fg and "guifg=" .. color.fg or "guifg=NONE"
-    local bg = color.bg and "guibg=" .. color.bg or "guibg=NONE"
-    local sp = color.sp and "guisp=" .. color.sp or ""
-    vim.api.nvim_command("highlight " .. group .. " " .. style .. " " .. fg .. " " .. bg .. " " .. sp)
+    local style = color.style and 'gui=' .. color.style or 'gui=NONE'
+    local fg = color.fg and 'guifg=' .. color.fg or 'guifg=NONE'
+    local bg = color.bg and 'guibg=' .. color.bg or 'guibg=NONE'
+    local sp = color.sp and 'guisp=' .. color.sp or ''
+    vim.api.nvim_command('highlight ' .. group .. ' ' .. style .. ' ' .. fg .. ' ' .. bg .. ' ' .. sp)
 end
 
 function M.clear_registers()
-    local registers = vim.split('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ01234567890/-"*+', "")
+    local registers = vim.split('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ01234567890/-"*+', '')
     for _, r in ipairs(registers) do
-        vim.fn.setreg(r, "")
+        vim.fn.setreg(r, '')
     end
 end
 
@@ -39,10 +39,10 @@ function M.opt(scope, key, value)
             M.opt(scopeKey, key, value)
         end
     end
-    if type(scope) == "string" then
+    if type(scope) == 'string' then
         scopes[scope][key] = value
-        if scope ~= "o" then
-            scopes["o"][key] = value
+        if scope ~= 'o' then
+            scopes['o'][key] = value
         end
     end
 end
@@ -58,7 +58,7 @@ end
 function M.merge_table(target, source)
     local result = target
     if source ~= nil then
-        result = vim.tbl_extend("force", target, source)
+        result = vim.tbl_extend('force', target, source)
     end
     return result
 end

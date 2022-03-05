@@ -4,7 +4,7 @@ function M.on_attach(client)
     client.resolved_capabilities.document_formatting = true
 end
 
-M.cmd = { "vls" }
+M.cmd = { 'vls' }
 M.settings = {
     vetur = {
         completion = {
