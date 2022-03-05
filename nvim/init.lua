@@ -1,7 +1,7 @@
 pcall(require, "impatient")
 
-require("options")
+require("st1.options")
 require("plugins")
-require("au")
+require("st1.au")
 
 vim.g.mapleader = " "
