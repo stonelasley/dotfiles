@@ -21,7 +21,7 @@ require('kartograaf').map({
       prefix = '<leader>',
       { 'y', '"+y' },
       { 'd', '"_d' },
-      { 'Y', 'gg"+yG<C-o>'},
+      { 'Y', 'gg"+yG'},
       { 'ls', '<cmd>Telescope buffers<CR>' },
       { 't', '<cmd>Trouble<CR>', { silent = true } },
       { 'tw', '<cmd>Trouble lsp_workspace_diagnostics<CR>', { silent = true } },
