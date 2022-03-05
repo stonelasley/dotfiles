@@ -3,6 +3,7 @@ vim.cmd([[packadd packer.nvim]])
 return require("packer").startup(function(use)
     use("wbthomason/packer.nvim")
     use("lewis6991/impatient.nvim")
+    use("max397574/better-escape.nvim")
 
     -- Convenience Utilities
     use("tpope/vim-sleuth")
