@@ -111,76 +111,55 @@
   tags: [omnisharp]
 
 - name: Fix Omnisharp permissions
-  file: 
+  file:
     path: /opt/omnisharp/run
     mode: u+x
   become: true
   tags: [omnisharp]
 
 - name: Dequarantine omnisharp
-  shell: 
+  shell:
   args:
     cmd: find /opt/omnisharp | xargs xattr -r -d com.apple.quarantine
   when: not omnisharp.stat.exists and ansible_distribution == 'MacOSX'
   tags: [vim, omnisharp]
 
-- name: delete sumneko directory
-  file:
-    path: /opt/sumneko
-    state: absent
-  become: true
+- name: test sumneko installed
+  stat:
+    path: /opt/sumneko/bin/lua-language-server
+  register: sumneko
   tags: [sumneko]
 
-- name: clone Lua language Server
-  git:
-    repo: https://github.com/sumneko/lua-language-server
+- name: download and install sumneko
+  ansible.builtin.unarchive:
+    src: https://github.com/sumneko/lua-language-server/releases/download/{{sumneko_version}}/lua-language-server-{{sumneko_version}}-darwin-x64.tar.gz
     dest: /opt/sumneko
-    depth: 1
-    recursive: true
-    track_submodules: true
-    force: true
+    remote_src: true
+    mode: u+x
+  when: not sumneko.stat.exists and ansible_distribution == 'MacOSX'
   become: true
   tags: [sumneko]
 
-- name: manually clone submodules
-  shell:
-  args:
-    cmd: git submodule update --init --recursive
-    chdir: /opt/sumneko
+- name: download and install sumneko
+  ansible.builtin.unarchive:
+    src: https://github.com/sumneko/lua-language-server/releases/download/{{sumneko_version}}/lua-language-server-{{sumneko_version}}-linux-x64.tar.gz
+    dest: /opt/sumneko
+    remote_src: true
+    mode: u+x
+  when: not sumneko.stat.exists and ansible_distribution == 'Ubuntu'
   become: true
-  tags: [sumneko]
-
-- name: set Sumneko directory permissions
-  file:
-    path: /opt/sumneko
-    state: directory
-    mode: '777'
-    recurse: true
-  become: true
-  tags: [sumneko]
-
-- name: compile Lua Language Server
-  command: ./compile/install.sh
-  args:
-    chdir: /opt/sumneko/3rd/luamake
-  tags: [sumneko]
-
-- name: build Lua Language Server
-  command: ./3rd/luamake/luamake rebuild
-  args:
-    chdir: /opt/sumneko
   tags: [sumneko]
 
 - name: download rust-analyzer
   get_url:
-    url: https://github.com/rust-analyzer/rust-analyzer/releases/download/2021-10-04/rust-analyzer-x86_64-apple-darwin.gz
+    url: https://github.com/rust-analyzer/rust-analyzer/releases/download/{{rust-analyzer_version}}/rust-analyzer-x86_64-apple-darwin.gz
     dest: /tmp/rust-analyzer.gz
   when: ansible_distribution == 'MacOSX'
   tags: [rust-analyzer]
 
 - name: download rust-analyzer
   get_url:
-    url: https://github.com/rust-analyzer/rust-analyzer/releases/download/2021-10-04/rust-analyzer-x86_64-unknown-linux-gnu.gz
+    url: https://github.com/rust-analyzer/rust-analyzer/releases/download/{{rust-analyzer_version}}/rust-analyzer-x86_64-apple-darwin.gz
     dest: /tmp/rust-analyzer.gz
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
   tags: [rust-analyzer]

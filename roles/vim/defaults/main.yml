@@ -1,2 +1,4 @@
 ---
 omnisharp_version: v1.37.14
+sumneko_version: 2.6.7
+rust_analyzer_version: 2021-10-04
