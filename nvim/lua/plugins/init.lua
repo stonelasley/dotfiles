@@ -36,8 +36,7 @@ return require("packer").startup(function(use)
     use({
         "windwp/nvim-autopairs",
         config = [[require('plugins.config.autopairs')]],
-        event = 'BufRead',
-        -- after = 'nvim-treesitter/nvim-treesitter'
+        event = 'BufRead'
     })
     use({
         "lukas-reineke/indent-blankline.nvim",
@@ -85,12 +84,6 @@ return require("packer").startup(function(use)
         requires = { { "roxma/nvim-yarp" }, { "ncm2/ncm2-ultisnips" } },
         config = [[require('plugins.config.ncm2')]],
     })
-    -- use {
-    --   'shougo/deoplete.nvim',
-    --   config = [[require('plugins.config.deoplete')]],
-    --   run = ':UpdateRemotePlugins',
-    --   ft = 'cs'
-    -- }
     use({
         "junegunn/fzf.vim",
         ft = "cs",
@@ -153,7 +146,7 @@ return require("packer").startup(function(use)
     })
     use({
         "nvim-treesitter/nvim-treesitter",
-        --event = { "BufRead", "BufNewFile" },
+        event = { "BufRead", "BufNewFile" },
         run = ":TSUpdate",
         config = [[require('plugins.config.treesitter')]],
     })
