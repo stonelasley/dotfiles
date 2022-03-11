@@ -25,3 +25,5 @@ vim.g.wrap = false
 vim.g.ttimeoutlen = 100
 vim.g.guicursor = 'blinkon100'
 vim.o.completeopt = 'menuone,preview,noinsert'
+
+vim.g.did_load_filetypes = 1
