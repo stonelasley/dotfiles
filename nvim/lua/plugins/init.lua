@@ -5,7 +5,7 @@ return require("packer").startup(function(use)
     use("lewis6991/impatient.nvim")
     use({
         "max397574/better-escape.nvim",
-        config = [[require('config.better-escape')]],
+        config = [[require('plugins.config.better-escape')]],
     })
 
     -- Convenience Utilities
@@ -14,22 +14,22 @@ return require("packer").startup(function(use)
     use("tpope/vim-eunuch")
     use({
         "numToStr/Comment.nvim",
-        config = [[require('config.comment')]],
+        config = [[require('plugins.config.comment')]],
     })
     use("tpope/vim-projectionist")
     use("andrewradev/splitjoin.vim")
     use("svermeulen/vimpeccable")
     use({
         "windwp/nvim-autopairs",
-        config = [[require('config.autopairs')]],
+        config = [[require('plugins.config.autopairs')]],
     })
     use({
         "lukas-reineke/indent-blankline.nvim",
-        config = [[require('config.indentguides')]],
+        config = [[require('plugins.config.indentguides')]],
     })
     use({
         "DanilaMihailov/beacon.nvim",
-        config = [[require('config.beacon')]],
+        config = [[require('plugins.config.beacon')]],
     })
 
     -- Searching & Finding
@@ -37,7 +37,7 @@ return require("packer").startup(function(use)
     use({
         "kyazdani42/nvim-tree.lua",
         requires = { { "kyazdani42/nvim-web-devicons" } },
-        config = [[require('config.nvim-tree')]],
+        config = [[require('plugins.config.nvim-tree')]],
     })
     use("nvim-telescope/telescope-fzy-native.nvim")
     use({
@@ -47,7 +47,7 @@ return require("packer").startup(function(use)
     use({
         "nvim-telescope/telescope.nvim",
         requires = { { "nvim-lua/popup.nvim" }, { "nvim-lua/plenary.nvim" } },
-        config = [[require('config.telescope')]],
+        config = [[require('plugins.config.telescope')]],
         cmd = "Telescope",
     })
 
@@ -58,18 +58,18 @@ return require("packer").startup(function(use)
     use({ "quangnguyen30192/cmp-nvim-ultisnips" })
     use({
         "hrsh7th/nvim-cmp",
-        config = [[require('config.cmp')]],
+        config = [[require('plugins.config.cmp')]],
     })
     use({ "github/copilot.vim" })
     -- TODO temporary until I decide how to address c# completion
     use({
         "ncm2/ncm2",
         requires = { { "roxma/nvim-yarp" }, { "ncm2/ncm2-ultisnips" } },
-        config = [[require('config.ncm2')]],
+        config = [[require('plugins.config.ncm2')]],
     })
     -- use {
     --   'shougo/deoplete.nvim',
-    --   config = [[require('config.deoplete')]],
+    --   config = [[require('plugins.config.deoplete')]],
     --   run = ':UpdateRemotePlugins',
     --   ft = 'cs'
     -- }
@@ -82,7 +82,7 @@ return require("packer").startup(function(use)
     use({
         "phaazon/hop.nvim",
         as = "hop",
-        config = [[require('config.hop')]],
+        config = [[require('plugins.config.hop')]],
     })
     use("christoomey/vim-tmux-navigator")
     use("dhruvasagar/vim-zoom")
@@ -93,7 +93,7 @@ return require("packer").startup(function(use)
     -- Linting
     use({
         "jose-elias-alvarez/null-ls.nvim",
-        config = [[require('config.null-ls')]],
+        config = [[require('plugins.config.null-ls')]],
     })
     use({
         "prettier/vim-prettier",
@@ -109,13 +109,13 @@ return require("packer").startup(function(use)
     })
     use({
         "dense-analysis/ale",
-        config = [[require('config.ale')]],
+        config = [[require('plugins.config.ale')]],
     })
 
     -- Snippets
     use({
         "sirver/ultisnips",
-        config = [[require('config.ultisnips')]],
+        config = [[require('plugins.config.ultisnips')]],
     })
     use({ "honza/vim-snippets" })
     use({ "hrsh7th/vim-vsnip" })
@@ -127,33 +127,33 @@ return require("packer").startup(function(use)
     -- Languages
     use({
         "neovim/nvim-lspconfig",
-        config = [[require('config.lsp')]],
+        config = [[require('plugins.config.lsp')]],
     })
     use({
         "tami5/lspsaga.nvim",
-        config = [[require('config.lspsaga')]],
+        config = [[require('plugins.config.lspsaga')]],
     })
     use({
         "nvim-treesitter/nvim-treesitter",
         run = ":TSUpdate",
-        config = [[require('config.treesitter')]],
+        config = [[require('plugins.config.treesitter')]],
     })
     use({
         "nvim-treesitter/playground",
         requires = { { "nvim-treesitter/nvim-treesitter" } },
-        config = [[require('config.treesitterplayground')]],
+        config = [[require('plugins.config.treesitterplayground')]],
         cmd = "TSPlaygroundToggle",
     })
     -- use {
     --    "folke/trouble.nvim",
     --    requires = "kyazdani42/nvim-web-devicons",
-    --    config = [[require('config.trouble')]]
+    --    config = [[require('plugins.config.trouble')]]
     -- }
 
     -- C#
     use({
         "omnisharp/omnisharp-vim",
-        config = [[require('config.omnisharp')]],
+        config = [[require('plugins.config.omnisharp')]],
         ft = { "cs" },
     })
 
@@ -161,7 +161,7 @@ return require("packer").startup(function(use)
     use({ "euclidianace/betterlua.vim", ft = { "lua" } })
     use({
         "rafcamlet/nvim-luapad",
-        config = [[require('config.luapad')]],
+        config = [[require('plugins.config.luapad')]],
         ft = { "lua" },
     })
     -- use 'tjdevries/nlua.nvim'
@@ -172,35 +172,35 @@ return require("packer").startup(function(use)
     -- rust
     use({
         "simrat39/rust-tools.nvim",
-        config = [[require('config.rust-tools')]],
+        config = [[require('plugins.config.rust-tools')]],
     })
 
     -- typescript
     use({
         "leafgarland/typescript-vim",
-        config = [[require('config.typescript')]],
+        config = [[require('plugins.config.typescript')]],
     })
 
     -- Themes
     use({
         "hoob3rt/lualine.nvim",
         requires = { { "kyazdani42/nvim-web-devicons" } },
-        config = [[require('config.lualine')]],
+        config = [[require('plugins.config.lualine')]],
     })
     use({
         "onsails/lspkind-nvim",
-        config = [[require('config.lspkind')]],
+        config = [[require('plugins.config.lspkind')]],
     })
 
     use({
         "shaunsingh/nord.nvim",
-        config = [[require('config.neon')]],
+        config = [[require('plugins.config.neon')]],
     })
 
     -- Notes
     use({
         "vimwiki/vimwiki",
-        config = [[require('config.vimwiki')]],
+        config = [[require('plugins.config.vimwiki')]],
     })
 
     -- Bindings
@@ -212,6 +212,6 @@ return require("packer").startup(function(use)
 
     -- use {
     --   'folke/which-key.nvim',
-    --   config = [[require('config.whichkey')]]
+    --   config = [[require('plugins.config.whichkey')]]
     -- }
 end)
