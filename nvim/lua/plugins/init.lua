@@ -1,24 +1,37 @@
 vim.cmd([[packadd packer.nvim]])
 
 return require("packer").startup(function(use)
-    use("wbthomason/packer.nvim")
     use("lewis6991/impatient.nvim")
     use("nathom/filetype.nvim")
     use({
+        "wbthomason/packer.nvim",
+        event = 'VimEnter'
+    })
+    use({
         "max397574/better-escape.nvim",
+        event = "InsertCharPre",
         config = [[require('plugins.config.better-escape')]],
     })
 
     -- Convenience Utilities
-    use("tpope/vim-sleuth")
-    use("tpope/vim-surround")
+    use({
+        "tpope/vim-sleuth",
+        event = { 'BufRead', 'BufNewFile' }
+    })
+    use({
+        "tpope/vim-surround",
+        event = 'BufRead'
+    })
     use("tpope/vim-eunuch")
     use({
         "numToStr/Comment.nvim",
         config = [[require('plugins.config.comment')]],
     })
     use("tpope/vim-projectionist")
-    use("andrewradev/splitjoin.vim")
+    use({
+        "andrewradev/splitjoin.vim",
+        event = 'BufRead'
+    })
     use("svermeulen/vimpeccable")
     use({
         "windwp/nvim-autopairs",
@@ -27,6 +40,7 @@ return require("packer").startup(function(use)
     use({
         "lukas-reineke/indent-blankline.nvim",
         config = [[require('plugins.config.indentguides')]],
+        event = 'BufRead'
     })
     use({
         "DanilaMihailov/beacon.nvim",
@@ -37,6 +51,7 @@ return require("packer").startup(function(use)
     use("wincent/loupe")
     use({
         "kyazdani42/nvim-tree.lua",
+        after = "nvim-web-devicons",
         requires = { { "kyazdani42/nvim-web-devicons" } },
         config = [[require('plugins.config.nvim-tree')]],
     })
@@ -136,6 +151,7 @@ return require("packer").startup(function(use)
     })
     use({
         "nvim-treesitter/nvim-treesitter",
+        event = { "BufRead", "BufNewFile" },
         run = ":TSUpdate",
         config = [[require('plugins.config.treesitter')]],
     })
