@@ -36,6 +36,8 @@ return require("packer").startup(function(use)
     use({
         "windwp/nvim-autopairs",
         config = [[require('plugins.config.autopairs')]],
+        event = 'BufRead',
+        -- after = 'nvim-treesitter/nvim-treesitter'
     })
     use({
         "lukas-reineke/indent-blankline.nvim",
@@ -151,7 +153,7 @@ return require("packer").startup(function(use)
     })
     use({
         "nvim-treesitter/nvim-treesitter",
-        event = { "BufRead", "BufNewFile" },
+        --event = { "BufRead", "BufNewFile" },
         run = ":TSUpdate",
         config = [[require('plugins.config.treesitter')]],
     })

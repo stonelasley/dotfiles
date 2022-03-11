@@ -1,5 +1,6 @@
 local Rule = require('nvim-autopairs.rule')
 local npairs = require('nvim-autopairs')
+local ts_conds = require('nvim-autopairs.ts-conds')
 
 npairs.setup({
   check_ts = true,
@@ -9,12 +10,6 @@ npairs.setup({
     java = false, -- don't check treesitter on java
   },
 })
-
-require('nvim-treesitter.configs').setup({
-  autopairs = { enable = true },
-})
-
-local ts_conds = require('nvim-autopairs.ts-conds')
 
 -- press % => %% is only inside comment or string
 npairs.add_rules({
