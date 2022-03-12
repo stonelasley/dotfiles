@@ -46,9 +46,8 @@ autocmd('BufEnter,BufWinEnter,TabEnter', {
   pattern = '*.rs',
   callback = function()
     require('rust-tools.inlay_hints').set_inlay_hints()
-    vim.lsp.buf.formatting()
   end,
   group = 'st1',
 })
 
-vim.cmd [[ au TermOpen term://* setlocal nonumber norelativenumber | setfiletype terminal ]]
+vim.cmd([[ au TermOpen term://* setlocal nonumber norelativenumber | setfiletype terminal ]])
