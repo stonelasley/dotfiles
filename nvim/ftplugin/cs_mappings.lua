@@ -22,6 +22,7 @@ require('kartograaf').map({
       { '<leader>fu', '<Plug>(omnisharp_fix_usings)' },
       { '<leader>.', '<Plug>(omnisharp_code_actions)' },
     },
+    { 'K', '<Plug>(omnisharp_type_lookup)' },
     { [[<C-\>]], [[<Plug>(omnisharp_signature_help)]] },
     { '<F2>', [[<Plug>(omnisharp_rename)]] },
     { '<F12>', [[<Plug>(omnisharp_code_format)]] },
@@ -29,7 +30,7 @@ require('kartograaf').map({
   i = {
     {
       prefix = '<Leader>',
-      { 'osgcc', [[<Plug>(omnisharp_global_code_check)]] },
+      --{ 'osgcc', [[<Plug>(omnisharp_global_code_check)]] },
     },
     { [[<C-\>]], [[<Plug>(omnisharp_signature_help)]] },
     { '<F12>', [[<Plug>(omnisharp_code_format)]] },
