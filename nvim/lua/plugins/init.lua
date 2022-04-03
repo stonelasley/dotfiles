@@ -72,25 +72,25 @@ return require('packer').startup(function(use)
   use({ 'hrsh7th/cmp-buffer' })
   use({ 'hrsh7th/cmp-nvim-lsp' })
   use({ 'hrsh7th/cmp-path' })
-  use({
-    'saadparwaiz1/cmp_luasnip',
-  })
+  use({ 'saadparwaiz1/cmp_luasnip' })
   use({
     'L3MON4D3/LuaSnip',
     config = [[require('plugins.config.luasnip')]],
   })
-  --use({ 'quangnguyen30192/cmp-nvim-ultisnips' })
+  -- use({ 'quangnguyen30192/cmp-nvim-ultisnips' })
   use({
     'hrsh7th/nvim-cmp',
     config = [[require('plugins.config.cmp')]],
   })
   use({ 'github/copilot.vim' })
+
   -- TODO temporary until I decide how to address c# completion
-  use({
-    'ncm2/ncm2',
-    requires = { { 'roxma/nvim-yarp' }, { 'ncm2/ncm2-ultisnips' } },
-    config = [[require('plugins.config.ncm2')]],
-  })
+  -- use({
+  --   'ncm2/ncm2',
+  --   requires = { { 'roxma/nvim-yarp' }, { 'ncm2/ncm2-ultisnips' } },
+  --   config = [[require('plugins.config.ncm2')]],
+  --   ft = 'cs',
+  -- })
   use({
     'junegunn/fzf.vim',
     ft = 'cs',
@@ -128,19 +128,24 @@ return require('packer').startup(function(use)
   use({
     'dense-analysis/ale',
     config = [[require('plugins.config.ale')]],
+    ft = 'cs',
   })
 
   -- Snippets
-  use({
-    'sirver/ultisnips',
-    config = [[require('plugins.config.ultisnips')]],
-  })
-  use({ 'honza/vim-snippets' })
-  use({ 'hrsh7th/vim-vsnip' })
-  use({ 'softchris/ts-snippets' })
+  -- use({
+  --   'sirver/ultisnips',
+  --   config = [[require('plugins.config.ultisnips')]],
+  --   ft = 'cs',
+  -- })
+  -- use({ 'honza/vim-snippets' })
+  -- use({ 'hrsh7th/vim-vsnip' })
+  -- use({ 'softchris/ts-snippets' })
 
   -- Debug
-  use({ 'mfussenegger/nvim-dap' })
+  use({
+    'mfussenegger/nvim-dap',
+    ft = { 'cs', 'rs' },
+  })
 
   -- Languages
   use({
