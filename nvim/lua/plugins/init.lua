@@ -36,7 +36,7 @@ return require('packer').startup(function(use)
   use({
     'windwp/nvim-autopairs',
     config = [[require('plugins.config.autopairs')]],
-    --event = 'BufRead',
+    after = 'nvim-treesitter',
   })
   use({
     'lukas-reineke/indent-blankline.nvim',
@@ -72,7 +72,9 @@ return require('packer').startup(function(use)
   use({ 'hrsh7th/cmp-buffer' })
   use({ 'hrsh7th/cmp-nvim-lsp' })
   use({ 'hrsh7th/cmp-path' })
-  use({ 'saadparwaiz1/cmp_luasnip' })
+  use({
+    'saadparwaiz1/cmp_luasnip',
+  })
   use({
     'L3MON4D3/LuaSnip',
     config = [[require('plugins.config.luasnip')]],
@@ -81,7 +83,6 @@ return require('packer').startup(function(use)
   use({
     'hrsh7th/nvim-cmp',
     config = [[require('plugins.config.cmp')]],
-    after = 'L3MON4D3/LuaSnip',
   })
   use({ 'github/copilot.vim' })
   -- TODO temporary until I decide how to address c# completion
@@ -152,7 +153,7 @@ return require('packer').startup(function(use)
   })
   use({
     'nvim-treesitter/nvim-treesitter',
-    --event = { 'BufRead', 'BufNewFile' },
+    event = { 'BufRead', 'BufNewFile' },
     run = ':TSUpdate',
     config = [[require('plugins.config.treesitter')]],
   })
@@ -211,7 +212,7 @@ return require('packer').startup(function(use)
   })
 
   use({
-    'shaunsingh/nord.nvim',
+    'rmehri01/onenord.nvim',
     config = [[require('plugins.config.neon')]],
   })
 
