@@ -74,27 +74,10 @@ return require('packer').startup(function(use)
   use({ 'hrsh7th/cmp-path' })
   use({ 'saadparwaiz1/cmp_luasnip' })
   use({
-    'L3MON4D3/LuaSnip',
-    config = [[require('plugins.config.luasnip')]],
-  })
-  -- use({ 'quangnguyen30192/cmp-nvim-ultisnips' })
-  use({
     'hrsh7th/nvim-cmp',
     config = [[require('plugins.config.cmp')]],
   })
   use({ 'github/copilot.vim' })
-
-  -- TODO temporary until I decide how to address c# completion
-  -- use({
-  --   'ncm2/ncm2',
-  --   requires = { { 'roxma/nvim-yarp' }, { 'ncm2/ncm2-ultisnips' } },
-  --   config = [[require('plugins.config.ncm2')]],
-  --   ft = 'cs',
-  -- })
-  use({
-    'junegunn/fzf.vim',
-    ft = 'cs',
-  })
 
   -- Movement
   use({
@@ -132,14 +115,10 @@ return require('packer').startup(function(use)
   })
 
   -- Snippets
-  -- use({
-  --   'sirver/ultisnips',
-  --   config = [[require('plugins.config.ultisnips')]],
-  --   ft = 'cs',
-  -- })
-  -- use({ 'honza/vim-snippets' })
-  -- use({ 'hrsh7th/vim-vsnip' })
-  -- use({ 'softchris/ts-snippets' })
+  use({
+    'L3MON4D3/LuaSnip',
+    config = [[require('plugins.config.luasnip')]],
+  })
 
   -- Debug
   use({
@@ -179,6 +158,7 @@ return require('packer').startup(function(use)
     'omnisharp/omnisharp-vim',
     config = [[require('plugins.config.omnisharp')]],
     ft = { 'cs' },
+    disabled = true,
   })
 
   -- lua
@@ -235,13 +215,9 @@ return require('packer').startup(function(use)
   })
 
   -- Bindings
+  use({ '~/Projects/st1/dotnet.nvim' })
   use({
     'stonelasley/kartograaf.nvim',
     config = [[require('mappings')]],
   })
-
-  -- use {
-  --   'folke/which-key.nvim',
-  --   config = [[require('plugins.config.whichkey')]]
-  -- }
 end)
