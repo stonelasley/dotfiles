@@ -10,7 +10,6 @@ cmp.setup({
   snippet = {
     expand = function(args)
       ls.lsp_expand(args.body)
-      --vim.fn['UltiSnips#Anon'](args.body)
     end,
   },
   mapping = {
@@ -45,6 +44,6 @@ cmp.setup({
     { name = 'nvim_lsp' },
     { name = 'buffer' },
     { name = 'path' },
-    { name = 'luasnip' }
+    { name = 'luasnip' },
   },
 })
