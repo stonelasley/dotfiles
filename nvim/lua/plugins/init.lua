@@ -127,6 +127,7 @@ return require("packer").startup(function(use)
   }
 
   -- Languages
+  use { "~/Projects/st1/dotnet.nvim" }
   use {
     "neovim/nvim-lspconfig",
     config = [[require('plugins.config.lsp')]],
@@ -198,7 +199,7 @@ return require("packer").startup(function(use)
 
   use {
     "rmehri01/onenord.nvim",
-    config = [[require('plugins.config.neon')]],
+    config = [[require('plugins.config.theme')]],
   }
 
   -- Notes
@@ -215,7 +216,6 @@ return require("packer").startup(function(use)
   }
 
   -- Bindings
-  use { "~/Projects/st1/dotnet.nvim" }
   use {
     "stonelasley/kartograaf.nvim",
     config = [[require('mappings')]],

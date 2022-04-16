@@ -17,6 +17,7 @@ local groups = {
   -- Color Tweaks
   IncSearch = search,
   Visual = search,
+  Beacon = search,
   CursorLineNr = { fg = c.orange, bg = c.none },
   LineNr = { fg = c.gray, bg = c.none },
   NvimTreeRootFolder = { fg = c.gray_alt },
