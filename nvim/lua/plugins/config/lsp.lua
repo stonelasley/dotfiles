@@ -1,21 +1,10 @@
 local nvim_lsp = require "lspconfig"
 local buf_maps = require("mappings.lsp").set_buf_keymaps
 local cmp = require "cmp_nvim_lsp"
+local ls_configs = require "lsp"
 
-local servers = {
-  "omnisharp",
-  -- 'rust_analyzer' setup via rust-tools
-  "sumneko_lua",
-  "tsserver",
-  "volar",
-  "yamlls",
-}
-
-local capabilities = cmp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
-
-for _, ls in ipairs(servers) do
-  local mod_path = "lsp." .. ls
-  local config = require(mod_path)
+for _, ls in ipairs(vim.tbl_keys(ls_configs)) do
+  local config = ls_configs[ls]
   nvim_lsp[ls].setup {
     on_attach = function(client, bufnr)
       buf_maps(ls, bufnr)
@@ -24,7 +13,7 @@ for _, ls in ipairs(servers) do
     flags = {
       debounce_text_changes = 150,
     },
-    capabilities = capabilities,
+    capabilities = cmp.update_capabilities(vim.lsp.protocol.make_client_capabilities()),
     cmd = config.cmd,
     settings = config.settings,
   }

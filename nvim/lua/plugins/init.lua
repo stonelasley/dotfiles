@@ -154,12 +154,12 @@ return require("packer").startup(function(use)
   -- }
 
   -- C#
-  use {
-    "omnisharp/omnisharp-vim",
-    config = [[require('plugins.config.omnisharp')]],
-    ft = { "cs" },
-    disabled = true,
-  }
+  -- use {
+  --   "omnisharp/omnisharp-vim",
+  --   config = [[require('plugins.config.omnisharp')]],
+  --   ft = { "cs" },
+  --   disabled = true,
+  -- }
 
   -- lua
   use { "euclidianace/betterlua.vim", ft = { "lua" } }
