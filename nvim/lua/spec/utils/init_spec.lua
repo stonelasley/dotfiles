@@ -1,10 +1,10 @@
-local mock = require('luassert.mock')
+local mock = require "luassert.mock"
 
-describe('utils', function()
-  local cut = require('utils')
+describe("utils", function()
+  local cut = require "utils"
 
-  describe('is_table', function()
-    it('Should identify table', function()
+  describe("is_table", function()
+    it("Should identify table", function()
       local table = {}
 
       --local vim = mock(vim, true)
@@ -16,8 +16,8 @@ describe('utils', function()
       --mock.revert(vim)
     end)
 
-    it('Should identify non-table', function()
-      local types = { 'string', 0, function() end }
+    it("Should identify non-table", function()
+      local types = { "string", 0, function() end }
 
       --local vim = mock(vim, true)
 
@@ -30,8 +30,8 @@ describe('utils', function()
       --mock.revert(vim)
     end)
 
-    it('Should identify string', function()
-      local types = { '', 'string', [[something]] }
+    it("Should identify string", function()
+      local types = { "", "string", [[something]] }
 
       for _, t in ipairs(types) do
         local actual = cut.is_string(t)
@@ -39,7 +39,7 @@ describe('utils', function()
       end
     end)
 
-    it('Should identify non-string', function()
+    it("Should identify non-string", function()
       local types = { {}, 0, function() end }
 
       for _, t in ipairs(types) do

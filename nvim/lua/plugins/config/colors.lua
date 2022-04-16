@@ -1,1 +1,1 @@
-vim.g.airline_theme = 'oceanicnext'
+vim.g.airline_theme = "oceanicnext"

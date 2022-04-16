@@ -2,7 +2,7 @@
 -- the completion menu itself, for better readability with highlighted
 -- documentation.
 --
-vim.cmd([[
+vim.cmd [[
   let g:OmniSharp_server_use_net6 = 1
   let g:OmniSharp_selector_ui = 'fzf'
   let g:OmniSharp_selector_findusages = 'fzf'
@@ -37,4 +37,4 @@ vim.cmd([[
   \ 'XmlDocCommentText': 'NonText',
   \ 'LabelName': 'TSLabel',
   \}
-]])
+]]

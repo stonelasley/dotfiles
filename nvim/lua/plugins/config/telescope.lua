@@ -1,18 +1,18 @@
-local actions = require('telescope.actions')
-require('telescope').setup({
+local actions = require "telescope.actions"
+require("telescope").setup {
   defaults = {
     file_ignore_patterns = {
-      'swap',
-      'node_modules',
-      'target/debug',
-      '.vendor',
-      'yarn.lock',
-      'packer_compiled.lua',
-      '.nuxt',
+      "swap",
+      "node_modules",
+      "target/debug",
+      ".vendor",
+      "yarn.lock",
+      "packer_compiled.lua",
+      ".nuxt",
     },
     mappings = {
       i = {
-        ['<esc>'] = actions.close,
+        ["<esc>"] = actions.close,
       },
     },
   },
@@ -25,18 +25,18 @@ require('telescope').setup({
       show_scores = true,
       show_unindexed = true,
       ignore_patterns = {
-        '*.git/*',
-        '*/tmp/*',
-        '*/swap/*',
-        '*/node_modules/*',
+        "*.git/*",
+        "*/tmp/*",
+        "*/swap/*",
+        "*/node_modules/*",
       },
       workspaces = {
-        ['conf'] = '/home/st1/.st1',
-        ['project'] = '/home/st1/projects',
-        ['wiki'] = '/home/st1/vimwiki',
+        ["conf"] = "/home/st1/.st1",
+        ["project"] = "/home/st1/projects",
+        ["wiki"] = "/home/st1/vimwiki",
       },
     },
   },
-})
-require('telescope').load_extension('fzy_native')
-require('telescope').load_extension('frecency')
+}
+require("telescope").load_extension "fzy_native"
+require("telescope").load_extension "frecency"

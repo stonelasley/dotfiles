@@ -1,24 +1,24 @@
-local formatters = require('null-ls').builtins.formatting
+local formatters = require("null-ls").builtins.formatting
 local stylua = formatters.stylua
-local prettier = formatters.prettierd.with({
+local prettier = formatters.prettierd.with {
   filetypes = {
-    'javascript',
-    'javascriptreact',
-    'typescript',
-    'typescriptreact',
-    'vue',
-    'css',
-    'scss',
-    'less',
-    'html',
-    'json',
-    'yaml',
-    'markdown',
-    'graphql',
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "vue",
+    "css",
+    "scss",
+    "less",
+    "html",
+    "json",
+    "yaml",
+    "markdown",
+    "graphql",
   },
-})
+}
 
-require('null-ls').setup({
+require("null-ls").setup {
   sources = {
     stylua,
     prettier,
@@ -28,4 +28,4 @@ require('null-ls').setup({
     -- require("null-ls").builtins.diagnostics.eslint,
     -- require("null-ls").builtins.completion.spell,
   },
-})
+}

@@ -1,1 +1,1 @@
-require('luapad').init()
+require("luapad").init()

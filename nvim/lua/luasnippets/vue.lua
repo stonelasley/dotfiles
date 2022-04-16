@@ -1,14 +1,14 @@
-local ls = require('luasnip')
+local ls = require "luasnip"
 local s = ls.snippet
 local i = ls.insert_node
 local f = ls.function_node
-local fmt = require('luasnip.extras.fmt').fmt
+local fmt = require("luasnip.extras.fmt").fmt
 
-ls.filetype_extend('vue', { 'tyescript', 'javascript', 'html' })
+ls.filetype_extend("vue", { "tyescript", "javascript", "html" })
 
 return {
   s(
-    'prop',
+    "prop",
     fmt(
       [[
         @Prop({}) {}: {}
@@ -21,7 +21,7 @@ return {
     )
   ),
   s(
-    'propsync',
+    "propsync",
     fmt(
       [[
         @PropSync('{}') {}Synced: {}
@@ -29,7 +29,7 @@ return {
       {
         i(1),
         f(function(name)
-          return name or ''
+          return name or ""
         end, { 1 }),
         i(2),
       }

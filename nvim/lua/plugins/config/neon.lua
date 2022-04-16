@@ -1,20 +1,16 @@
---local c = require('neon.colors')
 local c = {
-  black = '#000000',
-  diff_yellow = '#fabd2f',
-  gray = '#7e8294',
-  gray_alt = '#4C566A',
-  orange = '#da8548',
-  none = 'NONE',
+  black = "#000000",
+  diff_yellow = "#fabd2f",
+  gray = "#7e8294",
+  gray_alt = "#4C566A",
+  orange = "#da8548",
+  none = "NONE",
 }
-local utils = require('utils')
+local utils = require "utils"
 
 vim.o.termguicolors = true
--- vim.g.neon_bold = true
--- vim.g.neon_transparent = true
--- vim.g.neon_style = "default"
 
-vim.cmd([[colorscheme onenord]])
+vim.cmd [[colorscheme onenord]]
 
 local search = { bg = c.diff_yellow, fg = c.black }
 local groups = {
