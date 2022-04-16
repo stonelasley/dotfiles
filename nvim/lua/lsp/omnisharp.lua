@@ -6,10 +6,10 @@ function M.on_attach(client) end
 
 M.settings = {}
 M.cmd = {
-    omnisharp_bin,
-    '--languageserver',
-    '--hostPID',
-    tostring(pid),
+  omnisharp_bin,
+  '--languageserver',
+  '--hostPID',
+  tostring(pid),
 }
 
 return M
