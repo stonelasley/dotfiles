@@ -10,30 +10,6 @@ autocmd('TextYankPost', {
   group = 'st1',
 })
 
-autocmd('CursorHold', {
-  pattern = { '*.cs' },
-  callback = function()
-    vim.cmd([[
-          :OmniSharpTypeLookup
-        ]])
-  end,
-  group = 'st1',
-})
-
--- TODO
--- cmd "autocmd FileType cs nmap <silent> <buffer> [[ <Plug>(omnisharp_navigate_up)"
--- cmd "autocmd FileType cs nmap <silent> <buffer> ]] <Plug>(omnisharp_navigate_down)"
-
-autocmd('BufWritePre', {
-  pattern = { '*.cs' },
-  callback = function()
-    vim.cmd([[
-          :OmniSharpCodeFormat
-        ]])
-  end,
-  group = 'st1',
-})
-
 autocmd('BufWritePre', {
   pattern = { '*.rs', '*.lua' },
   callback = function()
