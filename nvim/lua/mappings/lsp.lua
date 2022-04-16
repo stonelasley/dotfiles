@@ -43,7 +43,7 @@ function M.set_buf_keymaps(ls, bufnr)
         -- { 'i', '<cmd>lua vim.lsp.buf.implementation()<CR>' }
         {
           'i',
-          "<cmd>lua require('telescope.builtin').lsp_implementation(require('telescope.themes').get_cursor({}))<CR>",
+          "<cmd>lua require('telescope.builtin').lsp_implementations(require('telescope.themes').get_cursor({}))<CR>",
         },
         { 'R', '<cmd>Trouble lsp_references<CR>' },
       },
