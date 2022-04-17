@@ -44,8 +44,9 @@ return require("packer").startup(function(use)
     event = "BufRead",
   }
   use {
-    "DanilaMihailov/beacon.nvim",
-    config = [[require('plugins.config.beacon')]],
+    "stonelasley/flare.nvim",
+    --"~/Projects/st1/flare.nvim",
+    config = [[require('plugins.config.flare')]],
   }
 
   -- Searching & Finding
