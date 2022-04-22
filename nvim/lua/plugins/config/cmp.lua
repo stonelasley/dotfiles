@@ -18,6 +18,16 @@ cmp.setup {
     ["<C-Space>"] = cmp.mapping.complete(),
     --['<C-e>'] = cmp.mapping.close(),
     ["<CR>"] = cmp.mapping.confirm { select = true },
+    ["<C-n>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      end
+    end, { "i", "s" }),
+    ["<C-p>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_prev_item()
+      end
+    end, { "i", "s" }),
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
