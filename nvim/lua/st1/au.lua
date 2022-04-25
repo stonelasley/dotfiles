@@ -26,4 +26,11 @@ autocmd("BufEnter,BufWinEnter,TabEnter", {
   group = "st1",
 })
 
+autocmd("WinNew", {
+  callback = function()
+    vim.opt.laststatus = 3
+  end,
+  group = "st1",
+})
+
 vim.cmd [[ au TermOpen term://* setlocal nonumber norelativenumber | setfiletype terminal ]]
