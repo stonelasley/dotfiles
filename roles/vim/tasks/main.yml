@@ -92,7 +92,7 @@
 
 - name: download and install omnisharp
   ansible.builtin.unarchive:
-    src: https://github.com/OmniSharp/omnisharp-roslyn/releases/download/{{omnisharp_version}}/omnisharp-osx.zip
+    src: https://github.com/OmniSharp/omnisharp-roslyn/releases/download/{{omnisharp_version}}/omnisharp-osx-x64-net6.0.zip
     dest: /opt/omnisharp
     remote_src: true
     mode: u+x
