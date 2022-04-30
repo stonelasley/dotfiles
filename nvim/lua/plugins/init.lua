@@ -8,6 +8,10 @@ return require("packer").startup(function(use)
     event = "VimEnter",
   }
   use {
+    "glepnir/dashboard-nvim",
+    config = [[require('plugins.config.dashboard')]],
+  }
+  use {
     "max397574/better-escape.nvim",
     event = "InsertCharPre",
     config = [[require('plugins.config.better-escape')]],
@@ -170,7 +174,7 @@ return require("packer").startup(function(use)
     config = [[require('plugins.config.luapad')]],
     ft = { "lua" },
   }
-  -- use 'tjdevries/nlua.nvim'
+  --use "tjdevries/nlua.nvim"
 
   -- vue
   use { "posva/vim-vue", ft = { "typescript", "vue" } }
