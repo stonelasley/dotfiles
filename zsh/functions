@@ -1,6 +1,6 @@
-
 function tmux() {
   emulate -L zsh
+  print "$1"
 
   # Make sure even pre-existing tmux sessions use the latest SSH_AUTH_SOCK.
   # (Inspired by: https://gist.github.com/lann/6771001)
@@ -42,5 +42,5 @@ function tmux() {
 }
 
 function lscolors() {
-  print -rl -- $(ls ~/.zsh/base16-shell/scripts(:r))
+  print -rl -- $(ls ~/.st1/.vendor/chriskempson-base16-shell/scripts(:r))
 } 
