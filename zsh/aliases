@@ -11,7 +11,6 @@ alias t="tmux"
 alias v=nvim
 alias vim=nvim
 alias vsvim="nvim -u $HOME/.config/nvim/vsinit.vim"
-alias vrc="nvim $HOME/.vimrc"
 alias zrc="nvim $HOME/.zshrc"
 alias trc="nvim $HOME/.tmux.conf"
 alias szrc="source $HOME/.zshrc"
