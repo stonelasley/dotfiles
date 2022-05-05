@@ -12,16 +12,24 @@ cmp.setup {
       ls.lsp_expand(args.body)
     end,
   },
-  mapping = {
+  sources = cmp.config.sources {
+    { name = "nvim_lsp" },
+    { name = "buffer" },
+    { name = "path" },
+    { name = "luasnip" },
+  },
+  mapping = cmp.mapping.preset.insert {
     ["<C-d>"] = cmp.mapping.scroll_docs(-4),
     ["<C-f>"] = cmp.mapping.scroll_docs(4),
     ["<C-Space>"] = cmp.mapping.complete(),
     --['<C-e>'] = cmp.mapping.close(),
     ["<CR>"] = cmp.mapping.confirm { select = true },
+    --["<C-n>"] = cmp.mapping.next_item(),
+    --["<C-p>"] = cmp.mapping.prev_item(),
     ["<Tab>"] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_next_item()
-      elseif ls.expand_or_jumpable() then
+      --if cmp.visible() then
+      --cmp.select_next_item()
+      if ls.expand_or_jumpable() then
         ls.expand_or_jump()
       elseif has_words_before() then
         cmp.complete()
@@ -31,19 +39,13 @@ cmp.setup {
     end, { "i", "s" }),
 
     ["<S-Tab>"] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_prev_item()
-      elseif ls.jumpable(-1) then
+      --if cmp.visible() then
+      -- cmp.select_prev_item()
+      if ls.jumpable(-1) then
         ls.jump(-1)
       else
         fallback()
       end
     end, { "i", "s" }),
-  },
-  sources = {
-    { name = "nvim_lsp" },
-    { name = "buffer" },
-    { name = "path" },
-    { name = "luasnip" },
   },
 }
