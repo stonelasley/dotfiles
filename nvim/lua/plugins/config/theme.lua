@@ -19,6 +19,7 @@ local groups = {
   Visual = search,
   Beacon = search,
   CursorLineNr = { fg = c.orange, bg = c.none },
+  --Underline = { fg = c.orange, underline = true },
   LineNr = { fg = c.gray, bg = c.none },
   NvimTreeRootFolder = { fg = c.gray_alt },
   NvimTreeGitDirty = { fg = c.red },

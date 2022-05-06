@@ -1,4 +1,4 @@
 require("indent_blankline").setup {
-  char = "|",
-  buftype_exclude = { "terminal" },
+  char = ".",
+  buftype_exclude = { "terminal", "dashboard" },
 }
