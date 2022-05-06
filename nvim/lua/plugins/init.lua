@@ -49,7 +49,7 @@ return require("packer").startup(function(use)
   }
   use {
     "stonelasley/flare.nvim",
-    --"~/Projects/st1/flare.nvim",
+    -- "~/Projects/st1/flare.nvim",
     config = [[require('plugins.config.flare')]],
   }
 
@@ -153,11 +153,11 @@ return require("packer").startup(function(use)
     config = [[require('plugins.config.treesitterplayground')]],
     cmd = "TSPlaygroundToggle",
   }
-  -- use {
-  --    "folke/trouble.nvim",
-  --    requires = "kyazdani42/nvim-web-devicons",
-  --    config = [[require('plugins.config.trouble')]]
-  -- }
+  use {
+    "folke/trouble.nvim",
+    requires = "kyazdani42/nvim-web-devicons",
+    config = [[require('plugins.config.trouble')]],
+  }
 
   -- C#
   -- use {
