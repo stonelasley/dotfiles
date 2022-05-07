@@ -49,7 +49,7 @@ return require("packer").startup(function(use)
   }
   use {
     "stonelasley/flare.nvim",
-    --"~/Projects/st1/flare.nvim",
+    -- "~/Projects/st1/flare.nvim",
     config = [[require('plugins.config.flare')]],
   }
 
@@ -97,10 +97,10 @@ return require("packer").startup(function(use)
   use "tpope/vim-fugitive"
 
   -- Linting
-  use {
-    "jose-elias-alvarez/null-ls.nvim",
-    config = [[require('plugins.config.null-ls')]],
-  }
+  -- use {
+  --   "jose-elias-alvarez/null-ls.nvim",
+  --   config = [[require('plugins.config.null-ls')]],
+  -- }
   use {
     "prettier/vim-prettier",
     run = "yarn install",
@@ -153,11 +153,11 @@ return require("packer").startup(function(use)
     config = [[require('plugins.config.treesitterplayground')]],
     cmd = "TSPlaygroundToggle",
   }
-  -- use {
-  --    "folke/trouble.nvim",
-  --    requires = "kyazdani42/nvim-web-devicons",
-  --    config = [[require('plugins.config.trouble')]]
-  -- }
+  use {
+    "folke/trouble.nvim",
+    requires = "kyazdani42/nvim-web-devicons",
+    config = [[require('plugins.config.trouble')]],
+  }
 
   -- C#
   -- use {
@@ -209,8 +209,8 @@ return require("packer").startup(function(use)
 
   -- Notes
   use {
-    "vimwiki/vimwiki",
-    config = [[require('plugins.config.vimwiki')]],
+    "nvim-orgmode/orgmode",
+    config = [[require('plugins.config.orgmode')]],
   }
 
   use { "RishabhRD/popfix" }
