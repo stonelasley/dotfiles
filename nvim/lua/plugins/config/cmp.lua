@@ -17,6 +17,7 @@ cmp.setup {
     { name = "buffer" },
     { name = "path" },
     { name = "luasnip" },
+    { name = "orgmode" },
   },
   window = {
     -- completion = cmp.config.window.bordered(),
