@@ -1,26 +1,4 @@
 ---
-- name: "Add nodejs apt key"
-  apt_key:
-    url: https://deb.nodesource.com/gpgkey/nodesource.gpg.key
-    state: present
-  become: true
-  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
-
-- name: "Add nodejs 16.x ppa for apt repo"
-  apt_repository:
-    repo: deb https://deb.nodesource.com/node_16.x bionic main
-    update_cache: true
-  become: true
-  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
-
-- name: "Install nodejs"
-  apt:
-    update_cache: true
-    name: nodejs
-    state: present
-  become: true
-  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
-
 - name: install packages from file
   apt:
     deb: '{{ item }}'
