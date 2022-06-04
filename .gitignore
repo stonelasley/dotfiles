@@ -4,3 +4,4 @@ vscode
 .base16
 .base16.previous
 packer_compiled.lua
+lvim/ignore
