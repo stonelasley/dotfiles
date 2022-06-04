@@ -1,7 +1,9 @@
 set imap_user = "sclarklasley@gmail.com"
+set imap_pass= $SCLARKLASLEY_GMAIL_PASS
 set from="sclarklasley@gmail.com"
 set realname="Stone C. Lasley"
 set smtp_url = "smtps://sclarklasley@gmail.com@smtp.gmail.com:465/"
+set smtp_pass= $SCLARKLASLEY_GMAIL_PASS
 set ssl_starttls=yes
 set ssl_force_tls=yes
 set folder = "imaps://imap.gmail.com:993"
