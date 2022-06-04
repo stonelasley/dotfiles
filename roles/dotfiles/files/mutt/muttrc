@@ -3,7 +3,12 @@ set sort_aux=last-date-received
 set sort=threads
 set sort_re
 
+# Html Emails
+auto_view text/html
+alternative_order text/plain text/enriched text/html
+
 # Folder hooks
+folder-hook 'account.io.lasley.stone' 'source ~/.mutt/account.io.lasley.stone'
 folder-hook 'account.com.gmail.sclarklasley' 'source ~/.mutt/account.com.gmail.sclarklasley'
 folder-hook 'account.com.gmail.stonelasley' 'source ~/.mutt/account.com.gmail.stonelasley'
 folder-hook 'account.com.gmail.lasleybills' 'source ~/.mutt/account.com.gmail.lasleybills'
@@ -12,7 +17,9 @@ folder-hook 'account.com.gmail.lasleybills' 'source ~/.mutt/account.com.gmail.la
 source ~/.mutt/account.com.gmail.sclarklasley
 
 # Macros
-macro index <f2> '<sync-mailbox><center-command>source ~/.mutt/account.com.gmail.sclarklasley<enter><change-folder>!<enter>
-macro index <f3> '<sync-mailbox><center-command>source ~/.mutt/account.com.gmail.stonelasley<enter><change-folder>!<enter>
-macro index <f3> '<sync-mailbox><center-command>source ~/.mutt/account.com.gmail.lasleybills<enter><change-folder>!<enter>
+macro index <f2> '<sync-mailbox><enter-command>source ~/.mutt/account.com.gmail.sclarklasley<enter><change-folder>!<enter>
+macro index <f3> '<sync-mailbox><enter-command>source ~/.mutt/account.io.lasley.stone<enter><change-folder>!<enter>
+macro index <f4> '<sync-mailbox><enter-command>source ~/.mutt/account.com.gmail.stonelasley<enter><change-folder>!<enter>
+macro index <f5> '<sync-mailbox><enter-command>source ~/.mutt/account.com.gmail.lasleybills<enter><change-folder>!<enter>
+
 
