@@ -6,19 +6,19 @@
     mode: '0777'
   tags: [neovim]
 
-- name: link luarvim config
+- name: link lunarvim config
   file: src={{ ansible_env.PWD }}/lvim/
         path=~/.config/lvim
         state=link
         force=true
   tags: [neovim]
 
-# - name: link neovim config
-#   file: src={{ ansible_env.PWD }}/nvim/
-#         path=~/.config/nvim
-#         state=link
-#         force=true
-  # tags: [neovim]
+- name: link neovim config
+  file: src={{ ansible_env.PWD }}/nvim/
+        path=~/.config/lvim
+        state=link
+        force=true
+  tags: [neovim]
 
 - name: Create config bin directory
   ansible.builtin.file:
