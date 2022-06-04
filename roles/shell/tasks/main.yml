@@ -72,3 +72,9 @@
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
   args:
     creates: "{{ ansible_env.HOME }}/.nvm/nvm.sh"
+
+- name: rustup
+  shell: >
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+  args:
+    creates: "{{ ansible_env.HOME }}/.rustup"
