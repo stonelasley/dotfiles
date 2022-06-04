@@ -1,7 +1,6 @@
 # Global Setttings
 set sort_aux=last-date-received
-set sort=threads
-set sort_re
+set sort=reverse-threads
 
 # Html Emails
 auto_view text/html
@@ -14,11 +13,11 @@ folder-hook 'account.com.gmail.stonelasley' 'source ~/.mutt/account.com.gmail.st
 folder-hook 'account.com.gmail.lasleybills' 'source ~/.mutt/account.com.gmail.lasleybills'
 
 # Default Account
-source ~/.mutt/account.com.gmail.sclarklasley
+source ~/.mutt/account.io.lasley.stone
 
 # Macros
-macro index <f2> '<sync-mailbox><enter-command>source ~/.mutt/account.com.gmail.sclarklasley<enter><change-folder>!<enter>
-macro index <f3> '<sync-mailbox><enter-command>source ~/.mutt/account.io.lasley.stone<enter><change-folder>!<enter>
+macro index <f2> '<sync-mailbox><enter-command>source ~/.mutt/account.io.lasley.stone<enter><change-folder>!<enter>
+macro index <f3> '<sync-mailbox><enter-command>source ~/.mutt/account.com.gmail.sclarklasley<enter><change-folder>!<enter>
 macro index <f4> '<sync-mailbox><enter-command>source ~/.mutt/account.com.gmail.stonelasley<enter><change-folder>!<enter>
 macro index <f5> '<sync-mailbox><enter-command>source ~/.mutt/account.com.gmail.lasleybills<enter><change-folder>!<enter>
 
