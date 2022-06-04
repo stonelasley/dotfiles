@@ -1,0 +1,15 @@
+set imap_user = "stone@lasley.io"
+set imap_pass= $STONE_LASLEY_IO_PASS
+set from="stone@lasley.io"
+set realname="Stone C. Lasley"
+set smtp_url = "smtps://stone@lasley.io@smtp.lasley.io:465/"
+set smtp_pass= $STONE_LASLEY_IO_PASS
+set ssl_starttls=yes
+set ssl_force_tls=yes
+set folder = "imaps://imap.lasley.io:993"
+set spoolfile = "imaps://imap.lasley.io/INBOX"
+set postponed="imaps://imap.lasley.io/[Gmail]/Drafts"
+set header_cache =     "~/.mutt/io.lasley.stone/cache/headers"
+set message_cachedir = "~/.mutt/io.lasley.stone/cache/bodies"
+set certificate_file = "~/.mutt/io.lasley.stone/certificates"
+set imap_keepalive = 900
