@@ -95,7 +95,7 @@ lvim.builtin.treesitter.ignore_install = { "haskell" }
 lvim.builtin.treesitter.highlight.enabled = true
 
 -- generic LSP settings
-
+lvim.builtin.dap.active = true
 -- ---@usage disable automatic installation of servers
 -- lvim.lsp.automatic_servers_installation = false
 
@@ -163,7 +163,6 @@ lvim.plugins = {
   },
   { "github/copilot.vim" },
   { "christoomey/vim-tmux-navigator" },
-  --  { "nvim-telescope/telescope-fzy-native.nvim" },
   {
     "nvim-telescope/telescope-frecency.nvim",
     requires = { { "tami5/sql.nvim" } },
