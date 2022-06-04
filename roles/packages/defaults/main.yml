@@ -18,6 +18,7 @@ packages:
   - ripgrep 
   - silversearcher-ag
   - sqlite3 
+  - tmux
   - unzip
   - zsh
 
