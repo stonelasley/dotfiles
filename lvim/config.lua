@@ -11,7 +11,7 @@ an executable
 
 -- general
 lvim.log.level = "warn"
-lvim.format_on_save = true
+lvim.format_on_save = false
 lvim.colorscheme = "onedarker"
 -- to disable icons and use a minimalist setup, uncomment the following
 -- lvim.use_icons = false
@@ -35,6 +35,9 @@ lvim.keys.normal_mode["<C-f>"] = "<cmd>Telescope live_grep<cr>"
 
 -- NvimTree
 lvim.keys.normal_mode["<C-n>"] = "<cmd>NvimTreeToggle<CR>"
+
+-- Lsp
+lvim.keys.normal_mode["<F12>"] = "<cmd>lua vim.lsp.buf.format()<CR>"
 
 -- Change Telescope navigation to use j and k for navigation and n and p for history in both input and normal mode.
 -- we use protected-mode (pcall) just in case the plugin wasn't loaded yet.
@@ -131,7 +134,7 @@ formatters.setup {
     command = "prettier",
     ---@usage arguments to pass to the formatter
     -- these cannot contain whitespaces, options such as `--line-width 80` become either `{'--line-width', '80'}` or `{'--line-width=80'}`
-    extra_args = { "--print-with", "120", "--single-attribute-per-line", "true" },
+    extra_args = { "--print-with", "100", "--single-attribute-per-line", "true" },
     ---@usage specify which filetypes to enable. By default a providers will attach to all the filetypes it supports.
     filetypes = { "typescript", "typescriptreact", "vue" },
   },
