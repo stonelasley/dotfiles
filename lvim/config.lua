@@ -169,6 +169,11 @@ lvim.plugins = {
   {
     "nvim-telescope/telescope-frecency.nvim",
     requires = { { "tami5/sql.nvim" } },
+  },
+  {
+    "~/Projects/st1/flare.nvim",
+    --"stonelasley/flare.nvim",
+    config = [[require('plugin.flare')]],
   }
 }
 
