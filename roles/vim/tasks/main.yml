@@ -6,16 +6,9 @@
     mode: '0777'
   tags: [neovim]
 
-- name: link lunarvim config
-  file: src={{ ansible_env.PWD }}/lvim/
-        path=~/.config/lvim
-        state=link
-        force=true
-  tags: [neovim]
-
 - name: link neovim config
   file: src={{ ansible_env.PWD }}/nvim/
-        path=~/.config/lvim
+        path=~/.config/nvim
         state=link
         force=true
   tags: [neovim]
@@ -83,107 +76,6 @@
     force: true
   tags: [neovim]
 
-- name: Create a Omnisharp directory
-  ansible.builtin.file:
-    path: /opt/omnisharp
-    state: directory
-    mode: '0777'
-  become: true
-  tags: [neovim, omnisharp]
-
-- name: test omnisharp installed
-  stat:
-    path: /opt/omnisharp/run
-  register: omnisharp
-  tags: [omnisharp]
-
-- name: download and install omnisharp
-  ansible.builtin.unarchive:
-    src: https://github.com/OmniSharp/omnisharp-roslyn/releases/download/{{omnisharp_version}}/omnisharp-osx-x64-net6.0.zip
-    dest: /opt/omnisharp
-    remote_src: true
-    mode: u+x
-  when: not omnisharp.stat.exists and ansible_distribution == 'MacOSX'
-  become: true
-  tags: [omnisharp]
-
-- name: download and install omnisharp
-  ansible.builtin.unarchive:
-    src: https://github.com/OmniSharp/omnisharp-roslyn/releases/download/{{omnisharp_version}}/omnisharp-linux-x64.zip
-    dest: /opt/omnisharp
-    remote_src: true
-    mode: u+x
-  when: not omnisharp.stat.exists and (ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu')
-  become: true
-  tags: [omnisharp]
-
-- name: Fix Omnisharp permissions
-  file:
-    path: /opt/omnisharp/run
-    mode: u+x
-  become: true
-  tags: [omnisharp]
-
-- name: Dequarantine omnisharp
-  shell:
-  args:
-    cmd: find /opt/omnisharp | xargs xattr -r -d com.apple.quarantine
-  when: not omnisharp.stat.exists and ansible_distribution == 'MacOSX'
-  tags: [vim, omnisharp]
-
-- name: test sumneko installed
-  stat:
-    path: /opt/sumneko/bin/lua-language-server
-  register: sumneko
-  tags: [sumneko]
-
-- name: download and install sumneko
-  ansible.builtin.unarchive:
-    src: https://github.com/sumneko/lua-language-server/releases/download/{{sumneko_version}}/lua-language-server-{{sumneko_version}}-darwin-x64.tar.gz
-    dest: /opt/sumneko
-    remote_src: true
-    mode: u+x
-  when: not sumneko.stat.exists and ansible_distribution == 'MacOSX'
-  become: true
-  tags: [sumneko]
-
-- name: download and install sumneko
-  ansible.builtin.unarchive:
-    src: https://github.com/sumneko/lua-language-server/releases/download/{{sumneko_version}}/lua-language-server-{{sumneko_version}}-linux-x64.tar.gz
-    dest: /opt/sumneko
-    remote_src: true
-    mode: u+x
-  when: not sumneko.stat.exists and ansible_distribution == 'Ubuntu'
-  become: true
-  tags: [sumneko]
-
-- name: download rust-analyzer
-  get_url:
-    url: https://github.com/rust-analyzer/rust-analyzer/releases/download/{{rust-analyzer_version}}/rust-analyzer-x86_64-apple-darwin.gz
-    dest: /tmp/rust-analyzer.gz
-  when: ansible_distribution == 'MacOSX'
-  tags: [rust-analyzer]
-
-- name: download rust-analyzer
-  get_url:
-    url: https://github.com/rust-analyzer/rust-analyzer/releases/download/{{rust-analyzer_version}}/rust-analyzer-x86_64-apple-darwin.gz
-    dest: /tmp/rust-analyzer.gz
-  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
-  tags: [rust-analyzer]
-
-- name: unzip rust-analyzer
-  command: gunzip -f rust-analyzer.gz
-  args:
-    chdir: /tmp
-  tags: [rust-analyzer]
-
-- name: copy rust-analyzer and set permissions
-  ansible.builtin.copy:
-    src: /tmp/rust-analyzer
-    dest: ~/.local/bin/rust-analyzer
-    mode: 'u+x'
-  tags: [rust-analyzer]
-
 - name: reset Neovim directory permissions
   file:
     path: /opt/neovim
@@ -192,26 +84,3 @@
     recurse: true
   become: true
   tags: [neovim]
-
-- name: reset Sumneko directory permissions
-  file:
-    path: /opt/sumneko
-    state: directory
-    mode: '755'
-    recurse: true
-  become: true
-  tags: [sumneko]
-
-- name: reset Omnisharp directory permissions
-  ansible.builtin.file:
-    path: /opt/omnisharp
-    state: directory
-    mode: '0755'
-  become: true
-  tags: [omnisharp]
-
-- name: cleanup rust-analyzer
-  file:
-    path: /tmp/rust-analyzer*
-    state: absent
-  tags: [rust-analyzer]
