@@ -142,7 +142,7 @@ M.nvchad = {
     ["<leader>"] = {
       N = {
         name = "+Nvim",
-        ["u"] = { "<cmd> NvChadUpate<CR>", "Update NvChad" },
+        ["u"] = { "<cmd> NvChadUpdate<CR>", "Update NvChad" },
       }
     }
   }
