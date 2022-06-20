@@ -6,12 +6,12 @@
     mode: '0777'
   tags: [neovim]
 
-- name: link neovim config
-  file: src={{ ansible_env.PWD }}/nvim/
-        path=~/.config/nvim
-        state=link
-        force=true
-  tags: [neovim]
+- name: clone nvchad
+  git:
+    repo: https://github.com/NvChad/NvChad
+    dest: ~/.config/nvim
+    force: true
+  tags: [nvchad]
 
 - name: Create config bin directory
   ansible.builtin.file:
