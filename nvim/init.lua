@@ -1,11 +1,5 @@
-local present, impatient = pcall(require, "impatient")
+require("custom.options")
+require("custom.autocmds")
+-- example file i.e lua/custom/init.lua
 
-if present then
-  impatient.enable_profile()
-end
-
-require "st1.options"
-require "plugins"
-require "st1.au"
-
-vim.g.mapleader = " "
+-- load your lobals, autocmds here or anything .__.

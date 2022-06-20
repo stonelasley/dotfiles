@@ -1,5 +1,7 @@
+local opt = vim.opt
 local autocmd = vim.api.nvim_create_autocmd
 local augroup = vim.api.nvim_create_augroup
+
 
 augroup("st1", { clear = true })
 
@@ -28,21 +30,21 @@ autocmd("BufEnter,BufWinEnter,TabEnter", {
 
 autocmd("WinNew", {
   callback = function()
-    vim.opt.laststatus = 3
+    opt.laststatus = 3
   end,
   group = "st1",
 })
 
 autocmd("InsertEnter", {
   callback = function()
-    vim.opt.relativenumber = false
+    opt.relativenumber = false
   end,
   group = "st1",
 })
 
 autocmd("InsertLeave", {
   callback = function()
-    vim.opt.relativenumber = true
+    opt.relativenumber = true
   end,
   group = "st1",
 })

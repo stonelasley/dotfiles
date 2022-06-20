@@ -13,6 +13,13 @@
     force: true
   tags: [nvchad]
 
+- name: link neovim config
+  file: src=~/.st1/nvim
+        path=~/.config/nvim/lua/custom
+        state=link
+        force=true
+  tags: [neovim]
+
 - name: Create config bin directory
   ansible.builtin.file:
     path: ~/.local/bin
