@@ -166,6 +166,7 @@ M.disabled = {
     ["<leader>ls"] = "",
     ["<leader>cm"] = "",
     ["<leader>gt"] = "",
+    ["<leader>x"] = "",
   },
   i = {}
 }
