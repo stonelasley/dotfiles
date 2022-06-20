@@ -37,11 +37,6 @@ M.bufferline = {
     },
   }
 }
-M.nvimtree = {
-  n = {
-    ["<C-n>"] = { "<cmd> NvimTreeToggle <CR>", "   toggle nvimtree" }
-  }
-}
 
 M.lspconfig = {
   n = {
