@@ -118,6 +118,7 @@ M.git = {
   n = {
     ["<leader>"] = {
       g = {
+        name = "+Git",
         ["c"] = { "<cmd> Telescope git_commits <CR>", "   git commits" },
         ["s"] = { "<cmd> Telescope git_status <CR>", "  git status" },
       }
@@ -148,6 +149,29 @@ M.nvchad = {
   }
 }
 
+M.whichkey = {
+  n = {
+    ["<leader>"] = {
+      w = {
+        name = "+WhichKey",
+        ["k"] = {
+          function()
+            vim.cmd "WhichKey"
+          end,
+          "   which-key all keymaps",
+        },
+        ["l"] = {
+          function()
+            local input = vim.fn.input "WhichKey: "
+            vim.cmd("WhichKey " .. input)
+          end,
+          "   which-key query lookup",
+        }
+      },
+    },
+  },
+}
+
 M.disabled = {
   n = {
     ["<C-s>"] = "",
@@ -167,6 +191,8 @@ M.disabled = {
     ["<leader>cm"] = "",
     ["<leader>gt"] = "",
     ["<leader>x"] = "",
+    ["<leader>wK"] = "",
+    ["<leader>wk"] = "",
   },
   i = {}
 }
