@@ -1,5 +1,6 @@
 -- Just an example, supposed to be placed in /lua/custom/
 local hl_override = require('custom.highlights')
+local plugin_override = require('custom.overrides')
 
 local M = {}
 
@@ -17,8 +18,13 @@ M.plugins = {
     lspconfig = {
       setup_lspconf = "custom.plugins.lspconfig"
     }
+  },
+  override = {
+    ["nvim-treesitter/nvim-treesitter"] = plugin_override.treesitter
   }
+
 }
+
 
 M.mappings = require "custom.mappings"
 
