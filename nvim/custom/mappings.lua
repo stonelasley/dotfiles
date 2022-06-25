@@ -16,15 +16,6 @@ M.telescope = {
   }
 }
 
-M.vim_tmux_navigator = {
-  n = {
-    ["<C-k>"] = { "<cmd> TmuxNavigateUp<CR>", "Tmux Navigate Up" },
-    ["<C-j>"] = { "<cmd> TmuxNavigateDown<CR>", "Tmux Navigate Down" },
-    ["<C-l>"] = { "<cmd> TmuxNavigateRight<CR>", "Tmux Navigate Right" },
-    ["<C-h>"] = { "<cmd> TmuxNavigateLeft<CR>", "Tmux Navigate Left" },
-  }
-}
-
 M.bufferline = {
   n = {
     ["<S-l>"] = { "<cmd> BufferLineCycleNext <CR>", "  cycle next buffer" },
@@ -172,6 +163,18 @@ M.whichkey = {
   },
 }
 
+M.orgmode = {
+  n = {
+    ["<leader>"] = {
+      o = {
+        name = "+Orgmode",
+        ["a"] = { "<cmd> lua require('orgmode').action('agenda.prompt', { opts = { buffer = false } })<CR>", "Agenda Prompt" },
+        ["c"] = { "<cmd> lua require('orgmode').action('capture.prompt', { opts = { buffer = false } })<CR>", "Capture Prompt" },
+      }
+    }
+  }
+}
+
 M.disabled = {
   n = {
     ["<C-s>"] = "",
@@ -193,6 +196,10 @@ M.disabled = {
     ["<leader>x"] = "",
     ["<leader>wK"] = "",
     ["<leader>wk"] = "",
+    ["<C-h>"] = "",
+    ["<C-j>"] = "",
+    ["<C-k>"] = "",
+    ["<C-l>"] = "",
   },
   i = {}
 }

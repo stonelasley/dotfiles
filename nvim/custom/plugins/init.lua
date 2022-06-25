@@ -8,11 +8,7 @@ return {
     end
   },
   ["github/copilot.vim"] = {},
-  ["christoomey/vim-tmux-navigator"] = {
-    config = function()
-
-    end
-  },
+  ["christoomey/vim-tmux-navigator"] = {},
   ["nvim-treesitter/playground"] = {
     cmd = "TSCaptureUnderCursor",
     config = function()
@@ -33,4 +29,16 @@ return {
       end
     end
   },
+  ["nvim-orgmode/orgmode"] = {
+    config = function()
+      local present, orgmode = pcall(require, "orgmode")
+      if present then
+        orgmode.setup_ts_grammar()
+        orgmode.setup{
+          org_agenda_files = '~/Projects/st1/notebook/*' ,
+    org_default_notes_file = '~/Projects/st1/notebook/refile.org',
+  }
+      end
+    end
+  }
 }

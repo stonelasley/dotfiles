@@ -14,7 +14,7 @@
   tags: [nvchad]
 
 - name: link neovim config
-  file: src=~/.st1/nvim
+  file: src=~/.st1/nvim/custom
         path=~/.config/nvim/lua/custom
         state=link
         force=true
