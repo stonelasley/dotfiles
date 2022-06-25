@@ -1,4 +1,5 @@
 -- Just an example, supposed to be placed in /lua/custom/
+local hl_override = require('custom.highlights')
 
 local M = {}
 
@@ -7,6 +8,7 @@ local M = {}
 
 M.ui = {
   theme = "nord",
+  hl_override = hl_override
 }
 
 M.plugins = {
