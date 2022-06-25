@@ -10,7 +10,7 @@ local c = {
 local search = { bg = c.diff_yellow, fg = c.black }
 
 return {
-  Yank = search,
+  IncSearch = search,
   Visual = search,
   LineNr = { fg = c.gray, bg = c.none },
   NvimTreeRootFolder = { fg = c.gray_alt },
