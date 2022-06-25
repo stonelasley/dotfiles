@@ -1,3 +1,3 @@
-local g = vim.g
+local wo = vim.wo
 
-g.wrap = false
+wo.wrap = false
