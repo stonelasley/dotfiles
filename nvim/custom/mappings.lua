@@ -139,6 +139,18 @@ M.nvchad = {
   }
 }
 
+M.orgmode = {
+  n = {
+    ["<leader>"] = {
+      o = {
+        name = "+Orgmode",
+        ["a"] = { "<cmd> lua require('orgmode').action('agenda.prompt', { opts = { buffer = false } })<CR>", "Agenda Prompt" },
+        ["c"] = { "<cmd> lua require('orgmode').action('capture.prompt', { opts = { buffer = false } })<CR>", "Capture Prompt" },
+      }
+    }
+  }
+}
+
 M.disabled = {
   n = {
     ["<C-s>"] = "",
