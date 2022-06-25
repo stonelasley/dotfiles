@@ -3,6 +3,7 @@ packages:
   - ack
   - autoconf
   - automake
+  - azure-cli
   - cmake
   - curl
   - dotnet-sdk-6.0
