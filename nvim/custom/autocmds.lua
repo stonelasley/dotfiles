@@ -20,13 +20,13 @@ autocmd("TextYankPost", {
 --  group = "st1",
 --})
 
-autocmd("BufEnter,BufWinEnter,TabEnter", {
-  pattern = "*.rs",
-  callback = function()
-    require("rust-tools.inlay_hints").set_inlay_hints()
-  end,
-  group = "st1",
-})
+-- autocmd("BufEnter,BufWinEnter,TabEnter", {
+--   pattern = "*.rs",
+--   callback = function()
+--     require("rust-tools.inlay_hints").set_inlay_hints()
+--   end,
+--   group = "st1",
+-- })
 
 autocmd("WinNew", {
   callback = function()
