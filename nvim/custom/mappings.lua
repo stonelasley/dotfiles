@@ -163,6 +163,24 @@ M.whichkey = {
   },
 }
 
+M.treesitter = {
+  n = {
+    ["<leader>"] = {
+      T = {
+        name = "+TreeSitter",
+        ["u"] = { "<cmd> TSUpdate<CR>",             "Update" },
+        ["I"] = { "<cmd> TSInstallInfo<CR>",        "Install Info" },
+        ["e"] = { "<cmd> TSEditQuery<CR>",          "Edit Query" },
+        ["E"] = { "<cmd> TSEditQueryUserAfter<CR>", "Edit Query User After" },
+        ["o"] = { "<cmd> TSEnable<CR>",             "Enable" },
+        ["O"] = { "<cmd> TSBufEnable<CR>",          "Enable for Buffer" },
+        ["x"] = { "<cmd> TSDisable<CR>",            "Disable" },
+        ["y"] = { "<cmd> TSCaptureUnderCursor<CR>", "Capture Under Cursor" },
+      }
+    }
+  }
+}
+
 M.orgmode = {
   n = {
     ["<leader>"] = {
@@ -196,6 +214,7 @@ M.disabled = {
     ["<leader>x"] = "",
     ["<leader>wK"] = "",
     ["<leader>wk"] = "",
+    ["<leader>u"] = "",
     ["<C-h>"] = "",
     ["<C-j>"] = "",
     ["<C-k>"] = "",
