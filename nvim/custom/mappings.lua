@@ -122,8 +122,10 @@ M.packer = {
     ["<leader>"] = {
       P = {
         name = "+Packer",
-        ["s"] = { "<cmd> PackerStatus<CR>", "Packer Status" },
-        ["u"] = { "<cmd> PackerUpdate<CR>", "Packer Update" },
+        ["i"] = { "<cmd> PackerInstall<CR>", "Install" },
+        ["u"] = { "<cmd> PackerUpdate<CR>", "Update" },
+        ["s"] = { "<cmd> PackerStatus<CR>", "Status" },
+        ["c"] = { "<cmd> PackerCompile<CR>", "Compile" },
       }
     }
   }
