@@ -42,7 +42,7 @@ return {
     end
   },
   ["tpope/vim-fugitive"] = {},
-  ["tpope/vim-surround"] = {
+  ["kylechui/nvim-surround"] = {
     event = "BufEnter"
   },
 }
