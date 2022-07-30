@@ -6,16 +6,9 @@
     mode: '0777'
   tags: [neovim]
 
-- name: clone nvchad
-  git:
-    repo: https://github.com/NvChad/NvChad
-    dest: ~/.config/nvim
-    force: true
-  tags: [nvchad]
-
 - name: link neovim config
-  file: src=~/.st1/nvim/custom
-        path=~/.config/nvim/lua/
+  file: src=~/.st1/nvim
+        path=~/.config/nvim
         state=link
         force=true
   tags: [neovim]
@@ -81,7 +74,7 @@
     dest: ~/.local/share/nvim/site/pack/packer/start/packer.nvim
     depth: 1
     force: true
-  tags: [neovim]
+  tags: [neovim, packer]
 
 - name: reset Neovim directory permissions
   file:
