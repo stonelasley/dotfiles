@@ -39,8 +39,14 @@ local servers = {
                                 },
                                 diagnostics = {
                                         -- Get the language server to recognize the `vim` global
-                                        globals = { "vim", "describe", "it", "before_each", "after_each",
-                                                "packer_plugins" },
+                                        globals = {
+                                                "vim",
+                                                "describe",
+                                                "it",
+                                                "before_each",
+                                                "after_each",
+                                                "packer_plugins",
+                                        },
                                         -- disable = { "lowercase-global", "undefined-global", "unused-local", "unused-vararg", "trailing-space" },
                                 },
                                 workspace = {
@@ -154,7 +160,7 @@ require("plugins.config.lsp.handlers").setup()
 
 function M.setup()
         -- null-ls
-        --require("config.lsp.null-ls").setup(opts)
+        require("plugins.config.lsp.null-ls").setup(opts)
 
         -- Installer
         require("plugins.config.lsp.installer").setup(servers, opts)
