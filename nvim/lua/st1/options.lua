@@ -3,7 +3,6 @@ local cmd = vim.cmd
 local utils = require "utils"
 
 cmd [[
-  let &packpath = &runtimepath
   set rtp+=/opt/fzf
   set ffs=unix,dos
   set ff=unix
@@ -28,27 +27,27 @@ vim.g.guicursor = "blinkon100"
 vim.o.completeopt = "menuone,noinsert,noselect"
 
 local disabled_plugins = {
-  "2html_plugin",
-  "did_load_filetypes",
-  "getscript",
-  "getscriptPlugin",
-  "gzip",
-  "logipat",
-  "netrw",
-  "netrwPlugin",
-  "netrwSettings",
-  "netrwFileHandlers",
-  "matchit",
-  "tar",
-  "tarPlugin",
-  "rrhelper",
-  "spellfile_plugin",
-  "vimball",
-  "vimballPlugin",
-  "zip",
-  "zipPlugin",
+        "2html_plugin",
+        "did_load_filetypes",
+        "getscript",
+        "getscriptPlugin",
+        "gzip",
+        "logipat",
+        "netrw",
+        "netrwPlugin",
+        "netrwSettings",
+        "netrwFileHandlers",
+        "matchit",
+        "tar",
+        "tarPlugin",
+        "rrhelper",
+        "spellfile_plugin",
+        "vimball",
+        "vimballPlugin",
+        "zip",
+        "zipPlugin",
 }
 
 for _, plugin in pairs(disabled_plugins) do
-  g["loaded_" .. plugin] = 1
+        g["loaded_" .. plugin] = 1
 end

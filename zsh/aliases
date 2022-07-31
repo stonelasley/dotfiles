@@ -32,4 +32,3 @@ alias gcz='git cz'
 # Random Projects
 #
 alias projects="cd $PROJECTHOME"
-alias luamake=/opt/sumneko/3rd/luamake/compile/install.sh
