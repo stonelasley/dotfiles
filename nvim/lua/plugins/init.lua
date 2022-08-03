@@ -131,6 +131,7 @@ return require("packer").startup(function(use)
   }
 
   -- Languages
+  -- use { "stevearc/aerial.nvim" }
   use {
     "neovim/nvim-lspconfig",
     config = [[require('plugins.config.lsp').setup()]],
