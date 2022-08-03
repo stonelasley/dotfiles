@@ -26,13 +26,10 @@ local servers = {
     settings = {
       Lua = {
         runtime = {
-          -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
           version = "LuaJIT",
-          -- Setup your lua path
           path = vim.split(package.path, ";"),
         },
         diagnostics = {
-          -- Get the language server to recognize the `vim` global
           globals = {
             "vim",
             "describe",
@@ -41,7 +38,6 @@ local servers = {
             "after_each",
             "packer_plugins",
           },
-          -- disable = { "lowercase-global", "undefined-global", "unused-local", "unused-vararg", "trailing-space" },
         },
         format = {
           enable = false,
@@ -77,12 +73,9 @@ local servers = {
       },
     },
   },
-  --jdtls = {},
   dockerls = {},
-  --graphql = {},
   bashls = {},
   omnisharp = {},
-  --kotlin_language_server = {},
   --emmet_ls = {},
   --marksman = {},
   angularls = {},
@@ -99,10 +92,10 @@ function M.on_attach(client, bufnr)
   vim.api.nvim_buf_set_option(bufnr, "formatexpr", "v:lua.vim.lsp.formatexpr()")
 
   -- Configure key mappings
-  --require("config.lsp.keymaps").setup(client, bufnr)
+  --require("plugins.config.lsp.keymaps").setup(client, bufnr)
 
   -- Configure highlighting
-  --require("plugins.config.lsp.highlighter").setup(client, bufnr)
+  require("plugins.config.lsp.highlighter").setup(client, bufnr)
 
   -- Configure formatting
   require("plugins.config.lsp.null-ls.formatters").setup(client, bufnr)
@@ -156,7 +149,7 @@ function M.setup()
   require("plugins.config.lsp.installer").setup(servers, opts)
 
   -- Inlay hints
-  -- require("config.lsp.inlay-hints").setup()
+  require("plugins.config.lsp.inlay-hints").setup()
 end
 
 local diagnostics_active = true
