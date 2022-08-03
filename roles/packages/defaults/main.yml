@@ -16,9 +16,9 @@ packages:
   - ninja-build
   - python3-pip
   - pkg-config
-  - ripgrep 
+  - ripgrep
   - silversearcher-ag
-  - sqlite3 
+  - sqlite3
   - tmux
   - unzip
   - zsh
@@ -35,19 +35,20 @@ casks:
   - ninja
   - pkg-config
   - node@16
-  - npm 
-  - ripgrep 
+  - npm
+  - ripgrep
   - rustup
   - stylua
-  - sqlite3 
+  - sqlite3
   - tree-sitter
   - luarocks
+  - shellcheck
 
 debs:
   - https://packages.microsoft.com/config/ubuntu/22.04/packages-microsoft-prod.deb
   - https://github.com/cli/cli/releases/download/v1.13.1/gh_1.13.1_linux_amd64.deb
 
-pips: 
+pips:
   - neovim
   - pynvim
   - qmk
