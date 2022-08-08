@@ -92,7 +92,7 @@ function M.on_attach(client, bufnr)
   vim.api.nvim_buf_set_option(bufnr, "formatexpr", "v:lua.vim.lsp.formatexpr()")
 
   -- Configure key mappings
-  --require("plugins.config.lsp.keymaps").setup(client, bufnr)
+  require("plugins.config.lsp.mappings").setup(client, bufnr)
 
   -- Configure highlighting
   require("plugins.config.lsp.highlighter").setup(client, bufnr)

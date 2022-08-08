@@ -2,8 +2,17 @@ local map = require("kartograaf").map
 local utils = require "utils"
 local M = {}
 
-function M.set_buf_keymaps(ls, bufnr)
+function M.setup(client, bufnr)
   utils.buf_opt(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+  if client.server_capabilities.documentFormattingProvider then
+    map {
+      n = {
+        options = { silent = true },
+        buffer = bufnr,
+        { "<F12>", "<cmd>lua vim.lsp.buf.format({async = true})<CR>" },
+      },
+    }
+  end
   map {
     n = {
       options = { silent = true },
@@ -13,7 +22,6 @@ function M.set_buf_keymaps(ls, bufnr)
       { "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>" },
       -- { '<F2>', '<cmd>lua vim.lsp.buf.rename()<CR>' },
       { "<F2>", "<cmd>Lspsaga rename<CR>" },
-      { "<F12>", "<cmd>lua vim.lsp.buf.formatting()<CR>" },
       {
         prefix = "<leader><leader>",
         { "wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>" },

@@ -155,7 +155,7 @@ return require("packer").startup(function(use)
   --   config = [[require('plugins.config.lsp')]],
   -- }
   use {
-    "tami5/lspsaga.nvim",
+    "glepnir/lspsaga.nvim",
     config = [[require('plugins.config.lspsaga')]],
   }
   use {
@@ -242,7 +242,11 @@ return require("packer").startup(function(use)
 
   -- Bindings
   use {
-    "stonelasley/kartograaf.nvim",
-    config = [[require('mappings')]],
+    "folke/which-key.nvim",
+    config = [[require('plugins.config.whichkey')]],
   }
+  -- use {
+  --   "stonelasley/kartograaf.nvim",
+  --   config = [[require('mappings')]],
+  -- }
 end)
