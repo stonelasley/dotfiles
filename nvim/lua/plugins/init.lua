@@ -8,10 +8,6 @@ local plugins = {
   },
   { "nathom/filetype.nvim" },
   {
-    "glepnir/dashboard-nvim",
-    config = [[require('plugins.config.dashboard')]],
-  },
-  {
     "max397574/better-escape.nvim",
     event = "InsertCharPre",
     config = [[require('plugins.config.better-escape')]],
