@@ -58,6 +58,8 @@ local n_mappings = {
     s = { "<cmd>Git<cr>", " Status" },
     c = { "<cmd>Telescope git_bcommits<CR>", " Commits" },
     b = { "<cmd>Telescope git_branches<CR>", " Branches" },
+    p = { "<cmd>Git push<cr>", " push" },
+    u = { "<cmd>Git pull<cr>", " pull" },
   },
   y = { '"+y', "yank" },
   d = { '"_d', "delete" },
