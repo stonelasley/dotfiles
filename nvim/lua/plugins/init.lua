@@ -249,8 +249,4 @@ return require("packer").startup(function(use)
     "folke/which-key.nvim",
     config = [[require('plugins.config.whichkey')]],
   }
-  -- use {
-  --   "stonelasley/kartograaf.nvim",
-  --   config = [[require('mappings')]],
-  -- }
 end)
