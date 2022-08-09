@@ -133,6 +133,10 @@ return require("packer").startup(function(use)
   -- Languages
   -- use { "stevearc/aerial.nvim" }
   use {
+    "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+    config = [[require('plugins.config.lsp_lines')]],
+  }
+  use {
     "neovim/nvim-lspconfig",
     config = [[require('plugins.config.lsp').setup()]],
     wants = {
