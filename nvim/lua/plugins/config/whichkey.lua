@@ -17,6 +17,15 @@ local opts = {
   prefix = "",
 }
 
+local c_opts = {
+  mode = "c",
+  buffer = nil,
+  silent = true,
+  noremap = true,
+  nowait = false,
+  prefix = "",
+}
+
 local leader_opts = {
   mode = "n",
   prefix = "<leader>",
@@ -78,9 +87,12 @@ local n_mappings = {
   },
   P = {
     name = " +Packer",
-    s = { "<cmd>PackerStatus<CR>", " Status" },
-    u = { "<cmd>PackerUpdate<CR>", "מּ Update" },
-    i = { "<cmd>PackerInstall<CR>", " Install" },
+    s = { "<cmd>PackerStatus<CR>", "  Status" },
+    u = { "<cmd>PackerUpdate<CR>", "מּ  Update" },
+    i = { "<cmd>PackerInstall<CR>", "  Install" },
+    c = { "<cmd>PackerCompile<CR>", "  Compile" },
+    l = { "<cmd>PackerClean<CR>", "  Clean" },
+    y = { "<cmd>PackerSync<CR>", "מּ  Sync" },
   },
 }
 local v_mappings = {
@@ -97,7 +109,7 @@ local c_mappings = {
 
 wk.setup(conf)
 wk.register(g_mappings, opts)
-wk.register(c_mappings)
+wk.register(c_mappings, c_opts)
 wk.register(n_mappings, leader_opts)
 wk.register(v_mappings, leader_opts)
 wk.register(x_mappings, leader_opts)
