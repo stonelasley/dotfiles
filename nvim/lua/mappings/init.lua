@@ -1,6 +1,6 @@
 local M = {}
 
-M.normal= {
+M.normal = {
   f = {
     [[<cmd>lua require('hop').hint_char1({ direction = require('hop.hint').HintDirection.AFTER_CURSOR, current_line_only = false })<cr>]],
     "Hop forward",
@@ -30,10 +30,11 @@ M.normal= {
 M.normal_leader = {
   g = {
     name = " +Git",
-    s = { "<cmd>Git<cr>", " Status" },
-    c = { "<cmd>Telescope git_bcommits<CR>", " Commits" },
     b = { "<cmd>Telescope git_branches<CR>", " Branches" },
+    B = { "<cmd>Git blame<cr>", "什Blame" },
+    c = { "<cmd>Telescope git_bcommits<CR>", " Commits" },
     p = { "<cmd>Git push<cr>", " push" },
+    s = { "<cmd>Git<cr>", " Status" },
     u = { "<cmd>Git pull<cr>", " pull" },
   },
   y = { '"+y', "yank" },
