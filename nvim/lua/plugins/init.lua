@@ -1,5 +1,3 @@
-local packer = require "packer"
-vim.cmd [[packadd packer.nvim]]
 
 local plugins = {
   { "lewis6991/impatient.nvim" },
@@ -192,6 +190,9 @@ local plugins = {
     config = [[require('plugins.config.whichkey')]],
   },
 }
+
+local packer = require "packer"
+
 packer.init {
   auto_clean = true,
   compile_on_sync = true,

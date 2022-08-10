@@ -3,21 +3,21 @@
   ansible.builtin.file:
     path: ~/.config
     state: directory
-    mode: '0777'
+    mode: "0777"
   tags: [neovim]
 
 - name: link neovim config
   file: src=~/.st1/nvim
-        path=~/.config/nvim
-        state=link
-        force=true
+    path=~/.config/nvim
+    state=link
+    force=true
   tags: [neovim]
 
 - name: Create config bin directory
   ansible.builtin.file:
     path: ~/.local/bin
     state: directory
-    mode: '0777'
+    mode: "0777"
   tags: [neovim]
 
 - name: delete neovim directory
@@ -47,7 +47,7 @@
   file:
     path: /opt/neovim
     state: directory
-    mode: '777'
+    mode: "777"
     recurse: true
   become: true
   tags: [neovim]
@@ -68,19 +68,11 @@
   become: true
   tags: [neovim]
 
-- name: clone packer
-  git:
-    repo: https://github.com/wbthomason/packer.nvim
-    dest: ~/.local/share/nvim/site/pack/packer/start/packer.nvim
-    depth: 1
-    force: true
-  tags: [neovim, packer]
-
 - name: reset Neovim directory permissions
   file:
     path: /opt/neovim
     state: directory
-    mode: '755'
+    mode: "755"
     recurse: true
   become: true
   tags: [neovim]
