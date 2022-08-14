@@ -112,6 +112,7 @@ local plugins = {
       "jose-elias-alvarez/null-ls.nvim",
       "folke/lua-dev.nvim",
       "b0o/schemastore.nvim",
+      "hoffs/omnisharp-extended-lsp.nvim",
     },
   },
   { "~/Projects/st1/dotnet.nvim" },

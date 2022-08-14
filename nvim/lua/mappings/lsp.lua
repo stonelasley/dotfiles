@@ -62,6 +62,9 @@ M.setup = function(client, bufnr)
   map("n", "]e", "<cmd>lua vim.diagnostic.goto_next({severity = vim.diagnostic.severity.ERROR})<CR>", opts)
   map("n", "<F2>", "<cmd>Lspsaga rename<CR>", opts)
 
+  if client.name == "omnisharp" then
+    map("n", "gd", "<cmd>lua require('omnisharp_extended').telescope_lsp_definitions()<CR>", opts)
+  end
   if client.server_capabilities.documentFormattingProvider then
     map("n", "<F12>", "<cmd>lua vim.lsp.buf.format({async = true})<CR>", opts)
   end
