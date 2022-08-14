@@ -1,7 +1,7 @@
 local M = {}
 
 local whichkey = require "which-key"
-local maps = require('mappings/lsp')
+local maps = require "mappings/lsp"
 
 function M.setup(client, bufnr)
   maps.setup(client, bufnr)

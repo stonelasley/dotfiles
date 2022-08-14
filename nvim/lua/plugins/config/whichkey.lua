@@ -13,6 +13,7 @@ local conf = {
 wk.setup(conf)
 wk.register(maps.normal)
 wk.register(maps.command, { mode = "c" })
+wk.register(maps.terminal, { mode = "t" })
 wk.register(maps.normal_leader, { mode = "n", prefix = "<Leader>" })
 wk.register(maps.vis_sel_leader, { mode = "v", prefix = "<Leader>" })
 wk.register(maps.visual_leader, { mode = "x", prefix = "<Leader>" })

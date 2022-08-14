@@ -28,8 +28,8 @@ function M.format()
           and client.name ~= "jsonls"
           and client.name ~= "html"
           and client.name ~= "sumneko_lua"
-          and client.name ~= "jdt.ls"
-        -- and client.name ~= "kotlin_language_server"
+          and client.name ~= "omnisharp"
+          and client.name ~= "omnisharp-mono"
       end,
     }
     vim.fn.winrestview(view)
@@ -46,7 +46,7 @@ function M.setup(client, bufnr)
     enable = not (client.name == "null-ls")
   end
 
-  client.server_capabilities.documentFormattingProvder = enable
+  client.server_capabilities.documentFormattingProvider = enable
   client.server_capabilities.documentRangeFormattingProvider = enable
   if client.server_capabilities.documentFormattingProvider then
     local lsp_format_grp = api.nvim_create_augroup("LspFormat", { clear = true })

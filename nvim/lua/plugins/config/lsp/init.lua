@@ -1,4 +1,5 @@
 local M = {}
+local utils = require "utils"
 
 -- local util = require "lspconfig.util"
 
@@ -101,6 +102,7 @@ function M.on_attach(client, bufnr)
   require("plugins.config.lsp.null-ls.formatters").setup(client, bufnr)
 
   -- tagfunc
+
   if client.server_capabilities.definitionProvider then
     vim.api.nvim_buf_set_option(bufnr, "tagfunc", "v:lua.vim.lsp.tagfunc")
   end

@@ -61,6 +61,10 @@ M.normal_leader = {
     l = { "<cmd>PackerClean<CR>", "  Clean" },
     y = { "<cmd>PackerSync<CR>", "מּ  Sync" },
   },
+  c = {
+    name = " Terminal",
+    o = { "<cmd>ToggleTerm<CR>", "烙 Open" },
+  },
 }
 
 M.vis_sel_leader = {
@@ -75,6 +79,20 @@ M.visual_leader = {
 
 M.command = {
   ["w!!"] = { "w !sudo tee %", "Sudo Write" },
+}
+-- vim.keymap.set('t', '<esc>', [[<C-\><C-n>]], opts)
+-- vim.keymap.set('t', 'jk', [[<C-\><C-n>]], opts)
+-- vim.keymap.set('t', '<C-h>', [[<Cmd>wincmd h<CR>]], opts)
+-- vim.keymap.set('t', '<C-j>', [[<Cmd>wincmd j<CR>]], opts)
+-- vim.keymap.set('t', '<C-k>', [[<Cmd>wincmd k<CR>]], opts)
+-- vim.keymap.set('t', '<C-l>', [[<Cmd>wincmd l<CR>]], opts)
+M.terminal = {
+  ["<C-h>"] = { "<Cmd>wincmd h<CR>", "Terminal Left" },
+  ["<C-j>"] = { "<Cmd>wincmd j<CR>", "Terminal Down" },
+  ["<C-k>"] = { "<Cmd>wincmd k<CR>", "Terminal Up" },
+  ["<C-l>"] = { "<Cmd>wincmd l<CR>", "Terminal Right" },
+  ["<Esc>"] = { [[<C-\><C-n>]], "Terminal Escape" },
+  ["jk"] = { [[<C-\><C-n>]], "Terminal Escape" },
 }
 
 return M

@@ -1,4 +1,3 @@
-
 local plugins = {
   { "lewis6991/impatient.nvim" },
   {
@@ -87,11 +86,11 @@ local plugins = {
       "vue",
     },
   },
-  {
-    "dense-analysis/ale",
-    config = [[require('plugins.config.ale')]],
-    ft = "cs",
-  },
+  -- {
+  --   "dense-analysis/ale",
+  --   config = [[require('plugins.config.ale')]],
+  --   ft = "cs",
+  -- },
   {
     "L3MON4D3/LuaSnip",
     config = [[require('plugins.config.luasnip')]],
@@ -188,6 +187,11 @@ local plugins = {
   {
     "folke/which-key.nvim",
     config = [[require('plugins.config.whichkey')]],
+  },
+  {
+    "akinsho/toggleterm.nvim",
+    tag = "v2.*",
+    config = [[require('plugins.config.toggleterm')]],
   },
 }
 

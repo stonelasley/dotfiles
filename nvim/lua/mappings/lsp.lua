@@ -27,8 +27,8 @@ M.n = {
 
 M.g = {
   name = "+Goto",
-  -- d = { "<Cmd>lua vim.lsp.buf.definition()<CR>", "Definition" },
-  d = { "<cmd><cmd>Lspsaga preview_definition<CR>", "Definition" },
+  t = { "<Cmd>lua vim.lsp.buf.definition()<CR>", "Definition" },
+  d = { "<cmd>Lspsaga preview_definition<CR>", "Definition" },
   D = { "<cmd>lua vim.lsp.buf.declaration()<CR>", "Declaration" },
   h = { "<cmd>lua vim.lsp.buf.signature_help()<CR>", "Signature Help" },
   I = { "<cmd>Telescope lsp_implementations<CR>", "Goto Implementation" },
