@@ -54,8 +54,7 @@ local plugins = {
   {
     "nvim-telescope/telescope.nvim",
     requires = { { "nvim-lua/popup.nvim" }, { "nvim-lua/plenary.nvim" } },
-    config = [[require('plugins.config.telescope')]],
-    cmd = "Telescope",
+    config = [[require('plugins.config.telescope')]]
   },
   { "hrsh7th/cmp-buffer" },
   { "hrsh7th/cmp-nvim-lsp" },
@@ -212,7 +211,10 @@ packer.init {
       return require("packer.util").float { border = "single" }
     end,
   },
+  log = { level = 'trace' }
 }
+packer.reset()
+-- packer.use(plugins)
 packer.startup(function(use)
   use(plugins)
 end)
