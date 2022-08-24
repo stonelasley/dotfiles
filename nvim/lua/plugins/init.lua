@@ -64,7 +64,6 @@ local plugins = {
     "hrsh7th/nvim-cmp",
     config = [[require('plugins.config.cmp')]],
   },
-  { "github/copilot.vim" },
   {
     "phaazon/hop.nvim",
     as = "hop",
