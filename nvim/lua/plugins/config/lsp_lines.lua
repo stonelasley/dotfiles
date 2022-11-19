@@ -1,5 +1,9 @@
-require("lsp_lines").setup()
+local present, lsp_lines = pcall(require, "lsp_lines")
 
-vim.diagnostic.config {
-  virtual_text = false,
-}
+if present then
+  lsp_lines.setup()
+  vim.diagnostic.config {
+    virtual_text = false,
+  }
+end
+

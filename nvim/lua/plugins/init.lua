@@ -98,7 +98,7 @@ local plugins = {
     ft = { "cs", "rs" },
   },
   {
-    "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+    "maan2003/lsp_lines.nvim",
     config = [[require('plugins.config.lsp_lines')]],
   },
   {
@@ -108,7 +108,7 @@ local plugins = {
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
       "jose-elias-alvarez/null-ls.nvim",
-      "folke/lua-dev.nvim",
+      "folke/neodev.nvim",
       "b0o/schemastore.nvim",
       "hoffs/omnisharp-extended-lsp.nvim",
     },
