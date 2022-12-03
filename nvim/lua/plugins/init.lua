@@ -54,7 +54,7 @@ local plugins = {
   {
     "nvim-telescope/telescope.nvim",
     requires = { { "nvim-lua/popup.nvim" }, { "nvim-lua/plenary.nvim" } },
-    config = [[require('plugins.config.telescope')]]
+    config = [[require('plugins.config.telescope')]],
   },
   { "hrsh7th/cmp-buffer" },
   { "hrsh7th/cmp-nvim-lsp" },
@@ -113,7 +113,12 @@ local plugins = {
       "hoffs/omnisharp-extended-lsp.nvim",
     },
   },
-  { "~/Projects/st1/dotnet.nvim" },
+  {
+    "folke/todo-comments.nvim",
+    requires = "nvim-lua/plenary.nvim",
+    config = [[require('plugins.config.todo')]],
+  },
+  -- { "~/Projects/st1/dotnet.nvim" },
   {
     "glepnir/lspsaga.nvim",
     config = [[require('plugins.config.lspsaga')]],
@@ -210,7 +215,7 @@ packer.init {
       return require("packer.util").float { border = "single" }
     end,
   },
-  log = { level = 'trace' }
+  log = { level = "trace" },
 }
 packer.reset()
 -- packer.use(plugins)
