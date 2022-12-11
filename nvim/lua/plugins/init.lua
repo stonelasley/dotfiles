@@ -214,8 +214,7 @@ packer.init {
     open_fn = function()
       return require("packer.util").float { border = "single" }
     end,
-  },
-  log = { level = "trace" },
+  }
 }
 packer.reset()
 -- packer.use(plugins)
