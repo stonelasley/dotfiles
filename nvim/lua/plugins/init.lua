@@ -197,6 +197,18 @@ local plugins = {
     tag = "v2.*",
     config = [[require('plugins.config.toggleterm')]],
   },
+  {
+    "nvim-neotest/neotest",
+    config = [[require('plugins.config.neotest')]],
+    requires = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+      "antoinemadec/FixCursorHold.nvim",
+      "Issafalcon/neotest-dotnet",
+      "rouge8/neotest-rust",
+      "nvim-neotest/neotest-plenary",
+    },
+  },
 }
 
 local packer = require "packer"
@@ -214,7 +226,7 @@ packer.init {
     open_fn = function()
       return require("packer.util").float { border = "single" }
     end,
-  }
+  },
 }
 packer.reset()
 -- packer.use(plugins)

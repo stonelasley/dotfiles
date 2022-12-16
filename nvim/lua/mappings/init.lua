@@ -65,6 +65,11 @@ M.normal_leader = {
     name = " Terminal",
     o = { "<cmd>ToggleTerm<CR>", "烙 Open" },
   },
+  R = {
+    name = " Test",
+    -- f = { "<cmd>:lua require('neotest').run.run(vim.fn.expand(' % '))<CR>", "烙 Run All Tests In File" },
+    t = { "<cmd>:lua require('neotest').run.run()<CR>", "烙 Run All Tests In File" },
+  },
 }
 
 M.vis_sel_leader = {
