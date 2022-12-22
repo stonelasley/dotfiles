@@ -1,17 +1,27 @@
 local M = {}
 
-function M.setup(servers, options)
+function M.setup(servers, server_options)
   local lspconfig = require "lspconfig"
   local icons = require "plugins.config.icons"
 
   require("mason").setup {
     ui = {
       icons = {
-        package_installed = icons.server_installed,
-        package_pending = icons.server_pending,
-        package_uninstalled = icons.server_uninstalled,
+        package_installed = icons.lsp.server_installed,
+        package_pending = icons.lsp.server_pending,
+        package_uninstalled = icons.lsp.server_uninstalled,
       },
     },
+  }
+  require("mason-null-ls").setup {
+    automatic_setup = true,
+  }
+  require("mason-null-ls").setup_handlers()
+
+  require("mason-tool-installer").setup {
+    ensure_installed = { "codelldb", "stylua", "shfmt", "shellcheck", "prettierd" },
+    auto_update = false,
+    run_on_start = true,
   }
 
   require("mason-lspconfig").setup {
@@ -24,46 +34,48 @@ function M.setup(servers, options)
 
   require("mason-lspconfig").setup_handlers {
     function(server_name)
-      local opts = vim.tbl_deep_extend("force", options, servers[server_name] or {})
-
-      lspconfig[server_name].setup { opts }
+      local opts = vim.tbl_deep_extend("force", server_options, servers[server_name] or {})
+      lspconfig[server_name].setup(opts)
     end,
-    --["jdtls"] = function()
-    -- print "jdtls is handled by nvim-jdtls"
-    --end,
+    ["jdtls"] = function()
+      -- print "jdtls is handled by nvim-jdtls"
+    end,
+    -- ["gopls"] = function()
+    --   -- print "jdtls is handled by nvim-jdtls"
+    -- end,
     ["omnisharp"] = function()
-      local opts = vim.tbl_deep_extend("force", options, servers["omnisharp"] or {})
+      local opts = vim.tbl_deep_extend("force", server_options, servers["omnisharp"] or {})
       lspconfig.omnisharp.setup(opts)
     end,
     ["sumneko_lua"] = function()
-      local opts = vim.tbl_deep_extend("force", options, servers["lua-language-server"] or {})
-      lspconfig.sumneko_lua.setup(require("neodev").setup { opts })
+      local opts = vim.tbl_deep_extend("force", server_options, servers["sumneko_lua"] or {})
+      require("neodev").setup {}
+      lspconfig.sumneko_lua.setup(opts)
     end,
     ["rust_analyzer"] = function()
-      local opts = vim.tbl_deep_extend("force", options, servers["rust_analyzer"] or {})
+      local opts = vim.tbl_deep_extend("force", server_options, servers["rust_analyzer"] or {})
 
       -- DAP settings - https://github.com/simrat39/rust-tools.nvim#a-better-debugging-experience
       local extension_path = install_root_dir .. "/packages/codelldb/extension/"
       local codelldb_path = extension_path .. "adapter/codelldb"
       local liblldb_path = extension_path .. "lldb/lib/liblldb.so"
+      local ih = require "inlay-hints"
       require("rust-tools").setup {
         tools = {
-          autoSetHints = false,
-          executor = require("rust-tools/executors").toggleterm,
+          -- executor = require("rust-tools/executors").toggleterm,
           hover_actions = { border = "solid" },
           on_initialized = function()
-            vim.api.nvim_create_autocmd({
-              "BufWritePost",
-              "BufEnter",
-              "CursorHold",
-              "InsertLeave",
-            }, {
+            vim.api.nvim_create_autocmd({ "BufWritePost", "BufEnter", "CursorHold", "InsertLeave" }, {
               pattern = { "*.rs" },
               callback = function()
                 vim.lsp.codelens.refresh()
               end,
             })
+            ih.set_all()
           end,
+          inlay_hints = {
+            auto = false,
+          },
         },
         server = opts,
         dap = {
@@ -71,14 +83,15 @@ function M.setup(servers, options)
         },
       }
     end,
-    --["tsserver"] = function()
-    --  local opts = vim.tbl_deep_extend("force", options, servers["tsserver"] or {})
-    --  require("typescript").setup {
-    --    disable_commands = false,
-    --    debug = false,
-    --    server = opts,
-    --  }
-    --end,
+    -- TODO
+    -- ["tsserver"] = function()
+    --   local opts = vim.tbl_deep_extend("force", server_options, servers["tsserver"] or {})
+    --   require("typescript").setup {
+    --     disable_commands = false,
+    --     debug = false,
+    --     server = opts,
+    --   }
+    -- end,
   }
 end
 

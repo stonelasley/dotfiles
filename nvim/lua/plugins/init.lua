@@ -84,11 +84,6 @@ local plugins = {
       "vue",
     },
   },
-  -- {
-  --   "dense-analysis/ale",
-  --   config = [[require('plugins.config.ale')]],
-  --   ft = "cs",
-  -- },
   {
     "L3MON4D3/LuaSnip",
     config = [[require('plugins.config.luasnip')]],
@@ -111,6 +106,16 @@ local plugins = {
       "folke/neodev.nvim",
       "b0o/schemastore.nvim",
       "hoffs/omnisharp-extended-lsp.nvim",
+      "WhoIsSethDaniel/mason-tool-installer.nvim",
+      "jayp0521/mason-null-ls.nvim",
+      {
+        "simrat39/inlay-hints.nvim",
+        config = [[require('plugins.config.inlay-hints')]],
+      },
+      {
+        "theHamsta/nvim-semantic-tokens",
+        config = [[require('plugins.config.semantic-tokens').setup()]],
+      },
     },
   },
   {
@@ -214,7 +219,8 @@ packer.init {
     open_fn = function()
       return require("packer.util").float { border = "single" }
     end,
-  }
+  },
+  log = { level = 'warn' },
 }
 packer.reset()
 -- packer.use(plugins)

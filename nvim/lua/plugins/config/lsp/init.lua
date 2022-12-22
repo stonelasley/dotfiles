@@ -1,9 +1,21 @@
 local M = {}
-local utils = require "utils"
-
--- local util = require "lspconfig.util"
 
 local servers = {
+  -- gopls = {
+  --   settings = {
+  --     gopls = {
+  --       hints = {
+  --         assignVariableTypes = true,
+  --         compositeLiteralFields = true,
+  --         compositeLiteralTypes = true,
+  --         constantValues = true,
+  --         functionTypeParameters = true,
+  --         parameterNames = true,
+  --         rangeVariableTypes = true,
+  --       },
+  --     },
+  --   },
+  -- },
   html = {},
   jsonls = {
     settings = {
@@ -12,36 +24,42 @@ local servers = {
       },
     },
   },
+  pyright = {
+    settings = {
+      python = {
+        analysis = {
+          typeCheckingMode = "off",
+          autoSearchPaths = true,
+          useLibraryCodeForTypes = true,
+          diagnosticMode = "workspace",
+        },
+      },
+    },
+  },
   rust_analyzer = {
     settings = {
       ["rust-analyzer"] = {
         cargo = { allFeatures = true },
         checkOnSave = {
-          command = "clippy",
+          command = "cargo clippy",
           extraArgs = { "--no-deps" },
         },
       },
     },
   },
-  ["sumneko_lua"] = {
+  sumneko_lua = {
     settings = {
       Lua = {
         runtime = {
+          -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
           version = "LuaJIT",
+          -- Setup your lua path
           path = vim.split(package.path, ";"),
         },
         diagnostics = {
-          globals = {
-            "vim",
-            "describe",
-            "it",
-            "before_each",
-            "after_each",
-            "packer_plugins",
-          },
-        },
-        format = {
-          enable = false,
+          -- Get the language server to recognize the `vim` global
+          globals = { "vim", "describe", "it", "before_each", "after_each", "packer_plugins", "MiniTest" },
+          -- disable = { "lowercase-global", "undefined-global", "unused-local", "unused-vararg", "trailing-space" },
         },
         workspace = {
           -- Make the server aware of Neovim runtime files
@@ -53,14 +71,43 @@ local servers = {
           maxPreload = 2000,
           preloadFileSize = 50000,
         },
-        completion = { callSnippet = "Both" },
+        completion = { callSnippet = "Replace" },
         telemetry = { enable = false },
+        hint = {
+          enable = false,
+        },
       },
     },
   },
-  tsserver = { disable_formatting = true },
+  tsserver = {
+    disable_formatting = true,
+    settings = {
+      javascript = {
+        inlayHints = {
+          includeInlayEnumMemberValueHints = true,
+          includeInlayFunctionLikeReturnTypeHints = true,
+          includeInlayFunctionParameterTypeHints = true,
+          includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
+          includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+          includeInlayPropertyDeclarationTypeHints = true,
+          includeInlayVariableTypeHints = true,
+        },
+      },
+      typescript = {
+        inlayHints = {
+          includeInlayEnumMemberValueHints = true,
+          includeInlayFunctionLikeReturnTypeHints = true,
+          includeInlayFunctionParameterTypeHints = true,
+          includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
+          includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+          includeInlayPropertyDeclarationTypeHints = true,
+          includeInlayVariableTypeHints = true,
+        },
+      },
+    },
+  },
   vimls = {},
-  --tailwindcss = {},
+  -- tailwindcss = {},
   yamlls = {
     schemastore = {
       enable = true,
@@ -74,30 +121,47 @@ local servers = {
       },
     },
   },
+  jdtls = {},
   dockerls = {},
+  -- graphql = {},
   bashls = {},
-  omnisharp = {
-    handlers = {
-      ["textDocument/definition"] = require("omnisharp_extended").handler,
-    },
-  },
-  --emmet_ls = {},
-  --marksman = {},
-  angularls = {},
-  --vue_language_server = {},
+  taplo = {},
+  -- omnisharp = {},
+  -- kotlin_language_server = {},
+  -- emmet_ls = {},
+  -- marksman = {},
+  -- angularls = {},
+  -- sqls = {
+  -- settings = {
+  --   sqls = {
+  --     connections = {
+  --       {
+  --         driver = "sqlite3",
+  --         dataSourceName = os.getenv "HOME" .. "/workspace/db/chinook.db",
+  --       },
+  --     },
+  --   },
+  -- },
+  -- },
 }
 
 function M.on_attach(client, bufnr)
+  local caps = client.server_capabilities
+
   -- Enable completion triggered by <C-X><C-O>
   -- See `:help omnifunc` and `:help ins-completion` for more information.
-  vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+  if caps.completionProvider then
+    vim.bo[bufnr].omnifunc = "v:lua.vim.lsp.omnifunc"
+  end
 
   -- Use LSP as the handler for formatexpr.
   -- See `:help formatexpr` for more information.
-  vim.api.nvim_buf_set_option(bufnr, "formatexpr", "v:lua.vim.lsp.formatexpr()")
+  if caps.documentFormattingProvider then
+    vim.bo[bufnr].formatexpr = "v:lua.vim.lsp.formatexpr()"
+  end
 
   -- Configure key mappings
-  require("plugins.config.lsp.mappings").setup(client, bufnr)
+  require("mappings.lsp").setup(client, bufnr)
 
   -- Configure highlighting
   require("plugins.config.lsp.highlighter").setup(client, bufnr)
@@ -106,19 +170,47 @@ function M.on_attach(client, bufnr)
   require("plugins.config.lsp.null-ls.formatters").setup(client, bufnr)
 
   -- tagfunc
-
-  if client.server_capabilities.definitionProvider then
-    vim.api.nvim_buf_set_option(bufnr, "tagfunc", "v:lua.vim.lsp.tagfunc")
+  if caps.definitionProvider then
+    vim.bo[bufnr].tagfunc = "v:lua.vim.lsp.tagfunc"
   end
 
-  -- aerial.nvim
-  -- require("aerial").on_attach(client, bufnr)
+  -- sqls
+  if client.name == "sqls" then
+    require("sqls").on_attach(client, bufnr)
+  end
+
+  -- Configure for jdtls
+  if client.name == "jdt.ls" then
+    require("jdtls").setup_dap { hotcodereplace = "auto" }
+    require("jdtls.dap").setup_dap_main_class_configs()
+    vim.lsp.codelens.refresh()
+  end
 
   -- nvim-navic
-  --if client.server_capabilities.documentSymbolProvider then
-  --  local navic = require "nvim-navic"
-  --  navic.attach(client, bufnr)
-  --end
+  -- if caps.documentSymbolProvider then
+  --   local navic = require "nvim-navic"
+  --   navic.attach(client, bufnr)
+  -- end
+
+  if client.name ~= "null-ls" then
+    -- inlay-hints
+    local ih = require "inlay-hints"
+    ih.on_attach(client, bufnr)
+
+    -- semantic highlighting
+    if caps.semanticTokensProvider and caps.semanticTokensProvider.full then
+      local augroup = vim.api.nvim_create_augroup("SemanticTokens", {})
+      vim.api.nvim_create_autocmd("TextChanged", {
+        group = augroup,
+        buffer = bufnr,
+        callback = function()
+          vim.lsp.buf.semantic_tokens_full()
+        end,
+      })
+      -- fire it first time on load as well
+      vim.lsp.buf.semantic_tokens_full()
+    end
+  end
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -155,7 +247,7 @@ function M.setup()
   require("plugins.config.lsp.installer").setup(servers, opts)
 
   -- Inlay hints
-  require("plugins.config.lsp.inlay-hints").setup()
+  -- require("plugins.config.lsp.inlay-hints").setup()
 end
 
 local diagnostics_active = true
