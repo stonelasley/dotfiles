@@ -1,3 +1,6 @@
+[include]
+        path = ./gitconfig.local
+
 [user]
 	name = Stone C. Lasley
 	email = stonelasley@gmail.com
@@ -11,7 +14,6 @@
 	undo = reset --hard
 	ac = !git add -A && git commit -m
 [core]
-	autocrlf = input
 	editor = vim
 [push]
 	default = simple
