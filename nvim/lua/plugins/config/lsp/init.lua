@@ -125,7 +125,7 @@ function M.on_attach(client, bufnr)
   end
 
   -- Configure key mappings
-  require("mappings.lsp").setup(client, bufnr)
+  require("plugins.config.lsp.mappings").setup(client, bufnr)
 
   -- Configure highlighting
   require("plugins.config.lsp.highlighter").setup(client, bufnr)
@@ -142,19 +142,6 @@ function M.on_attach(client, bufnr)
   if client.name == "sqls" then
     require("sqls").on_attach(client, bufnr)
   end
-
-  -- Configure for jdtls
-  if client.name == "jdt.ls" then
-    require("jdtls").setup_dap { hotcodereplace = "auto" }
-    require("jdtls.dap").setup_dap_main_class_configs()
-    vim.lsp.codelens.refresh()
-  end
-
-  -- nvim-navic
-  -- if caps.documentSymbolProvider then
-  --   local navic = require "nvim-navic"
-  --   navic.attach(client, bufnr)
-  -- end
 
   if client.name ~= "null-ls" then
     -- inlay-hints

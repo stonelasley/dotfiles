@@ -39,7 +39,6 @@ function M.setup(servers, server_options)
     end,
     ["omnisharp"] = function()
       local opts = vim.tbl_deep_extend("force", server_options, servers["omnisharp"] or {})
-      print(vim.inspect(opts))
       lspconfig.omnisharp.setup(opts)
     end,
     ["sumneko_lua"] = function()
