@@ -1,21 +1,6 @@
 local M = {}
 
 local servers = {
-  -- gopls = {
-  --   settings = {
-  --     gopls = {
-  --       hints = {
-  --         assignVariableTypes = true,
-  --         compositeLiteralFields = true,
-  --         compositeLiteralTypes = true,
-  --         constantValues = true,
-  --         functionTypeParameters = true,
-  --         parameterNames = true,
-  --         rangeVariableTypes = true,
-  --       },
-  --     },
-  --   },
-  -- },
   html = {},
   jsonls = {
     settings = {
@@ -67,7 +52,6 @@ local servers = {
             [vim.fn.expand "$VIMRUNTIME/lua"] = true,
             [vim.fn.expand "$VIMRUNTIME/lua/vim/lsp"] = true,
           },
-          -- library = vim.api.nvim_get_runtime_file("", true),
           maxPreload = 2000,
           preloadFileSize = 50000,
         },
@@ -107,7 +91,6 @@ local servers = {
     },
   },
   vimls = {},
-  -- tailwindcss = {},
   yamlls = {
     schemastore = {
       enable = true,
@@ -121,28 +104,9 @@ local servers = {
       },
     },
   },
-  jdtls = {},
   dockerls = {},
-  -- graphql = {},
   bashls = {},
-  taplo = {},
-  -- omnisharp = {},
-  -- kotlin_language_server = {},
-  -- emmet_ls = {},
-  -- marksman = {},
-  -- angularls = {},
-  -- sqls = {
-  -- settings = {
-  --   sqls = {
-  --     connections = {
-  --       {
-  --         driver = "sqlite3",
-  --         dataSourceName = os.getenv "HOME" .. "/workspace/db/chinook.db",
-  --       },
-  --     },
-  --   },
-  -- },
-  -- },
+  omnisharp = {},
 }
 
 function M.on_attach(client, bufnr)

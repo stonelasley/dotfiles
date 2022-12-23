@@ -37,18 +37,23 @@ function M.setup(servers, server_options)
       local opts = vim.tbl_deep_extend("force", server_options, servers[server_name] or {})
       lspconfig[server_name].setup(opts)
     end,
-    ["jdtls"] = function()
-      -- print "jdtls is handled by nvim-jdtls"
-    end,
-    -- ["gopls"] = function()
-    --   -- print "jdtls is handled by nvim-jdtls"
-    -- end,
     ["omnisharp"] = function()
       local opts = vim.tbl_deep_extend("force", server_options, servers["omnisharp"] or {})
+      print(vim.inspect(opts))
       lspconfig.omnisharp.setup(opts)
     end,
     ["sumneko_lua"] = function()
-      local opts = vim.tbl_deep_extend("force", server_options, servers["sumneko_lua"] or {})
+      local noThirdParty = {
+        settings = {
+          Lua = {
+            workspace = {
+              checkThirdParty = false,
+            },
+          },
+        },
+      }
+      local myOpts = vim.tbl_deep_extend("force", noThirdParty, servers["sumneko_lua"] or {})
+      local opts = vim.tbl_deep_extend("force", server_options, myOpts or {})
       require("neodev").setup {}
       lspconfig.sumneko_lua.setup(opts)
     end,
