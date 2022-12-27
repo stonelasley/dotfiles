@@ -3,7 +3,7 @@
 
 [user]
 	name = Stone C. Lasley
-	email = stonelasley@gmail.com
+	email = stone@lasley.io
 [alias]
 	ci = commit
 	co = checkout
