@@ -121,9 +121,26 @@ local plugins = {
   -- Debugging
   {
     "mfussenegger/nvim-dap",
-    ft = { "cs", "rs" },
+    opt = true,
+    module = { "dap" },
+    requires = {
+      { "theHamsta/nvim-dap-virtual-text", module = { "nvim-dap-virtual-text" } },
+      { "rcarriga/nvim-dap-ui", module = { "dapui" } },
+      { "mfussenegger/nvim-dap-python", module = { "dap-python" } },
+      "nvim-telescope/telescope-dap.nvim",
+      { "leoluz/nvim-dap-go", module = "dap-go" },
+      { "jbyuki/one-small-step-for-vimkind", module = "osv" },
+      { "mxsdev/nvim-dap-vscode-js", module = { "dap-vscode-js" } },
+      {
+        "microsoft/vscode-js-debug",
+        opt = true,
+        run = "npm install --legacy-peer-deps && npm run compile",
+        disable = false,
+      },
+    },
+    config = [[require('plugins.config.dap').setup()]],
+    disable = false,
   },
-
 
   -- Vue
   { "posva/vim-vue", ft = { "typescript", "vue" } },
@@ -131,7 +148,15 @@ local plugins = {
   {
     "simrat39/rust-tools.nvim",
     requires = { "nvim-lua/plenary.nvim", "rust-lang/rust.vim" },
+    opt = true,
     module = "rust-tools",
+    ft = { "rust" },
+  },
+  {
+    "saecki/crates.nvim",
+    event = { "BufRead Cargo.toml" },
+    requires = { { "nvim-lua/plenary.nvim" } },
+    config = [[require('plugins.config.crates')]]
   },
   -- Typescript
   {
