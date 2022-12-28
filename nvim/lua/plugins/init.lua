@@ -11,32 +11,50 @@ local plugins = {
       require "plugins.config.nvim-tree"
     end,
   },
-  { "nvim-telescope/telescope-fzy-native.nvim" },
-  {
-    "nvim-telescope/telescope-frecency.nvim",
-    dependencies = { "tami5/sql.nvim" },
-  },
   {
     "nvim-telescope/telescope.nvim",
-    dependencies = { "nvim-lua/popup.nvim", "nvim-lua/plenary.nvim" },
+    dependencies = {
+      "nvim-lua/popup.nvim",
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope-fzy-native.nvim",
+      {
+        "nvim-telescope/telescope-frecency.nvim",
+        dependencies = { "tami5/sql.nvim" },
+      },
+    },
     config = function()
       require "plugins.config.telescope"
     end,
   },
 
   -- Completion
-  { "hrsh7th/cmp-buffer" },
-  { "hrsh7th/cmp-nvim-lsp" },
-  { "hrsh7th/cmp-path" },
-  { "hrsh7th/cmp-copilot" },
-  { "saadparwaiz1/cmp_luasnip" },
   {
     "hrsh7th/nvim-cmp",
+    event = "InsertEnter",
     config = function()
       require "plugins.config.cmp"
     end,
+    dependencies = {
+      "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-path",
+      "hrsh7th/cmp-copilot",
+      "saadparwaiz1/cmp_luasnip",
+      {
+        "onsails/lspkind-nvim",
+        config = function()
+          require "plugins.config.lspkind"
+        end,
+      },
+      {
+        "L3MON4D3/LuaSnip",
+        config = function()
+          require "plugins.config.luasnip"
+        end,
+      },
+    },
   },
-  { "github/copilot.vim" },
+  { "github/copilot.vim", event = "InsertEnter" },
   -- Movement
   {
     "phaazon/hop.nvim",
@@ -60,12 +78,6 @@ local plugins = {
     },
   },
   {
-    "L3MON4D3/LuaSnip",
-    config = function()
-      require "plugins.config.luasnip"
-    end,
-  },
-  {
     "folke/todo-comments.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
@@ -87,6 +99,7 @@ local plugins = {
       "b0o/schemastore.nvim",
       "hoffs/omnisharp-extended-lsp.nvim",
       "WhoIsSethDaniel/mason-tool-installer.nvim",
+      "hrsh7th/nvim-cmp",
       "jayp0521/mason-null-ls.nvim",
       {
         "simrat39/inlay-hints.nvim",
@@ -95,25 +108,41 @@ local plugins = {
         end,
       },
       {
+        "maan2003/lsp_lines.nvim",
+        config = function()
+          require "plugins.config.lsp_lines"
+        end,
+      },
+      {
+        "glepnir/lspsaga.nvim",
+        config = function()
+          require "plugins.config.lspsaga"
+        end,
+      },
+      {
         "theHamsta/nvim-semantic-tokens",
         config = function()
           require("plugins.config.semantic-tokens").setup()
         end,
       },
+      {
+        "simrat39/rust-tools.nvim",
+        dependencies = {
+          "nvim-lua/plenary.nvim",
+          "rust-lang/rust.vim",
+          {
+            "saecki/crates.nvim",
+            event = { "BufRead Cargo.toml" },
+            dependencies = { { "nvim-lua/plenary.nvim" } },
+            config = function()
+              require "plugins.config.crates"
+            end,
+          },
+        },
+      },
     },
   },
-  {
-    "maan2003/lsp_lines.nvim",
-    config = function()
-      require "plugins.config.lsp_lines"
-    end,
-  },
-  {
-    "glepnir/lspsaga.nvim",
-    config = function()
-      require "plugins.config.lspsaga"
-    end,
-  },
+
   {
     "nvim-treesitter/nvim-treesitter",
     event = { "BufRead", "BufNewFile" },
@@ -137,55 +166,40 @@ local plugins = {
       require "plugins.config.trouble"
     end,
   },
-  {
-    "onsails/lspkind-nvim",
-    config = function()
-      require "plugins.config.lspkind"
-    end,
-  },
+  -- {
+  --   "onsails/lspkind-nvim",
+  --   config = function()
+  --     require "plugins.config.lspkind"
+  --   end,
+  -- },
 
   -- Debugging
-  {
-    "mfussenegger/nvim-dap",
-    opt = true,
-    module = { "dap" },
-    dependencies = {
-      { "theHamsta/nvim-dap-virtual-text", module = { "nvim-dap-virtual-text" } },
-      { "rcarriga/nvim-dap-ui", module = { "dapui" } },
-      { "mfussenegger/nvim-dap-python", module = { "dap-python" } },
-      "nvim-telescope/telescope-dap.nvim",
-      { "leoluz/nvim-dap-go", module = "dap-go" },
-      { "jbyuki/one-small-step-for-vimkind", module = "osv" },
-      { "mxsdev/nvim-dap-vscode-js", module = { "dap-vscode-js" } },
-      {
-        "microsoft/vscode-js-debug",
-        opt = true,
-        build = "npm install --legacy-peer-deps && npm run compile",
-      },
-    },
-    config = function()
-      require("plugins.config.dap").setup()
-    end,
-  },
+  -- {
+  --   "mfussenegger/nvim-dap",
+  --   opt = true,
+  --   module = { "dap" },
+  --   dependencies = {
+  --     { "theHamsta/nvim-dap-virtual-text", module = { "nvim-dap-virtual-text" } },
+  --     { "rcarriga/nvim-dap-ui", module = { "dapui" } },
+  --     { "mfussenegger/nvim-dap-python", module = { "dap-python" } },
+  --     "nvim-telescope/telescope-dap.nvim",
+  --     { "leoluz/nvim-dap-go", module = "dap-go" },
+  --     { "jbyuki/one-small-step-for-vimkind", module = "osv" },
+  --     { "mxsdev/nvim-dap-vscode-js", module = { "dap-vscode-js" } },
+  --     {
+  --       "microsoft/vscode-js-debug",
+  --       opt = true,
+  --       build = "npm install --legacy-peer-deps && npm run compile",
+  --     },
+  --   },
+  --   config = function()
+  --     require("plugins.config.dap").setup()
+  --   end,
+  -- },
 
   -- Vue
   { "posva/vim-vue", ft = { "typescript", "vue" } },
   -- Rust
-  {
-    "simrat39/rust-tools.nvim",
-    dependencies = { "nvim-lua/plenary.nvim", "rust-lang/rust.vim" },
-    opt = true,
-    module = "rust-tools",
-    ft = { "rust" },
-  },
-  {
-    "saecki/crates.nvim",
-    event = { "BufRead Cargo.toml" },
-    dependencies = { { "nvim-lua/plenary.nvim" } },
-    config = function()
-      require "plugins.config.crates"
-    end,
-  },
   -- Typescript
   {
     "leafgarland/typescript-vim",
@@ -222,6 +236,9 @@ local plugins = {
     config = function()
       require "plugins.config.orgmode"
     end,
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+    },
   },
   { "RishabhRD/popfix" },
   {
@@ -238,9 +255,7 @@ local plugins = {
   {
     "akinsho/toggleterm.nvim",
     version = "v2.*",
-    config = function()
-      require "plugins.config.toggleterm"
-    end,
+    config = true,
   },
   { "nathom/filetype.nvim" },
   {
@@ -271,7 +286,6 @@ local plugins = {
     config = function()
       require "plugins.config.autopairs"
     end,
-    -- after = "nvim-treesitter",
   },
   {
     "lukas-reineke/indent-blankline.nvim",
