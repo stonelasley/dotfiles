@@ -4,8 +4,8 @@ local utils = require "utils"
 
 cmd [[
   set rtp+=/opt/fzf
-  set ffs=unix,dos
-  set ff=unix
+  " set ffs=unix,dos
+  " set ff=unix
 ]]
 
 utils.opt({ "o", "b" }, "expandtab", true)

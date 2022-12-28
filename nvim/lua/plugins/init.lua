@@ -1,27 +1,27 @@
 local plugins = {
   -- Util
   { "lewis6991/impatient.nvim" },
-  {
-    "wbthomason/packer.nvim",
-    event = "VimEnter",
-  },
   -- Search / Find
   { "wincent/loupe" },
   {
     "kyazdani42/nvim-tree.lua",
-    after = "nvim-web-devicons",
-    requires = { { "kyazdani42/nvim-web-devicons" } },
-    config = [[require('plugins.config.nvim-tree')]],
+    -- after = "nvim-web-devicons",
+    dependencies = { "kyazdani42/nvim-web-devicons" },
+    config = function()
+      require "plugins.config.nvim-tree"
+    end,
   },
   { "nvim-telescope/telescope-fzy-native.nvim" },
   {
     "nvim-telescope/telescope-frecency.nvim",
-    requires = { { "tami5/sql.nvim" } },
+    dependencies = { "tami5/sql.nvim" },
   },
   {
     "nvim-telescope/telescope.nvim",
-    requires = { { "nvim-lua/popup.nvim" }, { "nvim-lua/plenary.nvim" } },
-    config = [[require('plugins.config.telescope')]],
+    dependencies = { "nvim-lua/popup.nvim", "nvim-lua/plenary.nvim" },
+    config = function()
+      require "plugins.config.telescope"
+    end,
   },
 
   -- Completion
@@ -32,20 +32,24 @@ local plugins = {
   { "saadparwaiz1/cmp_luasnip" },
   {
     "hrsh7th/nvim-cmp",
-    config = [[require('plugins.config.cmp')]],
+    config = function()
+      require "plugins.config.cmp"
+    end,
   },
   { "github/copilot.vim" },
   -- Movement
   {
     "phaazon/hop.nvim",
-    as = "hop",
-    config = [[require('plugins.config.hop')]],
+    name = "hop",
+    config = function()
+      require "plugins.config.hop"
+    end,
   },
   { "christoomey/vim-tmux-navigator" },
   { "dhruvasagar/vim-zoom" },
   {
     "prettier/vim-prettier",
-    run = "yarn install",
+    build = "yarn install",
     ft = {
       "css",
       "html",
@@ -57,19 +61,25 @@ local plugins = {
   },
   {
     "L3MON4D3/LuaSnip",
-    config = [[require('plugins.config.luasnip')]],
+    config = function()
+      require "plugins.config.luasnip"
+    end,
   },
   {
     "folke/todo-comments.nvim",
-    requires = "nvim-lua/plenary.nvim",
-    config = [[require('plugins.config.todo')]],
+    dependencies = { "nvim-lua/plenary.nvim" },
+    config = function()
+      require "plugins.config.todo"
+    end,
   },
 
   -- LSP
   {
     "neovim/nvim-lspconfig",
-    config = [[require('plugins.config.lsp').setup()]],
-    requires = {
+    config = function()
+      require("plugins.config.lsp").setup()
+    end,
+    dependencies = {
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
       "jose-elias-alvarez/null-ls.nvim",
@@ -80,42 +90,58 @@ local plugins = {
       "jayp0521/mason-null-ls.nvim",
       {
         "simrat39/inlay-hints.nvim",
-        config = [[require('plugins.config.inlay-hints')]],
+        config = function()
+          require "plugins.config.inlay-hints"
+        end,
       },
       {
         "theHamsta/nvim-semantic-tokens",
-        config = [[require('plugins.config.semantic-tokens').setup()]],
+        config = function()
+          require("plugins.config.semantic-tokens").setup()
+        end,
       },
     },
   },
   {
     "maan2003/lsp_lines.nvim",
-    config = [[require('plugins.config.lsp_lines')]],
+    config = function()
+      require "plugins.config.lsp_lines"
+    end,
   },
   {
     "glepnir/lspsaga.nvim",
-    config = [[require('plugins.config.lspsaga')]],
+    config = function()
+      require "plugins.config.lspsaga"
+    end,
   },
   {
     "nvim-treesitter/nvim-treesitter",
     event = { "BufRead", "BufNewFile" },
-    run = ":TSUpdate",
-    config = [[require('plugins.config.treesitter')]],
+    build = ":TSUpdate",
+    config = function()
+      require "plugins.config.treesitter"
+    end,
   },
   {
     "nvim-treesitter/playground",
-    requires = { { "nvim-treesitter/nvim-treesitter" } },
-    config = [[require('plugins.config.treesitterplayground')]],
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    config = function()
+      require "plugins.config.treesitterplayground"
+    end,
     cmd = "TSPlaygroundToggle",
   },
   {
     "folke/trouble.nvim",
-    requires = "kyazdani42/nvim-web-devicons",
-    config = [[require('plugins.config.trouble')]],
+    dependencies = "kyazdani42/nvim-web-devicons",
+    config = function()
+      require "plugins.config.trouble"
+    end,
   },
   {
     "onsails/lspkind-nvim",
-    config = [[require('plugins.config.lspkind')]],
+    config = function()
+      require "plugins.config.lspkind"
+    end,
   },
 
   -- Debugging
@@ -123,7 +149,7 @@ local plugins = {
     "mfussenegger/nvim-dap",
     opt = true,
     module = { "dap" },
-    requires = {
+    dependencies = {
       { "theHamsta/nvim-dap-virtual-text", module = { "nvim-dap-virtual-text" } },
       { "rcarriga/nvim-dap-ui", module = { "dapui" } },
       { "mfussenegger/nvim-dap-python", module = { "dap-python" } },
@@ -134,12 +160,12 @@ local plugins = {
       {
         "microsoft/vscode-js-debug",
         opt = true,
-        run = "npm install --legacy-peer-deps && npm run compile",
-        disable = false,
+        build = "npm install --legacy-peer-deps && npm run compile",
       },
     },
-    config = [[require('plugins.config.dap').setup()]],
-    disable = false,
+    config = function()
+      require("plugins.config.dap").setup()
+    end,
   },
 
   -- Vue
@@ -147,7 +173,7 @@ local plugins = {
   -- Rust
   {
     "simrat39/rust-tools.nvim",
-    requires = { "nvim-lua/plenary.nvim", "rust-lang/rust.vim" },
+    dependencies = { "nvim-lua/plenary.nvim", "rust-lang/rust.vim" },
     opt = true,
     module = "rust-tools",
     ft = { "rust" },
@@ -155,56 +181,74 @@ local plugins = {
   {
     "saecki/crates.nvim",
     event = { "BufRead Cargo.toml" },
-    requires = { { "nvim-lua/plenary.nvim" } },
-    config = [[require('plugins.config.crates')]]
+    dependencies = { { "nvim-lua/plenary.nvim" } },
+    config = function()
+      require "plugins.config.crates"
+    end,
   },
   -- Typescript
   {
     "leafgarland/typescript-vim",
-    config = [[require('plugins.config.typescript')]],
+    config = function()
+      require "plugins.config.typescript"
+    end,
   },
 
   -- Theme
   {
     "rmehri01/onenord.nvim",
-    config = [[require('plugins.config.theme')]],
+    config = function()
+      require "plugins.config.theme"
+    end,
   },
   {
     "hoob3rt/lualine.nvim",
-    requires = { { "kyazdani42/nvim-web-devicons" } },
-    config = [[require('plugins.config.lualine')]],
+    dependencies = { { "kyazdani42/nvim-web-devicons" } },
+    config = function()
+      require "plugins.config.lualine"
+    end,
   },
 
   -- Misc
   { "tpope/vim-fugitive" },
   {
     "stonelasley/flare.nvim",
-    config = [[require('plugins.config.flare')]],
+    config = function()
+      require "plugins.config.flare"
+    end,
   },
   {
     "nvim-orgmode/orgmode",
-    config = [[require('plugins.config.orgmode')]],
+    config = function()
+      require "plugins.config.orgmode"
+    end,
   },
   { "RishabhRD/popfix" },
   {
     "RishabhRD/nvim-cheat.sh",
-    requires = { { "RishabhRD/popfix" } },
+    dependencies = { { "RishabhRD/popfix" } },
     event = { "BufRead", "BufNewFile" },
   },
   {
     "folke/which-key.nvim",
-    config = [[require('plugins.config.whichkey')]],
+    config = function()
+      require "plugins.config.whichkey"
+    end,
   },
   {
     "akinsho/toggleterm.nvim",
-    tag = "v2.*",
-    config = [[require('plugins.config.toggleterm')]],
+    version = "v2.*",
+    config = function()
+      require "plugins.config.toggleterm"
+    end,
   },
   { "nathom/filetype.nvim" },
   {
     "max397574/better-escape.nvim",
     event = "InsertCharPre",
-    config = [[require('plugins.config.better-escape')]],
+    config = function()
+      require "plugins.config.better-escape"
+    end,
   },
   {
     "tpope/vim-surround",
@@ -213,7 +257,9 @@ local plugins = {
   { "tpope/vim-eunuch" },
   {
     "numToStr/Comment.nvim",
-    config = [[require('plugins.config.comment')]],
+    config = function()
+      require "plugins.config.comment"
+    end,
   },
   {
     "andrewradev/splitjoin.vim",
@@ -222,36 +268,20 @@ local plugins = {
   { "svermeulen/vimpeccable" },
   {
     "windwp/nvim-autopairs",
-    config = [[require('plugins.config.autopairs')]],
-    after = "nvim-treesitter",
+    config = function()
+      require "plugins.config.autopairs"
+    end,
+    -- after = "nvim-treesitter",
   },
   {
     "lukas-reineke/indent-blankline.nvim",
-    config = [[require('plugins.config.indentguides')]],
+    config = function()
+      require "plugins.config.indentguides"
+    end,
     event = "BufRead",
   },
 }
 
-local packer = require "packer"
+vim.g.mapleader = " " -- make sure to set `mapleader` before lazy so your mappings are correct
 
-packer.init {
-  auto_clean = true,
-  compile_on_sync = true,
-  git = { clone_timeout = 6000 },
-  display = {
-    working_sym = "ﲊ",
-    error_sym = "✗ ",
-    done_sym = " ",
-    removed_sym = " ",
-    moved_sym = "",
-    open_fn = function()
-      return require("packer.util").float { border = "single" }
-    end,
-  },
-  log = { level = "warn" },
-}
-packer.reset()
--- packer.use(plugins)
-packer.startup(function(use)
-  use(plugins)
-end)
+require("lazy").setup(plugins)
