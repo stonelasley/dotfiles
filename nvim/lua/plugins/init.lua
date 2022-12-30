@@ -166,36 +166,29 @@ local plugins = {
       require "plugins.config.trouble"
     end,
   },
-  -- {
-  --   "onsails/lspkind-nvim",
-  --   config = function()
-  --     require "plugins.config.lspkind"
-  --   end,
-  -- },
-
   -- Debugging
-  -- {
-  --   "mfussenegger/nvim-dap",
-  --   opt = true,
-  --   module = { "dap" },
-  --   dependencies = {
-  --     { "theHamsta/nvim-dap-virtual-text", module = { "nvim-dap-virtual-text" } },
-  --     { "rcarriga/nvim-dap-ui", module = { "dapui" } },
-  --     { "mfussenegger/nvim-dap-python", module = { "dap-python" } },
-  --     "nvim-telescope/telescope-dap.nvim",
-  --     { "leoluz/nvim-dap-go", module = "dap-go" },
-  --     { "jbyuki/one-small-step-for-vimkind", module = "osv" },
-  --     { "mxsdev/nvim-dap-vscode-js", module = { "dap-vscode-js" } },
-  --     {
-  --       "microsoft/vscode-js-debug",
-  --       opt = true,
-  --       build = "npm install --legacy-peer-deps && npm run compile",
-  --     },
-  --   },
-  --   config = function()
-  --     require("plugins.config.dap").setup()
-  --   end,
-  -- },
+  {
+    "mfussenegger/nvim-dap",
+    opt = true,
+    name = "dap",
+    dependencies = {
+      { "theHamsta/nvim-dap-virtual-text", name = "nvim-dap-virtual-text" },
+      { "rcarriga/nvim-dap-ui", name = "dapui" },
+      { "mfussenegger/nvim-dap-python", name = "dap-python" },
+      "nvim-telescope/telescope-dap.nvim",
+      { "leoluz/nvim-dap-go", name = "dap-go" },
+      { "jbyuki/one-small-step-for-vimkind", name = "osv" },
+      { "mxsdev/nvim-dap-vscode-js", name = "dap-vscode-js" },
+      {
+        "microsoft/vscode-js-debug",
+        opt = true,
+        build = "npm install --legacy-peer-deps && npm run compile",
+      },
+    },
+    config = function()
+      require("plugins.config.dap").setup()
+    end,
+  },
 
   -- Vue
   { "posva/vim-vue", ft = { "typescript", "vue" } },

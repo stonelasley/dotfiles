@@ -63,6 +63,9 @@ function M.setup(servers, server_options)
       local extension_path = install_root_dir .. "/packages/codelldb/extension/"
       local codelldb_path = extension_path .. "adapter/codelldb"
       local liblldb_path = extension_path .. "lldb/lib/liblldb.so"
+      if vim.fn.has "mac" == 1 then
+        liblldb_path = extension_path .. "lldb/lib/liblldb.dylib"
+      end
       local ih = require "inlay-hints"
       require("rust-tools").setup {
         tools = {

@@ -1,11 +1,6 @@
 local M = {}
 
 local whichkey = require "which-key"
--- local legendary = require "legendary"
-
--- local function keymap(lhs, rhs, desc)
---   vim.keymap.set("n", lhs, rhs, { silent = true, desc = desc })
--- end
 
 function M.setup()
   local keymap = {
@@ -17,17 +12,21 @@ function M.setup()
       U = { "<cmd>lua require'dapui'.toggle()<cr>", "Toggle UI" },
       b = { "<cmd>lua require'dap'.step_back()<cr>", "Step Back" },
       c = { "<cmd>lua require'dap'.continue()<cr>", "Continue" },
+      ['<F5>'] = { "<cmd>lua require'dap'.continue()<cr>", "Continue" },
       d = { "<cmd>lua require'dap'.disconnect()<cr>", "Disconnect" },
       e = { "<cmd>lua require'dapui'.eval()<cr>", "Evaluate" },
       g = { "<cmd>lua require'dap'.session()<cr>", "Get Session" },
       h = { "<cmd>lua require'dap.ui.widgets'.hover()<cr>", "Hover Variables" },
       S = { "<cmd>lua require'dap.ui.widgets'.scopes()<cr>", "Scopes" },
       i = { "<cmd>lua require'dap'.step_into()<cr>", "Step Into" },
+      ['<F11>'] = { "<cmd>lua require'dap'.step_into()<cr>", "Step Into" },
       o = { "<cmd>lua require'dap'.step_over()<cr>", "Step Over" },
+      ['<F10>'] = { "<cmd>lua require'dap'.step_over()<cr>", "Step Over" },
       p = { "<cmd>lua require'dap'.pause.toggle()<cr>", "Pause" },
       q = { "<cmd>lua require'dap'.close()<cr>", "Quit" },
       r = { "<cmd>lua require'dap'.repl.toggle()<cr>", "Toggle Repl" },
       s = { "<cmd>lua require'dap'.continue()<cr>", "Start" },
+      ['<F9>'] = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Toggle Breakpoint" },
       t = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Toggle Breakpoint" },
       x = { "<cmd>lua require'dap'.terminate()<cr>", "Terminate" },
       u = { "<cmd>lua require'dap'.step_out()<cr>", "Step Out" },
