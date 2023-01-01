@@ -38,7 +38,13 @@ local plugins = {
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-path",
-      "hrsh7th/cmp-copilot",
+      {
+        "hrsh7th/cmp-copilot",
+        event = "InsertEnter",
+        config = function()
+          require("plugins.config.copilot").setup()
+        end,
+      },
       "saadparwaiz1/cmp_luasnip",
       {
         "onsails/lspkind-nvim",
