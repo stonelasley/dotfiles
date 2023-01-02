@@ -10,14 +10,6 @@ autocmd("TextYankPost", {
   group = "st1",
 })
 
--- autocmd("BufWritePre", {
---   pattern = { "*.rs", "*.lua", "*.vue", "*.ts" },
---   callback = function()
---     vim.lsp.buf.format()
---   end,
---   group = "st1",
--- })
-
 autocmd("WinNew", {
   callback = function()
     vim.opt.laststatus = 3
