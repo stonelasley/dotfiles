@@ -18,7 +18,6 @@
   "flare.nvim": { "branch": "main", "commit": "66792f185d974a26f60e44d2d94aff11dada643b" },
   "hop": { "branch": "master", "commit": "90db1b2c61b820e230599a04fedcd2679e64bd07" },
   "impatient.nvim": { "branch": "main", "commit": "9f7eed8133d62457f7ad2ca250eb9b837a4adeb7" },
-  "indent-blankline.nvim": { "branch": "master", "commit": "c4c203c3e8a595bc333abaf168fcb10c13ed5fb7" },
   "inlay-hints.nvim": { "branch": "main", "commit": "006b0898f5d3874e8e528352103733142e705834" },
   "lazy.nvim": { "branch": "main", "commit": "dc03fa1ae57c3949874c9cae50074a83232c4eed" },
   "loupe": { "branch": "main", "commit": "af1eb735c9787b8a67a7db24651116f56cefeeb0" },
