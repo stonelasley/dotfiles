@@ -286,13 +286,12 @@ local plugins = {
       require "plugins.config.autopairs"
     end,
   },
-  -- {
-  --   "lukas-reineke/indent-blankline.nvim",
-  --   config = function()
-  --     require "plugins.config.indentguides"
-  --   end,
-  --   event = "BufRead",
-  -- },
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    config = function()
+      require "plugins.config.indentguides"
+    end,
+  },
 }
 
 vim.g.mapleader = " " -- make sure to set `mapleader` before lazy so your mappings are correct

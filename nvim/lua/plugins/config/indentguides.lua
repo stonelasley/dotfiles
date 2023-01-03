@@ -1,5 +1,9 @@
+vim.opt.list = true
+-- vim.opt.listchars:append "eol:↴"
+
 require("indent_blankline").setup {
-  char = ".",
-  buftype_exclude = { "terminal" },
-  filetype_exclude = { "terminal" },
+  show_end_of_line = true,
+  buftype_exclude = { "terminal", "Telescope", "TelescopeResult" },
+  filetype_exclude = { "terminal", "Telescope", "TelescopeResult" },
+  show_current_context = true,
 }
