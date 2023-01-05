@@ -292,6 +292,17 @@ local plugins = {
       require "plugins.config.indentguides"
     end,
   },
+  {
+    "jackMort/ChatGPT.nvim",
+    config = function()
+      require("plugins.config.chatgpt").setup()
+    end,
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope.nvim",
+    },
+  },
 }
 
 vim.g.mapleader = " " -- make sure to set `mapleader` before lazy so your mappings are correct
