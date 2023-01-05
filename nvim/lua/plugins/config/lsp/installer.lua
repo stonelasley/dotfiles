@@ -90,15 +90,15 @@ function M.setup(servers, server_options)
         },
       }
     end,
-    -- TODO
-    -- ["tsserver"] = function()
-    --   local opts = vim.tbl_deep_extend("force", server_options, servers["tsserver"] or {})
-    --   require("typescript").setup {
-    --     disable_commands = false,
-    --     debug = false,
-    --     server = opts,
-    --   }
-    -- end,
+    ["volar"] = function()
+      print "VLS"
+      local opts = vim.tbl_deep_extend("force", server_options, servers["volar"] or {})
+      lspconfig.volar.setup(opts)
+    end,
+    ["tsserver"] = function()
+      local opts = vim.tbl_deep_extend("force", server_options, servers["tsserver"] or {})
+      lspconfig.tsserver.setup(opts)
+    end,
   }
 end
 

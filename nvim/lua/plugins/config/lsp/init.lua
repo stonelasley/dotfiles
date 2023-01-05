@@ -63,6 +63,9 @@ local servers = {
       },
     },
   },
+  volar = {
+    settings = {},
+  },
   tsserver = {
     disable_formatting = true,
     settings = {
