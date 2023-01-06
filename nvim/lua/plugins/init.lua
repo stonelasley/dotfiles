@@ -276,6 +276,9 @@ local plugins = {
     end,
   },
   {
+    "JoosepAlviste/nvim-ts-context-commentstring"
+  },
+  {
     "andrewradev/splitjoin.vim",
     event = "BufRead",
   },
