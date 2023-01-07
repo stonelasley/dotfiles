@@ -2,7 +2,6 @@ local plugins = {
   -- Util
   { "lewis6991/impatient.nvim" },
   -- Search / Find
-  { "wincent/loupe" },
   {
     "kyazdani42/nvim-tree.lua",
     -- after = "nvim-web-devicons",
@@ -71,18 +70,6 @@ local plugins = {
   },
   { "christoomey/vim-tmux-navigator" },
   { "dhruvasagar/vim-zoom" },
-  {
-    "prettier/vim-prettier",
-    build = "yarn install",
-    ft = {
-      "css",
-      "html",
-      "javascript",
-      "scss",
-      "typescript",
-      "vue",
-    },
-  },
   {
     "folke/todo-comments.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
@@ -223,7 +210,10 @@ local plugins = {
   },
 
   -- Misc
-  { "tpope/vim-fugitive" },
+  {
+    "tpope/vim-fugitive",
+    cmd = "Git",
+  },
   {
     "stonelasley/flare.nvim",
     config = function()
@@ -239,7 +229,6 @@ local plugins = {
       "nvim-treesitter/nvim-treesitter",
     },
   },
-  { "RishabhRD/popfix" },
   {
     "RishabhRD/nvim-cheat.sh",
     dependencies = { { "RishabhRD/popfix" } },
@@ -276,7 +265,7 @@ local plugins = {
     end,
   },
   {
-    "JoosepAlviste/nvim-ts-context-commentstring"
+    "JoosepAlviste/nvim-ts-context-commentstring",
   },
   {
     "andrewradev/splitjoin.vim",
@@ -291,6 +280,7 @@ local plugins = {
   },
   {
     "lukas-reineke/indent-blankline.nvim",
+    event = { "BufRead", "BufNewFile" },
     config = function()
       require "plugins.config.indentguides"
     end,
