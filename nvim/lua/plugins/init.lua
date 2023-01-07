@@ -64,9 +64,9 @@ local plugins = {
   {
     "phaazon/hop.nvim",
     name = "hop",
-    config = function()
-      require "plugins.config.hop"
-    end,
+    config = {
+      keys = "etovxqpdygfblzhckisuran",
+    },
   },
   { "christoomey/vim-tmux-navigator" },
   { "dhruvasagar/vim-zoom" },
@@ -219,9 +219,7 @@ local plugins = {
   },
   {
     "stonelasley/flare.nvim",
-    config = function()
-      require "plugins.config.flare"
-    end,
+    config = true,
   },
   {
     "nvim-orgmode/orgmode",
