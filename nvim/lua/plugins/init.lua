@@ -46,10 +46,8 @@ local plugins = {
       },
       "saadparwaiz1/cmp_luasnip",
       {
-        "onsails/lspkind-nvim",
-        config = function()
-          require "plugins.config.lspkind"
-        end,
+        "stonelasley/lspkind.nvim",
+        config = true
       },
       {
         "L3MON4D3/LuaSnip",
@@ -96,9 +94,7 @@ local plugins = {
       "jayp0521/mason-null-ls.nvim",
       {
         "simrat39/inlay-hints.nvim",
-        config = function()
-          require "plugins.config.inlay-hints"
-        end,
+        config = true
       },
       {
         "maan2003/lsp_lines.nvim",
@@ -283,7 +279,7 @@ local plugins = {
     "lukas-reineke/indent-blankline.nvim",
     event = { "BufRead", "BufNewFile" },
     config = function()
-      require "plugins.config.indentguides"
+      require("plugins.config.indentguides").setup()
     end,
   },
   {
