@@ -28,6 +28,14 @@ M.normal = {
 }
 
 M.normal_leader = {
+  c = {
+    name = "+ChatGPT",
+    c = { "<cmd>ChatGPT<CR>", "ChatGpt" },
+    a = { "<cmd>ChatGPTActAs<CR>", "Act As" },
+    e = { "<cmd>ChatGPTEditWithInstructions<CR>", "Edit" },
+    r = { "<cmd>ChatGPTRun<CR>", "Run" },
+    R = { "<cmd>ChatGPTRunCustomCodeAction<CR>", "Run Custom Code Action" },
+  },
   g = {
     name = " +Git",
     b = { "<cmd>Telescope git_branches<CR>", " Branches" },
@@ -52,6 +60,10 @@ M.normal_leader = {
     h = { "<cmd>Telescope help_tags<CR>", "ﬤ Help Tags" },
     s = { "<cmd>:lua require('st1.telescope').focus_find()<CR>", " Dot Files" },
   },
+  T = {
+    name = " Terminal",
+    o = { "<cmd>ToggleTerm<CR>", "烙 Open" },
+  },
   P = {
     name = " +Packer",
     s = { "<cmd>PackerStatus<CR>", "  Status" },
@@ -60,10 +72,6 @@ M.normal_leader = {
     c = { "<cmd>PackerCompile<CR>", "  Compile" },
     l = { "<cmd>PackerClean<CR>", "  Clean" },
     y = { "<cmd>PackerSync<CR>", "מּ  Sync" },
-  },
-  c = {
-    name = " Terminal",
-    o = { "<cmd>ToggleTerm<CR>", "烙 Open" },
   },
 }
 

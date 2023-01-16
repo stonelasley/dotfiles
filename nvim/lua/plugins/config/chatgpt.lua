@@ -1,6 +1,6 @@
 local M = {}
-M.setup = function()
-  require("lspkind").init()
-end
 
+M.setup = function()
+  require("chatgpt").setup {}
+end
 return M

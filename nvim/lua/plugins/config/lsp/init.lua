@@ -63,6 +63,9 @@ local servers = {
       },
     },
   },
+  volar = {
+    settings = {},
+  },
   tsserver = {
     disable_formatting = true,
     settings = {
@@ -192,14 +195,9 @@ local opts = {
 require("plugins.config.lsp.handlers").setup()
 
 function M.setup()
-  -- null-ls
   require("plugins.config.lsp.null-ls").setup(opts)
-
-  -- Installer
   require("plugins.config.lsp.installer").setup(servers, opts)
-
-  -- Inlay hints
-  -- require("plugins.config.lsp.inlay-hints").setup()
+  require("plugins.config.lsp.inlay-hints").setup()
 end
 
 local diagnostics_active = true
