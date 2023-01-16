@@ -60,31 +60,33 @@ local plugins = {
       },
     },
   },
-  { "github/copilot.vim", event = "InsertEnter" },
   -- Movement
   {
     "phaazon/hop.nvim",
+    event = { "BufRead", "BufNewFile" },
     name = "hop",
     config = function()
       require "plugins.config.hop"
     end,
   },
   { "christoomey/vim-tmux-navigator" },
-  { "dhruvasagar/vim-zoom" },
-  {
-    "prettier/vim-prettier",
-    build = "yarn install",
-    ft = {
-      "css",
-      "html",
-      "javascript",
-      "scss",
-      "typescript",
-      "vue",
-    },
-  },
+  { "dhruvasagar/vim-zoom", event = "BufRead" },
+  -- {
+  --   "prettier/vim-prettier",
+  --   event = "VeryLazy",
+  --   build = "yarn install",
+  --   ft = {
+  --     "css",
+  --     "html",
+  --     "javascript",
+  --     "scss",
+  --     "typescript",
+  --     "vue",
+  --   },
+  -- },
   {
     "folke/todo-comments.nvim",
+    event = "BufRead",
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
       require "plugins.config.todo"
@@ -226,6 +228,7 @@ local plugins = {
   { "tpope/vim-fugitive" },
   {
     "stonelasley/flare.nvim",
+    event = { "BufRead", "BufNewFile" },
     config = function()
       require "plugins.config.flare"
     end,
@@ -254,7 +257,8 @@ local plugins = {
   {
     "akinsho/toggleterm.nvim",
     version = "v2.*",
-    config = true,
+    -- config = true,
+    event = "BufRead",
   },
   { "nathom/filetype.nvim" },
   {
@@ -266,7 +270,7 @@ local plugins = {
   },
   {
     "tpope/vim-surround",
-    event = "BufRead",
+    event = { "BufRead", "BufNewFile" },
   },
   { "tpope/vim-eunuch" },
   {
@@ -277,22 +281,23 @@ local plugins = {
   },
   {
     "andrewradev/splitjoin.vim",
-    event = "BufRead",
+    event = { "BufRead", "BufNewFile" },
   },
   { "svermeulen/vimpeccable" },
   {
     "windwp/nvim-autopairs",
+    event = "InsertEnter",
     config = function()
       require "plugins.config.autopairs"
     end,
   },
-  -- {
-  --   "lukas-reineke/indent-blankline.nvim",
-  --   config = function()
-  --     require "plugins.config.indentguides"
-  --   end,
-  --   event = "BufRead",
-  -- },
+  {
+    "kevinhwang91/nvim-ufo",
+    dependencies = {
+      "kevinhwang91/promise-async",
+    },
+    lazy = true,
+  },
 }
 
 vim.g.mapleader = " " -- make sure to set `mapleader` before lazy so your mappings are correct
