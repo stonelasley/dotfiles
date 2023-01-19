@@ -6,4 +6,3 @@ if present then
     virtual_text = false,
   }
 end
-

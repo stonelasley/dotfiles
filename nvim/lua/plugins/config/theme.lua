@@ -18,6 +18,7 @@ local groups = {
   IncSearch = search,
   Visual = search,
   Beacon = search,
+  IndentBlanklineContextChar = { fg = c.diff_yellow },
   CursorLineNr = { fg = c.orange, bg = c.none },
   --Underline = { fg = c.orange, underline = true },
   LineNr = { fg = c.gray, bg = c.none },

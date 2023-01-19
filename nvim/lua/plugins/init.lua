@@ -2,7 +2,6 @@ local plugins = {
   -- Util
   { "lewis6991/impatient.nvim" },
   -- Search / Find
-  { "wincent/loupe" },
   {
     "kyazdani42/nvim-tree.lua",
     -- after = "nvim-web-devicons",
@@ -47,10 +46,8 @@ local plugins = {
       },
       "saadparwaiz1/cmp_luasnip",
       {
-        "onsails/lspkind-nvim",
-        config = function()
-          require "plugins.config.lspkind"
-        end,
+        "stonelasley/lspkind.nvim",
+        config = true,
       },
       {
         "L3MON4D3/LuaSnip",
@@ -60,31 +57,21 @@ local plugins = {
       },
     },
   },
-  { "github/copilot.vim", event = "InsertEnter" },
   -- Movement
   {
     "phaazon/hop.nvim",
+    event = { "BufRead", "BufNewFile" },
     name = "hop",
-    config = function()
-      require "plugins.config.hop"
-    end,
-  },
-  { "christoomey/vim-tmux-navigator" },
-  { "dhruvasagar/vim-zoom" },
-  {
-    "prettier/vim-prettier",
-    build = "yarn install",
-    ft = {
-      "css",
-      "html",
-      "javascript",
-      "scss",
-      "typescript",
-      "vue",
+    config = {
+      keys = "etovxqpdygfblzhckisuran",
     },
   },
+  { "christoomey/vim-tmux-navigator" },
+  { "dhruvasagar/vim-zoom", event = "BufRead" },
+  { "dhruvasagar/vim-zoom" },
   {
     "folke/todo-comments.nvim",
+    event = "BufRead",
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
       require "plugins.config.todo"
@@ -109,9 +96,7 @@ local plugins = {
       "jayp0521/mason-null-ls.nvim",
       {
         "simrat39/inlay-hints.nvim",
-        config = function()
-          require "plugins.config.inlay-hints"
-        end,
+        config = true,
       },
       {
         "maan2003/lsp_lines.nvim",
@@ -140,9 +125,12 @@ local plugins = {
             "saecki/crates.nvim",
             event = { "BufRead Cargo.toml" },
             dependencies = { { "nvim-lua/plenary.nvim" } },
-            config = function()
-              require "plugins.config.crates"
-            end,
+            config = {
+              null_ls = {
+                enabled = true,
+                name = "crates.nvim",
+              },
+            },
           },
         },
       },
@@ -223,12 +211,14 @@ local plugins = {
   },
 
   -- Misc
-  { "tpope/vim-fugitive" },
+  {
+    "tpope/vim-fugitive",
+    cmd = "Git",
+  },
   {
     "stonelasley/flare.nvim",
-    config = function()
-      require "plugins.config.flare"
-    end,
+    event = { "BufRead", "BufNewFile" },
+    config = true,
   },
   {
     "nvim-orgmode/orgmode",
@@ -239,7 +229,6 @@ local plugins = {
       "nvim-treesitter/nvim-treesitter",
     },
   },
-  { "RishabhRD/popfix" },
   {
     "RishabhRD/nvim-cheat.sh",
     dependencies = { { "RishabhRD/popfix" } },
@@ -254,7 +243,8 @@ local plugins = {
   {
     "akinsho/toggleterm.nvim",
     version = "v2.*",
-    config = true,
+    -- config = true,
+    event = "BufRead",
   },
   { "nathom/filetype.nvim" },
   {
@@ -266,7 +256,7 @@ local plugins = {
   },
   {
     "tpope/vim-surround",
-    event = "BufRead",
+    event = { "BufRead", "BufNewFile" },
   },
   { "tpope/vim-eunuch" },
   {
@@ -276,21 +266,26 @@ local plugins = {
     end,
   },
   {
+    "JoosepAlviste/nvim-ts-context-commentstring",
+  },
+  {
     "andrewradev/splitjoin.vim",
-    event = "BufRead",
+    event = { "BufRead", "BufNewFile" },
   },
   { "svermeulen/vimpeccable" },
   {
     "windwp/nvim-autopairs",
+    event = "InsertEnter",
     config = function()
       require "plugins.config.autopairs"
     end,
   },
   {
-    "lukas-reineke/indent-blankline.nvim",
-    config = function()
-      require "plugins.config.indentguides"
-    end,
+    "kevinhwang91/nvim-ufo",
+    dependencies = {
+      "kevinhwang91/promise-async",
+    },
+    lazy = true,
   },
   {
     "jackMort/ChatGPT.nvim",
