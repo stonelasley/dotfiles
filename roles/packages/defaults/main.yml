@@ -3,6 +3,7 @@ packages:
   - ack
   - autoconf
   - automake
+  - build-essential
   - cmake
   - curl
   - dotnet-sdk-6.0
@@ -11,11 +12,13 @@ packages:
   - libsqlite3-dev
   - libtool
   - libtool-bin
+  - libreadline-dev
   - mutt
   - ninja-build
   - python3-pip
   - pkg-config
   - ripgrep
+  - golang-go
   - silversearcher-ag
   - sqlite3
   - tmux
