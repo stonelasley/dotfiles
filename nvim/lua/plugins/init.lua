@@ -28,6 +28,12 @@ local plugins = {
 
   -- Completion
   {
+    "github/copilot.vim",
+    config = function()
+      require "plugins.config.copilot"
+    end,
+  },
+  {
     "hrsh7th/nvim-cmp",
     event = "InsertEnter",
     config = function()
