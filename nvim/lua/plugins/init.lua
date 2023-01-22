@@ -7,7 +7,7 @@ local plugins = {
     -- after = "nvim-web-devicons",
     dependencies = { "kyazdani42/nvim-web-devicons" },
     config = function()
-      require "plugins.config.nvim-tree"
+      require "config.plugins.nvim-tree"
     end,
   },
   {
@@ -22,7 +22,7 @@ local plugins = {
       },
     },
     config = function()
-      require "plugins.config.telescope"
+      require "config.plugins.telescope"
     end,
   },
 
@@ -30,37 +30,31 @@ local plugins = {
   {
     "github/copilot.vim",
     config = function()
-      require "plugins.config.copilot"
+      require "config.plugins.copilot"
     end,
   },
   {
     "hrsh7th/nvim-cmp",
     event = "InsertEnter",
     config = function()
-      require "plugins.config.cmp"
+      require "config.plugins.cmp"
     end,
     dependencies = {
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-path",
       {
-        "hrsh7th/cmp-copilot",
-        event = "InsertEnter",
-        config = function()
-          require("plugins.config.copilot").setup()
-        end,
-      },
-      "saadparwaiz1/cmp_luasnip",
-      {
         "stonelasley/lspkind.nvim",
         config = true,
       },
+      "saadparwaiz1/cmp_luasnip",
       {
         "L3MON4D3/LuaSnip",
         config = function()
-          require "plugins.config.luasnip"
+          require "config.plugins.luasnip"
         end,
       },
+      "rafamadriz/friendly-snippets",
     },
   },
   -- Movement
@@ -80,7 +74,7 @@ local plugins = {
     event = "BufRead",
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
-      require "plugins.config.todo"
+      require "config.plugins.todo"
     end,
   },
 
@@ -107,19 +101,19 @@ local plugins = {
       {
         "maan2003/lsp_lines.nvim",
         config = function()
-          require "plugins.config.lsp_lines"
+          require "config.plugins.lsp_lines"
         end,
       },
       {
         "glepnir/lspsaga.nvim",
         config = function()
-          require "plugins.config.lspsaga"
+          require "config.plugins.lspsaga"
         end,
       },
       {
         "theHamsta/nvim-semantic-tokens",
         config = function()
-          require("plugins.config.semantic-tokens").setup()
+          require("config.plugins.semantic-tokens").setup()
         end,
       },
       {
@@ -148,14 +142,14 @@ local plugins = {
     event = { "BufRead", "BufNewFile" },
     build = ":TSUpdate",
     config = function()
-      require "plugins.config.treesitter"
+      require "config.plugins.treesitter"
     end,
   },
   {
     "nvim-treesitter/playground",
     dependencies = { "nvim-treesitter/nvim-treesitter" },
     config = function()
-      require "plugins.config.treesitterplayground"
+      require "config.plugins.treesitterplayground"
     end,
     cmd = "TSPlaygroundToggle",
   },
@@ -163,7 +157,7 @@ local plugins = {
     "folke/trouble.nvim",
     dependencies = "kyazdani42/nvim-web-devicons",
     config = function()
-      require "plugins.config.trouble"
+      require "config.plugins.trouble"
     end,
   },
   -- Debugging
@@ -197,7 +191,7 @@ local plugins = {
   {
     "leafgarland/typescript-vim",
     config = function()
-      require "plugins.config.typescript"
+      require "config.plugins.typescript"
     end,
   },
 
@@ -205,14 +199,14 @@ local plugins = {
   {
     "rmehri01/onenord.nvim",
     config = function()
-      require("plugins.config.theme").setup()
+      require("config.plugins.theme").setup()
     end,
   },
   {
     "hoob3rt/lualine.nvim",
     dependencies = { { "kyazdani42/nvim-web-devicons" } },
     config = function()
-      require "plugins.config.lualine"
+      require "config.plugins.lualine"
     end,
   },
 
@@ -220,7 +214,7 @@ local plugins = {
   {
     "lewis6991/gitsigns.nvim",
     cmd = "Gitsigns",
-    config = true
+    config = true,
   },
   {
     "stonelasley/flare.nvim",
@@ -230,7 +224,7 @@ local plugins = {
   {
     "nvim-orgmode/orgmode",
     config = function()
-      require "plugins.config.orgmode"
+      require "config.plugins.orgmode"
     end,
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
@@ -244,7 +238,7 @@ local plugins = {
   {
     "folke/which-key.nvim",
     config = function()
-      require "plugins.config.whichkey"
+      require "config.plugins.whichkey"
     end,
   },
   {
@@ -258,7 +252,7 @@ local plugins = {
     "max397574/better-escape.nvim",
     event = "InsertCharPre",
     config = function()
-      require "plugins.config.better-escape"
+      require "config.plugins.better-escape"
     end,
   },
   {
@@ -268,9 +262,7 @@ local plugins = {
   { "tpope/vim-eunuch" },
   {
     "numToStr/Comment.nvim",
-    config = function()
-      require "plugins.config.comment"
-    end,
+    config = true,
   },
   {
     "JoosepAlviste/nvim-ts-context-commentstring",
@@ -284,7 +276,7 @@ local plugins = {
     "windwp/nvim-autopairs",
     event = "InsertEnter",
     config = function()
-      require "plugins.config.autopairs"
+      require "config.plugins.autopairs"
     end,
   },
   {
@@ -304,9 +296,7 @@ local plugins = {
   },
   {
     "jackMort/ChatGPT.nvim",
-    config = function()
-      require("plugins.config.chatgpt").setup()
-    end,
+    config = true,
     dependencies = {
       "MunifTanjim/nui.nvim",
       "nvim-lua/plenary.nvim",
