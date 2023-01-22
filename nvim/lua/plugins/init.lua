@@ -283,6 +283,14 @@ local plugins = {
     end,
   },
   {
+    "dense-analysis/neural",
+    config = {
+      open_ai = {
+        api_key = os.getenv "OPENAI_API_KEY",
+      },
+    },
+  },
+  {
     "jackMort/ChatGPT.nvim",
     config = function()
       require("plugins.config.chatgpt").setup()
