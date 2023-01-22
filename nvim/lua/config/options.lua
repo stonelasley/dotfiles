@@ -16,6 +16,10 @@ utils.opt("o", "splitright", true)
 utils.opt("w", "wrap", false)
 utils.opt("o", "formatoptions", "cro")
 utils.opt("o", "termguicolors", true)
+vim.o.foldcolumn = "1"
+vim.o.foldlevel = 99
+vim.o.foldlevelstart = 99
+vim.o.foldenable = true
 vim.o.completeopt = "menuone,noinsert,noselect"
 
 vim.opt.clipboard:append "unnamedplus"

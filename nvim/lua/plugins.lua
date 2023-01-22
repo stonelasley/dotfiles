@@ -44,7 +44,7 @@ local plugins = {
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-path",
       {
-        "stonelasley/lspkind.nvim",
+        "onsails/lspkind.nvim",
         config = true,
       },
       "saadparwaiz1/cmp_luasnip",
@@ -270,6 +270,12 @@ local plugins = {
   {
     "andrewradev/splitjoin.vim",
     event = { "BufRead", "BufNewFile" },
+  },
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    config = function()
+      require "config.plugins.indentguides"
+    end,
   },
   { "svermeulen/vimpeccable" },
   {
