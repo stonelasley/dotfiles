@@ -43,7 +43,9 @@ local plugins = {
       "hrsh7th/cmp-path",
       {
         "onsails/lspkind.nvim",
-        config = true,
+        config = function()
+          require "config.plugins.lspkind"
+        end,
       },
       "saadparwaiz1/cmp_luasnip",
       {
@@ -104,9 +106,7 @@ local plugins = {
       },
       {
         "glepnir/lspsaga.nvim",
-        config = function()
-          require "config.plugins.lspsaga"
-        end,
+        config = true
       },
       {
         "theHamsta/nvim-semantic-tokens",

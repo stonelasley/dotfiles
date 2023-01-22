@@ -1,6 +1,6 @@
 local M = {}
 M.setup = function()
-  require("lspkind").init()
+  require("lspkind").init {}
 end
 
 return M
