@@ -106,7 +106,7 @@ local plugins = {
       },
       {
         "glepnir/lspsaga.nvim",
-        config = true
+        config = true,
       },
       {
         "theHamsta/nvim-semantic-tokens",
