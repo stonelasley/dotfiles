@@ -91,13 +91,13 @@ local function configure_exts()
 end
 
 local function configure_debuggers()
-  require("plugins.config.dap.lua").setup()
-  require("plugins.config.dap.python").setup()
-  require("plugins.config.dap.rust").setup()
-  require("plugins.config.dap.go").setup()
-  require("plugins.config.dap.csharp").setup()
-  require("plugins.config.dap.kotlin").setup()
-  require("plugins.config.dap.javascript").setup()
+  require("config.dap.lua").setup()
+  require("config.dap.python").setup()
+  require("config.dap.rust").setup()
+  require("config.dap.go").setup()
+  require("config.dap.csharp").setup()
+  require("config.dap.kotlin").setup()
+  require("config.dap.javascript").setup()
   -- require("config.dap.typescript").setup()
 end
 

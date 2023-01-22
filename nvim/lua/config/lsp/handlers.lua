@@ -1,6 +1,6 @@
 local M = {}
 
-local icons = require "plugins.config.lsp.icons"
+local icons = require "config.lsp.icons"
 
 function M.setup()
   local signs = {

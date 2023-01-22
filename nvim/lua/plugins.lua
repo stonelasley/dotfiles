@@ -82,7 +82,7 @@ local plugins = {
   {
     "neovim/nvim-lspconfig",
     config = function()
-      require("plugins.config.lsp").setup()
+      require("config.lsp").setup()
     end,
     dependencies = {
       "williamboman/mason.nvim",
@@ -180,7 +180,7 @@ local plugins = {
       },
     },
     config = function()
-      require("plugins.config.dap").setup()
+      require("config.dap").setup()
     end,
   },
 

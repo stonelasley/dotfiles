@@ -1,7 +1,7 @@
 local M = {}
 
---local utils = require "plugins.config.lsp.null-ls.utils"
-local nls_utils = require "plugins.config.lsp.null-ls.utils"
+--local utils = require "config.lsp.null-ls.utils"
+local nls_utils = require "config.lsp.null-ls.utils"
 local nls_sources = require "null-ls.sources"
 local api = vim.api
 

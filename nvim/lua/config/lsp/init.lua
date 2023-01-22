@@ -128,13 +128,13 @@ function M.on_attach(client, bufnr)
   end
 
   -- Configure key mappings
-  require("plugins.config.lsp.mappings").setup(client, bufnr)
+  require("config.lsp.mappings").setup(client, bufnr)
 
   -- Configure highlighting
-  require("plugins.config.lsp.highlighter").setup(client, bufnr)
+  require("config.lsp.highlighter").setup(client, bufnr)
 
   -- Configure formatting
-  require("plugins.config.lsp.null-ls.formatters").setup(client, bufnr)
+  require("config.lsp.null-ls.formatters").setup(client, bufnr)
 
   -- tagfunc
   if caps.definitionProvider then
@@ -173,7 +173,7 @@ capabilities.textDocument.foldingRange = {
   dynamicRegistration = false,
   lineFoldingOnly = true,
 }
-require('ufo').setup()
+require("ufo").setup()
 capabilities.textDocument.completion.completionItem.resolveSupport = {
   properties = {
     "documentation",
@@ -192,12 +192,12 @@ local opts = {
 }
 
 -- Setup LSP handlers
-require("plugins.config.lsp.handlers").setup()
+require("config.lsp.handlers").setup()
 
 function M.setup()
-  require("plugins.config.lsp.null-ls").setup(opts)
-  require("plugins.config.lsp.installer").setup(servers, opts)
-  require("plugins.config.lsp.inlay-hints").setup()
+  require("config.lsp.null-ls").setup(opts)
+  require("config.lsp.installer").setup(servers, opts)
+  require("config.lsp.inlay-hints").setup()
 end
 
 local diagnostics_active = true
