@@ -209,6 +209,7 @@ local plugins = {
   },
 
   -- Misc
+  { "tpope/vim-fugitive" },
   {
     "lewis6991/gitsigns.nvim",
     cmd = "Gitsigns",
