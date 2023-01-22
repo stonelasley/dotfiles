@@ -38,8 +38,9 @@ M.normal_leader = {
   },
   g = {
     name = " +Git",
+    a = { "<cmd>Gitsigns stage_buffer<cr>", " Stage buffer" },
     b = { "<cmd>Telescope git_branches<CR>", " Branches" },
-    B = { "<cmd>Git blame<cr>", "什Blame" },
+    B = { "<cmd>Gitsigns blame_line<cr>", "什Blame" },
     c = { "<cmd>Telescope git_bcommits<CR>", " Commits" },
     p = { "<cmd>Git push<cr>", " push" },
     s = { "<cmd>Git<cr>", " Status" },
