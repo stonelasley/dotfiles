@@ -4,7 +4,6 @@ local plugins = {
   -- Search / Find
   {
     "kyazdani42/nvim-tree.lua",
-    -- after = "nvim-web-devicons",
     dependencies = { "kyazdani42/nvim-web-devicons" },
     config = function()
       require "config.plugins.nvim-tree"
@@ -25,7 +24,6 @@ local plugins = {
       require "config.plugins.telescope"
     end,
   },
-
   -- Completion
   {
     "github/copilot.vim",
@@ -186,7 +184,6 @@ local plugins = {
 
   -- Vue
   { "posva/vim-vue", ft = { "typescript", "vue" } },
-  -- Rust
   -- Typescript
   {
     "leafgarland/typescript-vim",
@@ -194,7 +191,6 @@ local plugins = {
       require "config.plugins.typescript"
     end,
   },
-
   -- Theme
   {
     "rmehri01/onenord.nvim",
