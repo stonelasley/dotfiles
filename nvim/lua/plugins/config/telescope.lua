@@ -5,7 +5,7 @@ require("telescope").setup {
       "swap",
       "node_modules",
       "target/debug",
-      ".vendor",
+      ".vendor/",
       "yarn.lock",
       "packer_compiled.lua",
       ".nuxt",
