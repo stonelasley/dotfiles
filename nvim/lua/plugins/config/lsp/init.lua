@@ -173,6 +173,7 @@ capabilities.textDocument.foldingRange = {
   dynamicRegistration = false,
   lineFoldingOnly = true,
 }
+require('ufo').setup()
 capabilities.textDocument.completion.completionItem.resolveSupport = {
   properties = {
     "documentation",

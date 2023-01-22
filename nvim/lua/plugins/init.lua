@@ -28,6 +28,12 @@ local plugins = {
 
   -- Completion
   {
+    "github/copilot.vim",
+    config = function()
+      require "plugins.config.copilot"
+    end,
+  },
+  {
     "hrsh7th/nvim-cmp",
     event = "InsertEnter",
     config = function()
@@ -57,19 +63,21 @@ local plugins = {
       },
     },
   },
-  { "github/copilot.vim", event = "InsertEnter" },
   -- Movement
   {
     "phaazon/hop.nvim",
+    event = { "BufRead", "BufNewFile" },
     name = "hop",
     config = {
       keys = "etovxqpdygfblzhckisuran",
     },
   },
   { "christoomey/vim-tmux-navigator" },
+  { "dhruvasagar/vim-zoom", event = "BufRead" },
   { "dhruvasagar/vim-zoom" },
   {
     "folke/todo-comments.nvim",
+    event = "BufRead",
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
       require "plugins.config.todo"
@@ -210,11 +218,13 @@ local plugins = {
 
   -- Misc
   {
-    "tpope/vim-fugitive",
-    cmd = "Git",
+    "lewis6991/gitsigns.nvim",
+    cmd = "Gitsigns",
+    config = true
   },
   {
     "stonelasley/flare.nvim",
+    event = { "BufRead", "BufNewFile" },
     config = true,
   },
   {
@@ -240,7 +250,8 @@ local plugins = {
   {
     "akinsho/toggleterm.nvim",
     version = "v2.*",
-    config = true,
+    -- config = true,
+    event = "BufRead",
   },
   { "nathom/filetype.nvim" },
   {
@@ -252,7 +263,7 @@ local plugins = {
   },
   {
     "tpope/vim-surround",
-    event = "BufRead",
+    event = { "BufRead", "BufNewFile" },
   },
   { "tpope/vim-eunuch" },
   {
@@ -266,21 +277,22 @@ local plugins = {
   },
   {
     "andrewradev/splitjoin.vim",
-    event = "BufRead",
+    event = { "BufRead", "BufNewFile" },
   },
   { "svermeulen/vimpeccable" },
   {
     "windwp/nvim-autopairs",
+    event = "InsertEnter",
     config = function()
       require "plugins.config.autopairs"
     end,
   },
   {
-    "lukas-reineke/indent-blankline.nvim",
-    event = { "BufRead", "BufNewFile" },
-    config = function()
-      require("plugins.config.indentguides").setup()
-    end,
+    "kevinhwang91/nvim-ufo",
+    dependencies = {
+      "kevinhwang91/promise-async",
+    },
+    lazy = true,
   },
   {
     "dense-analysis/neural",
