@@ -1,5 +1,5 @@
-require "st1.au"
-require "st1.options"
+require "config.au"
+require "config.options"
 
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
