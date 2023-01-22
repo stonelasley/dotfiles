@@ -47,7 +47,7 @@ local plugins = {
       "saadparwaiz1/cmp_luasnip",
       {
         "stonelasley/lspkind.nvim",
-        config = true
+        config = true,
       },
       {
         "L3MON4D3/LuaSnip",
@@ -94,7 +94,7 @@ local plugins = {
       "jayp0521/mason-null-ls.nvim",
       {
         "simrat39/inlay-hints.nvim",
-        config = true
+        config = true,
       },
       {
         "maan2003/lsp_lines.nvim",
@@ -197,7 +197,7 @@ local plugins = {
   {
     "rmehri01/onenord.nvim",
     config = function()
-      require "plugins.config.theme"
+      require("plugins.config.theme").setup()
     end,
   },
   {
