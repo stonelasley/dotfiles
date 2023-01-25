@@ -41,20 +41,22 @@ local plugins = {
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-path",
+      "saadparwaiz1/cmp_luasnip",
       {
         "onsails/lspkind.nvim",
         config = function()
           require "config.plugins.lspkind"
         end,
       },
-      "saadparwaiz1/cmp_luasnip",
       {
         "L3MON4D3/LuaSnip",
         config = function()
-          require "config.plugins.luasnip"
+          require("config.snippets.init").setup()
         end,
+        dependencies = {
+          "rafamadriz/friendly-snippets",
+        },
       },
-      "rafamadriz/friendly-snippets",
     },
   },
   -- Movement
@@ -106,7 +108,7 @@ local plugins = {
       },
       {
         "glepnir/lspsaga.nvim",
-        config = true
+        config = true,
       },
       {
         "theHamsta/nvim-semantic-tokens",
@@ -207,6 +209,7 @@ local plugins = {
   },
 
   -- Misc
+  { "tpope/vim-fugitive" },
   {
     "lewis6991/gitsigns.nvim",
     cmd = "Gitsigns",
@@ -306,7 +309,5 @@ local plugins = {
     },
   },
 }
-
-vim.g.mapleader = " " -- make sure to set `mapleader` before lazy so your mappings are correct
 
 require("lazy").setup(plugins)
