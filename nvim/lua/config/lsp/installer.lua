@@ -16,7 +16,6 @@ function M.setup(servers, server_options)
   require("mason-null-ls").setup {
     automatic_setup = true,
   }
-  require("mason-null-ls").setup_handlers()
 
   require("mason-tool-installer").setup {
     ensure_installed = { "codelldb", "stylua", "shfmt", "shellcheck", "prettierd" },
@@ -41,7 +40,7 @@ function M.setup(servers, server_options)
       local opts = vim.tbl_deep_extend("force", server_options, servers["omnisharp"] or {})
       lspconfig.omnisharp.setup(opts)
     end,
-    ["sumneko_lua"] = function()
+    ["lua_ls"] = function()
       local noThirdParty = {
         settings = {
           Lua = {
@@ -51,10 +50,10 @@ function M.setup(servers, server_options)
           },
         },
       }
-      local myOpts = vim.tbl_deep_extend("force", noThirdParty, servers["sumneko_lua"] or {})
+      local myOpts = vim.tbl_deep_extend("force", noThirdParty, servers["lua_ls"] or {})
       local opts = vim.tbl_deep_extend("force", server_options, myOpts or {})
       require("neodev").setup {}
-      lspconfig.sumneko_lua.setup(opts)
+      lspconfig.lua_ls.setup(opts)
     end,
     ["rust_analyzer"] = function()
       local opts = vim.tbl_deep_extend("force", server_options, servers["rust_analyzer"] or {})
@@ -91,7 +90,8 @@ function M.setup(servers, server_options)
       }
     end,
     ["volar"] = function()
-      local opts = vim.tbl_deep_extend("force", server_options, servers["volar"] or {}) lspconfig.volar.setup(opts)
+      local opts = vim.tbl_deep_extend("force", server_options, servers["volar"] or {})
+      lspconfig.volar.setup(opts)
     end,
     ["tsserver"] = function()
       local opts = vim.tbl_deep_extend("force", server_options, servers["tsserver"] or {})
