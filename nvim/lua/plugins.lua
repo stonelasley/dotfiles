@@ -70,7 +70,6 @@ local plugins = {
   },
   { "christoomey/vim-tmux-navigator" },
   { "dhruvasagar/vim-zoom", event = "BufRead" },
-  { "dhruvasagar/vim-zoom" },
   {
     "folke/todo-comments.nvim",
     event = "BufRead",
@@ -98,7 +97,9 @@ local plugins = {
       "jayp0521/mason-null-ls.nvim",
       {
         "simrat39/inlay-hints.nvim",
-        config = true,
+        config = function()
+          require("inlay-hints").setup()
+        end,
       },
       {
         "maan2003/lsp_lines.nvim",
@@ -107,8 +108,14 @@ local plugins = {
         end,
       },
       {
-        "glepnir/lspsaga.nvim",
-        config = true,
+        "nvimdev/lspsaga.nvim",
+        config = function()
+          require("lspsaga").setup {}
+        end,
+        requires = {
+          { "nvim-tree/nvim-web-devicons" },
+          { "nvim-treesitter/nvim-treesitter" },
+        },
       },
       {
         "theHamsta/nvim-semantic-tokens",
@@ -213,7 +220,9 @@ local plugins = {
   {
     "lewis6991/gitsigns.nvim",
     cmd = "Gitsigns",
-    config = true,
+    config = function()
+      require("gitsigns").setup()
+    end,
   },
   {
     "stonelasley/flare.nvim",
@@ -290,14 +299,6 @@ local plugins = {
       "kevinhwang91/promise-async",
     },
     lazy = true,
-  },
-  {
-    "dense-analysis/neural",
-    config = {
-      open_ai = {
-        api_key = os.getenv "OPENAI_API_KEY",
-      },
-    },
   },
   {
     "jackMort/ChatGPT.nvim",

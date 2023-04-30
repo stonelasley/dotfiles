@@ -17,23 +17,32 @@ lvim.format_on_save = {
 }
 -- to disable icons and use a minimalist setup, uncomment the following
 -- lvim.use_icons = false
+--
 
 -- keymappings <https://www.lunarvim.org/docs/configuration/keybindings>
 lvim.leader = "space"
 -- add your own keymapping
 lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
-lvim.keys.normal_mode["<C-p>"] = ":Telescope find_files<cr>"
-lvim.keys.normal_mode["<C-f>"] = ":Telescope live_grep<cr>"
+lvim.keys.normal_mode["<C-p>"] = "<cmd>Telescope find_files<cr>"
+lvim.keys.normal_mode["<C-f>"] = "<cmd>Telescope live_grep<cr>"
+lvim.keys.normal_mode["<C-n>"] = "<cmd>NvimTreeToggle<cr>"
+-- lvim.keys.normal_mode["<C-h>"] = "<cmd>lua require('nvim-tmux-navigiation').NvimTmuxNavigateLeft()<cr>"
+-- lvim.keys.normal_mode["<C-l>"] = "<cmd>lua require('nvim-tmux-navigiation').NvimTmuxNavigateRight()<cr>"
 
 -- lvim.keys.normal_mode["<S-l>"] = ":BufferLineCycleNext<CR>"
 -- lvim.keys.normal_mode["<S-h>"] = ":BufferLineCyclePrev<CR>"
+
+-- LSP
+-- lvim.lsp.buffer_mappings.normal_mode["<F2>"] = { "<CMD>lua require('renamer').rename()<CR>", "Rename Symbol" }
+-- lvim.lsp.buffer_mappings.normal_mode["<F12>"] = { "<CMD>lua vim.lsp.buf.format({async = true})<CR>", "Rename Symbol" }
+-- lvim.builtin.which_key.mappings["la"] = { "<CMD>CodeActionMenu<CR>", "Code Action Menu" }
 
 -- -- Use which-key to add extra bindings with the leader-key prefix
 -- lvim.builtin.which_key.mappings["W"] = { "<cmd>noautocmd w<cr>", "Save without formatting" }
 -- lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
 
 -- -- Change theme settings
--- lvim.colorscheme = "lunar"
+lvim.colorscheme = "tokyonight"
 
 lvim.builtin.alpha.active = true
 lvim.builtin.alpha.mode = "dashboard"
@@ -65,14 +74,13 @@ lvim.builtin.treesitter.auto_install = true
 
 -- -- you can set a custom on_attach function that will be used for all the language servers
 -- -- See <https://github.com/neovim/nvim-lspconfig#keybindings-and-completion>
-lvim.lsp.on_attach_callback = function(client, bufnr)
-	--   local function buf_set_option(...)
-	--     vim.api.nvim_buf_set_option(bufnr, ...)
-	--   end
-	--   --Enable completion triggered by <c-x><c-o>
-	--   buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
-	lvim.keys.normal_mode["<F12>"] = "lua vim.lsp.buf.format({async=true})"
-end
+-- lvim.lsp.on_attach_callback = function(client, bufnr)
+--   local function buf_set_option(...)
+--     vim.api.nvim_buf_set_option(bufnr, ...)
+--   end
+--   --Enable completion triggered by <c-x><c-o>
+--   buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
+-- end
 
 -- -- linters and formatters <https://www.lunarvim.org/docs/languages#lintingformatting>
 local formatters = require("lvim.lsp.null-ls.formatters")
@@ -83,38 +91,73 @@ formatters.setup({
 	--     extra_args = { "--print-width", "100" },
 	--     filetypes = { "typescript", "typescriptreact" },
 	--   },
-	{
-		command = "csharpier",
-		filetypes = { "cs" },
-	},
+	{ command = "csharpier", filetypes = { "cs" } },
 })
 local linters = require("lvim.lsp.null-ls.linters")
 linters.setup({
-	{ command = "eslint", filetypes = { "typescript" } },
+	{ command = "eslint_d", filetypes = { "typescript", "javascript" } },
 	--   {
 	--     command = "shellcheck",
 	--     args = { "--severity", "warning" },
 	--   },
 })
---
-lvim.builtin.dap.active = true
+-- DAP
+-- lvim.builtin.dap.active = true
 
 -- -- Additional Plugins <https://www.lunarvim.org/docs/plugins#user-plugins>
 lvim.plugins = {
-	--     {
-	--       "folke/trouble.nvim",
-	--       cmd = "TroubleToggle",
-	--     },
-	{
-		"max397574/better-escape.nvim",
-		event = "InsertEnter",
-		config = {
-			mapping = { "jk" },
-		},
-	},
+	-- {
+	-- 	"github/copilot.vim",
+	-- 	config = function()
+	-- 		vim.cmd([[
+	--        let g:copilot_filetypes = {
+	--          \ 'telescope': v:false,
+	--          \ 'TelescopePrompt': v:false,
+	--          \ 'TelescopeResult': v:false,
+	--          \ 'help': v:false,
+	--          \ }
+	--        imap <silent><script><expr> <C-E> copilot#Accept("\<CR>")
+	--        let g:copilot_no_tab_map = v:true
+	--    ]])
+	-- 	end,
+	-- },
+	--	{
+	--		"alexghergh/nvim-tmux-navigation",
+	--		opts = {
+	--			disable_when_zoomed = true,
+	--		},
+	--	},
+	--	{ "dhruvasagar/vim-zoom", event = "BufRead" },
+	--	{
+	--		"weilbith/nvim-code-action-menu",
+	--		cmd = "CodeActionMenu",
+	--	},
+	--	{
+	--		"filipdutescu/renamer.nvim",
+	--		config = true,
+	--		lazy = true,
+	--	},
+	--	{
+	--		"max397574/better-escape.nvim",
+	--		event = "InsertEnter",
+	--		opts = {
+	--			mapping = { "jk" },
+	--		},
+	--	},
 }
 
--- -- Autocommands (`:help autocmd`) <https://neovim.io/doc/user/autocmd.html>
+-- Autocommands (`:help autocmd`) <https://neovim.io/doc/user/autocmd.html>
+-- local augroup = vim.api.nvim_create_augroup
+-- local autocmd = vim.api.nvim_create_autocmd
+
+-- augroup("st1", { clear = true })
+
+-- autocmd("TextYankPost", {
+-- 	callback = function()
+-- 		vim.highlight.on_yank({ higroup = "IncSearch" })
+-- 	end,
+-- 	group = "st1",
+-- })
 -- vim.api.nvim_create_autocmd("FileType", {
 --   pattern = "zsh",
 --   callback = function()
