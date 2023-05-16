@@ -65,12 +65,6 @@ M.normal_leader = {
     name = " Terminal",
     o = { "<cmd>ToggleTerm<CR>", "烙 Open" },
   },
-  n = {
-    name = "+Neural",
-    p = { "<cmd>NeuralPrompt<CR>", "Prompt" },
-    c = { "<cmd>NeuralCode<CR>", "Code" },
-    t = { "<cmd>NeuralText<CR>", "Text" },
-  },
   P = {
     name = " +Packer",
     s = { "<cmd>PackerStatus<CR>", "  Status" },
