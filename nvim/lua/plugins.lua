@@ -303,7 +303,7 @@ local plugins = {
   {
     "jackMort/ChatGPT.nvim",
     config = function()
-      require("chatgpt").setup()
+      require "config.plugins.chatgpt".setup()
     end,
     dependencies = {
       "MunifTanjim/nui.nvim",
