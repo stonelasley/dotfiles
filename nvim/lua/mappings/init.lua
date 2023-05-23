@@ -65,14 +65,13 @@ M.normal_leader = {
     name = " Terminal",
     o = { "<cmd>ToggleTerm<CR>", "烙 Open" },
   },
-  P = {
-    name = " +Packer",
-    s = { "<cmd>PackerStatus<CR>", "  Status" },
-    u = { "<cmd>PackerUpdate<CR>", "מּ  Update" },
-    i = { "<cmd>PackerInstall<CR>", "  Install" },
-    c = { "<cmd>PackerCompile<CR>", "  Compile" },
-    l = { "<cmd>PackerClean<CR>", "  Clean" },
-    y = { "<cmd>PackerSync<CR>", "מּ  Sync" },
+  L = {
+    name = " +Lazy",
+    c = { "<cmd>Lazy check<CR>", "  check" },
+    u = { "<cmd>Lazy update<CR>", "מּ  Update" },
+    i = { "<cmd>Lazy install<CR>", "  Install" },
+    l = { "<cmd>Lazy clean<CR>", "  Clean" },
+    y = { "<cmd>Lazy sync<CR>", "מּ  Sync" },
   },
 }
 
