@@ -95,6 +95,7 @@ local plugins = {
       "WhoIsSethDaniel/mason-tool-installer.nvim",
       "hrsh7th/nvim-cmp",
       "jayp0521/mason-null-ls.nvim",
+      "lvimuser/lsp-inlayhints.nvim",
       {
         "simrat39/inlay-hints.nvim",
         config = function()
