@@ -78,6 +78,16 @@ M.normal_leader = {
 M.vis_sel_leader = {
   p = { '"_dP', "delete" },
   y = { '"+y', "yank" },
+  c = {
+    name = "+ChatGPT",
+    e = {
+      function()
+        local chatgpt = require "chatgpt"
+        chatgpt.edit_with_instructions()
+      end,
+      "Edit with instructions",
+    },
+  },
 }
 
 M.visual_leader = {
