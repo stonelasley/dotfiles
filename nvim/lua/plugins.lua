@@ -162,6 +162,12 @@ local plugins = {
     cmd = "TSPlaygroundToggle",
   },
   {
+    "windwp/nvim-ts-autotag",
+    config = function()
+      require("nvim-ts-autotag").setup()
+    end,
+  },
+  {
     "folke/trouble.nvim",
     dependencies = "kyazdani42/nvim-web-devicons",
     config = function()
@@ -304,7 +310,7 @@ local plugins = {
   {
     "jackMort/ChatGPT.nvim",
     config = function()
-      require "config.plugins.chatgpt".setup()
+      require("config.plugins.chatgpt").setup()
     end,
     dependencies = {
       "MunifTanjim/nui.nvim",

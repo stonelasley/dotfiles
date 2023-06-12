@@ -42,6 +42,7 @@ casks:
   - rustup
   - stylua
   - sqlite3
+  - tealdeer
   - tree-sitter
   - luarocks
   - shellcheck
