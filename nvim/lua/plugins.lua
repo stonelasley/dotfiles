@@ -3,8 +3,8 @@ local plugins = {
   { "lewis6991/impatient.nvim" },
   -- Search / Find
   {
-    "kyazdani42/nvim-tree.lua",
-    dependencies = { "kyazdani42/nvim-web-devicons" },
+    "nvim-tree/nvim-tree.lua",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
       require "config.plugins.nvim-tree"
     end,
@@ -64,7 +64,7 @@ local plugins = {
     "phaazon/hop.nvim",
     event = { "BufRead", "BufNewFile" },
     name = "hop",
-    config = {
+    opts = {
       keys = "etovxqpdygfblzhckisuran",
     },
   },
@@ -113,7 +113,7 @@ local plugins = {
         config = function()
           require("lspsaga").setup {}
         end,
-        requires = {
+        dependencies = {
           { "nvim-tree/nvim-web-devicons" },
           { "nvim-treesitter/nvim-treesitter" },
         },
@@ -133,7 +133,7 @@ local plugins = {
             "saecki/crates.nvim",
             event = { "BufRead Cargo.toml" },
             dependencies = { { "nvim-lua/plenary.nvim" } },
-            config = {
+            opts = {
               null_ls = {
                 enabled = true,
                 name = "crates.nvim",
@@ -169,7 +169,7 @@ local plugins = {
   },
   {
     "folke/trouble.nvim",
-    dependencies = "kyazdani42/nvim-web-devicons",
+    dependencies = "nvim-tree/nvim-web-devicons",
     config = function()
       require "config.plugins.trouble"
     end,
@@ -177,7 +177,7 @@ local plugins = {
   -- Debugging
   {
     "mfussenegger/nvim-dap",
-    opt = true,
+    lazy = true,
     name = "dap",
     dependencies = {
       { "theHamsta/nvim-dap-virtual-text", name = "nvim-dap-virtual-text" },
@@ -189,7 +189,7 @@ local plugins = {
       { "mxsdev/nvim-dap-vscode-js", name = "dap-vscode-js" },
       {
         "microsoft/vscode-js-debug",
-        opt = true,
+        lazy = true,
         build = "npm install --legacy-peer-deps && npm run compile",
       },
     },
@@ -216,7 +216,7 @@ local plugins = {
   },
   {
     "hoob3rt/lualine.nvim",
-    dependencies = { { "kyazdani42/nvim-web-devicons" } },
+    dependencies = { { "nvim-tree/nvim-web-devicons" } },
     config = function()
       require "config.plugins.lualine"
     end,
