@@ -21,6 +21,12 @@ M.setup = function()
     popup_input = {
       submit = "<C-s>",
     },
+    openai_params = {
+      model = "gpt-3.5-turbo-16k",
+    },
+    openai_edit_params = {
+      model = "code-davinci-edit-001",
+    },
   }
 end
 
