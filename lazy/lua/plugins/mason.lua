@@ -6,7 +6,7 @@ return {
         "stylua",
         "shellcheck",
         "shfmt",
-        -- "omnisharp",
+        "omnisharp",
         "csharpier",
         "prettierd",
         "rust-analyzer",
