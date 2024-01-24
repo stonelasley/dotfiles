@@ -7,7 +7,7 @@
   tags: [neovim]
 
 - name: link neovim config
-  file: src=~/.st1/nvim
+  file: src=~/.st1/lazy
     path=~/.config/nvim
     state=link
     force=true
