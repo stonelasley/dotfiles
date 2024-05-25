@@ -1,6 +1,4 @@
 local plugins = {
-  -- Util
-  { "lewis6991/impatient.nvim" },
   -- Search / Find
   {
     "nvim-tree/nvim-tree.lua",
