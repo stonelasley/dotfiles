@@ -13,6 +13,11 @@
 	df = diff
 	undo = reset --hard
 	ac = !git add -A && git commit -m
+	pH = !git push -u origin HEAD
+  lb = branch --sort=committerdate
+  lB = branch --sort=-committerdate
+  dM= "!git branch --merged | grep -Ev '\\*\\|master\\|develop\\|main\\|dev' | xargs --no-run-if-empty -n 1 -r git branch -d"
+
 [core]
 	editor = vim
 [push]
