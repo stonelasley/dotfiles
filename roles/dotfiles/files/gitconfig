@@ -11,6 +11,12 @@
 	st = status
 	lg = log -p
 	df = diff
+  #bF = "!git checkout -b st1/feat/$1"
+  #bB = checkout -b st1/fix/$1
+  #bC = checkout -b st1/chore/$1
+  bF = "!f() { git checkout -b st1/feat/$1; }; f"
+  bB = "!f() { git checkout -b st1/fix/$1; }; f"
+  bC = "!f() { git checkout -b st1/chore/$1; }; f"
 	undo = reset --hard
 	ac = !git add -A && git commit -m
 	pH = !git push -u origin HEAD

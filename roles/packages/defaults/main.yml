@@ -47,6 +47,7 @@ casks:
   - tealdeer
   - tree-sitter
   - luarocks
+  - tmux
   - shellcheck
 
 debs:

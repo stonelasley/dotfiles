@@ -1,7 +1,7 @@
 return {
   {
-    "neovim/nvim-lspconfig",
     dependencies = { "hoffs/omnisharp-extended-lsp.nvim" },
+    "neovim/nvim-lspconfig",
     opts = {
       inlay_hints = { enabled = true },
       servers = {
