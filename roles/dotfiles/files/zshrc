@@ -3,7 +3,7 @@ export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 export EDITOR=vim
 
 
-plugins=(git vi-mode)
+plugins=(git vi-mode zsh_codex)
 
 #
 # History

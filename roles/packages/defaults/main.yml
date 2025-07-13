@@ -38,7 +38,6 @@ casks:
   - mutt
   - ninja
   - pkg-config
-  - node@16
   - npm
   - ripgrep
   - rustup
@@ -49,6 +48,7 @@ casks:
   - luarocks
   - tmux
   - shellcheck
+  - warp
 
 debs:
   - https://packages.microsoft.com/config/ubuntu/22.04/packages-microsoft-prod.deb
@@ -59,3 +59,4 @@ pips:
   - pynvim
   - qmk
   - ansible-lint[yamllint]
+  - openai
