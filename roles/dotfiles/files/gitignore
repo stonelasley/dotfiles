@@ -1,8 +1,2 @@
-*.temp
-*.swp
-*~
-.DS_Store
-\#*\#
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+# Created by venv; see https://docs.python.org/3/library/venv.html
+*

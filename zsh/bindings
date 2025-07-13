@@ -47,3 +47,6 @@ bindkey '^P' fzf-file-widget
 #Navigate with vim bindings
 bindkey -s '^O' 'cd -\n'
 
+#Codex
+bindkey '^X' create_completion
+
