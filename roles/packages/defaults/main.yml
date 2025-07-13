@@ -38,7 +38,6 @@ casks:
   - mutt
   - ninja
   - pkg-config
-  - node@16
   - npm
   - ripgrep
   - rustup
