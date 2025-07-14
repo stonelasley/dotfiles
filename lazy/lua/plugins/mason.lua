@@ -8,7 +8,7 @@ return {
         "eslint_d",
         "lua-language-server",
         "netcoredbg",
-        -- "omnisharp",
+        "omnisharp",
         "prettierd",
         "rust-analyzer",
         "shellcheck",
