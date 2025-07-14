@@ -24,6 +24,7 @@ packages:
   - silversearcher-ag
   - sqlite3
   - tmux
+  - tmuxinator
   - unzip
   - zsh
 
@@ -47,6 +48,7 @@ casks:
   - tree-sitter
   - luarocks
   - tmux
+  - tmuxinator
   - shellcheck
   - warp
 

@@ -1,45 +1,18 @@
-function tmux() {
-  emulate -L zsh
-  print "$1"
+mux_attach_or_create() {
+  local template_name="${1:-main}"  # Use 'main' if no argument is given
+  local session_name
 
-  # Make sure even pre-existing tmux sessions use the latest SSH_AUTH_SOCK.
-  # (Inspired by: https://gist.github.com/lann/6771001)
-  local SOCK_SYMLINK=~/.ssh/ssh_auth_sock
-  if [ -r "$SSH_AUTH_SOCK" -a ! -L "$SSH_AUTH_SOCK" ]; then
-    ln -sf "$SSH_AUTH_SOCK" $SOCK_SYMLINK
+  session_name=$(basename "$PWD" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9_-]/-/g')
+
+  if tmux has-session -t "$session_name" 2>/dev/null; then
+    echo "🔄 Attaching to existing session: $session_name"
+    tmux attach-session -t "$session_name"
+  else
+    echo "🚀 Starting new tmuxinator session: $session_name using template: $template_name"
+    tmuxinator start "$template_name"
   fi
-
-  # If provided with args, pass them through.
-  if [[ -n "$@" ]]; then
-    env SSH_AUTH_SOCK=$SOCK_SYMLINK tmux "$@"
-    return
-  fi
-
-  # Check for .tmux.conf file (poor man's Tmuxinator).
-  if [ -x .tmux.conf ]; then
-    # Prompt the first time we see a given .tmux.conf file before running it.
-    local DIGEST="$(openssl sha1 -sha512 .tmux.conf)"
-    if ! grep -q "$DIGEST" ~/..tmux.conf.digests 2> /dev/null; then
-      cat .tmux.conf
-      read -k 1 -r \
-        'REPLY?Trust (and run) this .tmux.conf file? (t = trust, otherwise = skip) '
-      echo
-      if [[ $REPLY =~ ^[Tt]$ ]]; then
-        echo "$DIGEST" >> ~/..tmux.conf.digests
-        ./.tmux.conf
-        return
-      fi
-    else
-      ./.tmux.conf
-      return
-    fi
-  fi
-
-  # Attach to existing session, or create one, based on current directory.
-  SESSION_NAME=$(basename "${$(pwd)//[.]/_}")
-
-  env SSH_AUTH_SOCK=$SOCK_SYMLINK tmux attach -t "$SESSION_NAME" || tmux new -s "$SESSION_NAME"\; split-window -v  -p 25\; split-window -h \;
 }
+
 
 function lscolors() {
   print -rl -- $(ls ~/.st1/.vendor/chriskempson-base16-shell/scripts(:r))

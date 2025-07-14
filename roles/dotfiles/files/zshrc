@@ -91,3 +91,5 @@ fi
 zle -N _sgpt_zsh
 bindkey ^l _sgpt_zsh
 # Shell-GPT integration ZSH v0.1
+export DOTNET_ROOT="/usr/local/share/dotnet"
+export PATH="$HOME/.tmuxinator/bin:$PATH"

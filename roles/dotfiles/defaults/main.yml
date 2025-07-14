@@ -10,3 +10,7 @@ dotfile_files:
   - mutt
   - Xdefaults
 
+config_files:
+  - config/tmuxinator
+
+
