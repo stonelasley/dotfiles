@@ -57,7 +57,6 @@ debs:
   - https://github.com/cli/cli/releases/download/v2.52.0/gh_2.52.0_linux_amd64.deb
 
 pips:
-  - neovim
   - pynvim
   - qmk
   - ansible-lint[yamllint]
