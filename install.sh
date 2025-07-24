@@ -4,6 +4,17 @@ set -euo pipefail
 readonly SCRIPT_NAME="$(basename "$0")"
 readonly OS_TYPE="$(uname -s)"
 
+# Parse command line arguments
+SKIP_GALAXY=false
+for arg in "$@"; do
+    case "$arg" in
+        --skip-galaxy)
+            SKIP_GALAXY=true
+            shift
+            ;;
+    esac
+done
+
 log() {
     echo "[${SCRIPT_NAME}] $*" >&2
 }
@@ -68,13 +79,26 @@ setup_submodules() {
 }
 
 install_ansible_collections() {
+    if [ "$SKIP_GALAXY" = true ]; then
+        log "Skipping Ansible galaxy collections installation (--skip-galaxy flag used)"
+        return 0
+    fi
+    
     log "Installing required Ansible collections..."
     ansible-galaxy collection install community.general --force
 }
 
 run_playbook() {
+    # Filter out --skip-galaxy from arguments passed to ansible-playbook
+    local playbook_args=()
+    for arg in "$@"; do
+        if [ "$arg" != "--skip-galaxy" ]; then
+            playbook_args+=("$arg")
+        fi
+    done
+    
     log "Running Ansible playbook..."
-    ansible-playbook --ask-become-pass main.yml "$@"
+    ansible-playbook --ask-become-pass main.yml "${playbook_args[@]}"
 }
 
 main() {
