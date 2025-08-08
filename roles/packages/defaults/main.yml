@@ -15,6 +15,7 @@ packages:
   - libtool
   - libtool-bin
   - libreadline-dev
+  - luarocks
   - mutt
   - ninja-build
   - python3-pip
