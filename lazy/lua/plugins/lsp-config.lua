@@ -6,6 +6,7 @@ return {
       inlay_hints = { enabled = true },
       servers = {
         omnisharp = {
+          cmd = { vim.fn.stdpath("data") .. "/mason/bin/OmniSharp" },
           handlers = {
             ["textDocument/definition"] = function(...)
               return require("omnisharp_extended").handler(...)
