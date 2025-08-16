@@ -1,14 +1,15 @@
 return {
   {
     "jackMort/ChatGPT.nvim",
-    -- event = "VeryLazy",
+    event = "VeryLazy",
     keys = {
-      { "<leader>cc", "<cmd>ChatGPT<CR>", "ChatGpt" },
-      { "<leader>ca", "<cmd>ChatGPTActAs<CR>", "Act As" },
-      { "<leader>ce", "<cmd>ChatGPTEditWithInstructions<CR>", "Edit" },
-      { "<leader>cr", "<cmd>ChatGPTRun<CR>", "Run" },
-      { "<leader>cR", "<cmd>ChatGPTRunCustomCodeAction<CR>", "Run Custom Code Action" },
-      { "<leader>cE", "<cmd>ChatGPTRunCustomCodeAction<CR>", mode = { "v" }, "Run Custom Code Action" },
+      { "<leader>o", "", desc = "ChatGpt" },
+      { "<leader>oc", "<cmd>ChatGPT<CR>", desc = "ChatGpt" },
+      { "<leader>oa", "<cmd>ChatGPTActAs<CR>", desc = "Act As" },
+      { "<leader>oe", "<cmd>ChatGPTEditWithInstructions<CR>", desc = "Edit" },
+      { "<leader>or", "<cmd>ChatGPTRun<CR>", "Run" },
+      { "<leader>oR", "<cmd>ChatGPTRunCustomCodeAction<CR>", desc = "Run Custom Code Action" },
+      { "<leader>oE", "<cmd>ChatGPTRunCustomCodeAction<CR>", mode = { "v" }, desc = "Run Custom Code Action" },
     },
     opts = {
       chat = {
@@ -26,10 +27,7 @@ return {
         submit = "<C-s>",
       },
       openai_params = {
-        model = "gpt-4-1106-preview",
-      },
-      openai_edit_params = {
-        model = "code-davinci-edit-001",
+        model = "gpt-5",
       },
     },
     dependencies = {
