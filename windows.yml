@@ -1,0 +1,17 @@
+---
+# Windows Dotfiles Setup Playbook
+#
+# Prerequisites:
+# 1. Ansible installed (pip install ansible or via WSL)
+# 2. WinRM configured on Windows (or run via WSL targeting localhost)
+#
+# For easier setup, use the windows-install.ps1 PowerShell script instead
+# which doesn't require Ansible.
+
+- hosts: localhost
+  connection: local
+  roles:
+    - { role: packages-windows, tags: packages }
+    - { role: dotfiles-windows, tags: dotfiles }
+    - { role: shell-windows, tags: shell }
+    - { role: vim-windows, tags: vim }
