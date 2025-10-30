@@ -1,0 +1,63 @@
+---
+# Windows Shell Configuration Tasks
+
+- name: Install PowerShell modules from Gallery
+  win_shell: |
+    if (-not (Get-Module -ListAvailable -Name {{ item }})) {
+      Install-Module -Name {{ item }} -Scope CurrentUser -Force -SkipPublisherCheck
+    }
+  with_items: '{{ powershell_modules }}'
+  when: ansible_os_family == "Windows"
+
+- name: Initialize fnm (Fast Node Manager)
+  win_shell: |
+    fnm env --use-on-cd | Out-String | Invoke-Expression
+  when: ansible_os_family == "Windows"
+  ignore_errors: yes
+
+- name: Install latest Node.js LTS via fnm
+  win_shell: |
+    fnm install --lts
+    fnm default lts-latest
+  when: ansible_os_family == "Windows"
+  ignore_errors: yes
+
+- name: Initialize starship prompt
+  win_shell: |
+    if (Get-Command starship -ErrorAction SilentlyContinue) {
+      starship init powershell | Out-File -FilePath $PROFILE -Append
+    }
+  when: ansible_os_family == "Windows"
+  ignore_errors: yes
+
+- name: Create starship config directory
+  win_file:
+    path: "{{ ansible_env.USERPROFILE }}\\.config"
+    state: directory
+  when: ansible_os_family == "Windows"
+
+- name: Copy starship configuration
+  win_copy:
+    src: starship.toml
+    dest: "{{ ansible_env.USERPROFILE }}\\.config\\starship.toml"
+  when: ansible_os_family == "Windows"
+  ignore_errors: yes
+
+- name: Initialize zoxide
+  win_shell: |
+    if (Get-Command zoxide -ErrorAction SilentlyContinue) {
+      zoxide init powershell | Out-File -FilePath $PROFILE -Append
+    }
+  when: ansible_os_family == "Windows"
+  ignore_errors: yes
+
+- name: Set PowerShell execution policy
+  win_shell: |
+    Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
+  when: ansible_os_family == "Windows"
+
+- name: Update PSReadLine to latest version
+  win_shell: |
+    Update-Module PSReadLine -Force
+  when: ansible_os_family == "Windows"
+  ignore_errors: yes

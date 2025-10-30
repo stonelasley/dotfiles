@@ -1,0 +1,19 @@
+---
+# PowerShell Modules to install from PowerShell Gallery
+powershell_modules:
+  - PSReadLine              # Enhanced command line editing
+  - PSFzf                   # FZF integration for PowerShell
+  - posh-git                # Git integration for prompt
+  - Terminal-Icons          # File/folder icons in terminal
+
+# Tools that should be installed via Scoop (listed here for reference)
+# These are already in packages-windows, but listed for documentation
+shell_tools:
+  - fnm                     # Fast Node Manager
+  - starship                # Cross-platform prompt
+  - zoxide                  # Smarter cd
+  - fzf                     # Fuzzy finder
+  - ripgrep                 # Better grep
+  - fd                      # Better find
+  - bat                     # Better cat
+  - eza                     # Better ls
