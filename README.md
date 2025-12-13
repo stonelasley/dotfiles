@@ -1,4 +1,7 @@
 # Personal Dotfiles
+<a href="https://dotfyle.com/stonelasley/dotfiles-lazy"><img src="https://dotfyle.com/stonelasley/dotfiles-lazy/badges/plugins?style=for-the-badge" /></a>
+<a href="https://dotfyle.com/stonelasley/dotfiles-lazy"><img src="https://dotfyle.com/stonelasley/dotfiles-lazy/badges/leaderkey?style=for-the-badge" /></a>
+<a href="https://dotfyle.com/stonelasley/dotfiles-lazy"><img src="https://dotfyle.com/stonelasley/dotfiles-lazy/badges/plugin-manager?style=for-the-badge" /></a>
 
 A comprehensive dotfiles repository that automates the setup of a complete development environment using Ansible playbooks. This configuration provides a consistent, reproducible development setup across different machines with LazyVim-based Neovim configuration, ZSH shell customization, and automated package management.
 
@@ -121,6 +124,7 @@ Edit `roles/packages/defaults/main.yml` and add packages to the appropriate list
 - **Go**: Complete toolchain with debugging support
 - **Rust**: Cargo integration with rustup management
 - **.NET**: Multi-version SDK support (6.0, 7.0, 8.0)
+- **Lua**: Lua support with LuaRocks
 
 ### Productivity Features
 - **Fuzzy Finding**: Telescope integration for files, commands, and symbols

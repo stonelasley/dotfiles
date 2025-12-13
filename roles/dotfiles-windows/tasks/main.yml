@@ -1,0 +1,43 @@
+---
+# Windows Dotfiles Deployment Tasks
+
+- name: Create .config directory in LOCALAPPDATA
+  win_file:
+    path: "{{ ansible_env.LOCALAPPDATA }}\\.config"
+    state: directory
+  when: ansible_os_family == "Windows"
+
+- name: Link Git configuration files
+  win_shell: |
+    $source = "{{ ansible_env.PWD }}\\roles\\dotfiles\\files\\{{ item }}"
+    $target = "{{ ansible_env.USERPROFILE }}\\.{{ item }}"
+    if (Test-Path $target) { Remove-Item $target -Force }
+    New-Item -ItemType SymbolicLink -Path $target -Target $source -Force
+  with_items: '{{ git_files }}'
+  when: ansible_os_family == "Windows"
+
+- name: Create PowerShell profile directory
+  win_file:
+    path: "{{ ansible_env.USERPROFILE }}\\Documents\\PowerShell"
+    state: directory
+  when: ansible_os_family == "Windows"
+
+- name: Link PowerShell profile files
+  win_shell: |
+    $source = "{{ ansible_env.PWD }}\\roles\\dotfiles-windows\\files\\{{ item }}"
+    $target = "{{ ansible_env.USERPROFILE }}\\Documents\\PowerShell\\{{ item }}"
+    $targetDir = Split-Path $target -Parent
+    if (-not (Test-Path $targetDir)) { New-Item -ItemType Directory -Path $targetDir -Force }
+    if (Test-Path $target) { Remove-Item $target -Force }
+    New-Item -ItemType SymbolicLink -Path $target -Target $source -Force
+  with_items: '{{ powershell_files }}'
+  when: ansible_os_family == "Windows"
+  ignore_errors: yes
+
+- name: Link Neovim config
+  win_shell: |
+    $source = "{{ ansible_env.PWD }}\\lazy"
+    $target = "{{ ansible_env.LOCALAPPDATA }}\\nvim"
+    if (Test-Path $target) { Remove-Item $target -Recurse -Force }
+    New-Item -ItemType SymbolicLink -Path $target -Target $source -Force
+  when: ansible_os_family == "Windows"

@@ -1,0 +1,52 @@
+---
+# Windows Neovim Setup Tasks
+# Neovim binary is installed via Scoop, this role sets up configuration
+
+- name: Create .local/bin directory
+  win_file:
+    path: "{{ local_bin }}"
+    state: directory
+  when: ansible_os_family == "Windows"
+
+- name: Create LOCALAPPDATA directory if needed
+  win_file:
+    path: "{{ ansible_env.LOCALAPPDATA }}"
+    state: directory
+  when: ansible_os_family == "Windows"
+
+- name: Remove existing nvim config if present
+  win_file:
+    path: "{{ nvim_config_path }}"
+    state: absent
+  when: ansible_os_family == "Windows"
+  ignore_errors: yes
+
+- name: Create symbolic link for Neovim config
+  win_shell: |
+    $source = "{{ lazyvim_source }}"
+    $target = "{{ nvim_config_path }}"
+    New-Item -ItemType SymbolicLink -Path $target -Target $source -Force
+  when: ansible_os_family == "Windows"
+
+- name: Create nvim-data directory for plugins and state
+  win_file:
+    path: "{{ local_share }}"
+    state: directory
+  when: ansible_os_family == "Windows"
+
+- name: Verify Neovim is installed
+  win_shell: |
+    nvim --version
+  when: ansible_os_family == "Windows"
+  register: nvim_version
+  ignore_errors: yes
+
+- name: Display Neovim version
+  debug:
+    msg: "Neovim installed: {{ nvim_version.stdout }}"
+  when: ansible_os_family == "Windows" and nvim_version is succeeded
+
+- name: Install Neovim if not present
+  win_shell: |
+    scoop install neovim
+  when: ansible_os_family == "Windows" and nvim_version is failed

@@ -1,0 +1,42 @@
+---
+# Windows Package Installation Tasks
+# Note: These tasks assume Scoop is already installed (via bootstrap script)
+
+- name: Add Scoop buckets
+  win_shell: |
+    scoop bucket add {{ item }}
+  with_items:
+    - '{{ scoop_buckets }}'
+  when: ansible_os_family == "Windows"
+  ignore_errors: yes  # Bucket might already exist
+
+- name: Install Scoop packages
+  win_shell: |
+    scoop install {{ item }}
+  with_items:
+    - '{{ scoop_packages }}'
+  when: ansible_os_family == "Windows"
+  ignore_errors: yes  # Package might already be installed
+
+- name: Install Scoop extras packages
+  win_shell: |
+    scoop install {{ item }}
+  with_items:
+    - '{{ scoop_extras }}'
+  when: ansible_os_family == "Windows"
+  ignore_errors: yes
+
+- name: Install Nerd Fonts
+  win_shell: |
+    scoop install {{ item }}
+  with_items:
+    - '{{ scoop_fonts }}'
+  when: ansible_os_family == "Windows"
+  ignore_errors: yes
+
+- name: Install Python packages via pip
+  win_shell: |
+    python -m pip install {{ item }}
+  with_items:
+    - '{{ pips }}'
+  when: ansible_os_family == "Windows"

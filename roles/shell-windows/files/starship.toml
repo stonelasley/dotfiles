@@ -1,0 +1,103 @@
+# Starship Prompt Configuration
+# Cross-platform alternative to Agnoster/Powerline themes
+# Docs: https://starship.rs/config/
+
+# Timeout for commands
+command_timeout = 500
+
+# Format string (customize your prompt here)
+format = """
+[┌─](bold green)$username$hostname$directory$git_branch$git_status$nodejs$rust$dotnet$python$golang
+[└─](bold green)$character"""
+
+# Disable the blank line at the start of the prompt
+add_newline = true
+
+[character]
+success_symbol = "[➜](bold green)"
+error_symbol = "[➜](bold red)"
+vicmd_symbol = "[V](bold green)"
+
+[username]
+style_user = "cyan bold"
+style_root = "red bold"
+format = "[$user]($style) "
+show_always = false
+
+[hostname]
+ssh_only = true
+format = "on [$hostname](bold yellow) "
+
+[directory]
+truncation_length = 3
+truncate_to_repo = true
+format = "in [$path]($style)[$read_only]($read_only_style) "
+style = "blue bold"
+read_only = " 🔒"
+
+[git_branch]
+symbol = " "
+format = "on [$symbol$branch]($style) "
+style = "purple bold"
+
+[git_status]
+format = '([\[$all_status$ahead_behind\]]($style) )'
+style = "red bold"
+conflicted = "🏳"
+ahead = "⇡${count}"
+behind = "⇣${count}"
+diverged = "⇕⇡${ahead_count}⇣${behind_count}"
+untracked = "?"
+stashed = "$"
+modified = "!"
+staged = '[++\($count\)](green)'
+renamed = "»"
+deleted = "✘"
+
+[nodejs]
+symbol = " "
+format = "via [$symbol($version )]($style)"
+style = "green bold"
+detect_extensions = ["js", "mjs", "cjs", "ts"]
+detect_files = ["package.json", ".node-version", ".nvmrc"]
+
+[rust]
+symbol = " "
+format = "via [$symbol($version )]($style)"
+style = "red bold"
+
+[python]
+symbol = " "
+format = 'via [${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
+style = "yellow bold"
+
+[golang]
+symbol = " "
+format = "via [$symbol($version )]($style)"
+style = "cyan bold"
+
+[dotnet]
+symbol = " "
+format = "via [$symbol($version )(🎯 $tfm )]($style)"
+style = "blue bold"
+detect_extensions = ["csproj", "fsproj", "xproj", "sln"]
+
+[cmd_duration]
+min_time = 500
+format = "took [$duration]($style) "
+style = "yellow bold"
+
+[time]
+disabled = true
+format = '🕙[\[ $time \]]($style) '
+time_format = "%T"
+
+# Disable modules you don't want
+[package]
+disabled = true
+
+[aws]
+disabled = true
+
+[gcloud]
+disabled = true

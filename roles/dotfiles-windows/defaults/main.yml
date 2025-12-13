@@ -1,0 +1,29 @@
+---
+# Windows dotfiles configuration
+# Note: Windows uses $env:USERPROFILE instead of ~
+# Neovim config location: $env:LOCALAPPDATA\nvim (not ~/.config/nvim)
+
+# Git configuration (cross-platform, works as-is)
+git_files:
+  - gitconfig
+  - gitignore
+
+# PowerShell profile and scripts
+# Location: $env:USERPROFILE\Documents\PowerShell\
+powershell_files:
+  - Microsoft.PowerShell_profile.ps1
+  - powershell/aliases.ps1
+  - powershell/functions.ps1
+  - powershell/env.ps1
+
+# Windows Terminal settings (if using Windows Terminal)
+# Location: $env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_*\LocalState\
+windows_terminal_settings:
+  - windows-terminal-settings.json
+
+# Note: These Unix-specific files are NOT applicable on Windows:
+# - bashrc, zshrc, zsh/ (use PowerShell instead)
+# - tmux.conf (no tmux on Windows, use Windows Terminal tabs)
+# - mutt/ (Windows email clients differ)
+# - Xdefaults (X11 specific)
+# - czrc (commitizen - can work if Node.js installed)
