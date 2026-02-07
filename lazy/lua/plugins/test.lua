@@ -1,8 +1,10 @@
 return {
-  { "nvim-neotest/neotest-plenary", "issafalcon/neotest-dotnet" },
-
+  { "nvim-neotest/neotest-plenary" },
   {
     "nvim-neotest/neotest",
-    opts = { adapters = { "neotest-plenary", "neotest-dotnet" } },
+    opts = { adapters = {
+      "neotest-plenary",
+      "neotest-dotnet",
+    } },
   },
 }
