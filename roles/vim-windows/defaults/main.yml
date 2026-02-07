@@ -1,0 +1,13 @@
+---
+# Windows Neovim Configuration
+# Note: Neovim binary is installed via Scoop in packages-windows role
+
+# Neovim config location on Windows
+nvim_config_path: "{{ ansible_env.LOCALAPPDATA }}\\nvim"
+
+# LazyVim source directory
+lazyvim_source: "{{ ansible_env.PWD }}\\lazy"
+
+# Additional directories needed
+local_bin: "{{ ansible_env.USERPROFILE }}\\.local\\bin"
+local_share: "{{ ansible_env.LOCALAPPDATA }}\\nvim-data"

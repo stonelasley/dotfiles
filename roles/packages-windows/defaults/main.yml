@@ -1,0 +1,83 @@
+---
+# Scoop buckets to add before installing packages
+scoop_buckets:
+  - extras               # Additional applications
+  - nerd-fonts          # Powerline/Nerd fonts
+  - versions            # Alternative versions of packages
+
+# Core Scoop packages (from main bucket)
+scoop_packages:
+  # Version Managers
+  - fnm                    # Fast Node Manager (cross-platform NVM alternative)
+  - rustup                 # Rust toolchain manager
+
+  # Core Development Tools
+  - git
+  - neovim
+  - ripgrep
+  - fzf
+  - curl
+  - sqlite
+  - lua
+  - luarocks
+  - go
+  - python
+
+  # Build Tools
+  - cmake
+  - ninja
+  - pkg-config
+  - make
+
+  # .NET SDK
+  - dotnet-sdk
+
+  # Shell & Terminal Enhancement
+  - pwsh                   # PowerShell 7+
+  - starship              # Cross-platform prompt (faster than oh-my-posh)
+  - zoxide                # Smarter cd command
+  - psfzf                 # PowerShell FZF wrapper
+
+  # CLI Utilities (modern replacements)
+  - gh                    # GitHub CLI
+  - delta                 # Better git diff viewer
+  - bat                   # Better cat with syntax highlighting
+  - eza                   # Better ls (exa successor)
+  - fd                    # Better find
+  - sd                    # Better sed
+  - dust                  # Better du
+  - bottom                # Better top/htop
+  - tokei                 # Code statistics
+
+  # Development Tools
+  - jq                    # JSON processor
+  - yq                    # YAML processor
+  - httpie                # Better curl for APIs
+  - lazygit               # Terminal UI for git
+
+  # Language Servers & Formatters
+  - stylua                # Lua formatter
+  - shellcheck            # Shell script linter
+  - tree-sitter           # Parser generator
+
+# Scoop extras bucket packages
+scoop_extras:
+  - vscode                # Visual Studio Code (optional)
+  - windows-terminal      # Modern terminal (if not on Windows 11)
+
+# Nerd Fonts (for terminal/Neovim)
+scoop_fonts:
+  - FiraCode-NF           # FiraCode Nerd Font
+  - Meslo-NF              # Meslo Nerd Font
+  - CascadiaCode-NF       # Cascadia Code Nerd Font
+
+# Python packages (via pip)
+pips:
+  - pynvim
+  - ansible-lint
+  - openai
+
+# Optional: Chocolatey packages (if user prefers choco for some packages)
+# Uncomment if you want to use Chocolatey alongside Scoop
+# choco_packages:
+#   - dotnet-sdk

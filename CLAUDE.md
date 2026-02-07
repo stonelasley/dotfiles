@@ -15,14 +15,11 @@ This is a personal dotfiles repository that manages development environment conf
 
 ### Testing and Formatting
 ```bash
-# Run Neovim tests with Plenary (runs nvim/tests/st1/ with minimal init)
-make test
-
 # Format Lua code using stylua (formats nvim/lua/ directory)
 make format
 
-# Run specific test file
-nvim --headless --noplugin -u nvim/tests/minimal_init.vim -c "PlenaryBustedFile nvim/tests/st1/utils/init_spec.lua {minimal_init = 'nvim/tests/minimal_init.vim'}"
+# Test configuration (runs test suite via plenary)
+make test
 ```
 
 ### Ansible Deployment
@@ -44,7 +41,7 @@ ansible-playbook main.yml --tags vim
 - **Core Config**: `lazy/lua/config/` - autocmds, keymaps, options
 - **Plugin Overrides**: `lazy/lua/plugins/` - custom plugin configurations that override LazyVim defaults
 - **Language Support**: Configured for TypeScript, Vue, with AI copilot integration
-- **Testing**: Uses plenary.nvim with minimal init at `nvim/tests/minimal_init.vim`
+- **Testing**: Testing framework available via Makefile commands
 
 ### Ansible Role Architecture
 - **Main Playbook**: `main.yml` orchestrates four core roles in order:
@@ -60,8 +57,9 @@ ansible-playbook main.yml --tags vim
 ### Neovim Plugin Development
 - Main config: `lazy/lua/config/lazy.lua`
 - Plugin customizations: `lazy/lua/plugins/`
-- Test location: `nvim/tests/st1/`
+- Key plugins: ChatGPT, Claude Code, Copilot, Copilot Chat, LSP config, Telescope
 - Stylua config: `lazy/stylua.toml` (2-space indents, 120 column width)
+- Language extras: TypeScript, Vue, OmniSharp (.NET), Test framework
 
 ### Adding New Packages
 - Update package lists in `roles/packages/defaults/main.yml`

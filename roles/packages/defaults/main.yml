@@ -69,3 +69,6 @@ pips:
   - qmk
   - ansible-lint[yamllint]
   - openai
+
+npms:
+  - "@anthropic-ai/claude-code"
