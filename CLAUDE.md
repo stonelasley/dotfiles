@@ -73,8 +73,9 @@ ansible-playbook main.yml --tags vim
 
 ## Research Output
 
-Save all research results (extract_wisdom, summaries, analysis, etc.) to `~/projects/notebooks/personal/research/` with the format:
-- **Filename**: `YYYY-MM-DD-{slug}.md` (e.g. `2026-02-07-dotnet-swagger-alternatives.md`)
+Save all research results (extract_wisdom, summaries, analysis, etc.) to `~/Projects/notebook/personal/research/<genre>/` with the format:
+- **Directory**: Organize by genre subdirectory (e.g. `tech/`, `health/`). Create new genre directories as needed.
+- **Filename**: `YYYY-MM-DD-{slug}.md` (e.g. `tech/2026-02-07-dotnet-swagger-alternatives.md`)
 - **Content**: Full pattern output in markdown
 - Always save after displaying results in the conversation
 
