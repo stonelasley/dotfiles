@@ -71,6 +71,13 @@ ansible-playbook main.yml --tags vim
 - Third-party dependencies in `.vendor/` as git submodules
 - ZSH plugins and extensions managed this way
 
+## Research Output
+
+Save all research results (extract_wisdom, summaries, analysis, etc.) to `~/projects/notebooks/personal/research/` with the format:
+- **Filename**: `YYYY-MM-DD-{slug}.md` (e.g. `2026-02-07-dotnet-swagger-alternatives.md`)
+- **Content**: Full pattern output in markdown
+- Always save after displaying results in the conversation
+
 ## Key Technologies
 
 - **LazyVim**: Neovim distribution with lazy loading and automatic plugin updates
