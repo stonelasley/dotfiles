@@ -3,6 +3,7 @@ packages:
   - ack
   - autoconf
   - automake
+  - azure-cli
   - build-essential
   - cmake
   - curl
@@ -31,14 +32,18 @@ packages:
 
 casks:
   - automake
+  - azure-cli
+  - claude-code
   - cmake
   - curl
   - dotnet-sdk
+  - fabric
   - gettext
   - gh
   - libtool
   - mutt
   - ninja
+  - oven-sh/bun/bun
   - pkg-config
   - npm
   - ripgrep
@@ -51,6 +56,8 @@ casks:
   - tmux
   - tmuxinator
   - shellcheck
+  - swiftbar
+  - yt-dlp
   - warp
 
 debs:
