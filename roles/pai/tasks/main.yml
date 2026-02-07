@@ -1,0 +1,91 @@
+---
+# Install Bun on Linux (macOS gets it via Homebrew in the packages role)
+- name: check if bun is installed
+  shell: command -v bun
+  register: bun_exists
+  ignore_errors: yes
+  tags: [pai, bun]
+
+- name: install bun on Linux
+  shell: curl -fsSL https://bun.sh/install | bash
+  args:
+    creates: "{{ ansible_env.HOME }}/.bun/bin/bun"
+  when:
+    - bun_exists is failed
+    - ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+  tags: [pai, bun]
+
+# Create the ~/.claude symlink pointing to the submodule
+- name: check if .claude is a real directory (not a symlink)
+  stat:
+    path: ~/.claude
+  register: claude_dir
+  tags: [pai]
+
+- name: remove auto-created .claude directory
+  file:
+    path: ~/.claude
+    state: absent
+  when: claude_dir.stat.exists and claude_dir.stat.isdir and not claude_dir.stat.islnk
+  tags: [pai]
+
+- name: link .claude directory
+  file:
+    src: "{{ ansible_env.PWD }}/.vendor/pai/.claude"
+    path: ~/.claude
+    state: link
+    force: true
+  tags: [pai]
+
+# Create .env from example if it doesn't exist
+- name: check if .env exists
+  stat:
+    path: "{{ ansible_env.PWD }}/.vendor/pai/.claude/.env"
+  register: pai_env
+  tags: [pai]
+
+- name: create .env from example
+  copy:
+    src: "{{ ansible_env.PWD }}/.vendor/pai/.claude/.env.example"
+    dest: "{{ ansible_env.PWD }}/.vendor/pai/.claude/.env"
+    mode: '0600'
+  when: not pai_env.stat.exists
+  tags: [pai]
+
+# Add upstream remote for /paiupdate to work
+- name: check if upstream remote exists
+  shell: cd {{ ansible_env.PWD }}/.vendor/pai && git remote get-url upstream
+  register: upstream_remote
+  ignore_errors: yes
+  tags: [pai]
+
+- name: add upstream PAI remote
+  shell: cd {{ ansible_env.PWD }}/.vendor/pai && git remote add upstream https://github.com/danielmiessler/PAI.git
+  when: upstream_remote is failed
+  tags: [pai]
+
+# Deploy user Claude settings (overrides PAI default)
+- name: link claude settings.json
+  file:
+    src: "{{ ansible_env.PWD }}/claude/settings.json"
+    path: "{{ ansible_env.PWD }}/.vendor/pai/.claude/settings.json"
+    state: link
+    force: true
+  tags: [pai]
+
+# Deploy custom Claude commands alongside PAI commands
+- name: find custom claude commands
+  find:
+    paths: "{{ ansible_env.PWD }}/claude/commands"
+    patterns: "*.md"
+  register: custom_commands
+  tags: [pai]
+
+- name: link custom claude commands
+  file:
+    src: "{{ item.path }}"
+    path: "{{ ansible_env.PWD }}/.vendor/pai/.claude/commands/{{ item.path | basename }}"
+    state: link
+    force: true
+  loop: "{{ custom_commands.files }}"
+  tags: [pai]

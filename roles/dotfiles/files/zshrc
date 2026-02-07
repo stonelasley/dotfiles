@@ -93,3 +93,13 @@ bindkey ^l _sgpt_zsh
 # Shell-GPT integration ZSH v0.1
 export DOTNET_ROOT="/usr/local/share/dotnet"
 export PATH="$HOME/.tmuxinator/bin:$PATH"
+
+# bun completions
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# PAI (Personal AI Infrastructure)
+[ -f "$HOME/.claude/zshrc-aliases" ] && source "$HOME/.claude/zshrc-aliases"

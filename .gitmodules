@@ -19,3 +19,6 @@
 [submodule ".vendor/zsh-codex"]
 	path = .vendor/zsh-codex
 	url = https://github.com/tom-doerr/zsh_codex.git
+[submodule ".vendor/pai"]
+	path = .vendor/pai
+	url = git@github.com:stonelasley/pai.git

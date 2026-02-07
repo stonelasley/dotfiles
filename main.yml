@@ -5,3 +5,4 @@
     - { role: dotfiles , tags: dotfiles }
     - { role: shell, tags: shell}
     - { role: vim, tags: vim }
+    - { role: pai, tags: pai }
