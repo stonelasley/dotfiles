@@ -26,6 +26,7 @@ alias j='$(fc -ln -1)'
 alias k='$(fc -ln -1)'
 alias cargo='nocorrect cargo'
 alias fabric='fabric-ai'
+alias install-mcp-serena='claude mcp add serena -- uvx --from git+https://github.com/oraios/serena serena start-mcp-server --context claude-code --project "$(pwd)"''
 
 #
 # Git aliases
