@@ -14,6 +14,28 @@ mux_attach_or_create() {
 }
 
 
+function ensure-az-devops() {
+  if ! az extension show --name azure-devops &>/dev/null; then
+    echo "Installing Azure DevOps CLI extension..."
+    az extension add --name azure-devops
+  fi
+}
+
+function azd() {
+  ensure-az-devops
+  command az devops "$@"
+}
+
+function azr() {
+  ensure-az-devops
+  command az repos "$@"
+}
+
+function azp() {
+  ensure-az-devops
+  command az pipelines "$@"
+}
+
 function lscolors() {
   print -rl -- $(ls ~/.st1/.vendor/chriskempson-base16-shell/scripts(:r))
-} 
+}
