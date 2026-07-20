@@ -13,13 +13,13 @@ This is a personal dotfiles repository that manages development environment conf
 
 ## Common Commands
 
-### Testing and Formatting
+### Formatting and Verification
 ```bash
-# Format Lua code using stylua (formats nvim/lua/ directory)
+# Format Lua code using stylua (formats lazy/lua/ directory)
 make format
 
-# Test configuration (runs test suite via plenary)
-make test
+# Verify: stylua --check, ansible-lint, and package-manifest schema check
+make verify
 ```
 
 ### Ansible Deployment
@@ -40,8 +40,7 @@ ansible-playbook main.yml --tags vim
 - **Entry Point**: `lazy/lua/config/lazy.lua` - bootstraps lazy.nvim and loads plugin specs
 - **Core Config**: `lazy/lua/config/` - autocmds, keymaps, options
 - **Plugin Overrides**: `lazy/lua/plugins/` - custom plugin configurations that override LazyVim defaults
-- **Language Support**: Configured for TypeScript, Vue, with AI copilot integration
-- **Testing**: Testing framework available via Makefile commands
+- **Language Support**: LazyVim extras are managed solely in `lazy/lazyvim.json` (via `:LazyExtras`) — TypeScript, Vue, .NET, JSON, test framework
 
 ### Ansible Role Architecture
 - **Main Playbook**: `main.yml` orchestrates four core roles in order:
@@ -49,8 +48,9 @@ ansible-playbook main.yml --tags vim
   2. `dotfiles` - manages configuration files
   3. `shell` - configures ZSH environment
   4. `vim` - sets up Neovim
-- **Package Management**: Centralized in `roles/packages/defaults/main.yml` with cross-platform package lists
+- **Package Management**: `packages.yml` at the repo root is the single manifest (tool → per-manager name for apt/brew/scoop/pip/npm), consumed by `roles/packages` and `windows-install.ps1`
 - **Dotfile Strategy**: Template-based deployment from `roles/dotfiles/files/`
+- **Windows**: `windows-install.ps1` is the Windows implementation (Scoop + symlinks, no Ansible); Windows shell files live in `windows/`
 
 ## Development Workflow
 
@@ -62,8 +62,10 @@ ansible-playbook main.yml --tags vim
 - Language extras: TypeScript, Vue, OmniSharp (.NET), Test framework
 
 ### Adding New Packages
-- Update package lists in `roles/packages/defaults/main.yml`
-- Separate lists for `packages` (apt), `casks` (homebrew), `debs` (direct downloads), `pips` (Python)
+- Add the tool to `packages.yml` with a per-manager name for each OS it belongs on, e.g. `ripgrep: { apt: ripgrep, brew: ripgrep, scoop: ripgrep }`
+- An absent manager key means "intentionally not installed via that manager"
+- Direct `.deb` downloads stay in `roles/packages/defaults/main.yml`; Scoop buckets/fonts stay in `windows-install.ps1`
+- `make verify` validates the manifest schema
 
 ### Git Submodule Management
 - Third-party dependencies in `.vendor/` as git submodules
