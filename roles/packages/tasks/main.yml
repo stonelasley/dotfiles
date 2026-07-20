@@ -1,4 +1,16 @@
 ---
+- name: load package manifest
+  include_vars:
+    file: '{{ playbook_dir }}/packages.yml'
+    name: manifest
+
+- name: derive per-manager package lists from manifest
+  set_fact:
+    apt_packages: "{{ manifest | dict2items | map(attribute='value') | selectattr('apt', 'defined') | map(attribute='apt') | list }}"
+    brew_packages: "{{ manifest | dict2items | map(attribute='value') | selectattr('brew', 'defined') | map(attribute='brew') | list }}"
+    pip_packages: "{{ manifest | dict2items | map(attribute='value') | selectattr('pip', 'defined') | map(attribute='pip') | list }}"
+    npm_packages: "{{ manifest | dict2items | map(attribute='value') | selectattr('npm', 'defined') | map(attribute='npm') | list }}"
+
 - name: install packages from file
   apt:
     deb: '{{ item }}'
@@ -8,25 +20,25 @@
     - '{{ debs }}'
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 
-- name: install packages
+- name: install apt packages
   apt:
-    name: '{{ packages }}'
+    name: '{{ apt_packages }}'
     update_cache: true
     state: present
   become: true
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 
-- name: install casks
+- name: install brew packages
   shell:
   args:
     cmd: 'brew install {{ item }}'
   with_items:
-    - '{{ casks }}'
+    - '{{ brew_packages }}'
   when: ansible_distribution == 'MacOSX'
 
 - name: Install PyPi packages
   pip:
-    name: '{{ pips }}'
+    name: '{{ pip_packages }}'
     executable: pip3
 
 - name: Install NVM
@@ -51,4 +63,4 @@
   args:
     executable: /bin/bash
   with_items:
-    - '{{ npms }}'
+    - '{{ npm_packages }}'

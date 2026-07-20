@@ -1,0 +1,95 @@
+---
+# Package manifest — the single interface for "what does my environment contain".
+#
+#   tool: { apt: <name>, brew: <name>, scoop: <name>, pip: <name>, npm: <name> }
+#
+# An absent manager key means the tool is intentionally not installed via that
+# manager / on that OS. Consumed by roles/packages (apt, brew, pip, npm) and
+# windows-install.ps1 (scoop, pip, npm). Validated by scripts/check-manifest.py.
+
+# Editors, shells, multiplexers
+neovim: { scoop: neovim } # Linux/macOS build from source in roles/vim
+tmux: { apt: tmux, brew: tmux }
+tmuxinator: { apt: tmuxinator, brew: tmuxinator }
+zsh: { apt: zsh }
+pwsh: { scoop: pwsh }
+starship: { scoop: starship }
+zoxide: { scoop: zoxide }
+psfzf: { scoop: psfzf }
+
+# Languages & toolchains
+go: { apt: golang-go, scoop: go }
+lua: { scoop: lua }
+luarocks: { apt: luarocks, brew: luarocks, scoop: luarocks }
+python: { scoop: python }
+python3-pip: { apt: python3-pip }
+rustup: { brew: rustup, scoop: rustup } # Linux via roles/shell rustup.sh
+fnm: { scoop: fnm } # Linux/macOS use NVM (roles/packages)
+bun: { brew: oven-sh/bun/bun }
+dotnet-sdk: { apt: dotnet-sdk-8.0, brew: dotnet-sdk, scoop: dotnet-sdk }
+dotnet-sdk-6.0: { apt: dotnet-sdk-6.0 }
+dotnet-sdk-7.0: { apt: dotnet-sdk-7.0 }
+
+# Build tools
+autoconf: { apt: autoconf }
+automake: { apt: automake, brew: automake }
+build-essential: { apt: build-essential }
+cmake: { apt: cmake, brew: cmake, scoop: cmake }
+g++: { apt: g++ }
+gettext: { apt: gettext, brew: gettext }
+libreadline-dev: { apt: libreadline-dev }
+libsqlite3-dev: { apt: libsqlite3-dev }
+libtool: { apt: libtool, brew: libtool }
+libtool-bin: { apt: libtool-bin }
+make: { scoop: make }
+ninja: { apt: ninja-build, brew: ninja, scoop: ninja }
+pkg-config: { apt: pkg-config, brew: pkg-config, scoop: pkg-config }
+
+# CLI tools
+ack: { apt: ack }
+ag: { apt: silversearcher-ag }
+azure-cli: { apt: azure-cli, brew: azure-cli }
+bat: { scoop: bat }
+bottom: { scoop: bottom }
+curl: { apt: curl, brew: curl, scoop: curl }
+delta: { scoop: delta }
+dust: { scoop: dust }
+eza: { scoop: eza }
+fd: { scoop: fd }
+fzf: { scoop: fzf } # Linux/macOS via roles/shell git clone
+gh: { brew: gh, scoop: gh } # Linux via deb (roles/packages defaults)
+git: { scoop: git }
+httpie: { scoop: httpie }
+jq: { scoop: jq }
+lazygit: { scoop: lazygit }
+mutt: { apt: mutt, brew: mutt }
+ripgrep: { apt: ripgrep, brew: ripgrep, scoop: ripgrep }
+sd: { scoop: sd }
+sqlite: { apt: sqlite3, brew: sqlite3, scoop: sqlite }
+tealdeer: { brew: tealdeer }
+tokei: { scoop: tokei }
+unzip: { apt: unzip }
+yq: { scoop: yq }
+yt-dlp: { brew: yt-dlp }
+
+# Dev / formatting / linting
+shellcheck: { brew: shellcheck, scoop: shellcheck }
+stylua: { brew: stylua, scoop: stylua }
+tree-sitter: { brew: tree-sitter, scoop: tree-sitter }
+
+# GUI / macOS
+swiftbar: { brew: swiftbar }
+warp: { brew: warp }
+
+# AI tooling
+claude-code: { brew: claude-code, npm: "@anthropic-ai/claude-code" }
+fabric: { brew: fabric }
+
+# Python packages
+ansible-lint: { pip: "ansible-lint[yamllint]" }
+openai: { pip: openai }
+pynvim: { pip: pynvim }
+qmk: { pip: qmk }
+
+# Node packages (installed via NVM on Linux/macOS, fnm on Windows)
+npm: { brew: npm }
