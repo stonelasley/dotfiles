@@ -163,7 +163,7 @@ New-Item -ItemType SymbolicLink -Path "$env:USERPROFILE\.gitconfig" -Target "$do
 New-Item -ItemType SymbolicLink -Path "$env:USERPROFILE\.gitignore" -Target "$dotfiles\roles\dotfiles\files\gitignore" -Force
 
 # Link PowerShell profile
-New-Item -ItemType SymbolicLink -Path $PROFILE -Target "$dotfiles\roles\dotfiles-windows\files\Microsoft.PowerShell_profile.ps1" -Force
+New-Item -ItemType SymbolicLink -Path $PROFILE -Target "$dotfiles\windows\Microsoft.PowerShell_profile.ps1" -Force
 
 # Link Neovim config
 New-Item -ItemType SymbolicLink -Path "$env:LOCALAPPDATA\nvim" -Target "$dotfiles\lazy" -Force
@@ -331,9 +331,9 @@ nvim $env:LOCALAPPDATA\nvim\lua\plugins\
 
 ### Adding Scoop Packages
 
-Edit the package list:
+Edit the shared package manifest (add a `scoop:` entry for the tool):
 ```powershell
-nvim .\roles\packages-windows\defaults\main.yml
+nvim .\packages.yml
 ```
 
 Then reinstall:
