@@ -20,8 +20,8 @@
 # Install Bun on Linux (macOS gets it via Homebrew in the packages role)
 - name: check if bun is installed
   shell: command -v bun
-  register: bun_exists
-  ignore_errors: yes
+  register: lifeos_bun_exists
+  ignore_errors: true
   changed_when: false
   tags: [lifeos, pai, bun]
 
@@ -30,7 +30,7 @@
   args:
     creates: "{{ ansible_env.HOME }}/.bun/bin/bun"
   when:
-    - bun_exists is failed
+    - lifeos_bun_exists is failed
     - ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
   tags: [lifeos, pai, bun]
 
@@ -40,7 +40,7 @@
 - name: stat config root
   stat:
     path: "{{ lifeos_config_root }}"
-  register: config_root_stat
+  register: lifeos_config_root_stat
   tags: [lifeos, pai]
 
 - name: fail if config root is still a pre-7.x symlink
@@ -49,7 +49,7 @@
       {{ lifeos_config_root }} is a symlink (legacy PAI layout). LifeOS 7.x needs
       a real directory. Move the live state out of the submodule first:
       rm {{ lifeos_config_root }} && mv .vendor/pai/.claude {{ lifeos_config_root }}
-  when: config_root_stat.stat.exists and config_root_stat.stat.islnk
+  when: lifeos_config_root_stat.stat.exists and lifeos_config_root_stat.stat.islnk
   tags: [lifeos, pai]
 
 # Core: skill library + LIFEOS runtime + dependencies
@@ -57,9 +57,9 @@
   command: bun Tools/DeployCore.ts --apply
   args:
     chdir: "{{ lifeos_payload }}"
-  register: deploy_core
-  changed_when: (deploy_core.stdout | from_json).skillsCopied | int > 0
-    or (deploy_core.stdout | from_json).runtimeCopied | int > 0
+  register: lifeos_deploy_core
+  changed_when: (lifeos_deploy_core.stdout | from_json).skillsCopied | int > 0
+    or (lifeos_deploy_core.stdout | from_json).runtimeCopied | int > 0
   tags: [lifeos, pai]
 
 # Personal tree, kept outside this repo at ~/.config/LIFEOS/USER
@@ -67,16 +67,16 @@
   command: bun Tools/ScaffoldUser.ts --apply
   args:
     chdir: "{{ lifeos_payload }}"
-  register: scaffold_user
-  changed_when: (scaffold_user.stdout | from_json).copied | int > 0
+  register: lifeos_scaffold_user
+  changed_when: (lifeos_scaffold_user.stdout | from_json).copied | int > 0
   tags: [lifeos, pai]
 
 - name: link user tree into config root
   command: bun Tools/LinkUser.ts --apply
   args:
     chdir: "{{ lifeos_payload }}"
-  register: link_user
-  changed_when: (link_user.stdout | from_json).action != 'already-linked'
+  register: lifeos_link_user
+  changed_when: (lifeos_link_user.stdout | from_json).action != 'already-linked'
   tags: [lifeos, pai]
 
 # Routing table. copy/force=no so a customised CLAUDE.md is never clobbered.
@@ -84,7 +84,7 @@
   copy:
     src: "{{ lifeos_payload }}/install/CLAUDE.template.md"
     dest: "{{ lifeos_config_root }}/CLAUDE.md"
-    force: no
+    force: false
     mode: '0644'
   tags: [lifeos, pai]
 
@@ -93,8 +93,8 @@
   command: bun Tools/ActivateImports.ts --apply
   args:
     chdir: "{{ lifeos_payload }}"
-  register: activate_imports
-  changed_when: (activate_imports.stdout | from_json).activated | length > 0
+  register: lifeos_activate_imports
+  changed_when: (lifeos_activate_imports.stdout | from_json).activated | length > 0
   tags: [lifeos, pai]
 
 # Merges the hook set into settings.json, backing it up first. This is what
@@ -106,8 +106,8 @@
   command: bun Tools/InstallHooks.ts --apply
   args:
     chdir: "{{ lifeos_payload }}"
-  register: install_hooks
-  changed_when: (install_hooks.stdout | from_json).added | int > 0
+  register: lifeos_install_hooks
+  changed_when: (lifeos_install_hooks.stdout | from_json).added | int > 0
   tags: [lifeos, pai]
 
 # Custom slash commands layered alongside the LifeOS ones
@@ -115,7 +115,7 @@
   find:
     paths: "{{ ansible_env.PWD }}/claude/commands"
     patterns: "*.md"
-  register: custom_commands
+  register: lifeos_custom_commands
   tags: [lifeos, pai]
 
 - name: link custom claude commands
@@ -124,5 +124,5 @@
     path: "{{ lifeos_config_root }}/commands/{{ item.path | basename }}"
     state: link
     force: true
-  loop: "{{ custom_commands.files }}"
+  loop: "{{ lifeos_custom_commands.files }}"
   tags: [lifeos, pai]
