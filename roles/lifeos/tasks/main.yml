@@ -1,0 +1,128 @@
+---
+# LifeOS (formerly PAI).
+#
+# Upstream renamed danielmiessler/PAI -> danielmiessler/LifeOS and rearchitected
+# the install in 7.x. The vendored repo no longer ships a `.claude` tree, so the
+# old "symlink ~/.claude at the submodule" model is gone. Instead the payload's
+# bun tools COPY the skill library and LIFEOS runtime into the harness config
+# root. Every tool is dry-run by default and additive on --apply: existing files
+# are never overwritten, which is what makes this role safe to re-run.
+#
+# Personal content lives in ~/.config/LIFEOS/USER (scaffolded, then linked into
+# the config root) and is deliberately outside this repo.
+
+- name: set lifeos facts
+  set_fact:
+    lifeos_payload: "{{ ansible_env.PWD }}/.vendor/pai/LifeOS"
+    lifeos_config_root: "{{ ansible_env.HOME }}/.claude"
+  tags: [lifeos, pai]
+
+# Install Bun on Linux (macOS gets it via Homebrew in the packages role)
+- name: check if bun is installed
+  shell: command -v bun
+  register: bun_exists
+  ignore_errors: yes
+  changed_when: false
+  tags: [lifeos, pai, bun]
+
+- name: install bun on Linux
+  shell: curl -fsSL https://bun.sh/install | bash
+  args:
+    creates: "{{ ansible_env.HOME }}/.bun/bin/bun"
+  when:
+    - bun_exists is failed
+    - ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+  tags: [lifeos, pai, bun]
+
+# Guard: pre-7.x installs symlinked ~/.claude into the submodule. The installer
+# would then write the runtime back into the vendor tree. Fail loudly rather
+# than corrupt it — migrating holds live session data and must be done by hand.
+- name: stat config root
+  stat:
+    path: "{{ lifeos_config_root }}"
+  register: config_root_stat
+  tags: [lifeos, pai]
+
+- name: fail if config root is still a pre-7.x symlink
+  fail:
+    msg: >-
+      {{ lifeos_config_root }} is a symlink (legacy PAI layout). LifeOS 7.x needs
+      a real directory. Move the live state out of the submodule first:
+      rm {{ lifeos_config_root }} && mv .vendor/pai/.claude {{ lifeos_config_root }}
+  when: config_root_stat.stat.exists and config_root_stat.stat.islnk
+  tags: [lifeos, pai]
+
+# Core: skill library + LIFEOS runtime + dependencies
+- name: deploy lifeos core
+  command: bun Tools/DeployCore.ts --apply
+  args:
+    chdir: "{{ lifeos_payload }}"
+  register: deploy_core
+  changed_when: (deploy_core.stdout | from_json).skillsCopied | int > 0
+    or (deploy_core.stdout | from_json).runtimeCopied | int > 0
+  tags: [lifeos, pai]
+
+# Personal tree, kept outside this repo at ~/.config/LIFEOS/USER
+- name: scaffold user tree
+  command: bun Tools/ScaffoldUser.ts --apply
+  args:
+    chdir: "{{ lifeos_payload }}"
+  register: scaffold_user
+  changed_when: (scaffold_user.stdout | from_json).copied | int > 0
+  tags: [lifeos, pai]
+
+- name: link user tree into config root
+  command: bun Tools/LinkUser.ts --apply
+  args:
+    chdir: "{{ lifeos_payload }}"
+  register: link_user
+  changed_when: (link_user.stdout | from_json).action != 'already-linked'
+  tags: [lifeos, pai]
+
+# Routing table. copy/force=no so a customised CLAUDE.md is never clobbered.
+- name: install claude.md routing table
+  copy:
+    src: "{{ lifeos_payload }}/install/CLAUDE.template.md"
+    dest: "{{ lifeos_config_root }}/CLAUDE.md"
+    force: no
+    mode: '0644'
+  tags: [lifeos, pai]
+
+# Uncomments the identity @-imports, each guarded by existsSync of its target
+- name: activate identity imports
+  command: bun Tools/ActivateImports.ts --apply
+  args:
+    chdir: "{{ lifeos_payload }}"
+  register: activate_imports
+  changed_when: (activate_imports.stdout | from_json).activated | length > 0
+  tags: [lifeos, pai]
+
+# Merges the hook set into settings.json, backing it up first. This is what
+# lights up the always-on behaviour (response format, memory loop, context
+# injection). Note we no longer symlink this repo's claude/settings.json over
+# it — that file is stale PAI-era config and would clobber live harness
+# settings (enabled plugins, marketplaces, TUI prefs).
+- name: install hooks
+  command: bun Tools/InstallHooks.ts --apply
+  args:
+    chdir: "{{ lifeos_payload }}"
+  register: install_hooks
+  changed_when: (install_hooks.stdout | from_json).added | int > 0
+  tags: [lifeos, pai]
+
+# Custom slash commands layered alongside the LifeOS ones
+- name: find custom claude commands
+  find:
+    paths: "{{ ansible_env.PWD }}/claude/commands"
+    patterns: "*.md"
+  register: custom_commands
+  tags: [lifeos, pai]
+
+- name: link custom claude commands
+  file:
+    src: "{{ item.path }}"
+    path: "{{ lifeos_config_root }}/commands/{{ item.path | basename }}"
+    state: link
+    force: true
+  loop: "{{ custom_commands.files }}"
+  tags: [lifeos, pai]

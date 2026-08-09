@@ -29,6 +29,13 @@ alias fabric='fabric-ai'
 alias install-mcp-serena='claude mcp add serena -- uvx --from git+https://github.com/oraios/serena serena start-mcp-server --context claude-code --project "$(pwd)"'
 
 #
+# LifeOS
+#
+# Launches Claude with the LifeOS constitution appended to the system prompt.
+# Plain `claude` stays vanilla — LifeOS is opt-in per launch.
+alias lifeos='bun $HOME/.claude/LIFEOS/TOOLS/lifeos.ts -s $HOME/.claude/LIFEOS/LIFEOS_SYSTEM_PROMPT.md'
+
+#
 # Git aliases
 #
 alias gcz='git cz'
