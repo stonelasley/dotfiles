@@ -5,3 +5,7 @@ vscode
 .base16.previous
 packer_compiled.lua
 lvim/ignore
+
+#Agents
+.claude/worktrees
+.claude/settings.local.json
