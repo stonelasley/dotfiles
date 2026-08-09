@@ -1,5 +1,5 @@
 ---
-dotfile_files:
+dotfiles_files:
   - bashrc
   - zshrc
   - zsh
@@ -10,7 +10,7 @@ dotfile_files:
   - mutt
   - Xdefaults
 
-config_files:
+dotfiles_config_files:
   - config/tmuxinator
 
 

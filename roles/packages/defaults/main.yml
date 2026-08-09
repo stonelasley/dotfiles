@@ -1,6 +1,6 @@
 ---
 # Direct .deb downloads (version-pinned URLs, Debian/Ubuntu only).
 # Everything else lives in the package manifest: packages.yml at the repo root.
-debs:
+packages_debs:
   - https://packages.microsoft.com/config/ubuntu/22.04/packages-microsoft-prod.deb
   - https://github.com/cli/cli/releases/download/v2.52.0/gh_2.52.0_linux_amd64.deb

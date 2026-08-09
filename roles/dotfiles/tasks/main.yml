@@ -10,14 +10,14 @@
         path=~/.{{ item }}
         state=link
         force=true
-  with_items: '{{dotfile_files}}'
+  with_items: '{{dotfiles_files}}'
 
 - name: link config files
   file: src={{ ansible_env.PWD }}/roles/dotfiles/files/{{ item }}
         path=~/.{{ item }}
         state=link
         force=true
-  with_items: '{{config_files}}'
+  with_items: '{{dotfiles_config_files}}'
 
 - name: link zsh dir
   file: src={{ ansible_env.PWD }}/zsh/

@@ -33,7 +33,7 @@
 - name: test oh-my-zsh installed
   stat:
     path: ~/.oh-my-zsh
-  register: oh_my_zsh
+  register: shell_oh_my_zsh
   tags: [zsh]
 
 - name: download oh-my-zsh
@@ -41,7 +41,7 @@
     url: https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh
     dest: /tmp/oh-my-zsh.sh
     mode: u+x
-  when: not oh_my_zsh.stat.exists
+  when: not shell_oh_my_zsh.stat.exists
   tags: [zsh]
 
 - name: install oh-my-zsh
@@ -49,7 +49,7 @@
   args:
     cmd: ./oh-my-zsh.sh
     chdir: /tmp
-  when: not oh_my_zsh.stat.exists
+  when: not shell_oh_my_zsh.stat.exists
   tags: [zsh]
 
 - name: cleanup
@@ -70,11 +70,11 @@
 
 - name: check if cargo is installed
   shell: command -v cargo
-  register: cargo_exists
+  register: shell_cargo_exists
   ignore_errors: yes
 
 - name: Download Installer
-  when: cargo_exists is failed
+  when: shell_cargo_exists is failed
   get_url:
     url: https://sh.rustup.rs
     dest: /tmp/sh.rustup.rs
@@ -84,7 +84,7 @@
     - rust
 
 - name: install rust/cargo
-  when: cargo_exists is failed
+  when: shell_cargo_exists is failed
   shell: /tmp/sh.rustup.rs -y
   tags:
     - rust

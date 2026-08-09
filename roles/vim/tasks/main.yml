@@ -30,7 +30,7 @@
 - name: test neovim cloned
   stat:
     path: /opt/neovim
-  register: neovim
+  register: vim_neovim
   become: true
   tags: [neovim]
 
