@@ -1,4 +1,4 @@
-#!/usr/bin/env pwsh
+﻿#!/usr/bin/env pwsh
 # Windows Dotfiles Installation Script
 # This script sets up your development environment on Windows
 # Run this in PowerShell 5.1+ or PowerShell 7+
@@ -115,6 +115,23 @@ $dotfilesDir = Split-Path -Parent $MyInvocation.MyCommand.Path
 Write-Host "Dotfiles directory: $dotfilesDir`n"
 
 # ============================================
+# Load the package manifest
+# ============================================
+# packages.yml is the single source of truth for what gets installed,
+# shared with the Ansible roles on Linux/macOS.
+
+if (-not (Get-Module -ListAvailable -Name powershell-yaml)) {
+    Write-Step "Installing powershell-yaml module (needed to read packages.yml)"
+    Install-Module -Name powershell-yaml -Scope CurrentUser -Force -SkipPublisherCheck
+}
+Import-Module powershell-yaml
+
+$manifest = ConvertFrom-Yaml (Get-Content "$dotfilesDir\packages.yml" -Raw)
+$scoopPackages = @($manifest.Values | Where-Object { $_.scoop } | ForEach-Object { $_.scoop })
+$pipPackages   = @($manifest.Values | Where-Object { $_.pip }   | ForEach-Object { $_.pip })
+$npmPackages   = @($manifest.Values | Where-Object { $_.npm }   | ForEach-Object { $_.npm })
+
+# ============================================
 # Step 1: Install Scoop and Git
 # ============================================
 
@@ -138,38 +155,9 @@ if (-not $SkipPackages) {
     }
     Write-Success "Buckets added"
 
-    # Core packages
+    # Core packages (from packages.yml)
     Write-Host "`nInstalling core packages..."
-    $packages = @(
-        'fnm',              # Fast Node Manager
-        'rustup',           # Rust toolchain
-        'neovim',           # Neovim editor
-        'ripgrep',          # Better grep
-        'fzf',              # Fuzzy finder
-        'curl',             # HTTP client
-        'sqlite',           # Database
-        'lua',              # Lua language
-        'luarocks',         # Lua package manager
-        'go',               # Go language
-        'python',           # Python language
-        'cmake',            # Build system
-        'ninja',            # Build tool
-        'make',             # Build tool
-        'dotnet-sdk',       # .NET SDK
-        'pwsh',             # PowerShell 7+
-        'starship',         # Prompt
-        'zoxide',           # Better cd
-        'gh',               # GitHub CLI
-        'delta',            # Better git diff
-        'bat',              # Better cat
-        'eza',              # Better ls
-        'fd',               # Better find
-        'jq',               # JSON processor
-        'stylua',           # Lua formatter
-        'tree-sitter'       # Parser generator
-    )
-
-    foreach ($package in $packages) {
+    foreach ($package in $scoopPackages) {
         if (scoop list $package 2>$null) {
             Write-Host "  ✓ $package (already installed)" -ForegroundColor Gray
         } else {
@@ -200,10 +188,9 @@ if (-not $SkipPackages) {
         }
     }
 
-    # Install Python packages
+    # Install Python packages (from packages.yml)
     Write-Host "`nInstalling Python packages..."
-    $pips = @('pynvim', 'ansible-lint', 'openai')
-    foreach ($pip in $pips) {
+    foreach ($pip in $pipPackages) {
         Write-Host "  Installing $pip..." -NoNewline
         python -m pip install $pip --quiet 2>&1 | Out-Null
         if ($LASTEXITCODE -eq 0) {
@@ -279,7 +266,7 @@ if (-not $SkipDotfiles) {
 
     # Link PowerShell profile
     Write-Host "`nLinking PowerShell profile..."
-    $profileSource = "$dotfilesDir\roles\dotfiles-windows\files\Microsoft.PowerShell_profile.ps1"
+    $profileSource = "$dotfilesDir\windows\Microsoft.PowerShell_profile.ps1"
     $profileTarget = $PROFILE
 
     if (Test-Path $profileSource) {
@@ -301,7 +288,7 @@ if (-not $SkipDotfiles) {
 
     # Link PowerShell modules
     Write-Host "`nLinking PowerShell modules..."
-    $modulesSource = "$dotfilesDir\roles\dotfiles-windows\files\powershell"
+    $modulesSource = "$dotfilesDir\windows\powershell"
     $modulesTarget = "$docsDir\powershell"
 
     if (Test-Path $modulesSource) {
@@ -316,7 +303,7 @@ if (-not $SkipDotfiles) {
 
     # Link Starship config
     Write-Host "`nLinking Starship configuration..."
-    $starshipSource = "$dotfilesDir\roles\shell-windows\files\starship.toml"
+    $starshipSource = "$dotfilesDir\windows\starship.toml"
     $starshipTarget = "$env:USERPROFILE\.config\starship.toml"
 
     if (Test-Path $starshipSource) {
@@ -387,6 +374,20 @@ if (-not $SkipShell) {
         fnm install --lts 2>&1 | Out-Null
         fnm default lts-latest 2>&1 | Out-Null
         Write-Host " ✓" -ForegroundColor Green
+
+        # Install global npm packages (from packages.yml)
+        fnm env --use-on-cd | Out-String | Invoke-Expression
+        if (Get-Command npm -ErrorAction SilentlyContinue) {
+            foreach ($npmPackage in $npmPackages) {
+                Write-Host "  Installing npm package $npmPackage..." -NoNewline
+                npm install -g $npmPackage 2>&1 | Out-Null
+                if ($LASTEXITCODE -eq 0) {
+                    Write-Host " ✓" -ForegroundColor Green
+                } else {
+                    Write-Host " ⚠" -ForegroundColor Yellow
+                }
+            }
+        }
     }
 
     # Initialize Rust

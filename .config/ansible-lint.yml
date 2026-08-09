@@ -1,0 +1,25 @@
+# Legacy style rules demoted to warnings so `make verify` fails only on
+# real problems. Tighten by removing entries as the roles get cleaned up.
+warn_list:
+  - command-instead-of-module
+  - command-instead-of-shell
+  - fqcn-builtins
+  - git-latest
+  - no-changed-when
+  - risky-shell-pipe
+  - var-spacing
+  - yaml
+  - name[missing]
+  - name[casing]
+  - no-free-form
+  - key-order
+  - jinja[spacing]
+  - risky-file-permissions
+  - deprecated-local-action
+  - schema
+  - role-name
+  - args
+  - ignore-errors
+  - latest[git]
+  - package-latest
+  - partial-become
