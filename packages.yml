@@ -88,6 +88,7 @@ fabric: { brew: fabric }
 # Python packages
 ansible-lint: { pip: "ansible-lint[yamllint]" }
 openai: { pip: openai }
+pyyaml: { pip: PyYAML } # required by scripts/check-manifest.py (make verify)
 pynvim: { pip: pynvim }
 qmk: { pip: qmk }
 
