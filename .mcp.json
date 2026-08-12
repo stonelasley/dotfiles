@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "hevy": {
+      "command": "node",
+      "args": ["${HOME}/Projects/st1/hevy-mcp/dist/index.js"],
+      "env": {
+        "HEVY_API_KEY": "${HEVY_API_KEY}"
+      }
+    }
+  }
+}
