@@ -8,13 +8,19 @@
 # root. Every tool is dry-run by default and additive on --apply: existing files
 # are never overwritten, which is what makes this role safe to re-run.
 #
-# Personal content lives in ~/.config/LIFEOS/USER (scaffolded, then linked into
-# the config root) and is deliberately outside this repo.
+# Personal content lives in the private notebook repo (scaffolded, then linked
+# into the config root) and is deliberately outside this repo. See
+# lifeos_config_dir below.
 
 - name: set lifeos facts
   set_fact:
     lifeos_payload: "{{ ansible_env.PWD }}/.vendor/pai/LifeOS"
     lifeos_config_root: "{{ ansible_env.HOME }}/.claude"
+    # 2026-08-13: the USER tree moved out of ~/.config/LIFEOS and into the
+    # private notebook repo, so personal content rides one repo instead of
+    # needing its own sync. Both payload tools take --config-dir, so this is
+    # the supported relocation, not a symlink hack.
+    lifeos_config_dir: "{{ ansible_env.HOME }}/Projects/notebook/lifeos"
   tags: [lifeos, pai]
 
 # Install Bun on Linux (macOS gets it via Homebrew in the packages role)
@@ -62,9 +68,9 @@
     or (lifeos_deploy_core.stdout | from_json).runtimeCopied | int > 0
   tags: [lifeos, pai]
 
-# Personal tree, kept outside this repo at ~/.config/LIFEOS/USER
+# Personal tree, kept outside this repo at {{ lifeos_config_dir }}/USER
 - name: scaffold user tree
-  command: bun Tools/ScaffoldUser.ts --apply
+  command: bun Tools/ScaffoldUser.ts --apply --config-dir {{ lifeos_config_dir }}
   args:
     chdir: "{{ lifeos_payload }}"
   register: lifeos_scaffold_user
@@ -72,7 +78,7 @@
   tags: [lifeos, pai]
 
 - name: link user tree into config root
-  command: bun Tools/LinkUser.ts --apply
+  command: bun Tools/LinkUser.ts --apply --config-dir {{ lifeos_config_dir }}
   args:
     chdir: "{{ lifeos_payload }}"
   register: lifeos_link_user
