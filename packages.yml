@@ -48,6 +48,7 @@ pkg-config: { apt: pkg-config, brew: pkg-config, scoop: pkg-config }
 # CLI tools
 ack: { apt: ack }
 ag: { apt: silversearcher-ag }
+age: { apt: age, brew: age, scoop: age } # decrypts ~/.claude/.env from the notebook repo
 azure-cli: { apt: azure-cli, brew: azure-cli }
 bat: { scoop: bat }
 bottom: { scoop: bottom }

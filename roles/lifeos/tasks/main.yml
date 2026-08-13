@@ -113,6 +113,40 @@
   changed_when: (lifeos_link_user.stdout | from_json).action != 'already-linked'
   tags: [lifeos, pai]
 
+# Secrets: one age-encrypted blob lives in the notebook repo, encrypted TO the
+# same ed25519 SSH key that clones it, so a new machine needs no extra key
+# material. Nothing to paste, nothing to remember.
+#
+# To rotate or add a key, edit ~/.claude/.env then re-encrypt:
+#   age -R ~/.ssh/id_ed25519.pub \
+#       -o ~/Projects/notebook/lifeos/secrets/env.age ~/.claude/.env
+#
+# `creates:` makes the decrypt a no-op once ~/.claude/.env exists, so a live env
+# file is never clobbered. Delete it to force a fresh pull from the repo.
+- name: stat encrypted lifeos env
+  stat:
+    path: "{{ lifeos_config_dir }}/secrets/env.age"
+  register: lifeos_env_age
+  tags: [lifeos, pai]
+
+- name: decrypt lifeos env
+  command: >-
+    age -d -i {{ ansible_env.HOME }}/.ssh/id_ed25519
+    -o {{ lifeos_config_root }}/.env
+    {{ lifeos_config_dir }}/secrets/env.age
+  args:
+    creates: "{{ lifeos_config_root }}/.env"
+  when: lifeos_env_age.stat.exists
+  tags: [lifeos, pai]
+
+- name: restrict lifeos env permissions
+  file:
+    path: "{{ lifeos_config_root }}/.env"
+    state: file
+    mode: '0600'
+  when: lifeos_env_age.stat.exists
+  tags: [lifeos, pai]
+
 # Routing table. copy/force=no so a customised CLAUDE.md is never clobbered.
 - name: install claude.md routing table
   copy:
