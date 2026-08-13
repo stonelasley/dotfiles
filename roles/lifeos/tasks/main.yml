@@ -58,6 +58,34 @@
   when: lifeos_config_root_stat.stat.exists and lifeos_config_root_stat.stat.islnk
   tags: [lifeos, pai]
 
+# Three MEMORY subdirs are durable personal content and ride the notebook repo
+# alongside USER: KNOWLEDGE, LEARNING, WORK. STATE deliberately stays local --
+# it holds healthsync OAuth tokens. OBSERVABILITY, VOICE and SKILLS are
+# machine-local telemetry and stay local too.
+#
+# This MUST run before DeployCore. Its scaffoldMemory() creates these as real
+# directories when missing, and ansible's file module cannot convert a directory
+# into a symlink. Linking first makes the scaffold a no-op. A dangling link is
+# fine here: it just means the notebook repo has not been cloned yet.
+- name: ensure memory root exists
+  file:
+    path: "{{ lifeos_config_root }}/LIFEOS/MEMORY"
+    state: directory
+    mode: '0755'
+  tags: [lifeos, pai]
+
+- name: link durable memory subdirs into config root
+  file:
+    src: "{{ lifeos_config_dir }}/MEMORY/{{ item }}"
+    path: "{{ lifeos_config_root }}/LIFEOS/MEMORY/{{ item }}"
+    state: link
+    force: true
+  loop:
+    - KNOWLEDGE
+    - LEARNING
+    - WORK
+  tags: [lifeos, pai]
+
 # Core: skill library + LIFEOS runtime + dependencies
 - name: deploy lifeos core
   command: bun Tools/DeployCore.ts --apply
