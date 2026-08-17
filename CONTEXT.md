@@ -17,6 +17,9 @@ should use these terms.
   implementation (no Ansible; see ADR-0001). Windows shell files live in
   `windows/` (PowerShell profile + modules, starship config), mirroring how
   `zsh/` holds the Unix shell files.
+- **Skill layer** — `claude/skills/` and `claude/commands/`, the repo's own additions to the
+  vendored LifeOS assistant library. Linked (not copied) into `~/.claude/` by the `lifeos`
+  role, so an edit here is live in the next session without re-running Ansible.
 - **Verify interface** — `make verify`: stylua --check, ansible-lint, and the
   manifest schema check. The repo's single entry point for static verification.
 - **Extras seam** — `lazy/lazyvim.json`, the only place LazyVim language/extras

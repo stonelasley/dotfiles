@@ -22,6 +22,11 @@ pwsh windows-install.ps1               # Windows (standalone, no Ansible — see
 - **Neovim extras** — enable only in `lazy/lazyvim.json` via `:LazyExtras`. Never import extras
   from `lazy/lua/config/lazy.lua`. Plugin overrides go in `lazy/lua/plugins/`.
 - **Windows shell files** — `windows/`, mirroring how `zsh/` holds the Unix ones.
+- **Claude skills** — custom skills live in `claude/skills/<TitleCase>/` (a `SKILL.md`
+  routing guide plus `Workflows/`, `References/`, `Templates/`) and are symlinked into
+  `~/.claude/skills/` by the `lifeos` role. A name must not collide with the vendored
+  library in `.vendor/pai/LifeOS/install/skills/` — DeployCore skips an existing path, so a
+  collision silently shadows upstream. Slash commands are `claude/commands/*.md`.
 - **Vendored deps** — git submodules under `.vendor/`.
 
 ## Research Output

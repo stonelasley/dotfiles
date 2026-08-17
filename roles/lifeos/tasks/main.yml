@@ -194,3 +194,26 @@
     force: true
   loop: "{{ lifeos_custom_commands.files }}"
   tags: [lifeos, pai]
+
+# Custom skills layered alongside the ~50 shipped by DeployCore. Linked, not
+# copied, so an edit in this repo is live in the next session without a re-run.
+# Names must not collide with the payload library -- DeployCore's copyMissing
+# skips an existing path, so a collision would silently shadow the upstream
+# skill. Directory-level links (not per-file) keep Workflows/ and References/
+# intact.
+- name: find custom claude skills
+  find:
+    paths: "{{ ansible_env.PWD }}/claude/skills"
+    file_type: directory
+    recurse: false
+  register: lifeos_custom_skills
+  tags: [lifeos, pai]
+
+- name: link custom claude skills
+  file:
+    src: "{{ item.path }}"
+    path: "{{ lifeos_config_root }}/skills/{{ item.path | basename }}"
+    state: link
+    force: true
+  loop: "{{ lifeos_custom_skills.files }}"
+  tags: [lifeos, pai]
