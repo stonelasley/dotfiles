@@ -65,8 +65,12 @@ install_ansible() {
         Linux)
             log "Updating package lists..."
             sudo apt update
-            log "Installing Ansible via apt..."
-            sudo apt install -y ansible
+            # ansible-core, not the `ansible` metapackage. The metapackage is the
+            # full community bundle (~35k files to extract); ansible-core is a few
+            # MB, and the one collection this playbook needs (community.general)
+            # is installed separately below.
+            log "Installing ansible-core via apt..."
+            sudo apt install -y ansible-core
             ;;
     esac
     
@@ -84,8 +88,17 @@ install_ansible_collections() {
         return 0
     fi
     
+    # No --force. It re-downloads and re-extracts the collection on every run
+    # even when it is already present, which is pure cost on a repeat install.
+    # `collection list` exits 0 whether or not the collection is present, so
+    # match on the output rather than the exit code.
+    if ansible-galaxy collection list community.general 2>/dev/null | grep -q '^community\.general '; then
+        log "community.general collection already installed"
+        return 0
+    fi
+
     log "Installing required Ansible collections..."
-    ansible-galaxy collection install community.general --force
+    ansible-galaxy collection install community.general
 }
 
 run_playbook() {

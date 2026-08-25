@@ -26,9 +26,7 @@ python3-pip: { apt: python3-pip }
 rustup: { brew: rustup, scoop: rustup } # Linux via roles/shell rustup.sh
 fnm: { scoop: fnm } # Linux/macOS use NVM (roles/packages)
 bun: { brew: oven-sh/bun/bun }
-dotnet-sdk: { apt: dotnet-sdk-8.0, brew: dotnet-sdk, scoop: dotnet-sdk }
-dotnet-sdk-6.0: { apt: dotnet-sdk-6.0 }
-dotnet-sdk-7.0: { apt: dotnet-sdk-7.0 }
+dotnet-sdk: { apt: dotnet-sdk-10.0, brew: dotnet-sdk, scoop: dotnet-sdk }
 
 # Build tools
 autoconf: { apt: autoconf }

@@ -3,7 +3,7 @@
   ansible.builtin.file:
     path: ~/.config
     state: directory
-    mode: "0777"
+    mode: "0755"
   tags: [neovim]
 
 - name: link neovim config
@@ -17,62 +17,47 @@
   ansible.builtin.file:
     path: ~/.local/bin
     state: directory
-    mode: "0777"
+    mode: "0755"
   tags: [neovim]
 
-- name: delete neovim directory
-  file:
-    path: /opt/neovim
-    state: absent
-  become: true
-  tags: [neovim]
-
-- name: test neovim cloned
+# Neovim is built from source. The build is the single most expensive thing in
+# this playbook (a cold cmake build runs 15+ minutes on a modest box), so it is
+# gated on two facts: did the checkout actually move, and is the binary there.
+#
+# Before 2026-08-25 the role rm -rf'd /opt/neovim on every run, which forced a
+# full-history clone plus a cold rebuild every single time. It also chmod -R'd
+# the tree three times, walking ~100k post-build files on each pass.
+- name: test neovim binary installed
   stat:
-    path: /opt/neovim
-  register: vim_neovim
-  become: true
+    path: /usr/local/bin/nvim
+  register: vim_neovim_bin
   tags: [neovim]
 
 - name: clone neovim
   git:
     repo: https://github.com/neovim/neovim
     dest: /opt/neovim/
+    depth: 1
     force: true
     version: stable
   become: true
-  tags: [neovim]
-
-- name: set neovim directory permissions
-  file:
-    path: /opt/neovim
-    state: directory
-    mode: "777"
-    recurse: true
-  become: true
+  register: vim_neovim_clone
   tags: [neovim]
 
 - name: build neovim
   shell:
   args:
-    cmd: make CMAKE_BUILD_TYPE=Release --jobs=4 --silent
+    cmd: make CMAKE_BUILD_TYPE=Release --jobs={{ ansible_processor_vcpus | default(4) }} --silent
     chdir: /opt/neovim
   become: true
+  when: vim_neovim_clone.changed or not vim_neovim_bin.stat.exists
   tags: [neovim]
 
-- name: build neovim
+- name: install neovim
   shell:
   args:
     cmd: make install
     chdir: /opt/neovim
   become: true
-  tags: [neovim]
-
-- name: reset Neovim directory permissions
-  file:
-    path: /opt/neovim
-    state: directory
-    mode: "755"
-    recurse: true
-  become: true
+  when: vim_neovim_clone.changed or not vim_neovim_bin.stat.exists
   tags: [neovim]

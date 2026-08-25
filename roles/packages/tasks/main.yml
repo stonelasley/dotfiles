@@ -11,9 +11,27 @@
     packages_pip: "{{ manifest | dict2items | map(attribute='value') | selectattr('pip', 'defined') | map(attribute='pip') | list }}"
     packages_npm: "{{ manifest | dict2items | map(attribute='value') | selectattr('npm', 'defined') | map(attribute='npm') | list }}"
 
+# `apt: deb: <url>` re-downloads the .deb on every run before it can decide the
+# package is already installed. Caching the file first makes the repeat cost a
+# stat instead of a download (get_url skips when dest already exists).
+- name: create deb cache directory
+  file:
+    path: '{{ ansible_env.HOME }}/.cache/dotfiles/debs'
+    state: directory
+    mode: '0755'
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+
+- name: cache .deb downloads
+  get_url:
+    url: '{{ item }}'
+    dest: "{{ ansible_env.HOME }}/.cache/dotfiles/debs/{{ item | basename }}"
+    mode: '0644'
+  loop: '{{ packages_debs }}'
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+
 - name: install packages from file
   apt:
-    deb: '{{ item }}'
+    deb: "{{ ansible_env.HOME }}/.cache/dotfiles/debs/{{ item | basename }}"
     update_cache: false
   become: true
   with_items:
@@ -24,6 +42,9 @@
   apt:
     name: '{{ packages_apt }}'
     update_cache: true
+    # install.sh already ran `apt update` minutes ago on a fresh box; without
+    # this every run re-fetches every repo index before installing nothing.
+    cache_valid_time: 3600
     state: present
   become: true
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
@@ -40,6 +61,7 @@
   pip:
     name: '{{ packages_pip }}'
     executable: pip3
+    extra_args: --disable-pip-version-check
 
 - name: Install NVM
   shell: |
@@ -56,11 +78,26 @@
     executable: /bin/bash
     creates: "{{ ansible_env.HOME }}/.nvm/versions/node"
 
+# Without a presence check this reinstalls every global package on every run.
+# @anthropic-ai/claude-code alone is a multi-minute install.
+- name: list global npm packages
+  shell: |
+    source {{ ansible_env.HOME }}/.nvm/nvm.sh
+    npm ls -g --depth=0 --parseable
+  args:
+    executable: /bin/bash
+  register: packages_npm_installed
+  changed_when: false
+  failed_when: false
+
 - name: Install npm packages globally
   shell: |
     source {{ ansible_env.HOME }}/.nvm/nvm.sh
     npm install -g {{ item }}
   args:
     executable: /bin/bash
+  when: packages_npm_installed.stdout_lines
+    | select('search', '/node_modules/' + (item | regex_escape) + '$')
+    | list | length == 0
   with_items:
     - '{{ packages_npm }}'
