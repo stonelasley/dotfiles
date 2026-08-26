@@ -1,6 +1,16 @@
 ---
-# Direct .deb downloads (version-pinned URLs, Debian/Ubuntu only).
+# Direct .deb downloads (Debian/Ubuntu only).
 # Everything else lives in the package manifest: packages.yml at the repo root.
+#
+# The Microsoft prod feed is per-release and must track the running distro --
+# a hardcoded 22.04 URL adds a jammy feed to a noble box. Verified 2026-08-25
+# that packages.microsoft.com/config/ubuntu/<v>/ resolves for 22.04 through
+# 26.04, so templating the version is safe.
+#
+# Note on .NET: that feed tops out at dotnet-sdk-9.0 on jammy and ships no SDK
+# at all on noble+. dotnet-sdk-10.0 comes from Canonical's own archive, which
+# carries it on 24.04 and newer only. On 22.04 there is no .NET 10 apt package
+# from either source.
 packages_debs:
-  - https://packages.microsoft.com/config/ubuntu/22.04/packages-microsoft-prod.deb
+  - https://packages.microsoft.com/config/ubuntu/{{ ansible_distribution_version }}/packages-microsoft-prod.deb
   - https://github.com/cli/cli/releases/download/v2.52.0/gh_2.52.0_linux_amd64.deb

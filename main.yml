@@ -6,4 +6,12 @@
     - { role: dotfiles , tags: dotfiles }
     - { role: shell, tags: shell}
     - { role: vim, tags: vim }
-    - { role: lifeos, tags: [lifeos, pai] }
+    # The role shells out to `bun` six times. On Linux bun comes from the
+    # role's own curl fallback, which lands in ~/.bun/bin -- a path ansible's
+    # command module never sees, because it does not source a login shell.
+    # Without this, every bun task fails on a fresh Linux box the first time
+    # through, right after the fallback installed bun successfully.
+    - role: lifeos
+      tags: [lifeos, pai]
+      environment:
+        PATH: "{{ ansible_env.HOME }}/.bun/bin:{{ ansible_env.PATH }}"
