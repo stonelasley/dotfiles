@@ -24,14 +24,14 @@
 - name: cache .deb downloads
   get_url:
     url: '{{ item }}'
-    dest: "{{ ansible_env.HOME }}/.cache/dotfiles/debs/{{ item | basename }}"
+    dest: "{{ ansible_env.HOME }}/.cache/dotfiles/debs/{{ item | hash('sha1') }}-{{ item | basename }}"
     mode: '0644'
   loop: '{{ packages_debs }}'
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 
 - name: install packages from file
   apt:
-    deb: "{{ ansible_env.HOME }}/.cache/dotfiles/debs/{{ item | basename }}"
+    deb: "{{ ansible_env.HOME }}/.cache/dotfiles/debs/{{ item | hash('sha1') }}-{{ item | basename }}"
     update_cache: false
   become: true
   with_items:
