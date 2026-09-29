@@ -194,3 +194,20 @@
     force: true
   loop: "{{ lifeos_custom_commands.files }}"
   tags: [lifeos, pai]
+
+# Custom skills, one link per skill so LifeOS-deployed skills stay untouched
+- name: find custom claude skills
+  find:
+    paths: "{{ ansible_env.PWD }}/claude/skills"
+    file_type: directory
+  register: lifeos_custom_skills
+  tags: [lifeos, pai]
+
+- name: link custom claude skills
+  file:
+    src: "{{ item.path }}"
+    path: "{{ lifeos_config_root }}/skills/{{ item.path | basename }}"
+    state: link
+    force: true
+  loop: "{{ lifeos_custom_skills.files }}"
+  tags: [lifeos, pai]

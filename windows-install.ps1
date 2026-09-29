@@ -319,6 +319,23 @@ if (-not $SkipDotfiles) {
         }
     }
 
+    # Link custom Claude skills (junctions need no admin)
+    Write-Host "`nLinking Claude skills..."
+    $skillsSource = "$dotfilesDir\claude\skills"
+    $skillsTarget = "$env:USERPROFILE\.claude\skills"
+
+    if (Test-Path $skillsSource) {
+        New-Item -ItemType Directory -Path $skillsTarget -Force | Out-Null
+        Get-ChildItem $skillsSource -Directory | ForEach-Object {
+            $link = Join-Path $skillsTarget $_.Name
+            if (Test-Path $link) {
+                Remove-Item $link -Recurse -Force -ErrorAction SilentlyContinue
+            }
+            New-Item -ItemType Junction -Path $link -Target $_.FullName | Out-Null
+            Write-Host "  ✓ Linked skill $($_.Name)" -ForegroundColor Green
+        }
+    }
+
     Write-Success "Dotfiles setup complete"
 }
 
