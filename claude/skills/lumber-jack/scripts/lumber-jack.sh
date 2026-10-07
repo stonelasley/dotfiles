@@ -110,7 +110,7 @@ remove_worktree() {
     return 0
 }
 
-while IFS=$'\t' read -r path head branch locked; do
+while IFS='|' read -r path head branch locked; do
     [ -z "$path" ] && continue
     name="${path#"$MAIN_WT"/}"
     [ "$path" = "$MAIN_WT" ] && continue
@@ -131,7 +131,7 @@ while IFS=$'\t' read -r path head branch locked; do
     gitdir="$(git -C "$path" rev-parse --absolute-git-dir 2>/dev/null)"
     last_commit=$(git -C "$path" log -1 --format=%ct 2>/dev/null || echo 0)
     last=$last_commit
-    for t in $(mtime "$gitdir/index") $(mtime "$gitdir/logs/HEAD") $(mtime "$gitdir/HEAD"); do
+    for t in $(mtime "$gitdir/logs/HEAD") $(mtime "$gitdir/HEAD"); do
         [ "$t" -gt "$last" ] && last=$t
     done
     age=$((NOW - last))
@@ -164,6 +164,24 @@ while IFS=$'\t' read -r path head branch locked; do
             verdict=CLOSED; reason="$branch: PR #$n closed unmerged, idle ${age_h}h"
         fi
     fi
+    if [ -z "$verdict" ] && [ -z "$branch" ] && [ "$GH_OK" = 1 ]; then
+        n="$(printf '%s
+' "$PR_TSV" | awk -F'	' -v h="$head" '$3==h && $2=="MERGED"{print $4; exit}')"
+        [ -n "$n" ] && { verdict=MERGED; reason="detached at PR #$n head, merged"; }
+        # Review trees sit at an older PR commit; resolve the PR from the dir's number, then verify ancestry.
+        num="$(basename "$path" | grep -oE '[0-9]{3,5}' | head -1 | sed 's/^0*//')"
+        if [ -z "$verdict" ] && [ -n "$num" ]; then
+            pad="$(printf '%05d' "$num")"
+            while IFS=$'	' read -r _ st oid pn; do
+                [ "$st" = MERGED ] || continue
+                git cat-file -e "$oid^{commit}" 2>/dev/null || git fetch -q origin "refs/pull/$pn/head" 2>/dev/null
+                if git merge-base --is-ancestor "$head" "$oid" 2>/dev/null; then
+                    verdict=MERGED; reason="detached inside merged PR #$pn"; break
+                fi
+            done < <(printf '%s
+' "$PR_TSV" | awk -F'	' -v n="$num" -v p="$pad" '$4==n || index($1,p"-")==1')
+        fi
+    fi
     if [ -z "$verdict" ]; then
         if [ "$age" -ge "$IDLE_SECS" ]; then
             verdict=IDLE; reason="${branch:-detached}: no PR, idle $((age / 86400))d"
@@ -185,11 +203,11 @@ while IFS=$'\t' read -r path head branch locked; do
         row FAIL "$verdict" "$name" "$reason: remove failed (locked file / open process?)"; logf "FAIL $path"; failed=$((failed+1))
     fi
 done < <(git worktree list --porcelain | awk '
-    /^worktree /{ if (p!="") print p"\t"h"\t"b"\t"l; p=substr($0,10); h=""; b=""; l=0 }
+    /^worktree /{ if (p!="") print p"|"h"|"b"|"l; p=substr($0,10); h=""; b=""; l=0 }
     /^HEAD /{ h=$2 }
     /^branch /{ b=$2; sub("refs/heads/","",b) }
     /^locked/{ l=1 }
-    END{ if (p!="") print p"\t"h"\t"b"\t"l }')
+    END{ if (p!="") print p"|"h"|"b"|"l }')
 
 printf '%s' "$REPORT" | sort
 mode=$([ "$DRY_RUN" = 1 ] && echo "dry-run" || echo "live")
