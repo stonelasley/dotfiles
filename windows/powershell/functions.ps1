@@ -201,3 +201,25 @@ function editdot {
     Set-Location "$env:USERPROFILE\dotfiles"
     nvim .
 }
+
+# ============================================
+# Claude Code
+# ============================================
+
+# Upgrade Claude Code via winget
+function claude-upgrade {
+    winget upgrade Anthropic.ClaudeCode @args
+}
+
+# Launch Claude Code, upgrading it first at most once a day.
+# Upgrades must happen before launch: Windows locks claude.exe while it runs.
+function claude {
+    $stamp = "$env:LOCALAPPDATA\claude-upgrade.stamp"
+    $last = if (Test-Path $stamp) { (Get-Item $stamp).LastWriteTime } else { [datetime]::MinValue }
+    if ($last.Date -lt (Get-Date).Date) {
+        Write-Host "Checking for Claude Code updates..." -ForegroundColor DarkGray
+        claude-upgrade --silent --accept-source-agreements --accept-package-agreements | Out-Host
+        New-Item -ItemType File -Path $stamp -Force | Out-Null
+    }
+    & (Get-Command claude -CommandType Application | Select-Object -First 1).Source @args
+}
